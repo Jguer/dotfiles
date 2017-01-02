@@ -424,8 +424,8 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioRaiseVolume", function() pulseaudio.volumeUp(); volumewidget.text = pulseaudio.volumeInfo() end),
     awful.key({}, "XF86AudioLowerVolume", function() pulseaudio.volumeDown(); volumewidget.text = pulseaudio.volumeInfo() end),
     -- Backlight
-    awful.key({}, "XF86MonBrightnessUp", function() backlight.Change("+5%"); backlight_text.text = backlight.Info() end),
-    awful.key({}, "XF86MonBrightnessDown", function() pulseaudio.Change("-5%"); backlight_text.text = backlight.Info() end),
+    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn("xbacklight +5%"); backlight_text.text = backlight.Info() end),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("xbacklight -5%"); backlight_text.text = backlight.Info() end),
     -- Sound
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
     awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl prev") end),
@@ -523,7 +523,7 @@ awful.rules.rules = {
     { rule = { class = "Rambox"},
       properties = { tag = tags[1][5] } },
     { rule = { class = "mpv" },
-      properties = { tag = tags[2][6] } },
+      properties = { tag = tags[1][6] } },
     { rule = { class = "rofi" },
       properties = { floating = true } },
     { rule = { class = "lollypop" },
