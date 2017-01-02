@@ -1,0 +1,25 @@
+#! /bin/bash
+#################################################################################
+#     File Name           :     yay.sh
+#     Created By          :     jguer
+#     Creation Date       :     [2016-08-17 16:33]
+#     Last Modified       :     [2016-08-17 16:37]
+#     Description         :     Yay installer
+#################################################################################
+
+buildroot="$(mktemp -d)"
+
+sudo -v
+sudo pacman -S --needed --noconfirm git
+
+mkdir -p "$buildroot"
+cd "$buildroot" || exit 1
+
+curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz
+tar -xvf yay.tar.gz
+
+cd "${buildroot}/yay" || exit 1
+makepkg --syncdeps --install --noconfirm
+
+cd "$HOME" || exit 1
+rm -rf "$buildroot"

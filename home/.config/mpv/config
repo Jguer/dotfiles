@@ -1,0 +1,135 @@
+######################
+#         ###        #
+# Interface Settings #
+#         ###        #
+######################
+
+# don't allow a new window to have a size larger than 90% of the screen size
+autofit-larger=90%x90%
+cursor-autohide = 1500
+title = ${filename}
+
+# Disable the On Screen Controller (OSC).
+#osc=yes
+
+# Keep the player window on top of all other windows.
+#ontop=yes
+
+screenshot-format=png
+screenshot-png-compression=9
+screenshot-tag-colorspace=yes
+screenshot-template="%F-%02n"
+screenshot-directory="~/Desktop/"
+
+stop-screensaver = "yes"
+
+save-position-on-quit
+
+no-input-default-bindings
+
+#####################
+# Network Settings  #
+#####################
+
+user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36"
+cache-default = 8192
+
+# Prefill 20% of the cache before starting playback.
+#cache-min = 20.0
+#
+# Prefill 50% of the cache before restarting playback after the cache emptied.
+#cache-seek-min = 50
+
+###################
+#  Audio Settings #
+###################
+
+alang = en, eng
+
+#################
+# Sub Settings  #
+#################
+
+slang=en,eng,english,[eng],[Eng],English
+sub-auto=fuzzy
+sub-scale-with-window = yes
+sub-use-margins
+stretch-image-subs-to-screen
+demuxer-mkv-subtitle-preroll
+
+ass-force-margins
+ass-vsfilter-aspect-compat=no
+ass-vsfilter-blur-compat=no
+ass-vsfilter-color-compat=no
+ass-force-style = Kerning=yes
+
+################
+# OSD Settings #
+################
+osd-border-color='#40000000'
+osd-color='#40FFFFFF'
+osd-border-size=2
+
+#################
+# Video Settings#
+#################
+
+cache = 8192
+# multithreaded decoding of H264/MPEG-1/2 (valid: 0-16)
+vd-lavc-threads = 4
+
+[ultra]
+vo=opengl-hq:interpolation:tscale=oversample:cscale=ewa_lanczossharp:scale=ewa_lanczossharp:blend-subtitles
+video-sync=display-resample
+hwdec=auto
+ytdl-format=bestvideo+bestaudio/best
+
+[high]
+vo=opengl-hq:interpolation:interpolation:cscale=ewa_lanczossharp:scale=ewa_lanczossharp:blend-subtitles
+video-sync=display-resample
+profile-desc="Maximum placebo"
+hwdec=auto
+ytdl-format=bestvideo[height<=?1080]+bestaudio/best
+
+[medium]
+vo=opengl-hq:blend-subtitles
+hwdec=auto
+ytdl-format=bestvideo[height<=?1080][vcodec!=vp9][fps<=?30]+bestaudio/best
+
+[low]
+vo=opengl:deband:blend-subtitles
+hwdec=auto
+ytdl-format=bestvideo[height<=?720][vcodec!=vp9][fps<=?30]+bestaudio/best
+
+#############################################
+# Technical profiles:                       #
+#   For specific protocols or file formats. #
+#   Everything below [default] goes back to #
+#   the default configuration.              #
+#############################################
+
+[protocol.http]
+profile-desc="Low ressource for Twitch or general streams"
+vo=opengl:gamma-auto:icc-profile-auto:scale=spline36
+force-window=immediate
+
+[protocol.https]
+profile-desc="Stupid redundancy for https"
+vo=opengl:gamma-auto:icc-profile-auto:scale=spline36
+force-window=immediate
+
+[extension.webm]
+loop-file=inf
+
+[extension.gif]
+loop-file=inf
+
+[extension.jpg]
+pause
+
+[extension.png]
+pause
+
+[default]
+profile=low
+

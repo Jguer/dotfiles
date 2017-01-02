@@ -1,0 +1,71 @@
+#{{{ Theme
+set guioptions Sans\ 11
+set default-fg \#ebdbb2
+set default-bg \#3c3836
+set inputbar-fg \#ebdbb2
+set inputbar-bg \#282828
+set notification-bg \#282828
+set notification-fg \#ebdbb2
+set notification-error-bg \#fb4934
+set notification-error-fg \#282828
+set notification-warning-bg \#282828
+set notification-warning-fg \#fb4934
+set tabbar-bg \#282828
+set tabbar-fg \#7c6f64
+set tabbar-focus-bg \#7c6f64
+set tabbar-focus-fg \#282828
+set statusbar-bg \#7c6f64
+set statusbar-fg \#282828
+set highlight-color \#3c3836
+set highlight-active-color \#ebdbb2
+
+set completion-bg \#7c6f64
+set completion-fg \#282828
+set completion-group-bg \#3c3836
+set completion-group-fg \#ebdbb2
+set completion-highlight-bg \#83a598
+set completion-highlight-fg \#504945
+
+set render-loading-bg \#282828
+set render-loading-fg \#ebdbb2
+
+set index-bg \#282828
+set index-fg \#98971a
+set index-active-bg \#3c3836
+set index-active-fg \#98971a
+#}}}
+
+#{{{ Layout
+set adjust-open width
+set incremental-search false
+set recolor true
+set recolor-darkcolor \#ebdbb2
+set recolor-lightcolor \#282828
+set recolor-reverse-video false
+#set recolor-keephue true
+set statusbar-home-tilde true
+set selection-clipboard primary
+#set render-loading "false"
+}}}
+
+#{{{ Other Options
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-step 50
+#}}}
+
+#{{{ Key bindings
+map <PageUp> scroll full_up
+map <PageDown> scroll full_down
+map <BackSpace> scroll full_up all
+map <M-v> scroll full_up
+map <C-v> scroll full_down
+
+map + zoom in
+map - zoom out
+map q quit
+map w adjust_window width
+map z adjust_window bestfit
+
+map <C-g> abort
+#}}}

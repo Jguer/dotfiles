@@ -1,0 +1,16 @@
+#! /bin/bash
+#################################################################################
+#     File Name           :     after_sync.sh
+#     Created By          :     jguer
+#     Creation Date       :     [2016-06-04 00:03]
+#     Last Modified       :     [2016-08-17 18:46]
+#     Description         :      After sync restore these
+#################################################################################
+
+echo "Restoring ssh"
+if [ ! -d "${HOME}/.ssh" ]; then
+  mkdir -p "${HOME}/.ssh"
+fi
+
+ln -sfv "$HOME/Documents/Configs/ssh_config" "$HOME/.ssh/config"
+
