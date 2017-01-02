@@ -1,0 +1,20 @@
+Xcursor.theme: Paper
+
+Xft.autohint: 1
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
+Xft.hinting: true
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.dpi: 96
+
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #282828, #a89984, #a89984
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #282828, #ebdbb2, #32302f, #665c54, #fbf1c7
+rofi.color-active: #d79921, #282828, #d79921, #fabd2f, #282828
+rofi.color-urgent: #cc241d, #282828, #cc241d, #fb4934, #282828
+rofi.font: Noto Sans UI 12
+rofi.levenshtein-sort: true
+rofi.terminal: /usr/bin/termite

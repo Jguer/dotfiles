@@ -11,7 +11,7 @@ function Info()
   local iconI = "🔅"
   f:close()
 
-  if (v == "No outputs have backlight property") then
+  if (v == "No outputs have backlight property\n" or v == nil) then
       return iconI.." BckL: N/A% "
   end
 

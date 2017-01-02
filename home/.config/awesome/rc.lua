@@ -15,7 +15,6 @@ local menubar    = require("menubar")
 local quake      = require("quake")
 local pulseaudio = require("pulseaudio")
 local backlight  = require("backlight")
-local music      = require("simplempris")
 local xrandr     = require("xrandr")
 -- FreeDesktop
 require("freedesktop.utils")
