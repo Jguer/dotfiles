@@ -429,11 +429,13 @@ globalkeys = awful.util.table.join(
     -- Apps
     awful.key({ modkey, }, "x", function() awful.spawn("rofi -combi-modi window,drun -show combi -modi combi") end),
     awful.key({}, "Print", function () awful.spawn("scrot -e 'mv $f ~/Desktop/ 2>/dev/null'") end),
-    awful.key({ modkey, }, "e", function() awful.spawn("xautolock -locknow") end),
     awful.key({ modkey, }, "z", function() quakeconsole:toggle() end),
+    -- Lock Screen
+    awful.key({ modkey, }, "e", function() awful.spawn("xautolock -locknow") end),
+    awful.key({ modkey, }, "F1", function() awful.spawn("xautolock -locknow") end),
     -- Display
     awful.key({}, "XF86Display", function () xrandr.xrandr() end),
-    awful.key({ modkey,}, "q", function () xrandr.xrandr() end),
+    awful.key({ modkey, }, "p", function () xrandr.xrandr() end),
     -- Audio
     awful.key({}, "XF86AudioMute", function() pulseaudio.volumeMute(); volumewidget.text = pulseaudio.volumeInfo() end),
     awful.key({}, "XF86AudioRaiseVolume", function() pulseaudio.volumeUp(); volumewidget.text = pulseaudio.volumeInfo() end),
@@ -445,10 +447,10 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
     -- awful.key({}, "XF86AudioPlay", function() music.playpause() end),
     awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
-    awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
+    awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end)
 
     -- Menubar
-    awful.key({ modkey }, "p",                                                                                                    function() menubar.show() end)
+    -- awful.key({ modkey }, "a", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
