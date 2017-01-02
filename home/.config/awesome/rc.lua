@@ -11,12 +11,13 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
---FreeDesktop
-require('freedesktop.utils')
-require('freedesktop.menu')
+-- Custom
 local quake = require("quake")
 local pulseaudio = require('pulseaudio')
 local backlight = require('backlight')
+-- FreeDesktop
+require('freedesktop.utils')
+require('freedesktop.menu')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -51,6 +52,19 @@ local themes_dir = (config_dir .. "/themes/gruvbox")
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(themes_dir .. "/theme.lua")
 
+-- {{{ Notifications
+naughty.config.presets.normal.screen        = 1
+naughty.config.presets.normal.position     = "top_right"
+naughty.config.presets.normal.gap           = 1
+naughty.config.presets.normal.icon          = freedesktop.utils.lookup_icon({ icon = 'notification-new' })
+naughty.config.presets.normal.icon_size     = 64
+naughty.config.presets.normal.bg            = '#282828'
+naughty.config.presets.normal.fg            = '#ebdbb2'
+naughty.config.presets.normal.border_color  = '#b16286'
+naughty.config.presets.critical.bg          = '#cc2241d'
+naughty.config.presets.critical.fg          = '#ebdbb2'
+-- }}
+
 -- This is used later as the default terminal and editor to run.
 
 vicious.cache( vicious.widgets.cpu )
@@ -65,12 +79,12 @@ font = "Noto Sans UI 11"
 
 local quakeconsole = quake({
         terminal = terminal,
-        argname = "-t %s",
-        name = "quickterm",
-        height = 0.3,
-        width = 0.5,
-        horiz = "right",
-        vert = "bottom"})
+        argname  = "-t %s",
+        name     = "quickterm",
+        height   = 0.3,
+        width    = 0.5,
+        horiz    = "right",
+        vert     = "bottom"})
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -164,7 +178,7 @@ textclock = wibox.container.background(clocktext, "#458588")
 
 --{{ Audio Widget }} --
 volumewidget = wibox.widget({
-    text = pulseaudio.volumeInfo(),
+    text   = pulseaudio.volumeInfo(),
     align  = 'center',
     valign = 'center',
     widget = wibox.widget.textbox
@@ -184,7 +198,7 @@ volumetimer:start()
 
 --{{ Brightness Widget }} --
 backlight_text = wibox.widget({
-    text = backlight.Info(),
+    text   = backlight.Info(),
     align  = 'center',
     valign = 'center',
     widget = wibox.widget.textbox
@@ -428,7 +442,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("xbacklight -5%"); backlight_text.text = backlight.Info() end),
     -- Sound
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
-    awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl prev") end),
+    awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
     awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
 
     -- Menubar
@@ -604,21 +618,6 @@ client.connect_signal("manage", function (c, startup)
         awful.titlebar(c):set_widget(layout)
     end
 end)
-
--- {{{ Notifications
-naughty.config.timeout          = 10
-naughty.config.presets.normal.screen           = 1
-naughty.config.presets.normal.position         = "top_right"
-naughty.config.presets.normal.margin           = 4
-naughty.config.presets.normal.gap              = 1
-naughty.config.presets.normal.ontop            = true
-naughty.config.presets.normal.icon             = nil
-naughty.config.presets.normal.icon_size        = 16
-naughty.config.presets.normal.border_width     = 1
-naughty.config.presets.normal.hover_timeout    = nil
-naughty.config.presets.normal.bg               = '#111111'
-naughty.config.presets.normal.border_color     = '#333333'
-naughty.config.presets.critical.bg = '#991000cc'
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
