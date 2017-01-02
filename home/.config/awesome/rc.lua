@@ -1,23 +1,25 @@
 -- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
-awful.rules = require("awful.rules")
+local gears      = require("gears")
+local awful      = require("awful")
+awful.rules      = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
-local wibox = require("wibox")
-local vicious = require("vicious")
+local wibox      = require("wibox")
+local vicious    = require("vicious")
 -- Theme handling library
-local beautiful = require("beautiful")
+local beautiful  = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
+local naughty    = require("naughty")
+local menubar    = require("menubar")
 -- Custom
-local quake = require("quake")
-local pulseaudio = require('pulseaudio')
-local backlight = require('backlight')
+local quake      = require("quake")
+local pulseaudio = require("pulseaudio")
+local backlight  = require("backlight")
+local music      = require("simplempris")
+local xrandr     = require("xrandr")
 -- FreeDesktop
-require('freedesktop.utils')
-require('freedesktop.menu')
+require("freedesktop.utils")
+require("freedesktop.menu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -420,19 +422,18 @@ globalkeys = awful.util.table.join(
                 end
             end
         end),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
+    awful.key({ modkey, }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
-
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Apps
-    awful.key({ modkey,           }, "x", function() awful.spawn("rofi -combi-modi window,drun -show combi -modi combi") end),
-    awful.key({  }, "Print", function () awful.spawn("scrot -e 'mv $f ~/Desktop/ 2>/dev/null'") end),
-    awful.key({ modkey,           }, "l", function() awful.spawn("xautolock -locknow") end),
-    awful.key({ modkey,           }, "z", function() quakeconsole:toggle() end),
+    awful.key({ modkey, }, "x", function() awful.spawn("rofi -combi-modi window,drun -show combi -modi combi") end),
+    awful.key({}, "Print", function () awful.spawn("scrot -e 'mv $f ~/Desktop/ 2>/dev/null'") end),
+    awful.key({ modkey, }, "e", function() awful.spawn("xautolock -locknow") end),
+    awful.key({ modkey, }, "z", function() quakeconsole:toggle() end),
     -- Display
-    awful.key({}, "XF86Display", function () end),
-    awful.key({ modkey,           }, "q", function () xrandrmenu.xrandrdisp() end),
+    awful.key({}, "XF86Display", function () xrandr.xrandr() end),
+    awful.key({ modkey,}, "q", function () xrandr.xrandr() end),
     -- Audio
     awful.key({}, "XF86AudioMute", function() pulseaudio.volumeMute(); volumewidget.text = pulseaudio.volumeInfo() end),
     awful.key({}, "XF86AudioRaiseVolume", function() pulseaudio.volumeUp(); volumewidget.text = pulseaudio.volumeInfo() end),
@@ -442,11 +443,12 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("xbacklight -5%"); backlight_text.text = backlight.Info() end),
     -- Sound
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
+    -- awful.key({}, "XF86AudioPlay", function() music.playpause() end),
     awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
     awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
 
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p",                                                                                                    function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
