@@ -1,4 +1,13 @@
-broadcom-wl-dkms
+#! /bin/bash
+
+#{{{ Repo
+blueman
 bumblebee
 nvidia
+pulseaudio-bluetooth
 nvidia-utils
+#}}}
+
+#{{{ AUR
+broadcom-wl-dkms
+#}}}

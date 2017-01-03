@@ -1,10 +1,9 @@
 #!/bin/sh
-
 export GOPATH=$HOME/Go
 export EDITOR=nvim
 export QT_STYLE_OVERRIDE=gtk2
 
-if [ -d "$HOME/dotfiles/scripts" ] ; then
+if [ -d "$HOME/awmdotfiles/scripts" ] ; then
   export PATH="$PATH:$HOME/dotfiles/scripts"
 fi
 
@@ -17,12 +16,14 @@ xset r rate 200 30
 setxkbmap -option caps:swapescape
 setxkbmap -option terminate:ctrl_alt_bksp
 
-xrandr --output HDMI-0 --primary --auto --right-of DVI-1
+[[ "$(cat /etc/hostname)" =~ "paladium" ]] && xrandr --output HDMI-0 --primary --auto --right-of DVI-1
+[[ "$(cat /etc/hostname)" =~ "cobalt" ]] && blueman-applet &
+
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)"
 
 [[ -z "$(pgrep pulseaudio)" ]] && start-pulseaudio-x11 &
 [[ -z "$(pgrep nm-applet)" ]] && nm-applet --sm-disable &
-xautolock -detectsleep -time 10 -locker "i3lock -t -c 282828 -i $HOME/.config/awesome/themes/gruvbox/background.png" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
+xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/gruvbox/background.png" &
 dex ~/.config/autostart/*
 [[ -z "$(pgrep ibus-daemon)" ]] && ibus-daemon -drx &
 [[ -z "$(pgrep redshift)" ]] && redshift -l 38.72:-9.15 -t 5000:3400 &

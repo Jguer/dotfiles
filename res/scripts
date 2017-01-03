@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+#################################################################################
+#     File Name           :     restore_symlinks.sh
+#     Created By          :     jguer
+#     Creation Date       :     [2016-05-20 02:01]
+#     Last Modified       :     [2016-08-18 18:38]
+#     Description         :      restores apps and app config
+#################################################################################
+
+#config
+INSTALLER="yay -S --needed --noconfirm"
+declare -a install_array
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+SUDO="gksudo"
+wallpaper="/home/$USER/awmdotfiles/home/.config/awesome/themes/gruvbox/background.png"
+GTK_THEME="Arc Darker"
+
+# Usage Function
+function usage() {
+cat <<_EOT_
+Usage:
+    $0 -d -i
+Description:
+    Restore dotfiles and applications
+    Add argumment after : for restore
+Operations:
+    Root Settings:root
+    Packages:install
+    Dotfiles:dotfiles
+    Services:services
+    Cobalt Specific:cobalt
+    Paladium Specific:paladium
+    Lightdm:lightdm
+    -h    display help
+_EOT_
+exit 1
+}
+
+restore_shell() {
+    $SUDO chsh jguer -s /usr/bin/fish
+    # curl -Ls https://raw.github.com/rafaelrinaldi/pure/master/installer.fish > /tmp/pure_installer.fish
+    # source /tmp/pure_installer.fish; and install_pure
+}
+
+lightdm() {
+    $SUDO sed -i 's/#background=/background=\/etc\/lightdm\/background.png/' /etc/lightdm/lightdm-gtk-greeter.conf
+    $SUDO sed -i "s/#theme-name=/theme-name=$GTK_THEME/" /etc/lightdm/lightdm-gtk-greeter.conf
+    $SUDO "cp -f '$wallpaper' '/etc/lightdm/background.png'"
+    $SUDO chown lightdm:lightdm "/etc/lightdm/background.png"
+}
+
+install() {
+    package=$1
+    if ! pacman -Q "$package" &> /dev/null; then
+        if pacman -Si "$package" &> /dev/null; then
+            install_array=("${install_array[@]}" "$package")
+        fi
+    fi
+}
+
+install_list() {
+    while IFS=$'\n' read -r line || [[ -n "$line" ]]; do
+        if [[ "$line" != "#"* ]] && [[ ! -z "$line" ]]; then
+            trimmed=$(echo "$line" | tr -cd '[[:alnum:]]._-')
+            install "$trimmed"
+        fi
+    done < "$1"
+    if [ ${#install_array[@]} -ne 0 ]; then
+        echo "Restoring Apps"
+        $INSTALLER "${install_array[*]}"
+    fi
+}
+
+dotfile() {
+    cp -rsfvT "$DIR/home/" "$HOME/"
+}
+
+root_settings() {
+    $SUDO "cp -rfvT '$DIR/root/' /"
+}
+
+services() {
+    $SUDO "systemctl enable tlp-sleep.service tlp.service fstrim.timer thermald.service"
+    systemctl --user enable syncthing.service
+    systemctl --user enable syncthing-inotify.service
+}
+
+cobalt() {
+    install_list "${DIR}/res/cobalt"
+    $SUDO systemctl enable bumblebeed.service bluetooth.service
+    gsettings set org.blueman.plugins.powermanager auto-power-on false
+}
+
+paladium() {
+    $SUDO chown -R "$USER":users "/mnt/storage"
+    declare -a From=("/mnt/storage/Videos" \
+        "/mnt/storage/Archive" \
+        "/mnt/storage/Music" \
+        "/mnt/storage/Pictures" \
+        "/mnt/storage/Downloads" \
+        "/mnt/storage/Projects");
+
+    declare -a To=("$HOME/Videos" \
+        "$HOME/Archive" \
+        "$HOME/Music" \
+        "$HOME/Pictures" \
+        "$HOME/Downloads" \
+        "$HOME/Projects");
+
+    max=${#From[@]}
+    (( max -= 1 ))
+
+    for i in $(seq 0 $max); do
+        rm -R "${To[i]}"
+        ln -sfT "${From[i]}" "${To[i]}"
+    done
+}
+
+if [[ "$@" =~ "root" ]]; then
+    root_settings
+fi
+
+if [[ "$@" =~ "lightdm" ]]; then
+    lightdm
+fi
+
+if [[ "$@" =~ "install" ]]; then
+    install_list "${DIR}/res/defaults"
+fi
+
+if [[ "$@" =~ "dotfiles" ]]; then
+    dotfile
+fi
+
+if [[ "$@" =~ "services" ]]; then
+    services
+fi
+
+if [[ "$@" =~ "cobalt" ]]; then
+    cobalt
+fi
+
+if [[ "$@" =~ "paladium" ]]; then
+    paladium
+fi
+

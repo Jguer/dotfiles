@@ -77,12 +77,13 @@ editor = os.getenv("EDITOR") or "nano"
 editor_cmd = "nvim-qt"
 browser = "chromium"
 font = "Noto Sans UI 11"
+lock_cmd = "i3lock -t -c 282828 -i " ..beautiful.wallpaper
 
 local quakeconsole = quake({
         terminal = terminal,
         argname  = "-t %s",
         name     = "quickterm",
-        height   = 0.3,
+        height   = 0.4,
         width    = 0.5,
         horiz    = "right",
         vert     = "bottom"})
@@ -153,7 +154,7 @@ menu_items = freedesktop.menu.new()
 myawesomemenu = {
     { "Edit Config", editor_cmd .. " " .. awesome.conffile, freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
     { "Restart Awesome", awesome.restart, freedesktop.utils.lookup_icon({ icon = 'exit' }) },
-    { "Lock", function() awful.spawn("xautolock -locknow"..beautiful.wallpaper) end, freedesktop.utils.lookup_icon({ icon = 'system-lock-screen' }) },
+    { "Lock", function() awful.spawn(lock_cmd) end, freedesktop.utils.lookup_icon({ icon = 'system-lock-screen' }) },
     { "Log Out", function() awesome.quit() end , freedesktop.utils.lookup_icon({ icon = 'system-log-out' }) },
     { "Suspend", function() awful.spawn("systemctl suspend") end, freedesktop.utils.lookup_icon({ icon = 'system-suspend' }) },
     { "Restart", function() awful.spawn("systemctl reboot") end, freedesktop.utils.lookup_icon({ icon = 'system-restart' }) },
@@ -430,8 +431,8 @@ globalkeys = awful.util.table.join(
     awful.key({}, "Print", function () awful.spawn("scrot -e 'mv $f ~/Desktop/ 2>/dev/null'") end),
     awful.key({ modkey, }, "z", function() quakeconsole:toggle() end),
     -- Lock Screen
-    awful.key({ modkey, }, "e", function() awful.spawn("xautolock -locknow") end),
-    awful.key({ modkey, }, "F1", function() awful.spawn("xautolock -locknow") end),
+    awful.key({ modkey, }, "e", function() awful.spawn(lock_cmd) end),
+    awful.key({ modkey, }, "F1", function() awful.spawn(lock_cmd) end),
     -- Display
     awful.key({}, "XF86Display", function () xrandr.xrandr() end),
     awful.key({ modkey, }, "p", function () xrandr.xrandr() end),
@@ -540,8 +541,10 @@ awful.rules.rules = {
     { rule = { class = "Rambox"},
       properties = { tag = tags[1][5] } },
     { rule = { class = "mpv" },
-      properties = { tag = tags[1][6] } },
+      properties = { tag = tags[1][6], floating = true } },
     { rule = { class = "rofi" },
+      properties = { floating = true } },
+    { rule = { class = "sxiv" },
       properties = { floating = true } },
     { rule = { class = "lollypop" },
       properties = { tag = tags[1][6] } },

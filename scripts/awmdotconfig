@@ -6,12 +6,12 @@ local os = os
 
 local action_list = {}
 local to_execute = {}
+local res_folder = os.getenv("RESDIR") or os.getenv("HOME").."/awmdotfiles/res"
 
 function on_check_button_toggled(checkbutton)
     local label = checkbutton:get_label()
 
     if checkbutton:get_active() then
-        print(string.format('%s has been spotted', label))
         to_execute[label] = action_list[label]
     else
         to_execute[label] = nil
@@ -19,10 +19,15 @@ function on_check_button_toggled(checkbutton)
 end
 
 function on_restore_click(button)
-    print('Button Clicked')
+    actioncmd = res_folder.."/scripts"
     for i, action in pairs(to_execute) do
-        print(string.format('%s - %s performed', i, action))
+        actioncmd = actioncmd .. " ".. action
     end
+    success = os.execute(actioncmd)
+    if success then
+        os.execute("notify-send 'Restore Successful'")
+    end
+    os.exit(0)
 end
 
 function create_checkbox(name)
@@ -33,15 +38,13 @@ function create_checkbox(name)
     return checkbutton
 end
 
-local res_folder = os.getenv("RESDIR") or os.getenv("HOME").."/awmdotfiles/res"
-local header_file,err = io.open( res_folder.. "/header" )
-if err then print("Unable to Open File"); return; end
-
 local window = Gtk.Window{
     title = 'CheckButton',
     on_destroy = Gtk.main_quit,
     resizable = false,
-    default_width = 200
+    gravity = 4,
+    default_width = 200,
+    window_position = 1
 }
 
 local vbox = Gtk.Box{
@@ -63,10 +66,12 @@ local btn_restore = Gtk.Button{
     }
 vbox:pack_start(btn_restore, false, false, 0)
 
+local header_file,err = io.open( res_folder.. "/header" )
+if err then print("Unable to Open File"); return; end
+
 while true do
     line = header_file:read()
     if line == nil then break end
-    print (line)
     for k, v in string.gmatch(line, "(%w[%w ]*):(%w+)") do
         action_list[k] = v
         local checkbutton = create_checkbox(k)

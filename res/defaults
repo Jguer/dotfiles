@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+#{{{ Repo
+arc-gtk-theme
+chromium
+ctags
+ffmpegthumbnailer
+fish
+ghostscript
+gnome-disk-utility
+gvfs-mtp
+i3lock
+neovim
+noto-fonts
+noto-fonts-emoji
+pcmanfm-gtk3
+powerline-fonts
+powerline-fonts
+pragha
+python-neovim
+redshift
+rofi
+shellcheck
+syncthing
+syncthing-inotify
+termite
+tlp
+transmission-gtk
+xorg-xkill
+xsel
+zathura-pdf-mupdf
+#}}}
+
+#{{{ AUR
+fontconfig-enhanced-defaults
+keepassxc-git
+mpv-light
+neovim-qt-git
+neovim-symlinks
+# rambox-bin
+paper-icon-theme-git
+# spotify
+playerctl
+thermald
+ttf-mensch
+xss-lock
+#}}}
+

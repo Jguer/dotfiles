@@ -1,5 +1,7 @@
+Root Settings:root
 Packages:install
 Dotfiles:dotfiles
-Root Settings:root
-
-
+Services:services
+Cobalt Specific:cobalt
+Paladium Specific:paladium
+Lightdm:lightdm
