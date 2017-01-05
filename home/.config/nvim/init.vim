@@ -261,7 +261,8 @@ autocmd FileType c set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType cpp set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType lua set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType go set tabstop=4|set shiftwidth=4|set expandtab
-au FocusLost * silent! wa
+au FocusLost,WinLeave * :silent! noautocmd w
+au FocusGained,BufEnter * :silent! !
 
 set autowriteall "Auto save when moving tab
 set autochdir
