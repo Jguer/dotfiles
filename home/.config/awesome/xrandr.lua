@@ -1,5 +1,5 @@
 local awful = require("awful")
-local naughty    = require("naughty")
+local naughty = require("naughty")
 local iconlib = require("freedesktop.utils")
 local io = io
 local pairs = pairs
@@ -124,7 +124,6 @@ function xrandr()
         replaces_id = state.cid }).id
     -- Setup the timer
     state.timer = timer.weak_start_new(4, function()
-        state.timer:stop()
         state.timer = nil
         state.iterator = nil
         naughty.notify({ text = action,

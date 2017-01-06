@@ -2,22 +2,27 @@
 " :.: Plug Setup :.:
 "*****************************************************************************
 
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  autocmd VimEnter * PlugInstall | so %
 endif
 
 "*****************************************************************************
 " :.: Plug Init :.:
 "*****************************************************************************
 
-call plug#begin('~/.config/nvim/plugged/')
+call plug#begin('~/.local/share/nvim/plugged')
 
 " .-. Auto Completion .-.
-Plug 'neomake/neomake', { 'on': 'Neomake' }
+" Plug 'neomake/neomake', { 'on': 'Neomake' }
+Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
+
+" .-. Snippets .-.
+Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 " .-. Appearance .-.
 Plug 'morhetz/gruvbox'
@@ -28,16 +33,14 @@ Plug 'dietsche/vim-lastplace'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary' " gcc or gc visual
+Plug 'tpope/vim-commentary'
 
 " .-. Syntax .-.
 Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 
-" .-. Snippets .-.
-Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 call plug#end()
 
@@ -167,7 +170,6 @@ nnoremap Q <nop>
 
 let g:polyglot_disabled = ['markdown']
 
-" .-. Airline .-.
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'component': {
@@ -182,13 +184,20 @@ nmap <silent> <F10> :TagbarToggle<CR>
 map <Leader>m :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
+" Ale
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " .-. Neomake .-.
-let g:neomake_open_list = 2
-let g:neomake_go_enabled_makers = ['go', 'golint', 'govet']
-let g:neomake_sh_enabled_makers = ['sh', 'shellcheck']
-autocmd! BufWritePost * Neomake
-nmap <Leader>j :lnext<CR>
-nmap <Leader>k :lprev<CR>
+" let g:neomake_open_list = 2
+" let g:neomake_go_enabled_makers = ['go', 'golint', 'govet']
+" let g:neomake_sh_enabled_makers = ['sh', 'shellcheck']
+" autocmd! BufWritePost * Neomake
+" nmap <Leader>j :lnext<CR>
+" nmap <Leader>k :lprev<CR>
 
 " .-. Vim-go .-.
 let g:go_highlight_functions = 1
