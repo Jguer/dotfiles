@@ -16,13 +16,13 @@ function volumeUp()
     return
   end
 
-  local f = io.popen("pactl set-sink-volume " ..dc.." +5%")
+  local f = io.popen("pactl set-sink-volume " ..dc.." +3db")
   f:close()
 end
 
 function volumeDown()
   local dc = defaultCard()
-  local f = io.popen("pactl set-sink-volume " ..dc.." -5%")
+  local f = io.popen("pactl set-sink-volume " ..dc.." -3db")
   f:close()
 end
 
