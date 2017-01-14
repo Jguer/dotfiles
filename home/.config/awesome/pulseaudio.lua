@@ -12,7 +12,7 @@ function volumeUp()
   local v = fI:read()
   vol = tonumber(v:sub(1, -2))
   fI:close()
-  if vol >= 100 then
+  if vol >= 100 or vol <= 0 then
     return
   end
 
