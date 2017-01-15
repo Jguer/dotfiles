@@ -437,6 +437,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86Display", function () xrandr.xrandr() end),
     awful.key({ modkey, }, "p", function () xrandr.xrandr() end),
     -- Audio
+    awful.key({ modkey, "Shift"}, "p", function () pulseaudio.cycle_devices(); volumewidget.text = pulseaudio.volume_info() end),
     awful.key({}, "XF86AudioMute", function() pulseaudio.volume_mute(); volumewidget.text = pulseaudio.volume_info() end),
     awful.key({}, "XF86AudioLowerVolume", function() pulseaudio.volume_change("-3db"); volumewidget.text = pulseaudio.volume_info() end),
     awful.key({}, "XF86AudioRaiseVolume", function() pulseaudio.volume_change("+3db"); volumewidget.text = pulseaudio.volume_info() end),
