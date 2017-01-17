@@ -18,7 +18,7 @@ setxkbmap -option terminate:ctrl_alt_bksp
 
 [[ "$(cat /etc/hostname)" =~ "Paladium" ]] && xrandr --output HDMI-0 --primary --auto --right-of DVI-1
 
-[[ "$(cat /etc/hostname)" =~ "Cobalt" ]] && blueman-applet &
+[[ "$(cat /etc/hostname)" =~ "cobalt" ]] && blueman-applet &
 
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)"
 

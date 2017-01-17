@@ -180,22 +180,22 @@ textclock = wibox.container.background(clocktext, "#458588")
 
 --{{ Audio Widget }} --
 volumewidget = wibox.widget({
-    text   = pulseaudio.volumeInfo(),
+    text   = pulseaudio.volume_info(),
     align  = 'center',
     valign = 'center',
     widget = wibox.widget.textbox
 })
 
 volumewidget:buttons(awful.util.table.join(
-  awful.button({ }, 2, function() pulseaudio.volumeMute(); volumewidget.text = pulseaudio.volumeInfo() end),
+  awful.button({ }, 2, function() pulseaudio.volume_mute(); volumewidget.text = pulseaudio.volume_info() end),
   awful.button({ }, 3, function() awful.util.spawn("pavucontrol") end),
-  awful.button({ }, 4, function() pulseaudio.volumeUp(); volumewidget.text = pulseaudio.volumeInfo() end),
-  awful.button({ }, 5, function() pulseaudio.volumeDown(); volumewidget.text = pulseaudio.volumeInfo() end)
+  awful.button({ }, 4, function() pulseaudio.volume_change("+3db"); volumewidget.text = pulseaudio.volume_info() end),
+  awful.button({ }, 5, function() pulseaudio.volume_change("-3db"); volumewidget.text = pulseaudio.volume_info() end)
 ))
 volumedisplaywidget = wibox.container.background(volumewidget, "#689d6a")
 
 volumetimer = timer({ timeout = 31 })
-volumetimer:add_signal("timeout", function() volumewidget.text = pulseaudio.volumeInfo() end)
+volumetimer:add_signal("timeout", function() volumewidget.text = pulseaudio.volume_info() end)
 volumetimer:start()
 
 --{{ Brightness Widget }} --
@@ -437,9 +437,10 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86Display", function () xrandr.xrandr() end),
     awful.key({ modkey, }, "p", function () xrandr.xrandr() end),
     -- Audio
-    awful.key({}, "XF86AudioMute", function() pulseaudio.volumeMute(); volumewidget.text = pulseaudio.volumeInfo() end),
-    awful.key({}, "XF86AudioRaiseVolume", function() pulseaudio.volumeUp(); volumewidget.text = pulseaudio.volumeInfo() end),
-    awful.key({}, "XF86AudioLowerVolume", function() pulseaudio.volumeDown(); volumewidget.text = pulseaudio.volumeInfo() end),
+    awful.key({ modkey, "Shift"}, "p", function () pulseaudio.cycle_devices(); volumewidget.text = pulseaudio.volume_info() end),
+    awful.key({}, "XF86AudioMute", function() pulseaudio.volume_mute(); volumewidget.text = pulseaudio.volume_info() end),
+    awful.key({}, "XF86AudioLowerVolume", function() pulseaudio.volume_change("-3db"); volumewidget.text = pulseaudio.volume_info() end),
+    awful.key({}, "XF86AudioRaiseVolume", function() pulseaudio.volume_change("+3db"); volumewidget.text = pulseaudio.volume_info() end),
     -- Backlight
     awful.key({}, "XF86MonBrightnessUp", function() awful.spawn("xbacklight +5%"); backlight_text.text = backlight.Info() end),
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("xbacklight -5%"); backlight_text.text = backlight.Info() end),
@@ -541,7 +542,7 @@ awful.rules.rules = {
     { rule = { class = "Rambox"},
       properties = { tag = tags[1][5] } },
     { rule = { class = "mpv" },
-      properties = { tag = tags[1][6], floating = true } },
+      properties = { tag = tags[1][6], switchtotag = true, floating = true, ontop = true } },
     { rule = { class = "rofi" },
       properties = { floating = true } },
     { rule = { class = "sxiv" },
