@@ -1,122 +1,74 @@
-######################
-#         ###        #
-# Interface Settings #
-#         ###        #
-######################
+no-input-default-bindings
 
-# don't allow a new window to have a size larger than 90% of the screen size
-autofit-larger=90%x90%
-cursor-autohide = 1500
-title = ${filename}
-
-# Disable the On Screen Controller (OSC).
-#osc=yes
-
-# Keep the player window on top of all other windows.
-#ontop=yes
-
+# {{{ Screenshot
 screenshot-format=png
 screenshot-png-compression=9
 screenshot-tag-colorspace=yes
 screenshot-template="%F-%02n"
 screenshot-directory="~/Desktop/"
+# }}}
 
+# {{{ Window
+autofit-larger=94%x94%
+autofit-smaller=30%x30%
+border=no
+cursor-autohide = 500
+fs=no
+geometry=50%:50%
+resume-playback=yes
+save-position-on-quit=yes
 stop-screensaver = "yes"
+title = ${filename}
 
-save-position-on-quit
+gamma-auto
+# }}}
 
-no-input-default-bindings
-
-#####################
-# Network Settings  #
-#####################
-
-user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36"
-cache-default = 8192
-
-# Prefill 20% of the cache before starting playback.
-#cache-min = 20.0
-#
-# Prefill 50% of the cache before restarting playback after the cache emptied.
-#cache-seek-min = 50
-
-###################
-#  Audio Settings #
-###################
-
-alang = en, eng
-
-#################
-# Sub Settings  #
-#################
-
-slang=en,eng,english,[eng],[Eng],English
-sub-auto=fuzzy
-sub-scale-with-window = yes
-sub-use-margins
-stretch-image-subs-to-screen
-demuxer-mkv-subtitle-preroll
-
-ass-force-margins
-ass-vsfilter-aspect-compat=no
-ass-vsfilter-blur-compat=no
-ass-vsfilter-color-compat=no
-ass-force-style = Kerning=yes
-
-################
-# OSD Settings #
-################
-osd-border-color='#40000000'
-osd-color='#40FFFFFF'
+# {{{ OSD
+osd-border-color='#50000000'
 osd-border-size=2
+osd-color='#50EBDBB2'
+osd-font-size=36
+osd-font="Noto Sans UI"
+script-opts=osc-layout=bottombar,osc-seekbarstyle=bar,osc-minmousemove=2,osc-boxalpha=130,osc-scalewindowed=1,osc-scalefullscreen=1,osc-hidetimeout=1000
+# }}}
 
-#################
-# Video Settings#
-#################
+# {{{ Audio
+alang = en,eng
+audio-channels=auto
+audio-pitch-correction=yes
+volume=100
+# }}}
 
-cache = 8192
-# multithreaded decoding of H264/MPEG-1/2 (valid: 0-16)
-vd-lavc-threads = 4
+# {{{ Subtitles
+demuxer-mkv-subtitle-preroll
+embeddedfonts=yes
+sub-ass-force-style=Kerning=yes
+sub-ass-style-override=force
+sub-auto=fuzzy
+sub-gray=yes
+sub-use-margins=yes
+# }}}
 
-[ultra]
-vo=opengl-hq:interpolation:tscale=oversample:cscale=ewa_lanczossharp:scale=ewa_lanczossharp:blend-subtitles
-video-sync=display-resample
-hwdec=auto
-ytdl-format=bestvideo+bestaudio/best
-
+# {{{ Profiles
 [high]
-vo=opengl-hq:interpolation:interpolation:cscale=ewa_lanczossharp:scale=ewa_lanczossharp:blend-subtitles
+blend-subtitles=yes
+correct-downscaling=yes
+cscale=ewa_lanczossharp
+deband=yes
+dither-depth=auto
+dscale=mitchell
+framedrop=vo
+hwdec=auto
+opengl-early-flush=yes
+opengl-pbo=yes
+profile=opengl-hq
+scale=ewa_lanczossharp
+sigmoid-upscaling=yes
 video-sync=display-resample
-profile-desc="Maximum placebo"
-hwdec=auto
-ytdl-format=bestvideo[height<=?1080]+bestaudio/best
-
-[medium]
-vo=opengl-hq:blend-subtitles
-hwdec=auto
-ytdl-format=bestvideo[height<=?1080][vcodec!=vp9][fps<=?30]+bestaudio/best
 
 [low]
-vo=opengl:deband:blend-subtitles
+profile=opengl
 hwdec=auto
-ytdl-format=bestvideo[height<=?720][vcodec!=vp9][fps<=?30]+bestaudio/best
-
-#############################################
-# Technical profiles:                       #
-#   For specific protocols or file formats. #
-#   Everything below [default] goes back to #
-#   the default configuration.              #
-#############################################
-
-[protocol.http]
-profile-desc="Low ressource for Twitch or general streams"
-vo=opengl:gamma-auto:icc-profile-auto:scale=spline36
-force-window=immediate
-
-[protocol.https]
-profile-desc="Stupid redundancy for https"
-vo=opengl:gamma-auto:icc-profile-auto:scale=spline36
-force-window=immediate
 
 [extension.webm]
 loop-file=inf
@@ -129,7 +81,8 @@ pause
 
 [extension.png]
 pause
+# }}}
 
 [default]
-profile=low
+profile=high
 
