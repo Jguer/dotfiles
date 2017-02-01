@@ -126,10 +126,6 @@ function xrandr()
     state.timer = timer.weak_start_new(4, function()
         state.timer = nil
         state.iterator = nil
-        naughty.notify({ text = action,
-                icon = icon,
-                screen = mouse.screen, -- Important, not all screens may be visible
-            })
         if action then
             awful.spawn(action, false)
         end
