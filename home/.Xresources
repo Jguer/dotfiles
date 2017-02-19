@@ -18,3 +18,36 @@ rofi.color-urgent: #cc241d, #282828, #cc241d, #fb4934, #282828
 rofi.font: Noto Sans UI 12
 rofi.levenshtein-sort: true
 rofi.terminal: /usr/bin/termite
+
+st.font:  Mensch:pixelsize=15:antialias=true:autohint=true;
+st.xfps:         120
+st.borderpx:     4
+st.bold_font:			1
+st.background:			#282828
+st.foreground:			#ebdbb2
+st.cursorColor:			#8d9b53
+st.termname:			xterm-256color
+st.shell:			/usr/bin/fish
+st.bellvolume:			0
+st.tabspaces:			4
+st.chscale:			1.0
+st.cwscale:			0.9
+
+st.opacity:      255
+st.color0:			#282828
+st.color8:			#928374
+st.color1:			#cc241d
+st.color9:			#fb4934
+st.color2:			#98971a
+st.color10:			#b8bb26
+st.color3:			#d79921
+st.color11:			#fabd2f
+st.color4:			#458588
+st.color12:			#83a598
+st.color5:			#b16286
+st.color13:			#d3869b
+st.color6:			#689d6a
+st.color14:			#8ec07c
+st.color7:			#a89984
+st.color15:			#ebdbb2
+
