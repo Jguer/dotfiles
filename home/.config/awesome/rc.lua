@@ -12,7 +12,7 @@ local beautiful  = require("beautiful")
 local naughty    = require("naughty")
 local menubar    = require("menubar")
 -- Custom
-local quake      = require("quake")
+local scratchdrop = require("scratchdrop")
 local pulseaudio = require("pulseaudio")
 local backlight  = require("backlight")
 local xrandr     = require("xrandr")
@@ -72,27 +72,12 @@ vicious.cache( vicious.widgets.cpu )
 vicious.cache( vicious.widgets.mem )
 vicious.cache( vicious.widgets.bat )
 
-terminal = "termite"
-editor = os.getenv("EDITOR") or "nano"
+terminal = "tabbed -c -r 2 st -w ''"
+editor = os.getenv("EDITOR") or "vi"
 editor_cmd = "nvim-qt"
 browser = "chromium"
 font = "Noto Sans UI 11"
 lock_cmd = "i3lock -t -c 282828 -i " ..beautiful.wallpaper
-
-local quakeconsole = quake({
-        terminal = terminal,
-        argname  = "-t %s",
-        name     = "quickterm",
-        height   = 0.4,
-        width    = 0.5,
-        horiz    = "right",
-        vert     = "bottom"})
-
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -105,11 +90,6 @@ local layouts =
     awful.layout.suit.max,
     awful.layout.suit.floating,
     awful.layout.suit.max.fullscreen
-    --awful.layout.suit.tile.bottom,
-    --awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
 }
 -- }}}
 
@@ -429,7 +409,7 @@ globalkeys = awful.util.table.join(
     -- Apps
     awful.key({ modkey, }, "x", function() awful.spawn("rofi -combi-modi window,drun -show combi -modi combi") end),
     awful.key({}, "Print", function () awful.spawn("scrot -e 'mv $f ~/Desktop/ 2>/dev/null'") end),
-    awful.key({ modkey, }, "z", function() quakeconsole:toggle() end),
+    awful.key({ modkey, }, "z", function() scratchdrop("tabbed -c -n 'quickterm' -r 2 st -w ''", "bottom", "right", 0.5, 0.4, true) end),
     -- Lock Screen
     awful.key({ modkey, }, "e", function() awful.spawn(lock_cmd) end),
     awful.key({ modkey, }, "F1", function() awful.spawn(lock_cmd) end),

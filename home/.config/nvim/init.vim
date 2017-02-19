@@ -16,8 +16,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 " .-. Auto Completion .-.
-" Plug 'neomake/neomake', { 'on': 'Neomake' }
-Plug 'w0rp/ale'
+Plug 'neomake/neomake', { 'on': 'Neomake' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 
@@ -184,20 +183,13 @@ nmap <silent> <F10> :TagbarToggle<CR>
 map <Leader>m :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
-" Ale
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 " .-. Neomake .-.
-" let g:neomake_open_list = 2
-" let g:neomake_go_enabled_makers = ['go', 'golint', 'govet']
-" let g:neomake_sh_enabled_makers = ['sh', 'shellcheck']
-" autocmd! BufWritePost * Neomake
-" nmap <Leader>j :lnext<CR>
-" nmap <Leader>k :lprev<CR>
+let g:neomake_open_list = 2
+let g:neomake_go_enabled_makers = ['go', 'golint', 'govet']
+let g:neomake_sh_enabled_makers = ['sh', 'shellcheck']
+autocmd! BufWritePost * Neomake
+nmap <Leader>j :lnext<CR>
+nmap <Leader>k :lprev<CR>
 
 " .-. Vim-go .-.
 let g:go_highlight_functions = 1
