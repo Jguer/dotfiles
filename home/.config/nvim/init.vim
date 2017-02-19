@@ -1,27 +1,17 @@
-"*****************************************************************************
-" :.: Plug Setup :.:
-"*****************************************************************************
-
+" Plug Setup {{{
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | so %
 endif
+" }}}
 
-"*****************************************************************************
-" :.: Plug Init :.:
-"*****************************************************************************
-
+" Plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
-
 " .-. Auto Completion .-.
-" Plug 'neomake/neomake', { 'on': 'Neomake' }
-Plug 'w0rp/ale'
+Plug 'neomake/neomake', { 'on': 'Neomake' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
-
-" .-. Snippets .-.
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 " .-. Appearance .-.
@@ -37,18 +27,13 @@ Plug 'tpope/vim-commentary'
 
 " .-. Syntax .-.
 Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go'}
+Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
-
-
 call plug#end()
+" }}}
 
-"*****************************************************************************
-" :.: Appearance :.:
-"*****************************************************************************
-
-let $GOPATH = "/home/jguer/Go"
+" Appearance {{{
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set termguicolors
 set background=dark
@@ -74,11 +59,10 @@ set splitbelow  " Horizontal split below current.
 set splitright  " Vertical split to right of current.
 
 set clipboard+=unnamedplus
+" }}}
 
-"*****************************************************************************
-" :.: General Settings :.:
-"*****************************************************************************
-
+" General Settings {{{
+let $GOPATH = "/home/jguer/Go"
 set noswapfile
 set nobackup
 set nowb
@@ -100,6 +84,7 @@ let g:sh_fold_enabled=1
 let g:netrw_banner = 0
 let g:netrw_liststyle=3
 let g:netrw_winsize = 30
+" }}}
 
 "*****************************************************************************
 " :.: General keybindings :.:
@@ -184,20 +169,13 @@ nmap <silent> <F10> :TagbarToggle<CR>
 map <Leader>m :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
-" Ale
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 " .-. Neomake .-.
-" let g:neomake_open_list = 2
-" let g:neomake_go_enabled_makers = ['go', 'golint', 'govet']
-" let g:neomake_sh_enabled_makers = ['sh', 'shellcheck']
-" autocmd! BufWritePost * Neomake
-" nmap <Leader>j :lnext<CR>
-" nmap <Leader>k :lprev<CR>
+let g:neomake_open_list = 2
+let g:neomake_go_enabled_makers = ['go', 'golint', 'govet']
+let g:neomake_sh_enabled_makers = ['sh', 'shellcheck']
+autocmd! BufWritePost * Neomake
+nmap <Leader>j :lnext<CR>
+nmap <Leader>k :lprev<CR>
 
 " .-. Vim-go .-.
 let g:go_highlight_functions = 1
