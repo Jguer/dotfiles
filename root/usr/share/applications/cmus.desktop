@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Encoding=UTF-8
+Name=C* music player
+GenericName=cmus
+Comment=C* music player
+Icon=totem
+Exec=st -e cmus
+Terminal=false
+Categories=Application;AudioVideo;AudioPlayer;

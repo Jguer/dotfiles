@@ -46,7 +46,7 @@ function toggle(prog, vert, horiz, width, height, sticky, screen)
     width = width or 1
     height = height or 0.25
     sticky = sticky or false
-    screen = screen or capi.mouse.screen
+    screen = capi.mouse.screen
 
     -- Determine signal usage in this version of awesome
     local attach_signal = capi.client.connect_signal or capi.client.add_signal

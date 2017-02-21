@@ -16,6 +16,8 @@ Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 " .-. Appearance .-.
 Plug 'morhetz/gruvbox'
+Plug 'w0ng/vim-hybrid'
+Plug 'cocopon/lightline-hybrid.vim'
 Plug 'itchyny/lightline.vim'
 
 " .-. Util .-.
@@ -37,8 +39,24 @@ call plug#end()
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set termguicolors
 set background=dark
+
+let g:lightline = {
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+let g:lightline.colorscheme = 'hybrid'
+
 try
-  colorscheme gruvbox
+  colorscheme hybrid
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme ron
 endtry
@@ -155,14 +173,6 @@ nnoremap Q <nop>
 
 let g:polyglot_disabled = ['markdown']
 
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"x":""}',
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
 
 " .-. Tagbar .-.
 nmap <silent> <F10> :TagbarToggle<CR>

@@ -74,7 +74,7 @@ vicious.cache( vicious.widgets.bat )
 
 terminal = "tabbed -c -r 2 st -w ''"
 editor = os.getenv("EDITOR") or "vi"
-editor_cmd = "nvim-qt"
+editor_cmd = "st -e nvim"
 browser = "chromium"
 font = "Noto Sans UI 11"
 lock_cmd = "i3lock -t -c 282828 -i " ..beautiful.wallpaper
@@ -518,6 +518,7 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
+                     screen = mouse.screen,
                      buttons = clientbuttons } },
     { rule = { class = "Rambox"},
       properties = { tag = tags[1][5] } },
