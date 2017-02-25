@@ -1,51 +1,46 @@
-#{{{ Theme
+#{{{ Colours
 set guioptions Sans\ 11
-set default-fg \#ebdbb2
-set default-bg \#3c3836
-set inputbar-fg \#ebdbb2
-set inputbar-bg \#282828
-set notification-bg \#282828
-set notification-fg \#ebdbb2
-set notification-error-bg \#fb4934
-set notification-error-fg \#282828
-set notification-warning-bg \#282828
-set notification-warning-fg \#fb4934
-set tabbar-bg \#282828
-set tabbar-fg \#7c6f64
-set tabbar-focus-bg \#7c6f64
-set tabbar-focus-fg \#282828
-set statusbar-bg \#7c6f64
-set statusbar-fg \#282828
-set highlight-color \#3c3836
-set highlight-active-color \#ebdbb2
+set default-bg              "#1d1f21"
+set default-fg              "#1d1f21"
 
-set completion-bg \#7c6f64
-set completion-fg \#282828
-set completion-group-bg \#3c3836
-set completion-group-fg \#ebdbb2
-set completion-highlight-bg \#83a598
-set completion-highlight-fg \#504945
+set statusbar-fg            "#b5bd68"
+set statusbar-bg            "#1d1f21"
 
-set render-loading-bg \#282828
-set render-loading-fg \#ebdbb2
+set inputbar-bg             "#1d1f21"
+set inputbar-fg             "#ecefef"
 
-set index-bg \#282828
-set index-fg \#98971a
-set index-active-bg \#3c3836
-set index-active-fg \#98971a
+set notification-error-bg   "#cc6666"
+set notification-error-fg   "#1d1f21"
+
+set notification-warning-bg "#cc6666"
+set notification-warning-fg "#1d1f21"
+
+set highlight-color         "#f0c674"
+set highlight-active-color  "#81a2be"
+
+set index-active-bg         "#81a2be"
+
+set completion-highlight-fg "#37474f"
+set completion-highlight-bg "#8abeb7"
+
+set completion-bg           "#37474f"
+set completion-fg           "#8abeb7"
+
+set notification-bg         "#b5bd68"
+set notification-fg         "#1d1f21"
+
+set recolor-lightcolor      "#1d1f21"
+set recolor-darkcolor       "#ecefef"
+set recolor                 "true"
+set recolor-keephue         "true"
+set recolor-reverse-video   "false"
 #}}}
 
 #{{{ Layout
-set adjust-open width
-set incremental-search false
-set recolor true
-set recolor-darkcolor \#ebdbb2
-set recolor-lightcolor \#282828
-set recolor-reverse-video false
-#set recolor-keephue true
-set statusbar-home-tilde true
-set selection-clipboard primary
-#set render-loading "false"
+set adjust-open           width
+set incremental-search    false
+set statusbar-home-tilde  true
+set selection-clipboard   primary
 }}}
 
 #{{{ Other Options

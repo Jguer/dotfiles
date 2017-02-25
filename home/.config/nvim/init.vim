@@ -15,10 +15,9 @@ Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 " .-. Appearance .-.
-Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
-Plug 'cocopon/lightline-hybrid.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kristijanhusak/vim-hybrid-material'
 
 " .-. Util .-.
 Plug 'dietsche/vim-lastplace'
@@ -39,27 +38,9 @@ call plug#end()
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set termguicolors
 set background=dark
+let g:enable_bold_font = 1
 
-let g:lightline = {
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
-
-let g:lightline.colorscheme = 'hybrid'
-
-try
-  colorscheme hybrid
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme ron
-endtry
+silent! colorscheme hybrid_reverse
 
 set number "Absolute number line
 set relativenumber "Relative number line
@@ -173,6 +154,30 @@ nnoremap Q <nop>
 
 let g:polyglot_disabled = ['markdown']
 
+let g:airline_section_y = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'  "Set relative path
+let g:airline#extensions#whitespace#enabled = 0                                 "Disable whitespace extension
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#branch#displayed_head_limit = 13
+let g:airline_section_warning = ''
+let g:airline_section_error = ''
+let g:airline#extensions#branch#format = 2
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#disable_rtp_load = 0
+let g:airline_detect_iminsert=1
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "hybrid"
 
 " .-. Tagbar .-.
 nmap <silent> <F10> :TagbarToggle<CR>

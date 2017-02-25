@@ -8,69 +8,58 @@ Xft.antialias: true
 Xft.rgba: rgb
 Xft.dpi: 96
 
+
+! Rofi {{{
 rofi.font: Noto Sans UI 12
 rofi.levenshtein-sort: true
 rofi.terminal: /usr/bin/st
 rofi.color-enabled: true
+
 ! State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
 rofi.color-normal: #1d1f21, #ffffff, #1d1f21, #ffffff, #1d1f21
 rofi.color-urgent: #1d1f21, #cc6666, #1d1f21, #cc6666, #1d1f21
 rofi.color-active: #1d1f21, #81a2be, #1d1f21, #81a2be, #1d1f21
 !                  'bg',    'border'
 rofi.color-window: #1d1f21, #ffffff
+! }}}
 
+! St terminal {{{
+st.font:        Mensch:pixelsize=15:antialias=true:autohint=true;
+st.xfps:        120
+st.borderpx:    4
+st.bold_font:   1
+st.termname:    xterm-256color
+st.shell:       /usr/bin/fish
+st.bellvolume:  0
+st.tabspaces:   4
+st.chscale:     1.0
+st.cwscale:     0.9
+st.opacity:     255
 
-st.font:  Mensch:pixelsize=15:antialias=true:autohint=true;
-st.xfps:         120
-st.borderpx:     4
-st.bold_font:			1
-/* st.background:			#282828 */
-/* st.foreground:			#ebdbb2 */
-/* st.cursorColor:			#8d9b53 */
+st.background:  #1d1f21
+st.foreground:  #ecefef
+st.cursorColor: #ecefef
 
-st.background:			#1D1F21
-st.foreground:			#C5C8C6
-st.cursorColor:			#8C9440
-st.termname:			xterm-256color
-st.shell:			/usr/bin/fish
-st.bellvolume:			0
-st.tabspaces:			4
-st.chscale:			1.0
-st.cwscale:			0.9
-
-st.opacity:      255
-/* st.color0:			#282828 */
-/* st.color8:			#928374 */
-/* st.color1:			#cc241d */
-/* st.color9:			#fb4934 */
-/* st.color2:			#98971a */
-/* st.color10:			#b8bb26 */
-/* st.color3:			#d79921 */
-/* st.color11:			#fabd2f */
-/* st.color4:			#458588 */
-/* st.color12:			#83a598 */
-/* st.color5:			#b16286 */
-/* st.color13:			#d3869b */
-/* st.color6:			#689d6a */
-/* st.color14:			#8ec07c */
-/* st.color7:			#a89984 */
-/* st.color15:			#ebdbb2 */
-
-st.color0:			#282A2E
-st.color8:			#373B41
-st.color1:			#A54242
-st.color9:			#CC6666
-st.color2:			#8C9440
-st.color10:			#B5BD68
-st.color3:			#DE935F
-st.color11:			#F0C674
-st.color4:			#5F819D
-st.color12:			#81A2BE
-st.color5:			#85678F
-st.color13:			#B294BB
-st.color6:			#5E8D87
-st.color14:			#8ABEB7
-st.color7:			#707880
-st.color15:			#C5C8C6
-
-
+st.color0:      #1d1f21
+st.color1:      #cc6666
+st.color2:      #b5bd68
+st.color3:      #f0c674
+st.color4:      #81a2be
+st.color5:      #b294bb
+st.color6:      #8abeb7
+st.color7:      #ecefef
+st.color8:      #707880
+st.color9:      #cc6666
+st.color10:     #b5bd68
+st.color11:     #f0c674
+st.color12:     #81a2be
+st.color13:     #b294bb
+st.color14:     #8abeb7
+st.color15:     #ffffff
+st.color16:     #cc6666
+st.color17:     #cc6666
+st.color18:     #263238
+st.color19:     #37474f
+st.color20:     #b5bd68
+st.color21:     #ecefef
+! }}}
