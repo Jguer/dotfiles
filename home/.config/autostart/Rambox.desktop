@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Vestion=1.0
-Name=Rambox
-Comment=Rambox startup script
-Exec=/opt/rambox/Rambox
-StartupNotify=false
-Terminal=false
