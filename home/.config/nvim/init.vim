@@ -15,11 +15,11 @@ Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 " .-. Appearance .-.
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
 
 " .-. Util .-.
+Plug 'easymotion/vim-easymotion'
 Plug 'dietsche/vim-lastplace'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
@@ -38,9 +38,14 @@ call plug#end()
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set termguicolors
 set background=dark
-let g:enable_bold_font = 1
+let g:enable_bold_font=1
 
-silent! colorscheme hybrid_reverse
+let g:lightline = {}
+silent! let g:lightline.colorscheme = 'molokai'
+
+let g:gruvbox_contrast_dark='hard'
+
+silent! colorscheme gruvbox
 
 set number "Absolute number line
 set relativenumber "Relative number line
@@ -62,9 +67,11 @@ set clipboard+=unnamedplus
 
 " General Settings {{{
 let $GOPATH = "/home/jguer/Go"
-set noswapfile
+
+" backups
 set nobackup
-set nowb
+set nowritebackup
+set noswapfile
 
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
 
@@ -81,7 +88,8 @@ let g:sh_fold_enabled=1
 
 " .-. File Explorer .-.
 let g:netrw_banner = 0
-let g:netrw_liststyle=3
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
 let g:netrw_winsize = 30
 " }}}
 
@@ -100,19 +108,19 @@ nnoremap j gj
 nnoremap k gk
 
 " Copy Paste improvements
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+`]p
-imap <C-v> <ESC>"+pa
+vnoremap <C-c> "+yi
+vnoremap <C-x> "+c
+vnoremap <C-v> c<ESC>"+`]p
+inoremap <C-v> <ESC>"+pa
 nnoremap <c-p> "+p
 nnoremap <c-P> "+P
 
 " Copy until EOL
-map Y y$
+noremap Y y$
 nnoremap <C-L> :nohl<CR><C-L>
 
 " New tab
-map <C-T> :tabnew<CR>
+noremap <C-T> :tabnew<CR>
 
 " Shift k is next tab
 noremap <A-k> :<C-U>tabnext<CR>
@@ -122,14 +130,14 @@ noremap <A-j> :<C-U>tabprevious<CR>
 cnoremap <A-j> <C-C>:tabprevious<CR>
 
 "Alt-Arrow Navigation
-nmap <silent> <S-k> :wincmd k<CR>
-nmap <silent> <S-j> :wincmd j<CR>
-nmap <silent> <S-h> :wincmd h<CR>
-nmap <silent> <S-l> :wincmd l<CR>
+nnoremap <silent> <S-k> :wincmd k<CR>
+nnoremap <silent> <S-j> :wincmd j<CR>
+nnoremap <silent> <S-h> :wincmd h<CR>
+nnoremap <silent> <S-l> :wincmd l<CR>
 
 "Lexplore
-nmap <silent> <F8> :Lexplore<CR>
-map <Leader>n :Lexplore<CR>
+nnoremap <silent> <F8> :Lexplore<CR>
+noremap <Leader>n :Lexplore<CR>
 
 "*****************************************************************************
 "" Abbreviations
@@ -153,31 +161,7 @@ nnoremap Q <nop>
 "*****************************************************************************
 
 let g:polyglot_disabled = ['markdown']
-
-let g:airline_section_y = '%{substitute(getcwd(), expand("$HOME"), "~", "g")}'  "Set relative path
-let g:airline#extensions#whitespace#enabled = 0                                 "Disable whitespace extension
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#branch#displayed_head_limit = 13
-let g:airline_section_warning = ''
-let g:airline_section_error = ''
-let g:airline#extensions#branch#format = 2
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline_skip_empty_sections = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#disable_rtp_load = 0
-let g:airline_detect_iminsert=1
-let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#show_splits = 1
-let g:airline#extensions#wordcount#enabled = 0
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "hybrid"
+let g:vimfiler_as_default_explorer = 1
 
 " .-. Tagbar .-.
 nmap <silent> <F10> :TagbarToggle<CR>
@@ -257,12 +241,12 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
-au BufNewFile,BufRead *.h set filetype=c
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType c set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType cpp set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType lua set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType go set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType c      set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType cpp    set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType lua    set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType go     set tabstop=4|set shiftwidth=4|set expandtab
+au BufNewFile,BufRead *.h set filetype=c
 au FocusLost,WinLeave * :silent! noautocmd w
 au FocusGained,BufEnter * :silent! !
 

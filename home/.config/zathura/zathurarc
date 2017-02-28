@@ -1,36 +1,38 @@
 #{{{ Colours
 set guioptions Sans\ 11
-set default-bg              "#1d1f21"
-set default-fg              "#1d1f21"
 
-set statusbar-fg            "#b5bd68"
-set statusbar-bg            "#1d1f21"
+set default-bg              "#1d2021"
+set default-fg              "#3c3836"
 
-set inputbar-bg             "#1d1f21"
-set inputbar-fg             "#ecefef"
+set statusbar-fg            "#bdae93"
+set statusbar-bg            "#3c3836"
 
-set notification-error-bg   "#cc6666"
-set notification-error-fg   "#1d1f21"
+set inputbar-bg             "#1d2021"
+set inputbar-fg             "#d5c4a1"
 
-set notification-warning-bg "#cc6666"
-set notification-warning-fg "#1d1f21"
+set notification-error-bg   "#fb4934"
+set notification-error-fg   "#1d2021"
 
-set highlight-color         "#f0c674"
-set highlight-active-color  "#81a2be"
+set notification-warning-bg "#fb4934"
+set notification-warning-fg "#1d2021"
 
-set index-active-bg         "#81a2be"
+set highlight-color         "#fabd2f"
+set highlight-active-color  "#83a598"
 
-set completion-highlight-fg "#37474f"
-set completion-highlight-bg "#8abeb7"
+set index-active-bg         "#83a598"
 
-set completion-bg           "#37474f"
-set completion-fg           "#8abeb7"
+set completion-highlight-fg "#504945"
+set completion-highlight-bg "#8ec07c"
 
-set notification-bg         "#b5bd68"
-set notification-fg         "#1d1f21"
+set completion-bg           "#504945"
+set completion-fg           "#8ec07c"
 
-set recolor-lightcolor      "#1d1f21"
-set recolor-darkcolor       "#ecefef"
+set notification-bg         "#b8bb26"
+set notification-fg         "#1d2021"
+
+set recolor-lightcolor      "#1d2021"
+set recolor-darkcolor       "#ebdbb2"
+
 set recolor                 "true"
 set recolor-keephue         "true"
 set recolor-reverse-video   "false"

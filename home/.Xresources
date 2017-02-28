@@ -1,12 +1,10 @@
-Xcursor.theme: Paper
-
-Xft.autohint: 1
-Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintslight
-Xft.hinting: true
+Xft.autohint:  1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting:   true
 Xft.antialias: true
-Xft.rgba: rgb
-Xft.dpi: 96
+Xft.rgba:      rgb
+Xft.dpi:       96
 
 
 ! Rofi {{{
@@ -14,13 +12,12 @@ rofi.font: Noto Sans UI 12
 rofi.levenshtein-sort: true
 rofi.terminal: /usr/bin/st
 rofi.color-enabled: true
-
-! State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
-rofi.color-normal: #1d1f21, #ffffff, #1d1f21, #ffffff, #1d1f21
-rofi.color-urgent: #1d1f21, #cc6666, #1d1f21, #cc6666, #1d1f21
-rofi.color-active: #1d1f21, #81a2be, #1d1f21, #81a2be, #1d1f21
-!                  'bg',    'border'
-rofi.color-window: #1d1f21, #ffffff
+!                  bg       border   separator
+rofi.color-window: #1d2021, #a89984, #a89984
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #1d2021, #ebdbb2, #282828, #504945, #fbf1c7
+rofi.color-active: #d79921, #1d2021, #d79921, #fabd2f, #1d2021
+rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
 ! }}}
 
 ! St terminal {{{
@@ -36,30 +33,31 @@ st.chscale:     1.0
 st.cwscale:     0.9
 st.opacity:     255
 
-st.background:  #1d1f21
-st.foreground:  #ecefef
-st.cursorColor: #ecefef
+st.background:  #1d2021
+st.foreground:  #d5c4a1
+st.cursorColor: #d5c4a1
 
-st.color0:      #1d1f21
-st.color1:      #cc6666
-st.color2:      #b5bd68
-st.color3:      #f0c674
-st.color4:      #81a2be
-st.color5:      #b294bb
-st.color6:      #8abeb7
-st.color7:      #ecefef
-st.color8:      #707880
-st.color9:      #cc6666
-st.color10:     #b5bd68
-st.color11:     #f0c674
-st.color12:     #81a2be
-st.color13:     #b294bb
-st.color14:     #8abeb7
-st.color15:     #ffffff
-st.color16:     #cc6666
-st.color17:     #cc6666
-st.color18:     #263238
-st.color19:     #37474f
-st.color20:     #b5bd68
-st.color21:     #ecefef
+st.color0:      #1d2021
+st.color1:      #fb4934
+st.color2:      #b8bb26
+st.color3:      #fabd2f
+st.color4:      #83a598
+st.color5:      #d3869b
+st.color6:      #8ec07c
+st.color7:      #d5c4a1
+st.color8:      #665c54
+st.color9:      #fb4934
+st.color10:     #b8bb26
+st.color11:     #fabd2f
+st.color12:     #83a598
+st.color13:     #d3869b
+st.color14:     #8ec07c
+st.color15:     #fbf1c7
+
+st.color16:     #fe8019
+st.color17:     #d65d0e
+st.color18:     #3c3836
+st.color19:     #504945
+st.color20:     #bdae93
+st.color21:     #ebdbb2
 ! }}}

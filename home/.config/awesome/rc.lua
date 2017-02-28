@@ -48,22 +48,22 @@ end
 -- {{{ Variable definitions
 freedesktop.utils.icon_theme = 'Paper'
 local config_dir = (os.getenv("HOME") .. "/.config/awesome/")
-local themes_dir = (config_dir .. "/themes/gruvbox")
+local themes_dir = (config_dir .. "/themes/gruvbox2")
 
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(themes_dir .. "/theme.lua")
 
 -- {{{ Notifications
-naughty.config.presets.normal.screen        = 1
+naughty.config.presets.normal.screen       = 1
 naughty.config.presets.normal.position     = "top_right"
-naughty.config.presets.normal.gap           = 1
-naughty.config.presets.normal.icon          = freedesktop.utils.lookup_icon({ icon = 'notification-new' })
-naughty.config.presets.normal.icon_size     = 64
-naughty.config.presets.normal.bg            = '#282828'
-naughty.config.presets.normal.fg            = '#ebdbb2'
-naughty.config.presets.normal.border_color  = '#b16286'
-naughty.config.presets.critical.bg          = '#cc2241d'
-naughty.config.presets.critical.fg          = '#ebdbb2'
+naughty.config.presets.normal.gap          = 1
+naughty.config.presets.normal.icon         = freedesktop.utils.lookup_icon({ icon = 'notification-new' })
+naughty.config.presets.normal.icon_size    = 64
+naughty.config.presets.normal.bg           = '#282828'
+naughty.config.presets.normal.fg           = '#ebdbb2'
+naughty.config.presets.normal.border_color = '#b16286'
+naughty.config.presets.critical.bg         = '#cc2241d'
+naughty.config.presets.critical.fg         = '#ebdbb2'
 -- }}
 
 -- This is used later as the default terminal and editor to run.
@@ -102,15 +102,14 @@ end
 -- }}}
 
 -- {{{ Tags
--- Define a tag table which hold all screen tags.
 tags = {
  names  = {
-         '☭:Browse',
-         '⚡Work',
-         '⌘:Reference',
-         '☩:Code',
-         '☃:Social',
-         '♪:Media',
+         '● Browse ',
+         '● Work ',
+         '● Reference ',
+         '● Code ',
+         '● Social ',
+         '● Media ',
            },
  layout = {
       layouts[1],
@@ -122,7 +121,6 @@ tags = {
           }
        }
 for s = 1, screen.count() do
-    -- Each screen has its own tag table.
     tags[s] = awful.tag(tags.names, s, tags.layout)
 end
 -- }}}
@@ -156,7 +154,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --{{ Time and Date Widget }} --
 clocktext = awful.widget.textclock("%b %d %H:%M ", 60)
 
-textclock = wibox.container.background(clocktext, "#458588")
+textclock = wibox.container.background(clocktext, "#076678")
 
 --{{ Audio Widget }} --
 volumewidget = wibox.widget({
@@ -172,7 +170,7 @@ volumewidget:buttons(awful.util.table.join(
   awful.button({ }, 4, function() pulseaudio.volume_change("+3db"); volumewidget.text = pulseaudio.volume_info() end),
   awful.button({ }, 5, function() pulseaudio.volume_change("-3db"); volumewidget.text = pulseaudio.volume_info() end)
 ))
-volumedisplaywidget = wibox.container.background(volumewidget, "#689d6a")
+volumedisplaywidget = wibox.container.background(volumewidget, "#3c3836")
 
 volumetimer = timer({ timeout = 31 })
 volumetimer:add_signal("timeout", function() volumewidget.text = pulseaudio.volume_info() end)
@@ -190,23 +188,23 @@ backlight_text:buttons(awful.util.table.join(
   awful.button({ }, 4, function() backlight.Change("+2%"); backlight_text.text = backlight.Info() end),
   awful.button({ }, 5, function() backlight.Change("-2%"); backlight_text.text = backlight.Info() end)
 ))
-backlightwidget = wibox.container.background(backlight_text, "#98971a")
+backlightwidget = wibox.container.background(backlight_text, "#076678")
 
 --{{ Battery Widget }} --
 battext = wibox.widget.textbox()
 vicious.register( battext, vicious.widgets.bat, '$1 Bat: $2% ($3) ', 61, "BAT0" )
-batwidget = wibox.container.background(battext, "#d79921")
+batwidget = wibox.container.background(battext, "#3c3836")
 
 --{{---| CPU / sensors widget |-----------
 cputext = wibox.widget.textbox()
 vicious.register(cputext, vicious.widgets.cpu,
 'CPU: $2% ', 7)
-cpuwidget = wibox.container.background(cputext, "#d65d0e")
+cpuwidget = wibox.container.background(cputext, "#076678")
 
 --{{--| MEM widget |-----------------
 memtext = wibox.widget.textbox()
 vicious.register(memtext, vicious.widgets.mem, 'RAM: $2MB ', 7)
-memwidget = wibox.container.background(memtext, "#cc241d")
+memwidget = wibox.container.background(memtext, "#3c3836")
 
 -- {{ Arrows}} --
 myarrow0 = wibox.widget.imagebox()
@@ -215,14 +213,6 @@ myarrow1 = wibox.widget.imagebox()
 myarrow1:set_image(beautiful.arrow1)
 myarrow2 = wibox.widget.imagebox()
 myarrow2:set_image(beautiful.arrow2)
-myarrow3 = wibox.widget.imagebox()
-myarrow3:set_image(beautiful.arrow3)
-myarrow4 = wibox.widget.imagebox()
-myarrow4:set_image(beautiful.arrow4)
-myarrow5 = wibox.widget.imagebox()
-myarrow5:set_image(beautiful.arrow5)
-myarrow6 = wibox.widget.imagebox()
-myarrow6:set_image(beautiful.arrow6)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -302,20 +292,23 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(myarrow6)
+    right_layout:add(myarrow1)
+    if s == 1 then
+        right_layout:add(wibox.widget.systray())
+    end
+    right_layout:add(myarrow2)
     right_layout:add(memwidget)
-    right_layout:add(myarrow5)
+    right_layout:add(myarrow1)
     right_layout:add(cpuwidget)
-    right_layout:add(myarrow4)
+    right_layout:add(myarrow2)
     right_layout:add(batwidget)
-    right_layout:add(myarrow3)
+    right_layout:add(myarrow1)
     right_layout:add(backlightwidget)
     right_layout:add(myarrow2)
     right_layout:add(volumedisplaywidget)
     right_layout:add(myarrow1)
     right_layout:add(textclock)
-    right_layout:add(myarrow0)
+    right_layout:add(myarrow2)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)

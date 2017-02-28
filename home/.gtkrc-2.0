@@ -1,8 +1,80 @@
-gtk-theme-name = "Arc-Dark"
-gtk-icon-theme-name = "Paper"
+gtk-theme-name        = "Arc-Darker"
+gtk-icon-theme-name   = "Paper"
 gtk-cursor-theme-name = "Paper"
-gtk-font-name = "Noto Sans UI 10"
-gtk-xft-antialias=1
-gtk-xft-hinting=1
-gtk-xft-hintstyle="hintslight"
-gtk-xft-rgba="rgb"
+gtk-font-name         = "Noto Sans UI 10"
+gtk-xft-antialias     = 1
+gtk-xft-hinting       = 1
+gtk-xft-hintstyle     = "hintslight"
+gtk-xft-rgba          = "rgb"
+
+style "default"
+{
+  engine "hcengine" {
+    edge_thickness = 2
+  }
+
+  xthickness = 2
+  ythickness = 2
+
+  EelEditableLabel::cursor_aspect_ratio = 0.1
+  EelEditableLabel::cursor_color    = "#83a598"
+
+  GtkEntry::cursor_color    = "#83a598"
+  GtkEntry::cursor_aspect_ratio = 0.1
+
+  GtkHSV::focus-line-pattern = "\0"
+
+  GtkRange::stepper-size = 20
+
+  GtkTextView::cursor_aspect_ratio = 0.1
+  GtkTextView::cursor_color    = "#83a598"
+
+  GtkTreeView::expander-size = 16
+
+  GtkWidget::focus-line-pattern = "\4\2"
+  GtkWidget::focus-line-width = 2
+  GtkWidget::focus-padding = 0
+  GtkWidget::interior_focus = 1
+  GtkWidget::link-color = "#83a598"
+  GtkWidget::visited-link-color = "#d3869b"
+
+  # Nautilus
+  NautilusIconContainer::frame_text = 1
+
+  # Pidgin
+  GtkIMHtml::hyperlink-color = "#83a598"
+  GtkIMHtml::hyperlink-visited-color = "#d3869b"
+  GtkIMHtml::hyperlink-prelight-color = "#fbf1c7"
+
+  # Evolution
+  GtkHTML::link_color = "#83a598"
+  GtkHTML::vlink_color = "#d3869b"
+  GtkHTML::cite_color = "#fbf1c7"
+
+  fg[NORMAL]      = "#bdae93"
+  text[NORMAL]    = "#bdae93"
+  bg[NORMAL]      = "#1d2021"
+  base[NORMAL]    = "#1d2021"
+
+  fg[INSENSITIVE]      = "#bdae93"
+  bg[INSENSITIVE]      = "#3c3836"
+  text[INSENSITIVE]    = "#bdae93"
+  base[INSENSITIVE]    = "#3c3836"
+
+  fg[PRELIGHT]    = "#1d2021"
+  text[PRELIGHT]  = "#1d2021"
+  bg[PRELIGHT]    = "#bdae93"
+  base[PRELIGHT]  = "#bdae93"
+
+  fg[ACTIVE]      = "#d5c4a1"
+  text[ACTIVE]    = "#d5c4a1"
+  bg[ACTIVE]      = "#504945"
+  base[ACTIVE]    = "#504945"
+
+  fg[SELECTED]    = "#1d2021"
+  text[SELECTED]  = "#1d2021"
+  bg[SELECTED]    = "#bdae93"
+  base[SELECTED]  = "#fbf1c7"
+}
+
+class "GtkWidget" style "default"

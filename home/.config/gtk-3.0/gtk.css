@@ -1,3 +1,5 @@
+@import url("/usr/share/themes/Arc-Darker/gtk-3.0/gtk.css");
+
 .window-frame, .window-frame:backdrop {
   box-shadow: 0 0 0 black;
   border-style: none;
@@ -12,34 +14,31 @@ window decoration {
     margin: 0;
 }
 
-@define-color theme_base_color #1d1f21;
-@define-color theme_fg_color #b4b7b4;
-@define-color theme_active_color #373b41;
-@define-color theme_insensitive_color #b4b7b4;
-@define-color theme_insensitive_bg #1d1f21;
+@define-color theme_base_color #1d2021;
+@define-color theme_fg_color #bdae93;
+@define-color theme_active_color #504945;
+@define-color theme_insensitive_color #bdae93;
+@define-color theme_insensitive_bg #1d2021;
 
-@define-color theme_cursor_color #81a2be;
+@define-color theme_cursor_color #83a598;
 
 /* fallback mode */
-@define-color os_chrome_bg_color #1d1f21;
-@define-color os_chrome_fg_color #b4b7b4;
-@define-color os_chrome_selected_bg_color #e0e0e0;
-@define-color os_chrome_selected_fg_color #373b41;
+@define-color os_chrome_bg_color #1d2021;
+@define-color os_chrome_fg_color #bdae93;
+@define-color os_chrome_selected_bg_color #ebdbb2;
+@define-color os_chrome_selected_fg_color #504945;
 
 * {
     /* Pidgin */
-    -GtkIMHtml-hyperlink-color: #81a2be;
-    -GtkIMHtml-hyperlink-visited-color: #b294bb;
-    -GtkIMHtml-hyperlink-prelight-color: #ffffff;
+    -GtkIMHtml-hyperlink-color: #83a598;
+    -GtkIMHtml-hyperlink-visited-color: #d3869b;
+    -GtkIMHtml-hyperlink-prelight-color: #fbf1c7;
 
     /* Evolution */
-    -GtkHTML-link-color: #81a2be;
-    -GtkHTML-vlink-color: #b294bb;
-    -GtkHTML-cite-color: #b5bd68;
+    -GtkHTML-link-color: #83a598;
+    -GtkHTML-vlink-color: #d3869b;
+    -GtkHTML-cite-color: #b8bb26;
 
-    -GtkWidget-link-color: #81a2be;
-    -GtkWidget-visited-link-color: #b294bb;
+    -GtkWidget-link-color: #83a598;
+    -GtkWidget-visited-link-color: #d3869b;
 }
-
-@import url("resource:///org/gnome/HighContrastInverse/a11y.css");
-
