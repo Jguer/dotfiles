@@ -46,12 +46,12 @@ end
 -- }}}
 
 -- {{{ Variable definitions
-freedesktop.utils.icon_theme = 'Paper'
 local config_dir = (os.getenv("HOME") .. "/.config/awesome/")
-local themes_dir = (config_dir .. "/themes/gruvbox2")
-
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(themes_dir .. "/theme.lua")
+local theme = "gruvbox2"
+beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/" .. theme .. "/theme.lua")
+
+freedesktop.utils.icon_theme = beautiful.icon_theme
 
 -- {{{ Notifications
 naughty.config.presets.normal.screen       = 1
