@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 #{{{ Repo
-arc-gtk-theme
 chromium
 ctags
 dex
@@ -17,7 +16,6 @@ noto-fonts-emoji
 pcmanfm-gtk3
 powerline-fonts
 powerline-fonts
-pragha
 python-neovim
 redshift
 rofi
@@ -33,17 +31,18 @@ zathura-pdf-mupdf
 #}}}
 
 #{{{ AUR
-fontconfig-enhanced-defaults
+cmus-git
 keepassxc-git
 mpv-light
 neovim-qt-git
 neovim-symlinks
-# rambox-bin
+rambox-bin
 paper-icon-theme-git
 # spotify
 playerctl
 thermald
 ttf-mensch
 xss-lock
+xst-git
 #}}}
 

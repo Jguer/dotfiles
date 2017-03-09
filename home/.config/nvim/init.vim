@@ -9,7 +9,7 @@ endif
 " Plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 " .-. Auto Completion .-.
-" Plug 'neomake/neomake', { 'on': 'Neomake' }
+Plug 'neomake/neomake', { 'on': 'Neomake' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
