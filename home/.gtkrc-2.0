@@ -1,6 +1,6 @@
 gtk-theme-name        = "ngruvbox"
-gtk-icon-theme-name   = "Paper"
-gtk-cursor-theme-name = "Paper"
+gtk-icon-theme-name   = "la-capitaine-icon-theme"
+gtk-cursor-theme-name = "Capitaine"
 gtk-font-name         = "Noto Sans UI 10"
 gtk-xft-antialias     = 1
 gtk-xft-hinting       = 1
