@@ -21,10 +21,10 @@ setxkbmap -option terminate:ctrl_alt_bksp
 [[ "$(cat /etc/hostname)" =~ "cobalt" ]] && blueman-applet &
 
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)"
-
 [[ -z "$(pgrep pulseaudio)" ]] && start-pulseaudio-x11 &
 [[ -z "$(pgrep nm-applet)" ]] && nm-applet --sm-disable &
+[[ -z "$(pgrep pcmanfm)" ]] && pcmanfm -d &
 xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/gruvbox/background.png" &
-dex ~/.config/autostart/*
+dex ~/.config/autostart/* &
 [[ -z "$(pgrep ibus-daemon)" ]] && ibus-daemon -drx &
 [[ -z "$(pgrep redshift)" ]] && redshift -l 38.72:-9.15 -t 5000:3400 &

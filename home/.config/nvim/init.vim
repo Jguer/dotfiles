@@ -196,8 +196,11 @@ let g:tagbar_autofocus = 1
 
 " .-. Neomake .-.
 let g:neomake_open_list = 2
-let g:neomake_go_enabled_makers = ['go', 'golint', 'govet']
-let g:neomake_sh_enabled_makers = ['sh', 'shellcheck']
+let g:neomake_c_gcc_maker = {
+\ 'exe': 'gcc',
+\ 'args': ['-Wall', '-Iinclude', '-Wextra', '-pedantic'],
+\ }
+
 autocmd! BufWritePost * Neomake
 nmap <Leader>j :lnext<CR>
 nmap <Leader>k :lprev<CR>
