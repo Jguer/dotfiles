@@ -27,7 +27,7 @@ if not awful.util.file_readable(themes .. themename .. "/theme.lua") then
 end
 
 themedir         = themes .. themename
-theme.icon_theme = "vimix-dark"
+theme.icon_theme = "la-capitaine-icon-theme"
 theme.font       = "Noto Sans UI 10"
 theme.wallpaper  = themedir .. "/background.png"
 --}}}
