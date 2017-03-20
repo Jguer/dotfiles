@@ -1,5 +1,23 @@
+# ~/.gitconfig
+[mergetool]
+    prompt = true
+
+[merge]
+    tool = nvimdiff
+
+[mergetool "nvimdiff"]
+    cmd = "nvim -d -u ~/.config/nvim/init.vim \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+
 [user]
 	email = joaogg3@gmail.com
 	name = Jguer
+
 [credential]
 	helper = cache --timeout=3600
+
+[diff]
+	# Detect copies as well as renames
+	renames = copies
+	# Enable an experimental heuristic that shifts the hunk boundary in an
+	# attempt to make the resulting patch easier to read.
+	indentHeuristic = true

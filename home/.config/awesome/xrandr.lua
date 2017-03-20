@@ -85,7 +85,7 @@ local function menu()
 
         menu[#menu + 1] = { label,
             cmd,
-        iconlib.lookup_icon({ icon = 'video-display' }) }
+        iconlib.lookup_icon({ icon = 'display' }) }
     end
 
     return menu
