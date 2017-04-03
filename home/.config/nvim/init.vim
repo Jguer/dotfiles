@@ -13,6 +13,7 @@ Plug 'neomake/neomake', { 'on': 'Neomake' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neoinclude.vim'
 
 " .-. Appearance .-.
 Plug 'morhetz/gruvbox'
