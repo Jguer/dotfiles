@@ -25,7 +25,7 @@ st.font:        Mensch:pixelsize=15:antialias=true:autohint=true;
 st.xfps:        120
 st.borderpx:    4
 st.bold_font:   1
-st.termname:    xterm-256color
+st.termname:    xterm
 st.shell:       /usr/bin/fish
 st.bellvolume:  0
 st.tabspaces:   4
