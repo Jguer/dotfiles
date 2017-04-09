@@ -21,17 +21,17 @@ rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
 ! }}}
 
 ! St terminal {{{
-st.font:        Mensch:pixelsize=15:antialias=true:autohint=true;
-st.xfps:        120
-st.borderpx:    4
-st.bold_font:   1
-st.termname:    xterm
-st.shell:       /usr/bin/fish
-st.bellvolume:  0
-st.tabspaces:   4
-st.chscale:     1.0
-st.cwscale:     0.9
-st.opacity:     255
+st.font:       Mensch:pixelsize=15:antialias=true:autohint=true;
+st.xfps:       120
+st.borderpx:   4
+st.bold_font:  1
+st.termname:   st-256color
+st.shell:      /usr/bin/fish
+st.bellvolume: 0
+st.tabspaces:  4
+st.chscale:    1.0
+st.cwscale:    0.9
+st.opacity:    255
 
 st.background:  #1d2021
 st.foreground:  #d5c4a1

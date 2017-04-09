@@ -3,6 +3,7 @@ xset -b
 xset r rate 200 30
 setxkbmap -option caps:swapescape
 setxkbmap -option terminate:ctrl_alt_bksp
+stty erase '^H'
 
 export GOPATH=$HOME/Go
 export EDITOR=nvim
