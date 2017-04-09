@@ -67,6 +67,19 @@ augroup neosnippet_cfg
 augroup END
 " }}}
 
+" Vim Go {{{
+augroup vim_go_cfg
+  autocmd!
+  let g:go_fmt_command = "goimports"
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_extra_types = 1
+augroup END
+" }}}
+
 " Better Whitespace {{{
 augroup whitespace_cfg
   autocmd!
@@ -111,7 +124,7 @@ augroup END
 
 " }}}
 
-" Appearance {{{
+" Settings {{{
 set background=dark
 let g:enable_bold_font=1
 
@@ -192,6 +205,7 @@ au BufNewFile,BufRead *.h set filetype=c
 autocmd FileType python,c,cpp,lua,go set tabstop=4|set shiftwidth=4|set expandtab
 
 set autowriteall "Auto save when moving tab
+set autochdir
 " }}}
 
 " Plugin Load {{{

@@ -13,7 +13,7 @@
 	name = Jguer
 
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
 
 [diff]
 	# Detect copies as well as renames
