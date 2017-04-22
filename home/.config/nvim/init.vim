@@ -121,7 +121,6 @@ augroup lightline_cfg
 augroup END
 " }}}
 
-
 " }}}
 
 " Settings {{{

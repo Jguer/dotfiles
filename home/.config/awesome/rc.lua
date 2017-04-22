@@ -516,7 +516,7 @@ awful.rules.rules = {
     { rule = { class = "Rambox"},
       properties = { tag = tags[1][5] } },
     { rule = { class = "mpv" },
-      properties = { tag = tags[1][6], switchtotag = true, floating = true, ontop = true } },
+      properties = { floating = true, ontop = true } },
     { rule = { class = "rofi" },
       properties = { floating = true } },
     { rule = { class = "sxiv" },
