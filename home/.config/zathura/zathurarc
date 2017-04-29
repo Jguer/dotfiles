@@ -43,7 +43,7 @@ set adjust-open           width
 set incremental-search    false
 set statusbar-home-tilde  true
 set selection-clipboard   primary
-}}}
+#}}}
 
 #{{{ Other Options
 set scroll-page-aware "true"

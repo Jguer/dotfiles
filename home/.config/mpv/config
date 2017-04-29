@@ -9,18 +9,15 @@ screenshot-directory="~/Desktop/"
 # }}}
 
 # {{{ Window
+# title = ${filename}
 autofit-larger=94%x94%
 autofit-smaller=30%x30%
 border=no
 cursor-autohide = 500
 fs=no
+gamma-auto = yes
 geometry=50%:50%
-resume-playback=yes
 save-position-on-quit=yes
-stop-screensaver = "yes"
-title = ${filename}
-
-gamma-auto
 # }}}
 
 # {{{ OSD
@@ -34,38 +31,31 @@ script-opts=osc-layout=bottombar,osc-seekbarstyle=bar,osc-minmousemove=2,osc-box
 
 # {{{ Audio
 alang = en,eng
-audio-channels=auto
-audio-pitch-correction=yes
-volume=100
 # }}}
 
 # {{{ Subtitles
 slang = en,eng
-demuxer-mkv-subtitle-preroll
-embeddedfonts=yes
 sub-ass-force-style=Kerning=yes
 sub-ass-style-override=force
 sub-auto=fuzzy
 sub-gray=yes
-sub-use-margins=yes
+blend-subtitles=yes
+# }}}
+
+# {{{ Network
+user-agent="Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"
+ytdl-format=bestvideo[height<=?1080][fps<=?30][vcodec!=?vp9][protocol!=http_dash_segments]+bestaudio/best #[protocol!=http_dash_segments][protocol!=rtmp]
 # }}}
 
 # {{{ Profiles
 [high]
-blend-subtitles=yes
-correct-downscaling=yes
-cscale=ewa_lanczossharp
-deband=yes
-dither-depth=auto
-dscale=mitchell
-framedrop=vo
-hwdec=auto
-opengl-early-flush=yes
-opengl-pbo=yes
 profile=opengl-hq
-scale=ewa_lanczossharp
-sigmoid-upscaling=yes
+scale=haasnsoft
+cscale=ewa_lanczos
+interpolation=yes
+tscale=oversample
 video-sync=display-resample
+hwdec=auto-copy
 
 [low]
 profile=opengl
