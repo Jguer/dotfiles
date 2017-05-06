@@ -148,16 +148,19 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 30
 
-set foldcolumn=0 " Column to show folds
-set foldenable " Enable folding
-set foldlevel=10 " Open all folds by default
-set foldmethod=syntax " Syntax are used to specify folds
-set foldminlines=0 " Allow folding single lines
-set foldnestmax=8 " Set max fold nesting level
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
+set foldcolumn=0
+set foldlevelstart=200
+set foldlevel=200  " disable auto folding
+nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+vnoremap <silent> <space> zf
+
 " }}}
 
 " Keybindings {{{
-nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
 
 nnoremap j gj
 nnoremap k gk
