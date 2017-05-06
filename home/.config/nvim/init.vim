@@ -1,9 +1,9 @@
 " vim:fdm=marker foldlevel=0
 " System {{{
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+:set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set termguicolors
 set clipboard+=unnamedplus
+set mouse=a
 let mapleader = ","
 " }}}
 
