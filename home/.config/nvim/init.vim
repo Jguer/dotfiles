@@ -150,10 +150,10 @@ let g:netrw_winsize = 30
 
 set foldcolumn=0 " Column to show folds
 set foldenable " Enable folding
-set foldlevel=5 " Open all folds by default
+set foldlevel=10 " Open all folds by default
 set foldmethod=syntax " Syntax are used to specify folds
 set foldminlines=0 " Allow folding single lines
-set foldnestmax=5 " Set max fold nesting level
+set foldnestmax=8 " Set max fold nesting level
 " }}}
 
 " Keybindings {{{

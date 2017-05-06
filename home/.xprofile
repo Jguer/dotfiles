@@ -3,11 +3,10 @@ xset -b
 xset r rate 200 30
 setxkbmap -option caps:swapescape
 setxkbmap -option terminate:ctrl_alt_bksp
-stty erase '^H'
 
 export GOPATH=$HOME/Go
 export EDITOR=nvim
-export QT_STYLE_OVERRIDE=gtk2
+export QT_QPA_PLATFORMTHEME=gtk2
 
 if [ -d "$HOME/awmdotfiles/scripts" ] ; then
   export PATH="$PATH:$HOME/awmdotfiles/scripts"
@@ -29,12 +28,3 @@ xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/gruvbox/back
 dex ~/.config/autostart/* &
 [[ -z "$(pgrep ibus-daemon)" ]] && ibus-daemon -drx &
 [[ -z "$(pgrep redshift)" ]] && redshift -l 38.72:-9.15 -t 5000:3400 &
-
-gpg-connect-agent /bye >/dev/null 2>&1
-
-# These are copied directly from gpg-agent manpages
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
-
