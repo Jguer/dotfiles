@@ -7,6 +7,9 @@ setxkbmap -option terminate:ctrl_alt_bksp
 export GOPATH=$HOME/Go
 export EDITOR=nvim
 export QT_QPA_PLATFORMTHEME=gtk2
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 
 if [ -d "$HOME/awmdotfiles/scripts" ] ; then
   export PATH="$PATH:$HOME/awmdotfiles/scripts"
@@ -22,7 +25,7 @@ fi
 
 eval "$(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets)"
 [[ -z "$(pgrep pulseaudio)" ]] && start-pulseaudio-x11 &
-[[ -z "$(pgrep nm-applet)" ]] && nm-applet --sm-disable &
+[[ -z "$(pgrep nm-applet)" ]] && nm-applet &
 [[ -z "$(pgrep pcmanfm)" ]] && pcmanfm -d &
 xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/gruvbox/background.png" &
 [[ -z "$(pgrep ibus-daemon)" ]] && ibus-daemon -drx &
