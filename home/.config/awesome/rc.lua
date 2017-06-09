@@ -265,7 +265,6 @@ mytasklist.buttons = awful.util.table.join(
                                           end))
 
 for s = 1, screen.count() do
-    -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -419,13 +418,9 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("xbacklight -5%"); backlight_text.text = backlight.Info() end),
     -- Sound
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
-    -- awful.key({}, "XF86AudioPlay", function() music.playpause() end),
     awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
     awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
-    awful.key({ modkey,           }, "v", function () is_mouse_locked = not is_mouse_locked end)
-
-    -- Menubar
-    -- awful.key({ modkey }, "a", function() menubar.show() end)
+    awful.key({ modkey, }, "v", function () is_mouse_locked = not is_mouse_locked end)
 )
 
 clientkeys = awful.util.table.join(
@@ -435,17 +430,9 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
-        end)
+    awful.key({ modkey,           }, "n",      function (c) c.minimized = true               end),
+    awful.key({ modkey,           }, "m",      function (c)
+    c.maximized_horizontal = not c.maximized_horizontal ; c.maximized_vertical = not c.maximized_vertical end)
 )
 
 -- Bind all key numbers to tags.
@@ -511,6 +498,7 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
+                     screen = function (c) return awesome.startup and c.screen or awful.screen.focused() end,
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "mpv" }, properties = { floating = true, ontop = true } },
@@ -547,9 +535,7 @@ client.connect_signal("manage", function (c, startup)
         )
 
     if not startup then
-        -- awful.client.setslave(c)
-        awful.client.movetoscreen(c,awful.screen.focused(false))
-
+        -- awful.client.movetoscreen(c,awful.screen.focused(false))
         -- Put windows in a smart way, only if they does not set an initial position.
         if not c.size_hints.user_position and not c.size_hints.program_position then
             awful.placement.no_overlap(c)

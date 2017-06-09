@@ -1,46 +1,56 @@
 #!/usr/bin/env bash
 
 #{{{ Repo
+acpi
+acpi_call
+acpid
 chromium
 ctags
-dex
 ffmpegthumbnailer
+file-roller
 fish
 ghostscript
+git
 gnome-disk-utility
+go
 gvfs-mtp
 i3lock
 neovim
+network-manager-applet
+networkmanager-openvpn
 noto-fonts
 noto-fonts-emoji
 pcmanfm-gtk3
 powerline-fonts
-powerline-fonts
 python-neovim
 redshift
 rofi
+scrot
 shellcheck
+sxiv
 syncthing
 syncthing-inotify
-termite
+tabbed
+thermald
 tlp
 transmission-gtk
+unrar
+unzip
+vicious
 xorg-xkill
 xsel
+youtube-dl
 zathura-pdf-mupdf
 #}}}
 
 #{{{ AUR
+browserpass
+capitaine-cursors
 cmus-git
-keepassxc-git
+la-capitaine-icon-theme-git
 mpv-light
-neovim-qt-git
 neovim-symlinks
-rambox-bin
-paper-icon-theme-git
-# spotify
-playerctl
-thermald
+qt5-styleplugins
 ttf-mensch
 xss-lock
 xst-git
