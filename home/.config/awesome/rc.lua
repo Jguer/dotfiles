@@ -421,7 +421,8 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
     -- awful.key({}, "XF86AudioPlay", function() music.playpause() end),
     awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
-    awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end)
+    awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
+    awful.key({ modkey,           }, "v", function () is_mouse_locked = not is_mouse_locked end)
 
     -- Menubar
     -- awful.key({ modkey }, "a", function() menubar.show() end)
@@ -511,23 +512,10 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
-                     screen = mouse.screen,
                      buttons = clientbuttons } },
-    { rule = { class = "Rambox"},
-      properties = { tag = tags[1][5] } },
-    { rule = { class = "mpv" },
-      properties = { floating = true, ontop = true } },
-    { rule = { class = "rofi" },
-      properties = { floating = true } },
-    { rule = { class = "sxiv" },
-      properties = { floating = true } },
-    { rule = { class = "lollypop" },
-      properties = { tag = tags[1][6] } },
-    { rule = { class = "spotify" },
-      properties = { tag = tags[1][6] } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "mpv" }, properties = { floating = true, ontop = true } },
+    { rule = { class = "Chromium-browser" },   properties = { floating = false } },
+    { rule = { class = "rofi", "sxiv"}, properties = { floating = true } },
 }
 -- }}}
 
@@ -542,61 +530,31 @@ client.connect_signal("manage", function (c, startup)
         end
     end)
 
+    c:connect_signal("mouse::leave",
+        function(c)
+            if is_mouse_locked then
+                local cg = c:geometry() -- get window size
+                local mg = mouse.coords() -- get current mouse position
+
+                -- quick and dirty calculate for mouse position correction
+                local newx = mg.x <= cg.x and cg.x + 5 or mg.x >= (cg.x + cg.width) and cg.x + cg.width - 5 or mg.x
+                local newy = mg.y <= cg.y and cg.y + 5 or mg.y >= (cg.y + cg.height) and cg.y + cg.height - 5 or mg.y
+
+                -- set mouse to new position
+                mouse.coords({ x = newx, y = newy })
+            end
+        end
+        )
+
     if not startup then
-        -- Set the windows at the slave,
-        -- i.e. put it at the end of others instead of setting it master.
         -- awful.client.setslave(c)
+        awful.client.movetoscreen(c,awful.screen.focused(false))
 
         -- Put windows in a smart way, only if they does not set an initial position.
         if not c.size_hints.user_position and not c.size_hints.program_position then
             awful.placement.no_overlap(c)
             awful.placement.no_offscreen(c)
         end
-    end
-
-    local titlebars_enabled = false
-    if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
-        -- buttons for the titlebar
-        local buttons = awful.util.table.join(
-                awful.button({ }, 1, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.move(c)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
-                end)
-                )
-
-        -- Widgets that are aligned to the left
-        local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(awful.titlebar.widget.iconwidget(c))
-        left_layout:buttons(buttons)
-
-        -- Widgets that are aligned to the right
-        local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
-
-        -- The title goes in the middle
-        local middle_layout = wibox.layout.flex.horizontal()
-        local title = awful.titlebar.widget.titlewidget(c)
-        title:set_align("center")
-        middle_layout:add(title)
-        middle_layout:buttons(buttons)
-
-        -- Now bring it all together
-        local layout = wibox.layout.align.horizontal()
-        layout:set_left(left_layout)
-        layout:set_right(right_layout)
-        layout:set_middle(middle_layout)
-
-        awful.titlebar(c):set_widget(layout)
     end
 end)
 

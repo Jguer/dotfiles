@@ -8,7 +8,7 @@
     "alt-speed-up": 100,
     "bind-address-ipv4": "0.0.0.0",
     "bind-address-ipv6": "::",
-    "blocklist-date": 1494788278,
+    "blocklist-date": 1496479609,
     "blocklist-enabled": true,
     "blocklist-updates-enabled": true,
     "blocklist-url": "http://john.bitsurge.net/public/biglist.p2p.gz",
