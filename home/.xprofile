@@ -1,15 +1,11 @@
 #!/bin/sh
 xset -b
-xset r rate 200 30
-setxkbmap -option caps:swapescape
-setxkbmap -option terminate:ctrl_alt_bksp
+xset r rate 190 35
+setxkbmap -layout "pt,us" -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp
 
 export GOPATH=$HOME/Go
 export EDITOR=nvim
 export QT_QPA_PLATFORMTHEME=gtk2
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
 
 if [ -d "$HOME/awmdotfiles/scripts" ] ; then
   export PATH="$PATH:$HOME/awmdotfiles/scripts"
@@ -19,14 +15,15 @@ if [ -d "$HOME/Go/bin" ] ; then
   export PATH="$PATH:$HOME/Go/bin"
 fi
 
-[[ "$(cat /etc/hostname)" =~ "Paladium" ]] && xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
+if [ "$(cat /etc/hostname)" = "Paladium" ]; then
+  xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
+elif [ "$(cat /etc/hostname)" = "cobalt" ]; then
+  blueman-applet
+fi
 
-[[ "$(cat /etc/hostname)" =~ "cobalt" ]] && blueman-applet &
-
-eval "$(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets)"
-[[ -z "$(pgrep pulseaudio)" ]] && start-pulseaudio-x11 &
-[[ -z "$(pgrep nm-applet)" ]] && nm-applet &
-[[ -z "$(pgrep pcmanfm)" ]] && pcmanfm -d &
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
+start-pulseaudio-x11 &
+nm-applet &
+pcmanfm -d &
 xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/gruvbox/background.png" &
-[[ -z "$(pgrep ibus-daemon)" ]] && ibus-daemon -drx &
-[[ -z "$(pgrep redshift)" ]] && redshift -l 38.72:-9.15 -t 5000:3400 &
+redshift -l 38.72:-9.15 -t 5000:3400 &

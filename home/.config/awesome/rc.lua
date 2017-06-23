@@ -16,9 +16,10 @@ local scratchdrop = require("scratchdrop")
 local pulseaudio = require("pulseaudio")
 local backlight  = require("backlight")
 local xrandr     = require("xrandr")
+local sloppyfocus = true
+
 -- FreeDesktop
 require("freedesktop.utils")
-require("freedesktop.menu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -128,24 +129,6 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 
-menu_items = freedesktop.menu.new()
-myawesomemenu = {
-    { "Edit Config", editor_cmd .. " " .. awesome.conffile, freedesktop.utils.lookup_icon({ icon = 'package_settings' }) },
-    { "Restart Awesome", awesome.restart, freedesktop.utils.lookup_icon({ icon = 'exit' }) },
-    { "Lock", function() awful.spawn(lock_cmd) end, freedesktop.utils.lookup_icon({ icon = 'system-lock-screen' }) },
-    { "Log Out", function() awesome.quit() end , freedesktop.utils.lookup_icon({ icon = 'system-log-out' }) },
-    { "Suspend", function() awful.spawn("systemctl suspend") end, freedesktop.utils.lookup_icon({ icon = 'system-suspend' }) },
-    { "Restart", function() awful.spawn("systemctl reboot") end, freedesktop.utils.lookup_icon({ icon = 'system-restart' }) },
-    { "Shutdown", function() awful.spawn("systemctl poweroff") end, freedesktop.utils.lookup_icon({ icon = 'system-shutdown' }) }
-       }
-
-        table.insert(menu_items, { "Awesome", myawesomemenu, beautiful.awesome_icon })
-
-        mymainmenu = awful.menu({ items = menu_items, width = 150 })
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
@@ -216,7 +199,6 @@ myarrow2:set_image(beautiful.arrow2)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
-mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
@@ -265,7 +247,6 @@ mytasklist.buttons = awful.util.table.join(
                                           end))
 
 for s = 1, screen.count() do
-    mypromptbox[s] = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -285,10 +266,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
-
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(myarrow1)
@@ -400,6 +378,7 @@ globalkeys = awful.util.table.join(
 
     -- Apps
     awful.key({ modkey, }, "x", function() awful.spawn("rofi -combi-modi window,drun -show combi -modi combi") end),
+    awful.key({ modkey, }, "q", function() awful.spawn("bash -c 'cd ~/Projects/lulogout/ && lua ./lulogout'") end),
     awful.key({}, "Print", function () awful.spawn("scrot -e 'mv $f ~/Desktop/ 2>/dev/null'") end),
     awful.key({ modkey, }, "z", function() scratchdrop("tabbed -c -n 'quickterm' -r 2 st -w ''", "bottom", "right", 0.5, 0.4, true) end),
     -- Lock Screen
@@ -420,7 +399,7 @@ globalkeys = awful.util.table.join(
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
     awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
     awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
-    awful.key({ modkey, }, "v", function () is_mouse_locked = not is_mouse_locked end)
+    awful.key({ modkey, }, "v", function () sloppyfocus = not sloppyfocus end)
 )
 
 clientkeys = awful.util.table.join(
@@ -494,13 +473,13 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     screen = function (c) return awesome.startup and c.screen or awful.screen.focused() end,
-                     keys = clientkeys,
-                     buttons = clientbuttons } },
+        properties = { border_width = beautiful.border_width,
+            border_color = beautiful.border_normal,
+            focus = awful.client.focus.filter,
+            raise = true,
+            screen = function (c) return awesome.startup and c.screen or awful.screen.focused() end,
+            keys = clientkeys,
+    buttons = clientbuttons } },
     { rule = { class = "mpv" }, properties = { floating = true, ontop = true } },
     { rule = { class = "Chromium-browser" },   properties = { floating = false } },
     { rule = { class = "rofi", "sxiv"}, properties = { floating = true } },
@@ -512,27 +491,12 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c, startup)
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
-        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier and sloppyfocus
+
             and awful.client.focus.filter(c) then
             client.focus = c
         end
     end)
-
-    c:connect_signal("mouse::leave",
-        function(c)
-            if is_mouse_locked then
-                local cg = c:geometry() -- get window size
-                local mg = mouse.coords() -- get current mouse position
-
-                -- quick and dirty calculate for mouse position correction
-                local newx = mg.x <= cg.x and cg.x + 5 or mg.x >= (cg.x + cg.width) and cg.x + cg.width - 5 or mg.x
-                local newy = mg.y <= cg.y and cg.y + 5 or mg.y >= (cg.y + cg.height) and cg.y + cg.height - 5 or mg.y
-
-                -- set mouse to new position
-                mouse.coords({ x = newx, y = newy })
-            end
-        end
-        )
 
     if not startup then
         -- awful.client.movetoscreen(c,awful.screen.focused(false))

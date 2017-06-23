@@ -1,8 +1,8 @@
-Xft.autohint:  1
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-Xft.hinting:   true
 Xft.antialias: true
+Xft.autohint: true
+Xft.hinting: true
+Xft.hintstyle: full
+Xft.lcdfilter: lcddefault
 Xft.rgba:      rgb
 Xft.dpi:       96
 
@@ -53,7 +53,6 @@ st.color12:     #83a598
 st.color13:     #d3869b
 st.color14:     #8ec07c
 st.color15:     #fbf1c7
-
 st.color16:     #fe8019
 st.color17:     #d65d0e
 st.color18:     #3c3836
