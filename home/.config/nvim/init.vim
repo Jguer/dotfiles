@@ -88,6 +88,16 @@ augroup whitespace_cfg
 augroup END
 " }}}
 
+" Rainbow Parentheses {{{
+augroup rainbow_cfg
+  autocmd!
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
+augroup END
+" }}}
+
 " lightline {{{
 augroup lightline_cfg
   autocmd!
@@ -222,6 +232,7 @@ Plug 'Shougo/neoinclude.vim'
 " .-. Appearance .-.
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'kien/rainbow_parentheses.vim'
 
 " .-. Util .-.
 Plug 'easymotion/vim-easymotion'
