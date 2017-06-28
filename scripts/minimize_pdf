@@ -8,17 +8,15 @@ buildroot="$(mktemp -d)"
 mode="$1"
 
 if [ -z "$mode" ]
-  then
-    mode="ebook"
+then
+  mode="ebook"
 fi
 
 shopt -s nullglob
 
-for f in *.{PDF,pdf}
-
-do
+for f in *.{PDF,pdf}; do
   echo "Converting: $f"
-  gs  -q -dNOPAUSE -dBATCH -dSAFER \
+  gs -q -dNOPAUSE -dBATCH -dSAFER \
     -dNumRenderingThreads=4 \
     -dBandHeight=100 \
     -dBandBufferSpace=500000000 \
@@ -29,9 +27,11 @@ do
     -dPDFSETTINGS=/$mode \
     -dDetectDuplicateImages=true \
     -dConvertCMYKImagesToRGB=true \
-    -r150 \
+    -r144 \
     -sOutputFile="${buildroot}/${f}" \
-    "${f}"
+    -sPDFPassword=instrmed \
+    -c .setpdfwrite \
+    -f "${f}"
 done
 
 xdg-open "${buildroot}"
