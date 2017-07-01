@@ -8,7 +8,7 @@ Xft.dpi:       96
 
 
 ! Rofi {{{
-rofi.font: Noto Sans UI 12
+rofi.font: sans 12
 rofi.levenshtein-sort: true
 rofi.terminal: /usr/bin/st
 rofi.color-enabled: true
