@@ -54,7 +54,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/ngruvbox/theme.lua"
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
 terminal = "tabbed -c -r 2 st -w ''"
-lock_cmd = "i3lock -t -c 282828 -i " ..beautiful.wallpaper
+lock_cmd = "i3lock -t -c 282828 -i " .. beautiful.wallpaper
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -401,18 +401,18 @@ clientkeys = gears.table.join(
         {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey, "Shift"   }, "Left", function (c)
         local i = awful.tag.selected(client.focus.screen).index
-        local tag = awful.tag.gettags(client.focus.screen)[i + 1]
+        local tag = awful.tag.gettags(client.focus.screen)[i - 1]
         if tag then
-            awful.client.movetotag(tag)
-            awful.tag.viewnext()
+            c:tags({tag})
+            awful.tag.viewprev()
         end
     end,
     {description = "move to previous tag", group = "client"}),
-awful.key({ modkey, "Shift"   }, "Right",      function (c)
+awful.key({ modkey, "Shift"   }, "Right", function (c)
     local i = awful.tag.selected(client.focus.screen).index
-    local tag = awful.tag.gettags(client.focus.screen)[i - 1]
+    local tag = awful.tag.gettags(client.focus.screen)[i + 1]
     if tag then
-        awful.client.movetotag(tag)
+        c:tags({tag})
         awful.tag.viewnext()
     end
 end,
