@@ -4,11 +4,9 @@ Xft.hinting: true
 Xft.hintstyle: full
 Xft.lcdfilter: lcddefault
 Xft.rgba:      rgb
-Xft.dpi:       96
-
 
 ! Rofi {{{
-rofi.font: sans 12
+rofi.font: Office Code Pro D 12
 rofi.levenshtein-sort: true
 rofi.terminal: /usr/bin/st
 rofi.color-enabled: true
@@ -21,7 +19,7 @@ rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
 ! }}}
 
 ! St terminal {{{
-st.font:       Mensch:pixelsize=15:antialias=true:autohint=true;
+st.font:       office code pro d:pixelsize=15:antialias=true:autohint=true;
 st.xfps:       120
 st.borderpx:   4
 st.bold_font:  1
@@ -61,29 +59,39 @@ st.color20:     #bdae93
 st.color21:     #ebdbb2
 ! }}}
 
-*background: #1d2021
-*foreground: #ebdbb2
-! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
-! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
-! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
-! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
-! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
-! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
-! DarkCyan + Cyan
-*color6:  #458588
-*color14: #076678
-! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+! special
+*.foreground:   #fce8c3
+*.background:   #1c1b19
+*.cursorColor:  #fce8c3
+
+! black
+*.color0:       #1c1b19
+*.color8:       #2d2b28
+
+! red
+*.color1:       #ff3128
+*.color9:       #f75341
+
+! green
+*.color2:       #519f50
+*.color10:      #98bc37
+
+! yellow
+*.color3:       #fbb829
+*.color11:      #fed06e
+
+! blue
+*.color4:       #5573a3
+*.color12:      #8eb2f7
+
+! magenta
+*.color5:       #e02c6d
+*.color13:      #e35682
+
+! cyan
+*.color6:       #0aaeb3
+*.color14:      #53fde9
+
+! white
+*.color7:       #918175
+*.color15:      #fce8c3

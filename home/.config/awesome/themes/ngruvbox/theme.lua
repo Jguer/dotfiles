@@ -13,7 +13,7 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 
 theme.dir           = os.getenv("HOME") .. "/.config/awesome/themes/ngruvbox/"
-theme.font          = "sans 10"
+theme.font          = "Office Code Pro D 10"
 
 theme.bg_normal     = "#282828"
 theme.bg_focus      = "#282828"
@@ -27,7 +27,7 @@ theme.fg_urgent     = "#FB4934"
 theme.fg_minimize   = "#B8BB26"
 
 theme.useless_gap   = dpi(2)
-theme.border_width  = dpi(3)
+theme.border_width  = dpi(2)
 theme.border_normal = "#458588"
 theme.border_focus  = "#D79921"
 theme.border_marked = "#8EC07C"
@@ -69,7 +69,7 @@ notification_border_width = 3
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
+theme.menu_height = dpi(14)
 theme.menu_width  = dpi(100)
 
 -- You can add as many variables as

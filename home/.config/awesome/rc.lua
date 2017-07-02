@@ -49,7 +49,7 @@ end
 -- {{{ Variable definitions
 -- @DOC_LOAD_THEME@
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/ngruvbox/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/ngruvbox/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
@@ -219,7 +219,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({'●', '●', '●', '●', '●', '●'}, s, awful.layout.layouts[1])
+    awful.tag({'⬤', '⬤','⬤', '⬤', '⬤', '⬤'}, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -514,6 +514,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
+                     size_hints_honor = false,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,

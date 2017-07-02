@@ -190,8 +190,8 @@ nnoremap <Leader>j :<C-U>tabprevious<CR>
 nnoremap <A-j> :<C-U>tabprevious<CR>
 nnoremap <silent> <S-k> :wincmd k<CR>
 nnoremap <silent> <S-j> :wincmd j<CR>
-nnoremap <silent> <S-h> :wincmd h<CR>
-nnoremap <silent> <S-l> :wincmd l<CR>
+nnoremap <silent> <A-h> :wincmd h<CR>
+nnoremap <silent> <A-l> :wincmd l<CR>
 
 nnoremap <silent> <F8> :Lexplore<CR>
 noremap <Leader>n :Lexplore<CR>
@@ -231,6 +231,7 @@ Plug 'Shougo/neoinclude.vim'
 
 " .-. Appearance .-.
 Plug 'morhetz/gruvbox'
+Plug 'roosta/srcery'
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 
@@ -253,8 +254,8 @@ call plug#end()
 " Gruvbox {{{
 augroup gruvbox_cfg
   autocmd!
-  let g:gruvbox_contrast_dark='hard'
-  silent! colorscheme gruvbox
+  " let g:gruvbox_contrast_dark='hard'
+  silent! colorscheme srcery
 augroup END
 " }}}
 

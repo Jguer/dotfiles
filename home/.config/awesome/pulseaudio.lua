@@ -59,11 +59,11 @@ function volume_info()
 
     if mute == false then
         if vol >= 67 and vol <= 100 then
-            iconI = "🔊"
+            iconI = ""
         elseif vol >= 33 and vol <= 66 then
-            iconI = "🔉"
+            iconI = ""
         else
-            iconI = "🔈"
+            iconI = ""
         end
     else
         volume = "✕"
