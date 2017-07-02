@@ -353,7 +353,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "x", function () awful.spawn("rofi -combi-modi window,drun -show combi -modi combi") end,
               {description = "launch rofi", group = "applications"}),
     awful.key({ modkey, }, "q", function() awful.spawn("bash -c 'cd ~/Projects/lulogout/ && lua ./lulogout'") end),
-    awful.key({ modkey, }, "z", function () scratchdrop("tabbed -c -n 'quickterm' -r 2 st -w ''", "bottom", "right", 0.5, 0.4, true) end,
+    awful.key({ modkey, }, "z", function () scratchdrop("termite", "bottom", "right", 0.5, 0.4, true) end,
               {description = "launch scratchdrop", group = "applications"}),
     awful.key({ modkey, }, "e", function() awful.spawn(lock_cmd) end,
               {description = "Lock Screen", group = "applications"}),
