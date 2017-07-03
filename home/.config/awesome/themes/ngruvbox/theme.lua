@@ -13,7 +13,7 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 
 theme.dir           = os.getenv("HOME") .. "/.config/awesome/themes/ngruvbox/"
-theme.font          = "Office Code Pro D 10"
+theme.font          = "Office Code Pro D 11"
 
 theme.bg_normal     = "#282828"
 theme.bg_focus      = "#282828"
