@@ -42,7 +42,7 @@ set recolor-reverse-video   "false"
 set adjust-open           width
 set incremental-search    false
 set statusbar-home-tilde  true
-set selection-clipboard   primary
+set selection-clipboard clipboard
 #}}}
 
 #{{{ Other Options
@@ -63,6 +63,10 @@ map - zoom out
 map q quit
 map w adjust_window width
 map z adjust_window bestfit
+
+map <Space> navigate next
+map <S-Space> navigate previous
+map b toggle_statusbar
 
 map <C-g> abort
 #}}}
