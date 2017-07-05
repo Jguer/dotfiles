@@ -53,7 +53,7 @@ beautiful.init(awful.util.getdir("config") .. "/themes/ngruvbox/theme.lua")
 
 -- @DOC_DEFAULT_APPLICATIONS@
 -- This is used later as the default terminal and editor to run.
-terminal = "tabbed -c -r 2 st -w ''"
+terminal = "termite"
 lock_cmd = "i3lock -t -c 282828 -i " .. beautiful.wallpaper
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
