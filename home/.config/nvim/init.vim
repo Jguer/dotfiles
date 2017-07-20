@@ -19,24 +19,20 @@ endif
 " Tagbar {{{
 augroup tagbar_cfg
   autocmd!
-  let g:neomake_open_list = 2
-  let g:neomake_c_gcc_maker = {
-        \ 'exe': 'gcc',
-        \ 'args': ['-Wall', '-Iinclude', '-Wextra', '-pedantic'],
-        \ }
-
-  autocmd! BufWritePost * Neomake
-  nmap <Leader>j :lnext<CR>
-  nmap <Leader>k :lprev<CR>
-augroup END
-" }}}
-
-" Neomake {{{
-augroup neomake_cfg
-  autocmd!
   nmap <silent> <F10> :TagbarToggle<CR>
   noremap <Leader>m :TagbarToggle<CR>
   let g:tagbar_autofocus = 1
+augroup END
+" }}}
+
+" Ale {{{
+augroup ale_cfg
+  autocmd!
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
+  let g:ale_set_loclist = 0
+  let g:ale_set_quickfix = 1
+  let g:ale_lint_on_text_changed = "normal"
 augroup END
 " }}}
 
@@ -214,16 +210,17 @@ nnoremap Q <nop>
 au FocusLost,WinLeave * :silent! noautocmd w
 au FocusGained,BufEnter * :silent! !
 au BufNewFile,BufRead *.h set filetype=c
-autocmd FileType python,c,cpp,lua,go set tabstop=4|set shiftwidth=4|set expandtab
+au FileType python,c,cpp,lua,go set ts=4|set sw=4|set sts=4
 
 set autowriteall "Auto save when moving tab
 set autochdir
+set autoread
 " }}}
 
 " Plugin Load {{{
 call plug#begin('~/.local/share/nvim/plugged')
 " .-. Auto Completion .-.
-Plug 'neomake/neomake', { 'on': 'Neomake' }
+Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'

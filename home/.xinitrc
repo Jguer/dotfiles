@@ -7,7 +7,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge "${HOME}/.Xresources"
-[ -d "$GOPATH/bin" ] && PATH="$GOPATH/bin:$PATH"
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
