@@ -10,11 +10,14 @@ fi
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-xset -b
-xset r rate 140 25
+
 setxkbmap -layout "us,pt" -variant intl -option "grp:alt_shift_toggle" \
   -option caps:swapescape -option terminate:ctrl_alt_bksp
 
+xset -b
+xset r rate 190 25
+
+xrandr --output VGA-1 --primary --left-of LVDS-1
 if [ "$(cat /etc/hostname)" = "Paladium" ]; then
   xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
 elif [ "$(cat /etc/hostname)" = "cobalt" ]; then
