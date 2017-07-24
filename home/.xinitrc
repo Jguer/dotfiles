@@ -8,27 +8,26 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge "${HOME}/.Xresources"
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+export DE="mate"
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
-
+xset -b
+xset r rate 250 45
 setxkbmap -layout "us,pt" -variant intl -option "grp:alt_shift_toggle" \
   -option caps:swapescape -option terminate:ctrl_alt_bksp
 
-xset -b
-xset r rate 190 25
-
-xrandr --output VGA-1 --primary --left-of LVDS-1
 if [ "$(cat /etc/hostname)" = "Paladium" ]; then
   xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
 elif [ "$(cat /etc/hostname)" = "cobalt" ]; then
   blueman-applet
+elif [ "$(cat /etc/hostname)" = "jguerreiro" ]; then
+  xrandr --output VGA-1 --primary --left-of LVDS-1
 fi
 
 # gnome-keyring-daemon --start --components=pkcs11,secrets &
-pcmanfm -d &
+compton &
 xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/ngruvbox/background.jpg" &
 redshift -l 38.72:-9.15 -t 5000:3400 &
-start-pulseaudio-x11
-xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
+start-pulseaudio-x11 &
 nm-applet --sm-disable &
 exec awesome

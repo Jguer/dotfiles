@@ -4,7 +4,7 @@
 PS1='[\u@\h \W]\$ '
 
 if [[ -z "$TMUX" ]] ;then
-    ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
+    ID="$(tmux ls | grep -vm1 attached | cut -d: -f1)"
     if [[ -z "$ID" ]] ;then # if not available create a new one
         exec tmux new-session
     else
