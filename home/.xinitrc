@@ -12,15 +12,15 @@ export DE="mate"
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
 xset -b
-xset r rate 250 45
-setxkbmap -layout "us,pt" -variant intl -option "grp:alt_shift_toggle" \
+xset r rate 330 75
+setxkbmap -layout "us,pt" -variant altgr-intl -option "grp:alt_shift_toggle" \
   -option caps:swapescape -option terminate:ctrl_alt_bksp
 
 if [ "$(cat /etc/hostname)" = "Paladium" ]; then
   xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
 elif [ "$(cat /etc/hostname)" = "cobalt" ]; then
   blueman-applet
-elif [ "$(cat /etc/hostname)" = "jguerreiro" ]; then
+elif [ "$(cat /etc/hostname)" = "jguerreiro.multicert.inet" ]; then
   xrandr --output VGA-1 --primary --left-of LVDS-1
 fi
 
