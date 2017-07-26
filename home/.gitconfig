@@ -2,7 +2,7 @@
 [branch]
   autosetuprebase = always
 [credential]
-  helper = cache --timeout=3600
+  helper = /usr/lib/git-core/git-credential-gnome-keyring
 [mergetool]
   prompt = true
 [merge]
