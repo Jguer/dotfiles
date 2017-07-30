@@ -24,7 +24,9 @@ elif [ "$(cat /etc/hostname)" = "jguerreiro.multicert.inet" ]; then
   xrandr --output VGA-1 --primary --left-of LVDS-1
 fi
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+
 export SSH_AUTH_SOCK
 compton &
 xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/ngruvbox/background.jpg" &
