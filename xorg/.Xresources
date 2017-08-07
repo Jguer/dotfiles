@@ -1,0 +1,97 @@
+Xft.antialias: true
+Xft.autohint: true
+Xft.hinting: true
+Xft.hintstyle: full
+Xft.lcdfilter: lcddefault
+Xft.rgba:      rgb
+
+! Rofi {{{
+rofi.font: Office Code Pro D 12
+rofi.levenshtein-sort: true
+rofi.terminal: /usr/bin/st
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #1d2021, #a89984, #a89984
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #1d2021, #ebdbb2, #282828, #504945, #fbf1c7
+rofi.color-active: #d79921, #1d2021, #d79921, #fabd2f, #1d2021
+rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
+! }}}
+
+! St terminal {{{
+st.font:       office code pro d:pixelsize=15:antialias=true:autohint=true;
+st.xfps:       120
+st.borderpx:   4
+st.bold_font:  1
+st.termname:   st-256color
+st.shell:      /usr/bin/fish
+st.bellvolume: 0
+st.tabspaces:  4
+st.chscale:    1.0
+st.cwscale:    0.9
+st.opacity:    255
+
+st.background:  #1d2021
+st.foreground:  #d5c4a1
+st.cursorColor: #d5c4a1
+
+st.color0:      #1d2021
+st.color1:      #fb4934
+st.color2:      #b8bb26
+st.color3:      #fabd2f
+st.color4:      #83a598
+st.color5:      #d3869b
+st.color6:      #8ec07c
+st.color7:      #d5c4a1
+st.color8:      #665c54
+st.color9:      #fb4934
+st.color10:     #b8bb26
+st.color11:     #fabd2f
+st.color12:     #83a598
+st.color13:     #d3869b
+st.color14:     #8ec07c
+st.color15:     #fbf1c7
+st.color16:     #fe8019
+st.color17:     #d65d0e
+st.color18:     #3c3836
+st.color19:     #504945
+st.color20:     #bdae93
+st.color21:     #ebdbb2
+! }}}
+
+! special
+*.foreground:   #fce8c3
+*.background:   #1c1b19
+*.cursorColor:  #fce8c3
+
+! black
+*.color0:       #1c1b19
+*.color8:       #2d2b28
+
+! red
+*.color1:       #ff3128
+*.color9:       #f75341
+
+! green
+*.color2:       #519f50
+*.color10:      #98bc37
+
+! yellow
+*.color3:       #fbb829
+*.color11:      #fed06e
+
+! blue
+*.color4:       #5573a3
+*.color12:      #8eb2f7
+
+! magenta
+*.color5:       #e02c6d
+*.color13:      #e35682
+
+! cyan
+*.color6:       #0aaeb3
+*.color14:      #53fde9
+
+! white
+*.color7:       #918175
+*.color15:      #fce8c3
