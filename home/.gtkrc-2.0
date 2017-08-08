@@ -1,8 +1,0 @@
-gtk-theme-name        = "ngruvbox"
-gtk-icon-theme-name   = "ngruvbox"
-gtk-cursor-theme-name = "Capitaine"
-gtk-font-name         = "Noto Sans UI 10"
-gtk-xft-antialias     = 1
-gtk-xft-hinting       = 1
-gtk-xft-hintstyle     = "hintslight"
-gtk-xft-rgba          = "rgb"

@@ -1,0 +1,54 @@
+[options]
+# font = Office Code Pro D 11
+font = Iosevka Term 12
+
+search_wrap = true
+audible_bell = false
+clickable_url = true
+allow_bold = true
+urgent_on_bell = true
+browser = chromium
+cursor_blink = true
+
+[colors]
+
+# special
+foreground        = #fce8c3
+foreground_bold   = #fce8c3
+cursor_foreground = #1c1b19
+cursor            = #fce8c3
+background        = #1c1b19
+
+# black
+color0  = #1c1b19
+color8  = #2d2b28
+
+# red
+color1  = #ff3128
+color9  = #f75341
+
+# green
+color2  = #519f50
+color10 = #98bc37
+
+# yellow
+color3  = #fbb829
+color11 = #fed06e
+
+# blue
+color4  = #5573a3
+color12 = #8eb2f7
+
+# magenta
+color5  = #e02c6d
+color13 = #e35682
+
+# cyan
+color6  = #0aaeb3
+color14 = #53fde9
+
+# white
+color7  = #918175
+color15 = #fce8c3
+
+; vim:ft=dosini
