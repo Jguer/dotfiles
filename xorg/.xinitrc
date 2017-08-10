@@ -16,9 +16,9 @@ xset r rate 330 75
 setxkbmap -layout "us,pt" -variant altgr-intl -option "grp:alt_shift_toggle" \
   -option caps:swapescape -option terminate:ctrl_alt_bksp
 
-if [ "$(cat /etc/hostname)" = "Paladium" ]; then
+if [ "$(cat /etc/hostname)" = "atreides" ]; then
   xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
-elif [ "$(cat /etc/hostname)" = "cobalt" ]; then
+elif [ "$(cat /etc/hostname)" = "harkonnen" ]; then
   blueman-applet
 elif [ "$(cat /etc/hostname)" = "jguerreiro.multicert.inet" ]; then
   xrandr --output VGA-1 --primary --left-of LVDS-1
