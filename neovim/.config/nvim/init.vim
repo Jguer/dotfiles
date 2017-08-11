@@ -123,7 +123,7 @@ augroup lightline_cfg
     endif
   endfunction
 
-  silent! let g:lightline.colorscheme = 'molokai'
+  silent! let g:lightline.colorscheme = 'onedark'
 augroup END
 " }}}
 
@@ -227,8 +227,7 @@ Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neoinclude.vim'
 
 " .-. Appearance .-.
-Plug 'morhetz/gruvbox'
-Plug 'roosta/srcery'
+Plug 'joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 
@@ -248,11 +247,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 call plug#end()
 
-" Gruvbox {{{
-augroup gruvbox_cfg
+" Colorscheme {{{
+augroup colorscheme_cfg
   autocmd!
-  " let g:gruvbox_contrast_dark='hard'
-  silent! colorscheme srcery
+  colorscheme onedark
 augroup END
 " }}}
 

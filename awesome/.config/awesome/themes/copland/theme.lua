@@ -1,11 +1,3 @@
-
---[[
-
-     Copland Awesome WM theme 2.0
-     github.com/copycat-killer
-
---]]
-
 local gears   = require("gears")
 local lain    = require("lain")
 local awful   = require("awful")
@@ -16,7 +8,7 @@ local awesome, client = awesome, client
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
 theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Iosevka Term 12"
+theme.font                                      = "Iosevka Term 11"
 theme.fg_normal                                 = "#BBBBBB"
 theme.fg_focus                                  = "#78A4FF"
 theme.bg_normal                                 = "#111111"
@@ -92,10 +84,10 @@ local blue   = theme.fg_focus
 local red    = "#EB8F8F"
 local green  = "#8FEB8F"
 
--- Textclock
---os.setlocale(os.getenv("LANG")) -- to localize the clock
 local mytextclock = wibox.widget.textclock("<span font='Iosevka Term 5'> </span>%H:%M ")
 mytextclock.font = theme.font
+
+local mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Calendar
 lain.widget.calendar({
@@ -306,8 +298,8 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             small_spr,
-            --mail.widget,
-            mpdicon,
+            mykeyboardlayout,
+            bar_spr,
             baticon,
             batwidget,
             bar_spr,

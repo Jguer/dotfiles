@@ -6,17 +6,15 @@ audible_bell = false
 clickable_url = true
 allow_bold = true
 urgent_on_bell = true
-browser = chromium
+browser = firefox-nightly
 cursor_blink = true
 
 [colors]
-
 # special
-foreground        = #fce8c3
-foreground_bold   = #fce8c3
-cursor_foreground = #1c1b19
-cursor            = #fce8c3
-background        = #1c1b19
+foreground      = #fce8c3
+foreground_bold = #fce8c3
+cursor          = #fce8c3
+background      = #1c1b19
 
 # black
 color0  = #1c1b19

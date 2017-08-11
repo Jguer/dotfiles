@@ -1,10 +1,3 @@
-Xft.antialias: true
-Xft.autohint: true
-Xft.hinting: true
-Xft.hintstyle: full
-Xft.lcdfilter: lcddefault
-Xft.rgba:      rgb
-
 ! Rofi {{{
 rofi.font: Office Code Pro D 12
 rofi.levenshtein-sort: true
@@ -18,80 +11,40 @@ rofi.color-active: #d79921, #1d2021, #d79921, #fabd2f, #1d2021
 rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
 ! }}}
 
-! St terminal {{{
-st.font:       office code pro d:pixelsize=15:antialias=true:autohint=true;
-st.xfps:       120
-st.borderpx:   4
-st.bold_font:  1
-st.termname:   st-256color
-st.shell:      /usr/bin/fish
-st.bellvolume: 0
-st.tabspaces:  4
-st.chscale:    1.0
-st.cwscale:    0.9
-st.opacity:    255
-
-st.background:  #1d2021
-st.foreground:  #d5c4a1
-st.cursorColor: #d5c4a1
-
-st.color0:      #1d2021
-st.color1:      #fb4934
-st.color2:      #b8bb26
-st.color3:      #fabd2f
-st.color4:      #83a598
-st.color5:      #d3869b
-st.color6:      #8ec07c
-st.color7:      #d5c4a1
-st.color8:      #665c54
-st.color9:      #fb4934
-st.color10:     #b8bb26
-st.color11:     #fabd2f
-st.color12:     #83a598
-st.color13:     #d3869b
-st.color14:     #8ec07c
-st.color15:     #fbf1c7
-st.color16:     #fe8019
-st.color17:     #d65d0e
-st.color18:     #3c3836
-st.color19:     #504945
-st.color20:     #bdae93
-st.color21:     #ebdbb2
-! }}}
-
 ! special
-*.foreground:   #fce8c3
-*.background:   #1c1b19
-*.cursorColor:  #fce8c3
+*.foreground:   #ABB2BF
+*.background:   #282C34
+*.cursorColor:  #ABB2BF
 
 ! black
-*.color0:       #1c1b19
-*.color8:       #2d2b28
+*.color0:       #282C34
+*.color8:       #3E4452
 
 ! red
-*.color1:       #ff3128
-*.color9:       #f75341
+*.color1:       #E06C75
+*.color9:       #BE5046
 
 ! green
-*.color2:       #519f50
-*.color10:      #98bc37
+*.color2:       #98C379
+*.color10:      #98C379
 
 ! yellow
-*.color3:       #fbb829
-*.color11:      #fed06e
+*.color3:       #E5C07B
+*.color11:      #D19A66
 
 ! blue
-*.color4:       #5573a3
-*.color12:      #8eb2f7
+*.color4:       #61AFEF
+*.color12:      #61AFEF
 
 ! magenta
-*.color5:       #e02c6d
-*.color13:      #e35682
+*.color5:       #C678DD
+*.color13:      #C678DD
 
 ! cyan
-*.color6:       #0aaeb3
-*.color14:      #53fde9
+*.color6:       #56B6C2
+*.color14:      #56B6C2
 
 ! white
-*.color7:       #918175
-*.color15:      #fce8c3
+*.color7:       #ABB2BF
+*.color15:      #5C6370
+
