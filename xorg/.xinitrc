@@ -9,6 +9,7 @@ fi
 [[ -f ~/.Xresources ]] && xrdb -merge "${HOME}/.Xresources"
 
 export DE="mate"
+export GOPATH="~/home/go/"
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
 xset -b

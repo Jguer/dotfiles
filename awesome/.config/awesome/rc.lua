@@ -53,7 +53,7 @@ run_once({ "unclutter -root" }) -- entries must be comma-separated
 local chosen_theme = "copland"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "termite"
+local terminal     = "kitty"
 local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
 local browser      = "firefox-nightly"
@@ -123,6 +123,7 @@ awful.util.tasklist_buttons = awful.util.table.join(
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
+local lock_cmd = "i3lock -t -c 282828 -i " .. beautiful.wallpaper
 -- }}}
 
 -- {{{ Screen
@@ -141,8 +142,8 @@ end)
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s)
     -- Quake application
-    s.quake = lain.util.quake({ app = "termite", argname = "--name %s" })
     beautiful.at_screen_connect(s)
+    s.quake = lain.util.quake({ app = "kitty", argname = "--class %s", width=0.5, height=0.3, vert="bottom", horiz="right", followtag = true})
 end)
 -- }}}
 
@@ -317,7 +318,8 @@ globalkeys = awful.util.table.join(
             beautiful.volume.update()
         end),
     -- User programs
-    awful.key({ modkey }, "e", function () awful.spawn(gui_editor) end),
+    awful.key({ modkey, }, "e", function() awful.spawn(lock_cmd) end,
+        {description = "Lock Screen", group = "applications"}),
     awful.key({ modkey }, "q", function () awful.spawn(browser) end),
     awful.key({ modkey }, "p", function () xrandr.xrandr() end),
     awful.key({ modkey }, "z", function () awful.screen.focused().quake:toggle() end),

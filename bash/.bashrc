@@ -11,3 +11,4 @@ PS1='[\u@\h \W]\$ '
 #         exec tmux attach-session -t "$ID" # if available attach to it
 #     fi
 # fi
+exec fish
