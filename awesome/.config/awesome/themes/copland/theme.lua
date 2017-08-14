@@ -113,7 +113,7 @@ local batbar = wibox.widget {
     widget           = wibox.widget.progressbar,
 }
 local batupd = lain.widget.bat({
-    battery = "BAT1",
+    battery = "BAT0",
     settings = function()
         if bat_now.status == "N/A" or type(bat_now.perc) ~= "number" then return end
 
