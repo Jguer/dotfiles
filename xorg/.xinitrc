@@ -8,8 +8,6 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge "${HOME}/.Xresources"
 
-export DE="mate"
-export GOPATH="~/home/go/"
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
 xset -b
@@ -22,7 +20,7 @@ if [ "$(cat /etc/hostname)" = "atreides" ]; then
 elif [ "$(cat /etc/hostname)" = "harkonnen" ]; then
   blueman-applet
 elif [ "$(cat /etc/hostname)" = "jguerreiro.multicert.inet" ]; then
-  xrandr --output VGA-1 --primary --left-of LVDS-1
+  xrandr --output VGA1 --primary --left-of LVDS1
 fi
 
 eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
