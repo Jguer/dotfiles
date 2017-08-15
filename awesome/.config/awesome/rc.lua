@@ -62,8 +62,8 @@ awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6" }
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.left,
+    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.floating,
@@ -461,9 +461,30 @@ awful.rules.rules = {
     { rule = { class = "Firefox" },
     properties = { tag = awful.util.tagnames[1] } },
 
-    { rule = { class = "MPV" },
-    properties = { float = true, on_top=true } },
+    { rule_any = {
+            instance = {
+                "DTA",  -- Firefox addon DownThemAll.
+                "copyq",  -- Includes session name in class.
+            },
+            class = {
+                "Arandr",
+                "Kruler",
+                "MessageWin",  -- kalarm.
+                "Sxiv",
+                "Wpa_gui",
+                "pinentry",
+                "rofi",
+            "xtightvncviewer"},
 
+            name = {
+                "Event Tester",  -- xev.
+            },
+            role = {
+                "AlarmWindow",  -- Thunderbird's calendar.
+                "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+            }
+    }, properties = { floating = true }},
+    { rule = { class = "mpv" }, properties = { floating = true, ontop = true } },
     { rule = { class = "Gimp", role = "gimp-image-window" },
     properties = { maximized = true } },
 }
