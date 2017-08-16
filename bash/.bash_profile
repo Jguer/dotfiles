@@ -1,4 +1,3 @@
-export DE="mate"
 export GOPATH="$HOME/go"
 [ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
 
