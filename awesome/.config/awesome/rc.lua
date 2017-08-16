@@ -57,6 +57,7 @@ local terminal     = "kitty"
 local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
 local browser      = "firefox-nightly"
+local sloppy = true
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6" }
@@ -214,6 +215,8 @@ globalkeys = awful.util.table.join(
               {description = "show rofi", group = "launcher"}),
 
     -- Layout manipulation
+    awful.key({ modkey, }, "a", function () sloppy = not sloppy end,
+              {description = "toggle sloppy focus", group = "client"}),
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
@@ -553,7 +556,7 @@ end)
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-        and awful.client.focus.filter(c) then
+        and awful.client.focus.filter(c) and sloppy then
         client.focus = c
     end
 end)
