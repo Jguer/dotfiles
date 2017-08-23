@@ -228,6 +228,7 @@ Plug 'Shougo/neoinclude.vim'
 
 " .-. Appearance .-.
 Plug 'joshdick/onedark.vim'
+Plug 'bluz71/vim-moonfly-colors'
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 
@@ -250,7 +251,7 @@ call plug#end()
 " Colorscheme {{{
 augroup colorscheme_cfg
   autocmd!
-  colorscheme onedark
+  colorscheme moonfly
 augroup END
 " }}}
 
