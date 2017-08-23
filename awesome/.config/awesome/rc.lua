@@ -46,7 +46,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "unclutter -root" }) -- entries must be comma-separated
+
 -- }}}
 
 -- {{{ Variable definitions
@@ -125,6 +125,10 @@ awful.util.tasklist_buttons = awful.util.table.join(
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
 local lock_cmd = "i3lock -t -c 282828 -i " .. beautiful.wallpaper
+run_once({"nm-applet --sm-disable",
+        "unclutter -root",
+        "xss-lock -- " .. lock_cmd,
+        "redshift -l 38.72:-9.15 -t 5000:3400"}) -- entries must be comma-separated
 -- }}}
 
 -- {{{ Screen
