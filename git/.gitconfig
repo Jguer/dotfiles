@@ -25,7 +25,7 @@
   autostash = true
   autosquash = true
 [user]
-  email = joaogg3@gmail.com
+  email = me@jguer.space
   name = Jguer
 	signingkey = 09754DBECF21746F
 [url "https://github.com/"]
