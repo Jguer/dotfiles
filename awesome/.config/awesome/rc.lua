@@ -46,7 +46,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "unclutter -root" }) -- entries must be comma-separated
+
 -- }}}
 
 -- {{{ Variable definitions
@@ -57,13 +57,14 @@ local terminal     = "kitty"
 local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
 local browser      = "firefox-nightly"
+local sloppy = true
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5", "6" }
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.left,
+    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.floating,
@@ -124,6 +125,10 @@ awful.util.tasklist_buttons = awful.util.table.join(
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
 local lock_cmd = "i3lock -t -c 282828 -i " .. beautiful.wallpaper
+run_once({"nm-applet --sm-disable",
+        "unclutter -root",
+        "xss-lock -- " .. lock_cmd,
+        "redshift -l 38.72:-9.15 -t 5000:3400"}) -- entries must be comma-separated
 -- }}}
 
 -- {{{ Screen
@@ -214,6 +219,8 @@ globalkeys = awful.util.table.join(
               {description = "show rofi", group = "launcher"}),
 
     -- Layout manipulation
+    awful.key({ modkey, }, "a", function () sloppy = not sloppy end,
+              {description = "toggle sloppy focus", group = "client"}),
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
@@ -460,9 +467,30 @@ awful.rules.rules = {
     { rule = { class = "Firefox" },
     properties = { tag = awful.util.tagnames[1] } },
 
-    { rule = { class = "MPV" },
-    properties = { float = true, on_top=true } },
+    { rule_any = {
+            instance = {
+                "DTA",  -- Firefox addon DownThemAll.
+                "copyq",  -- Includes session name in class.
+            },
+            class = {
+                "Arandr",
+                "Kruler",
+                "MessageWin",  -- kalarm.
+                "Sxiv",
+                "Wpa_gui",
+                "pinentry",
+                "rofi",
+            "xtightvncviewer"},
 
+            name = {
+                "Event Tester",  -- xev.
+            },
+            role = {
+                "AlarmWindow",  -- Thunderbird's calendar.
+                "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+            }
+    }, properties = { floating = true }},
+    { rule = { class = "mpv" }, properties = { floating = true, ontop = true } },
     { rule = { class = "Gimp", role = "gimp-image-window" },
     properties = { maximized = true } },
 }
@@ -531,7 +559,7 @@ end)
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-        and awful.client.focus.filter(c) then
+        and awful.client.focus.filter(c) and sloppy then
         client.focus = c
     end
 end)

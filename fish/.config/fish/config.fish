@@ -12,9 +12,9 @@ function _git_branch_name_or_revision
 
   if test (count $branch) -gt 0
     echo $branch
-  else
-    echo $revision
-  end
+else
+  echo $revision
+end
 end
 
 function _git_upstream_configured
@@ -35,14 +35,14 @@ function _git_upstream_status
   if _git_upstream_configured
     if _git_behind_upstream
       set arrows "$arrows⇣"
-    end
-
-    if _git_ahead_of_upstream
-      set arrows "$arrows⇡"
-    end
   end
 
-  echo $arrows
+  if _git_ahead_of_upstream
+    set arrows "$arrows⇡"
+  end
+end
+
+echo $arrows
 end
 
 function _print_in_color
@@ -57,9 +57,9 @@ end
 function _prompt_color_for_status
   if test $argv[1] -eq 0
     echo magenta
-  else
-    echo red
-  end
+else
+  echo red
+end
 end
 
 function fish_prompt
@@ -70,7 +70,7 @@ function fish_prompt
   if _in_git_directory
     _print_in_color " "(_git_branch_name_or_revision) 242
     _print_in_color " "(_git_upstream_status) cyan
-  end
+end
 
-  _print_in_color "\n❯ " (_prompt_color_for_status $last_status)
+_print_in_color "\n❯ " (_prompt_color_for_status $last_status)
 end
