@@ -28,8 +28,5 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
 compton &
-xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/ngruvbox/background.jpg" &
-redshift -l 38.72:-9.15 -t 5000:3400 &
 start-pulseaudio-x11 &
-nm-applet --sm-disable &
 exec awesome

@@ -6,6 +6,11 @@ set clipboard+=unnamedplus
 set mouse=a
 set noswapfile
 let mapleader = ","
+
+set hidden " Allow background buffers without saving
+set spell spelllang=en_us
+set splitright " Split to right by default
+
 " }}}
 
 " Plug Setup {{{
@@ -75,7 +80,6 @@ augroup END
 " Vim Go {{{
 augroup vim_go_cfg
   autocmd!
-  let g:go_fmt_command = "goimports"
   let g:go_highlight_functions = 1
   let g:go_highlight_methods = 1
   let g:go_highlight_types = 1
@@ -135,9 +139,17 @@ set smartcase    " ...unless we type a capital
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set showtabline=2 " Always show tab bar
 
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
+"" Text Wrapping
+set textwidth=79
+set colorcolumn=80
+set nowrap
+
+let g:netrw_liststyle = 1 " Detail View
+let g:netrw_sizestyle = "H" " Human-readable file sizes
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
+let g:netrw_hide = 1 " hide dotfiles by default
+let g:netrw_banner = 0 " Turn off banner
+""" Explore in vertical split
 let g:netrw_winsize = 30
 
 augroup vimrc
