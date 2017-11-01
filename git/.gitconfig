@@ -27,5 +27,6 @@
 [user]
   email = joaogg3@gmail.com
   name = Jguer
+	signingkey = 09754DBECF21746F
 [url "https://github.com/"]
 	insteadOf = git://github.com/

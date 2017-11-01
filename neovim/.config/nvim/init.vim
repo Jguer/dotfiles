@@ -4,6 +4,7 @@
 set termguicolors
 set clipboard+=unnamedplus
 set mouse=a
+set noswapfile
 let mapleader = ","
 " }}}
 
@@ -63,6 +64,14 @@ augroup neosnippet_cfg
 augroup END
 " }}}
 
+" NerdTree {{{
+augroup nerdtree_cfg
+  autocmd!
+  nnoremap <silent> <F8> :NERDTreeToggle<CR>
+  noremap <Leader>n :NERDTreeToggle<CR>
+augroup END
+" }}}
+
 " Vim Go {{{
 augroup vim_go_cfg
   autocmd!
@@ -94,36 +103,13 @@ augroup rainbow_cfg
 augroup END
 " }}}
 
-" lightline {{{
-augroup lightline_cfg
+" Airline {{{
+augroup airline_cfg
   autocmd!
-  let g:lightline={}
-  let g:lightline.tab_component_function = { 'filename': 'MyTabFilename',}
-
-  function! MyTabFilename(n)
-    let buflist = tabpagebuflist(a:n)
-    let winnr = tabpagewinnr(a:n)
-    let bufnum = buflist[winnr - 1]
-    let bufname = expand('#'.bufnum.':t')
-    let buffullname = expand('#'.bufnum.':p')
-    let buffullnames = []
-    let bufnames = []
-    for i in range(1, tabpagenr('$'))
-      if i != a:n
-        let num = tabpagebuflist(i)[tabpagewinnr(i) - 1]
-        call add(buffullnames, expand('#' . num . ':p'))
-        call add(bufnames, expand('#' . num . ':t'))
-      endif
-    endfor
-    let i = index(bufnames, bufname)
-    if strlen(bufname) && i >= 0 && buffullnames[i] != buffullname
-      return substitute(buffullname, '.*/\([^/]\+/\)', '\1', '')
-    else
-      return strlen(bufname) ? bufname : '[No Name]'
-    endif
-  endfunction
-
-  silent! let g:lightline.colorscheme = 'onedark'
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_highlighting_cache = 1
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme = 'murmur'
 augroup END
 " }}}
 
@@ -189,8 +175,6 @@ nnoremap <silent> <S-j> :wincmd j<CR>
 nnoremap <silent> <A-h> :wincmd h<CR>
 nnoremap <silent> <A-l> :wincmd l<CR>
 
-nnoremap <silent> <F8> :Lexplore<CR>
-noremap <Leader>n :Lexplore<CR>
 
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
@@ -211,6 +195,9 @@ au FocusLost,WinLeave * :silent! noautocmd w
 au FocusGained,BufEnter * :silent! !
 au BufNewFile,BufRead *.h set filetype=c
 au FileType python,c,cpp,lua,go set ts=4|set sw=4|set sts=4
+" check for and load file changes
+autocmd WinEnter,BufWinEnter,FocusGained * checktime
+
 
 set autowriteall "Auto save when moving tab
 set autochdir
@@ -227,11 +214,13 @@ Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neoinclude.vim'
 
 " .-. Appearance .-.
-Plug 'joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'mkarmona/colorsbox'
 
 " .-. Util .-.
+Plug 'scrooloose/nerdtree'
 Plug 'easymotion/vim-easymotion'
 Plug 'dietsche/vim-lastplace'
 Plug 'majutsushi/tagbar'
@@ -250,7 +239,7 @@ call plug#end()
 " Colorscheme {{{
 augroup colorscheme_cfg
   autocmd!
-  colorscheme onedark
+  colorscheme colorsbox-material
 augroup END
 " }}}
 

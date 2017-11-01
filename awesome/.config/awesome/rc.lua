@@ -318,6 +318,9 @@ globalkeys = awful.util.table.join(
             beautiful.volume.update()
         end),
     -- User programs
+    awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
+    awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl previous") end),
+    awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl next") end),
     awful.key({ modkey, }, "e", function() awful.spawn(lock_cmd) end,
         {description = "Lock Screen", group = "applications"}),
     awful.key({ modkey }, "q", function () awful.spawn(browser) end),
@@ -453,10 +456,6 @@ awful.rules.rules = {
                      size_hints_honor = false
      }
     },
-    -- Titlebars
-    { rule_any = { type = { "dialog"} },
-    properties = { titlebars_enabled = true } },
-
     -- Set Firefox to always map on the first tag on screen 1.
     { rule = { class = "Firefox" },
     properties = { tag = awful.util.tagnames[1] } },

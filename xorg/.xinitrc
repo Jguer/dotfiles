@@ -20,13 +20,12 @@ setxkbmap -layout "us,pt" -variant altgr-intl -option "grp:alt_shift_toggle" \
 if [ "$(cat /etc/hostname)" = "atreides" ]; then
   xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
 elif [ "$(cat /etc/hostname)" = "harkonnen" ]; then
-  blueman-applet
-elif [ "$(cat /etc/hostname)" = "jguerreiro.multicert.inet" ]; then
-  xrandr --output VGA1 --primary --left-of LVDS1
+  blueman-applet &
 fi
 
-eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
-export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 compton &
 xss-lock -- i3lock -t -c 282828 -e -i "$HOME/.config/awesome/themes/ngruvbox/background.jpg" &
