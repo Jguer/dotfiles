@@ -15,7 +15,7 @@ theme.bg_normal                                 = "#111111"
 theme.bg_focus                                  = "#111111"
 theme.fg_urgent                                 = "#000000"
 theme.bg_urgent                                 = "#FFFFFF"
-theme.border_width                              = 1
+theme.border_width                              = 3
 theme.border_normal                             = "#141414"
 theme.border_focus                              = "#93B6FF"
 theme.taglist_fg_focus                          = "#FFFFFF"
@@ -54,7 +54,7 @@ theme.layout_max                                = theme.dir .. "/icons/max.png"
 theme.layout_fullscreen                         = theme.dir .. "/icons/fullscreen.png"
 theme.layout_magnifier                          = theme.dir .. "/icons/magnifier.png"
 theme.layout_floating                           = theme.dir .. "/icons/floating.png"
-theme.useless_gap                               = 1
+theme.useless_gap                               = 4
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
@@ -84,8 +84,11 @@ local blue   = theme.fg_focus
 local red    = "#EB8F8F"
 local green  = "#8FEB8F"
 
-local mytextclock = wibox.widget.textclock("<span font='Iosevka Term 5'> </span>%H:%M ")
+local mytextclock = wibox.widget.textclock("<span font='Iosevka Term 5'> </span>Korea: %H:%M ")
 mytextclock.font = theme.font
+
+local mytextclockgmt = wibox.widget.textclock("<span font='Iosevka Term 5'> </span>GMT: %H:%M ",60, "Europe/Lisbon")
+mytextclockgmt.font = theme.font
 
 local mykeyboardlayout = awful.widget.keyboardlayout()
 
@@ -310,6 +313,8 @@ function theme.at_screen_connect(s)
             volumewidget,
             bar_spr,
             mytextclock,
+            bar_spr,
+            mytextclockgmt,
         },
     }
 end

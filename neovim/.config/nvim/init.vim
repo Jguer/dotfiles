@@ -45,6 +45,7 @@ augroup END
 " Deoplete {{{
 augroup deoplete_cfg
   autocmd!
+  set completeopt-=preview
   let g:deoplete#enable_at_startup = 1
   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 augroup END
@@ -80,12 +81,14 @@ augroup END
 " Vim Go {{{
 augroup vim_go_cfg
   autocmd!
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_types = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_extra_types = 1
+  let g:go_highlight_functions         = 1
+  let g:go_highlight_methods           = 1
+  let g:go_highlight_structs           = 1
+  let g:go_highlight_structs           = 1
+  let g:go_highlight_operators         = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_fmt_command                 = 'goimports'
+  let g:go_fmt_fail_silently           = 1
 augroup END
 " }}}
 
@@ -100,10 +103,18 @@ augroup END
 " Rainbow Parentheses {{{
 augroup rainbow_cfg
   autocmd!
-  au VimEnter * RainbowParenthesesToggle
-  au Syntax * RainbowParenthesesLoadRound
-  au Syntax * RainbowParenthesesLoadSquare
-  au Syntax * RainbowParenthesesLoadBraces
+  let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+augroup END
+" }}}
+
+" NeoFormat {{{
+augroup neoformat
+  let g:neoformat_basic_format_align = 1
+  let g:neoformat_basic_format_retab = 1
+  let g:neoformat_basic_format_trim = 1
+  " let g:neoformat_run_all_formatters = 1
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
 augroup END
 " }}}
 
@@ -206,7 +217,7 @@ nnoremap Q <nop>
 au FocusLost,WinLeave * :silent! noautocmd w
 au FocusGained,BufEnter * :silent! !
 au BufNewFile,BufRead *.h set filetype=c
-au FileType python,c,cpp,lua,go set ts=4|set sw=4|set sts=4
+au FileType python,c,lua,go set ts=4|set sw=4|set sts=4
 " check for and load file changes
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 
@@ -224,11 +235,12 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neoinclude.vim'
+Plug 'sbdchd/neoformat'
 
 " .-. Appearance .-.
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'mkarmona/colorsbox'
 
 " .-. Util .-.
