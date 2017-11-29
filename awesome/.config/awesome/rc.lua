@@ -319,7 +319,7 @@ globalkeys = awful.util.table.join(
             os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
             beautiful.volume.update()
         end),
-    awful.key({ altkey, "Control" }, "0",
+    awful.key({}, "XF86AudioMute",
         function ()
             os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
             beautiful.volume.update()
@@ -459,14 +459,9 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
-                     size_hints_honor = false
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
-    -- Set Firefox to always map on the first tag on screen 1.
-    { rule = { class = "Firefox" },
-    properties = { tag = awful.util.tagnames[1] } },
-
     { rule_any = {
             instance = {
                 "DTA",  -- Firefox addon DownThemAll.
