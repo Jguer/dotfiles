@@ -5,18 +5,30 @@
 local utils = require 'mp.utils'
 function load_sub_fn()
     subl = "/bin/subdl" -- use 'which subliminal' to find the path
+    path = mp.get_property("path")
+    srt_path = string.gsub(path, "%.%w+$", ".srt")
     mp.msg.info("Searching subtitle")
     mp.osd_message("Searching subtitle")
     t = {}
-    t.args = {subl,mp.get_property("path")}
+    t.args = {subl,path}
     res = utils.subprocess(t)
     if res.status == 0 then
         mp.commandv("rescan_external_files", "reselect")
-        mp.msg.info("Subtitle download succeeded")
-        mp.osd_message("Subtitle download succeeded")
+        mp.msg.info("Subtitle download succeeded by path")
+        mp.osd_message("Subtitle download succeeded by path")
     else
-        mp.msg.warn("Subtitle download failed")
-        mp.osd_message("Subtitle download failed")
+        t.args = {subl,mp.get_property("media-title")}
+        res = utils.subprocess(t)
+        if res.status == 0 then
+            mp.commandv("rescan_external_files", "reselect")
+            mp.msg.info("Subtitle download succeeded by title")
+            mp.osd_message("Subtitle download succeeded by title")
+        else
+            mp.msg.warn("Subtitle download failed")
+            mp.osd_message("Subtitle download failed")
+            t.args = {subl,mp.get_property("title")}
+            res = utils.subprocess(t)
+        end
     end
 end
 

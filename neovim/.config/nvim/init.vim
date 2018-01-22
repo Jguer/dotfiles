@@ -109,10 +109,10 @@ augroup END
 
 " NeoFormat {{{
 augroup neoformat
-  let g:neoformat_basic_format_align = 1
+  let g:neoformat_basic_format_align = 0
   let g:neoformat_basic_format_retab = 1
   let g:neoformat_basic_format_trim = 1
-  " let g:neoformat_run_all_formatters = 1
+  let g:neoformat_run_all_formatters = 1
   autocmd!
   autocmd BufWritePre * undojoin | Neoformat
 augroup END
@@ -216,11 +216,14 @@ nnoremap Q <nop>
 " Auto Commands {{{
 au FocusLost,WinLeave * :silent! noautocmd w
 au FocusGained,BufEnter * :silent! !
-au BufNewFile,BufRead *.h set filetype=c
-au FileType python,c,lua,go set ts=4|set sw=4|set sts=4
+au FileType python,c,lua,go,cpp set ts=4|set sw=4|set sts=4
 " check for and load file changes
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
 set autowriteall "Auto save when moving tab
 set autochdir
