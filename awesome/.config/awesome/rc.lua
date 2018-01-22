@@ -154,7 +154,6 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -298,31 +297,34 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end),
     awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end),
 
-    -- ALSA volume control
-    awful.key({ altkey }, "Up",
+    -- Volume control
+    awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
-            beautiful.volume.update()
+            awful.spawn('amixer -D pulse sset Master 5%+')
         end),
-    awful.key({ altkey }, "Down",
+    awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
-            beautiful.volume.update()
-        end),
-    awful.key({ altkey }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
-            beautiful.volume.update()
-        end),
-    awful.key({ altkey, "Control" }, "m",
-        function ()
-            os.execute(string.format("amixer -q set %s 100%%", beautiful.volume.channel))
-            beautiful.volume.update()
+            awful.spawn('amixer -D pulse sset Master 5%-')
         end),
     awful.key({}, "XF86AudioMute",
         function ()
-            os.execute(string.format("amixer -q set %s 0%%", beautiful.volume.channel))
-            beautiful.volume.update()
+            awful.spawn("amixer -D pulse sset Master toggle")
+        end),
+    awful.key({ altkey }, "Up",
+        function ()
+            awful.spawn('amixer -D pulse sset Master 5%+')
+        end),
+    awful.key({ altkey }, "Down",
+        function ()
+            awful.spawn('amixer -D pulse sset Master 5%-')
+        end),
+    awful.key({ altkey }, "m",
+        function ()
+            awful.spawn('amixer -D pulse sset Master toggle')
+        end),
+    awful.key({ altkey, "Control" }, "m",
+        function ()
+            awful.spawn('amixer -D pulse sset Master 100%%')
         end),
     -- User programs
     awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl play-pause") end),
@@ -338,7 +340,7 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ altkey, "Shift"   }, "m",      lain.util.magnify_client                         ),
+    awful.key({ altkey, "Shift"   }, "m", lain.util.magnify_client ),
     awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen

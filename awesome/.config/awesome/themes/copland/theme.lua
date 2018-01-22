@@ -4,6 +4,8 @@ local awful   = require("awful")
 local wibox   = require("wibox")
 local os      = { getenv = os.getenv, setlocale = os.setlocale }
 local awesome, client = awesome, client
+local volumearc = require("volumearc")
+local batteryarc = require("batteryarc")
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/copland"
@@ -74,6 +76,13 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
+theme.widget_main_color = "#74aeab"
+theme.widget_red = "#e53935"
+theme.widget_yellow = "#c0ca33"
+theme.widget_green = "#43a047"
+theme.widget_black = "#000000"
+theme.widget_transparent = "#00000000"
+
 -- lain related
 theme.layout_centerfair                         = theme.dir .. "/icons/centerfair.png"
 theme.layout_termfair                           = theme.dir .. "/icons/termfair.png"
@@ -100,137 +109,6 @@ lain.widget.calendar({
         fg   = theme.fg_normal,
         bg   = theme.bg_normal
     }
-})
-
--- Battery
-local baticon = wibox.widget.imagebox(theme.bat)
-local batbar = wibox.widget {
-    forced_height    = 1,
-    forced_width     = 59,
-    color            = theme.fg_normal,
-    background_color = theme.bg_normal,
-    margins          = 1,
-    paddings         = 1,
-    ticks            = true,
-    ticks_size       = 6,
-    widget           = wibox.widget.progressbar,
-}
-local batupd = lain.widget.bat({
-    battery = "BAT0",
-    settings = function()
-        if bat_now.status == "N/A" or type(bat_now.perc) ~= "number" then return end
-
-        if bat_now.status == "Charging" then
-            baticon:set_image(theme.ac)
-            if bat_now.perc >= 98 then
-                batbar:set_color(green)
-            elseif bat_now.perc > 50 then
-                batbar:set_color(theme.fg_normal)
-            elseif bat_now.perc > 15 then
-                batbar:set_color(theme.fg_normal)
-            else
-                batbar:set_color(red)
-            end
-        else
-            if bat_now.perc >= 98 then
-                batbar:set_color(green)
-            elseif bat_now.perc > 50 then
-                batbar:set_color(theme.fg_normal)
-                baticon:set_image(theme.bat)
-            elseif bat_now.perc > 15 then
-                batbar:set_color(theme.fg_normal)
-                baticon:set_image(theme.bat_low)
-            else
-                batbar:set_color(red)
-                baticon:set_image(theme.bat_no)
-            end
-        end
-        batbar:set_value(bat_now.perc / 100)
-    end
-})
-local batbg = wibox.container.background(batbar, "#474747", gears.shape.rectangle)
-local batwidget = wibox.container.margin(batbg, 2, 7, 4, 4)
-
--- /home fs
-local fsicon = wibox.widget.imagebox(theme.disk)
-local fsbar = wibox.widget {
-    forced_height    = 1,
-    forced_width     = 59,
-    color            = theme.fg_normal,
-    background_color = theme.bg_normal,
-    margins          = 1,
-    paddings         = 1,
-    ticks            = true,
-    ticks_size       = 6,
-    widget           = wibox.widget.progressbar,
-}
-theme.fs = lain.widget.fs({
-    partition = "/",
-    options = "--exclude-type=tmpfs",
-    notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "Iosevka Term 10.5" },
-    settings  = function()
-        if tonumber(fs_now.used) < 90 then
-            fsbar:set_color(theme.fg_normal)
-        else
-            fsbar:set_color("#EB8F8F")
-        end
-        fsbar:set_value(fs_now.used / 100)
-    end
-})
-local fsbg = wibox.container.background(fsbar, "#474747", gears.shape.rectangle)
-local fswidget = wibox.container.margin(fsbg, 2, 7, 4, 4)
-
--- ALSA volume bar
-local volicon = wibox.widget.imagebox(theme.vol)
-theme.volume = lain.widget.alsabar({
-    width = 59, border_width = 0, ticks = true, ticks_size = 6,
-    notification_preset = { font = theme.font },
-    --togglechannel = "IEC958,3",
-    settings = function()
-        if volume_now.status == "off" then
-            volicon:set_image(theme.vol_mute)
-        elseif volume_now.level == 0 then
-            volicon:set_image(theme.vol_no)
-        elseif volume_now.level <= 50 then
-            volicon:set_image(theme.vol_low)
-        else
-            volicon:set_image(theme.vol)
-        end
-    end,
-    colors = {
-        background   = theme.bg_normal,
-        mute         = red,
-        unmute       = theme.fg_normal
-    }
-})
-theme.volume.tooltip.wibox.fg = theme.fg_focus
-theme.volume.bar:buttons(awful.util.table.join (
-          awful.button({}, 1, function()
-            awful.spawn.with_shell(string.format("%s -e alsamixer", awful.util.terminal))
-          end),
-          awful.button({}, 2, function()
-            awful.spawn(string.format("%s set %s 100%%", theme.volume.cmd, theme.volume.channel))
-            theme.volume.update()
-          end),
-          awful.button({}, 3, function()
-            awful.spawn(string.format("%s set %s toggle", theme.volume.cmd, theme.volume.togglechannel or theme.volume.channel))
-            theme.volume.update()
-          end),
-          awful.button({}, 4, function()
-            awful.spawn(string.format("%s set %s 1%%+", theme.volume.cmd, theme.volume.channel))
-            theme.volume.update()
-          end),
-          awful.button({}, 5, function()
-            awful.spawn(string.format("%s set %s 1%%-", theme.volume.cmd, theme.volume.channel))
-            theme.volume.update()
-          end)
-))
-local volumebg = wibox.container.background(theme.volume.bar, "#474747", gears.shape.rectangle)
-local volumewidget = wibox.container.margin(volumebg, 2, 7, 4, 4)
-
--- Weather
-theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder (London)
 })
 
 -- Separators
@@ -303,15 +181,10 @@ function theme.at_screen_connect(s)
             small_spr,
             mykeyboardlayout,
             bar_spr,
-            baticon,
-            batwidget,
-            bar_spr,
-            fsicon,
-            fswidget,
-            bar_spr,
-            volicon,
-            volumewidget,
-            bar_spr,
+            volumearc_widget,
+            small_spr,
+            batteryarc_widget,
+            small_spr,
             mytextclock,
             bar_spr,
             mytextclockgmt,
