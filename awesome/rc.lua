@@ -110,7 +110,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock("GMT: %H:%M")
 
 -- Create left separator
-
 separator = wibox.widget{
   {
     left   = 4,

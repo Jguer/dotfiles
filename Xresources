@@ -1,15 +1,12 @@
-! Rofi {{{
 rofi.font: Iosevka Term 12
 rofi.levenshtein-sort: true
-rofi.terminal: /usr/bin/st
+rofi.terminal: /usr/bin/kitty
 rofi.color-enabled: true
-!                  bg       border   separator
-rofi.color-window: #1d2021, #a89984, #a89984
-!                  bg       fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: #1d2021, #ebdbb2, #282828, #504945, #fbf1c7
-rofi.color-active: #d79921, #1d2021, #d79921, #fabd2f, #1d2021
-rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
-! }}}
+rofi.color-window:  #353b45, #353b45, #282c34
+rofi.color-normal:  #353b45, #abb2bf, #353b45, #353b45, #c8ccd4
+rofi.color-active:  #353b45, #61afef, #353b45, #3A3F4B, #61afef
+rofi.color-urgent:  #353b45, #e06c75, #353b45, #353b45, #e06c75
+rofi.separator-style: solid
 
 #define base00 #282c34
 #define base01 #353b45

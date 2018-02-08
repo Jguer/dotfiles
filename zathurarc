@@ -1,40 +1,38 @@
 #{{{ Colours
-set guioptions Sans\ 11
+set guioptions Noto Sans 11
 
-set default-bg                  "#151515" #00
-set default-fg                  "#202020" #01
+set default-bg                  "#282c34"
+set default-fg                  "#353b45"
 
-set statusbar-fg                "#B0B0B0" #04
-set statusbar-bg                "#202020" #01
+set statusbar-fg                "#565c64"
+set statusbar-bg                "#3e4451"
 
-set inputbar-bg                 "#151515" #00 currently not used
-set inputbar-fg                 "#303030" #02
+set inputbar-bg                 "#282c34"
+set inputbar-fg                 "#c8ccd4"
 
-set notification-error-bg       "#AC4142" #08
-set notification-error-fg       "#151515" #00
+set notification-bg             "#282c34"
+set notification-fg             "#c8ccd4"
 
-set notification-warning-bg     "#AC4142" #08
-set notification-warning-fg     "#151515" #00
+set notification-error-bg       "#282c34"
+set notification-error-fg       "#e06c75"
 
-set highlight-color             "#F4BF75" #0A
-set highlight-active-color      "#6A9FB5" #0D
+set notification-warning-bg     "#282c34"
+set notification-warning-fg     "#e06c75"
 
-set completion-highlight-fg     "#303030" #02
-set completion-highlight-bg     "#75B5AA" #0C
+set highlight-color             "#e5c07b"
+set highlight-active-color      "#61afef"
 
-set completion-bg               "#303030" #02
-set completion-fg               "#75B5AA" #0C
+set completion-bg               "#353b45"
+set completion-fg               "#61afef"
 
-set notification-bg             "#90A959" #0B
-set notification-fg             "#151515" #00
+set completion-highlight-fg     "#c8ccd4"
+set completion-highlight-bg     "#61afef"
 
-set recolor-lightcolor          "#151515" #00
-set recolor-darkcolor           "#E0E0E0" #06
-set recolor                     "true"
+set recolor-lightcolor          "#282c34"
+set recolor-darkcolor           "#b6bdca"
 
-# setting recolor-keep true will keep any color your pdf has.
-# if it is false, it'll just be black and white
-set recolor-keephue             "true"
+set recolor                     "false"
+set recolor-keephue             "false"
 #}}}
 
 #{{{ Layout
