@@ -371,6 +371,24 @@ clientkeys = gears.table.join(
       c:raise()
     end,
     {description = "toggle fullscreen", group = "client"}),
+  awful.key({ modkey, "Shift"   }, "Left", function (c)
+    local i = awful.tag.selected(client.focus.screen).index
+    local tag = awful.tag.gettags(client.focus.screen)[i - 1]
+    if tag then
+      c:tags({tag})
+      awful.tag.viewprev()
+    end
+  end,
+  {description = "move to previous tag", group = "client"}),
+  awful.key({ modkey, "Shift"   }, "Right", function (c)
+    local i = awful.tag.selected(client.focus.screen).index
+    local tag = awful.tag.gettags(client.focus.screen)[i + 1]
+    if tag then
+      c:tags({tag})
+      awful.tag.viewnext()
+    end
+  end,
+  {description = "move to next tag", group = "client"}),
   awful.key({ modkey, }, "c",      function (c) c:kill()                         end,
     {description = "close", group = "client"}),
   awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
