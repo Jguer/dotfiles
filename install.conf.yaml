@@ -19,6 +19,7 @@
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/fontconfig/fonts.conf: fonts.conf
     ~/.Xresources: Xresources
+    ~/.xinitrc: xinitrc
     ~/Templates: Templates
     # Applications
     ~/bin: bin
