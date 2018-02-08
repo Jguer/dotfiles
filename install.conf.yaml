@@ -1,0 +1,32 @@
+- defaults:
+    link:
+      force: true
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    # Login Session
+    ~/.bashrc: bash/bashrc
+    ~/.bash_profile: bash/bash_profile
+    ~/.config/fish/config.fish: config.fish
+    # DE
+    ~/.compton.conf: compton.conf
+    ~/.config/awesome: awesome
+    ~/.gtkrc-2.0: gtk/gtkrc-2.0
+    ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
+    ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
+    ~/.config/fontconfig/fonts.conf: fonts.conf
+    ~/.Xresources: Xresources
+    ~/Templates: Templates
+    # Applications
+    ~/bin: bin
+    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.gitconfig: gitconfig
+    ~/.config/mpv: mpv
+    ~/.config/nvim/init.vim: init.vim
+    ~/.config/zathura/zathurarc: zathurarc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

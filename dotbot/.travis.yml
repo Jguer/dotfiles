@@ -1,0 +1,16 @@
+language: python
+python:
+  - "2.7"
+  - "pypy"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "nightly"
+  - "pypy3"
+
+sudo: false
+
+script:
+  - ./test/test_travis
