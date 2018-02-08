@@ -1,0 +1,33 @@
+#!/bin/bash
+# @Author: jguer
+
+name=$(basename "$PWD")
+shopt -s nullglob
+
+convert {*.JPG,*.jpg,*.png} "$name.pdf"
+
+read -p "Minimize PDF? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Nn]$ ]]
+then
+  gs  -q -dNOPAUSE -dBATCH -dSAFER \
+    -dNumRenderingThreads=4 \
+    -dBandHeight=100 \
+    -dBandBufferSpace=500000000 \
+    -dBufferSpace=1000000000 \
+    -sBandListStorage=memory \
+    -sDEVICE=pdfwrite \
+    -dCompatibilityLevel=1.4 \
+    -dPDFSETTINGS=/ebook \
+    -dDetectDuplicateImages=true \
+    -dEmbedAllFonts=false \
+    -dSubsetFonts=true \
+    -dConvertCMYKImagesToRGB=true \
+    -dCompressFonts=true \
+    -r150 \
+    -sOutputFile="${name}2.pdf" \
+    "${name}.pdf"
+  mv "${name}2.pdf" "${name}.pdf"
+  mv {*.JPG,*.jpg,*.png} ~/.local/share/Trash/files/
+fi
+
