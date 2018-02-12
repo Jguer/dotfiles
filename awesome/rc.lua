@@ -264,8 +264,6 @@ globalkeys = gears.table.join(
     end,
     {description = "focus previous by index", group = "client"}
   ),
-  awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-    {description = "show main menu", group = "awesome"}),
 
   -- Layout manipulation
   awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
