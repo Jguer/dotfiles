@@ -1,19 +1,16 @@
 #!/bin/bash
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
 fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge "${HOME}/.Xresources"
-export QT_QPA_PLATFORMTHEME=gtk2
-export DESKTOP_SESSION=gnome
 
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
-xset -b
-xset r rate 330 75
+xset -b r rate 190 35
 setxkbmap -layout "us,pt" -variant altgr-intl -option "grp:alt_shift_toggle" \
   -option caps:swapescape -option terminate:ctrl_alt_bksp
 
@@ -27,6 +24,4 @@ dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-compton &
-start-pulseaudio-x11 &
 exec awesome
