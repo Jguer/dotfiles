@@ -2,13 +2,7 @@
 
 readonly WORK_DIR=$(dirname $(readlink -f $0))
 
-for f in $WORK_DIR; do
-  if [ -d "$f" ]; then
-    for ff in $f/*; do
-      echo "Folder: $ff"
-    done
-  else
-    identify "$f" >/dev/null || echo "$f" >>/tmp/fail
-  fi
+for f in $(find "$WORK_DIR" -name '*'); do
+  identify "$f" >/dev/null || echo "$f" >>/tmp/fail
 done
 cat /tmp/fail
