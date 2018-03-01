@@ -1,0 +1,95 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Hide main tabs toolbar */
+#TabsToolbar {
+	visibility: collapse;
+}
+/* Sidebar min and max width removal */
+#sidebar {
+	max-width: none !important;
+	min-width: 0px !important;
+}
+/* Hide splitter, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+	display: none !important;
+}
+/* Hide sidebar header, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+	visibility: collapse;
+}
+
+/* Shrink sidebar until hovered, when using Tree Style Tab. */
+:root {
+	--thin-tab-width: 30px;
+	--wide-tab-width: 200px;
+}
+#sidebar-box:not([sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]) {
+	min-width: var(--wide-tab-width) !important;
+	max-width: none !important;
+}
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+	position: relative !important;
+	transition: all 300ms !important;
+	min-width: var(--thin-tab-width) !important;
+	max-width: var(--thin-tab-width) !important;
+}
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover {
+	transition: all 300ms !important;
+	min-width: var(--wide-tab-width) !important;
+	max-width: var(--wide-tab-width) !important;
+	margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
+}
+
+/* flat theme /**/ 
+#nav-bar textbox {
+	color: #afafaf !important;
+	background-color: transparent !important;
+}
+#nav-bar textbox:hover {
+	background-color: transparent !important;
+}
+#urlbar, .searchbar-textbox {
+	border: 0px !important;
+	height: 20px !important;
+}
+#urlbar {
+	margin-left: 1px !important;
+	margin-right: 1px !important;
+}
+/**/
+#nav-bar[id], #PersonalToolbar[id], #web-developer-toolbar[id], #navigator-toolbox[tabsontop="true"] > #nav-bar[id], #navigator-toolbox[tabsontop="true"]:not([customizing]) > #nav-bar[collapsed="true"][id] + toolbar, #navigator-toolbox[tabsontop="true"]:not([customizing]) > #nav-bar[collapsed="true"] + #customToolbars + #PersonalToolbar[id], #navigator-toolbox[tabsontop="false"] > #nav-bar[id], #navigator-toolbox[tabsontop="false"]:not([customizing]) > #nav-bar[collapsed="true"][id] + toolbar, #navigator-toolbox[tabsontop="false"]:not([customizing]) > #nav-bar[collapsed="true"] + #customToolbars + #PersonalToolbar[id] {
+	background-image: none !important;
+	background: #282c34 !important;
+}
+#urlbar, .searchbar-textbox {
+	box-shadow: none !important;
+}
+#urlbar .urlbar-input-box {
+	text-align: center;
+}
+* {
+	font-family: "Roboto Mono Medium";
+}
+#identity-box {
+	max-width: 0 !important;
+}
+
+#identity-icon-labels,
+#identity-icon,
+.urlbar-go-button,
+/*#nav-bar-overflow-button, /*more stuff double arrow button*/
+#sidebar-button, /*sidebar button*/
+.tabs-newtab-button.toolbarbutton-1, #new-tab-button, /*new tab button*/
+#pageActionSeparator, /*some dash in the search bar*/
+.urlbar-history-dropmarker.urlbar-icon.chromeclass-toolbar-additional /*history arrow in search bar*/
+{
+	display: none !important;
+}
+/**
+#back-button {
+display: none;
+}
+#forward-button {
+display: none;
+}
+
