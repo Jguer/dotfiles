@@ -29,7 +29,7 @@ theme.border_focus  = "#D19A66"
 theme.border_marked = "#91231c"
 
 theme.tasklist_disable_icon = true
-theme.useless_gap   = dpi(2)
+theme.useless_gap   = dpi(3)
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
