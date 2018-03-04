@@ -175,7 +175,7 @@ awful.screen.connect_for_each_screen(function(s)
     height=0.3, vert="bottom", horiz="right", followtag = true})
 
   -- Each screen has its own tag table.
-  awful.tag({ "1", "2", "3", "4", "5", "6"}, s, awful.layout.layouts[1])
+  awful.tag({ "⦿", "⦿", "⦿", "⦿", "⦿", "⦿"}, s, awful.layout.layouts[1])
 
   -- Create an imagebox widget which will contain an icon indicating which layout we're using.
   -- We need one layoutbox per screen.
