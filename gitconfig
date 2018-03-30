@@ -1,4 +1,15 @@
 # ~/.gitconfig
+[alias]
+  assume = update-index --assume-unchanged
+  br = branch
+  ci = commit
+  co = checkout
+  dc = diff --cached
+  df = diff
+  last = log -1 HEAD
+  lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset %s%C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --abbrev-commit
+  st = status
+  unassume = update-index --no-assume-changed
 [branch]
   autosetuprebase = always
 [credential]
