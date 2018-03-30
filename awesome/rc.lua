@@ -48,7 +48,7 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/fresh/theme.l
 terminal = "kitty"
 editor = "nvim"
 editor_cmd = terminal .. " " .. editor
-lock_cmd = "i3lock -t -c 282828 -i " .. beautiful.wallpaper
+lock_cmd = "lockscreen " .. beautiful.wallpaper
 
 modkey = "Mod4"
 altkey = "Mod1"

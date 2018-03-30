@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+
+if [ $1 ]; then
+  lockbg="$1"
+else
+  lockbg=$(find $HOME/Pictures/wallpapers/*.png -type f | shuf -n 1)
+fi
+
+# change layout to us
+setxkbmap us
+
+i3lock -n -e -k \
+  -i "$lockbg" \
+  --tiling \
+  --ignore-empty-password \
+  --veriftext="" \
+  --wrongtext="" \
+  --radius=30 \
+  --indpo="x+80:h-70" \
+  --ringcolor=ffffffff \
+  --ringvercolor=ffffffff \
+  --ringwrongcolor=ffffffff \
+  --insidecolor=37344500 \
+  --insidevercolor=407ee7ff \
+  --insidewrongcolor=f22c40ff \
+  --line-uses-inside \
+  --keyhlcolor=407ee7ff \
+  --bshlcolor=407ee7ff \
+  --separatorcolor=00000000 \
+  --timepos="w-320:h-180" \
+  --timecolor=ffffffff \
+  --datecolor=ffffffff \
+  --datestr="%A, %d %b"

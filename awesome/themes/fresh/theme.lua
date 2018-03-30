@@ -10,15 +10,17 @@ local gfs = require("gears.filesystem")
 local themes_path = gfs.get_configuration_dir() .. "themes/fresh/"
 local theme = {}
 
-theme.font          = "Noto Sans 9"
+theme.font          = "Noto Sans UI 9"
 
-theme.bg_normal     = "#282c34"
-theme.bg_focus      = "#282c34"
+--theme.bg_normal     = "#282c34"
+--theme.bg_focus      = "#282c34"
+theme.bg_normal     = "#000617"
+theme.bg_focus      = "#000617"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#61AFEF"
+theme.fg_normal     = "#ABB2BF"
 theme.fg_focus      = "#D19A66"
 theme.fg_urgent     = "#ABB2BF"
 theme.fg_minimize   = "#5C6370"
@@ -116,7 +118,7 @@ theme.layout_cornerse = themes_path.."layouts/cornersew.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = Arc
 
 return theme
 
