@@ -175,7 +175,7 @@ awful.screen.connect_for_each_screen(function(s)
     height=0.3, vert="bottom", horiz="right", followtag = true})
 
   -- Each screen has its own tag table.
-  awful.tag({ "⦿", "⦿", "⦿", "⦿", "⦿", "⦿"}, s, awful.layout.layouts[1])
+  awful.tag({ "◢", "◤", "◢", "◤", "◢", "◤"}, s, awful.layout.layouts[1])
 
   -- Create an imagebox widget which will contain an icon indicating which layout we're using.
   -- We need one layoutbox per screen.
@@ -344,7 +344,7 @@ globalkeys = gears.table.join(
   awful.key({ modkey, }, "z", function() awful.screen.focused().quake:toggle() end,
     {description = "quake terminal", group = "applications"}),
   awful.key({ modkey, }, "x", function ()
-    awful.spawn("rofi -combi-modi window,drun -show combi -modi combi") end,
+    awful.spawn("rofi -combi-modi window,drun,ssh -theme " .. gears.filesystem.get_configuration_dir() .. "themes/fresh/fresh.rasi".." -show combi") end,
   {description = "show rofi", group = "applications"}),
   awful.key({ modkey, }, "e", function() awful.spawn(lock_cmd) end,
     {description = "lock Screen", group = "applications"})

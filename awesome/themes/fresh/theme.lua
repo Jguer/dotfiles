@@ -5,32 +5,36 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local xrdb = xresources.get_current_theme()
 
+local gears = require("gears")
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_configuration_dir() .. "themes/fresh/"
 local theme = {}
 
-theme.font          = "Noto Sans UI 9"
+theme.font          = "Noto Sans UI Bold 9"
 
 --theme.bg_normal     = "#282c34"
 --theme.bg_focus      = "#282c34"
-theme.bg_normal     = "#000617"
-theme.bg_focus      = "#000617"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_normal     = xrdb.background
+theme.bg_focus      = theme.bg_normal
+theme.bg_urgent     = theme.bg_normal
+theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#ABB2BF"
-theme.fg_focus      = "#D19A66"
-theme.fg_urgent     = "#ABB2BF"
-theme.fg_minimize   = "#5C6370"
+theme.fg_normal     = xrdb.foreground
+theme.fg_focus      = xrdb.color3
+theme.fg_urgent     = xrdb.color1
+theme.fg_minimize   = xrdb.color6
 
-theme.border_width  = dpi(1)
-theme.border_normal = "#5a92ff"
-theme.border_focus  = "#D19A66"
-theme.border_marked = "#91231c"
+theme.border_width  = dpi(2)
+theme.border_normal = xrdb.color12
+theme.border_focus  = xrdb.color3
+theme.border_marked = xrdb.color5
 
 theme.tasklist_disable_icon = true
+theme.tasklist_plain_task_name = true
+
 theme.useless_gap   = dpi(3)
 -- There are other variable sets
 -- overriding the default one when
@@ -43,16 +47,7 @@ theme.useless_gap   = dpi(3)
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
-theme.taglist_bg_focus = "#5C6370"
-
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-  taglist_square_size, theme.fg_focus
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-  taglist_square_size, theme.fg_normal
-)
+theme.notification_shape = gears.shape.infobubble
 
 -- Variables set for theming notifications:
 -- notification_font
