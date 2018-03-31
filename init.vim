@@ -113,7 +113,7 @@ augroup airline_cfg
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_highlighting_cache = 1
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='one'
+  let g:airline_theme='base16_google'
 augroup END
 " }}}
 
@@ -243,7 +243,8 @@ Plug 'Shougo/neoinclude.vim'
 " .-. Appearance .-.
 Plug 'vim-airline/vim-airline'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'rakr/vim-one'
+Plug 'lifepillar/vim-solarized8'
+Plug 'vim-airline/vim-airline-themes'
 
 " .-. Util .-.
 Plug 'scrooloose/nerdtree'
@@ -266,8 +267,9 @@ call plug#end()
 " Colorscheme {{{
 augroup colorscheme_cfg
   autocmd!
-  let g:one_allow_italics = 1
-  colorscheme one
+  let g:solarized_use16 = 1
+  let g:solarized_termtrans= 1
+  colorscheme solarized8
 augroup END
 " }}}
 

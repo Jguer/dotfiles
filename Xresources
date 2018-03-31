@@ -1,4 +1,4 @@
-rofi.font: Iosevka Term 12
+rofi.font: Noto Sans UI 12
 rofi.levenshtein-sort: true
 rofi.terminal: /usr/bin/kitty
 rofi.color-enabled: true
@@ -8,45 +8,39 @@ rofi.color-active:  #353b45, #61afef, #353b45, #3A3F4B, #61afef
 rofi.color-urgent:  #353b45, #e06c75, #353b45, #353b45, #e06c75
 rofi.separator-style: solid
 
-#define base00 #282c34
-#define base01 #353b45
-#define base02 #3e4451
-#define base03 #545862
-#define base04 #565c64
-#define base05 #abb2bf
-#define base06 #b6bdca
-#define base07 #c8ccd4
-#define base08 #e06c75
-#define base09 #d19a66
-#define base0A #e5c07b
-#define base0B #98c379
-#define base0C #56b6c2
-#define base0D #61afef
-#define base0E #c678dd
-#define base0F #be5046
+! special
+*.foreground:   #d6d5c8
+*.background:   #000617
+*.cursorColor:  #d6d5c8
 
-*.foreground:   base05
-#ifdef background_opacity
-*.background:   [background_opacity]base00
-#else
-*.background:   base00
-#endif
-*.cursorColor:  base05
+! black
+*.color0:       #1d1f21
+*.color8:       #969896
 
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
+! red
+*.color1:       #99291f
+*.color9:       #cc342b
 
-*.color8:       base03
-*.color9:       base08
-*.color10:      base0B
-*.color11:      base0A
-*.color12:      base0D
-*.color13:      base0E
-*.color14:      base0C
-*.color15:      base07
+! green
+*.color2:       #0d6e37
+*.color10:      #198844
+
+! yellow
+*.color3:       #c78c1e
+*.color11:      #fba922
+
+! blue
+*.color4:       #2f5dba
+*.color12:      #3971ed
+
+! magenta
+*.color5:       #7e5194
+*.color13:      #a36ac7
+
+! cyan
+*.color6:       #227687
+*.color14:      #2fa3ba
+
+! white
+*.color7:       #998e8e
+*.color15:      #e6d1d1
