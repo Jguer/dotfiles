@@ -1,13 +1,3 @@
-rofi.font: Noto Sans UI 12
-rofi.levenshtein-sort: true
-rofi.terminal: /usr/bin/kitty
-rofi.color-enabled: true
-rofi.color-window:  #353b45, #353b45, #282c34
-rofi.color-normal:  #353b45, #abb2bf, #353b45, #353b45, #c8ccd4
-rofi.color-active:  #353b45, #61afef, #353b45, #3A3F4B, #61afef
-rofi.color-urgent:  #353b45, #e06c75, #353b45, #353b45, #e06c75
-rofi.separator-style: solid
-
 ! special
 *.foreground:   #d6d5c8
 *.background:   #000617
