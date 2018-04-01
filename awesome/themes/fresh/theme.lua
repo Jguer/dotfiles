@@ -32,10 +32,13 @@ theme.border_normal = xrdb.color12
 theme.border_focus  = xrdb.color3
 theme.border_marked = xrdb.color5
 
+theme.taglist_fg_occupied = xrdb.color12
 theme.tasklist_disable_icon = true
 theme.tasklist_plain_task_name = true
+theme.notification_shape = gears.shape.rounded_rect
 
 theme.useless_gap   = dpi(3)
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -47,7 +50,6 @@ theme.useless_gap   = dpi(3)
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
-theme.notification_shape = gears.shape.infobubble
 
 -- Variables set for theming notifications:
 -- notification_font
