@@ -34,7 +34,6 @@ theme.border_marked = xrdb.color5
 
 theme.taglist_fg_occupied = xrdb.color12
 theme.tasklist_disable_icon = true
-theme.tasklist_plain_task_name = true
 theme.notification_shape = gears.shape.rounded_rect
 
 theme.useless_gap   = dpi(3)
