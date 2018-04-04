@@ -91,8 +91,8 @@ batteryarc:connect_signal("mouse::leave", function() naughty.destroy(notificatio
 
 -- To use colors from beautiful theme put
 -- following lines in rc.lua before require("battery"):
--- beautiful.tooltip_fg = beautiful.fg_normal
--- beautiful.tooltip_bg = beautiful.bg_normal
+beautiful.tooltip_fg = beautiful.fg_normal
+beautiful.tooltip_bg = beautiful.bg_normal
 
 --[[ Show warning notification ]]
 function show_battery_warning()
