@@ -236,6 +236,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " .-. Auto Completion .-.
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/neoinclude.vim'
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neoinclude.vim'
