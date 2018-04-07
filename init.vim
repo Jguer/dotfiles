@@ -1,16 +1,53 @@
 " vim:fdm=marker foldlevel=0
-" System {{{
-:set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+" Settings {{{
+
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set termguicolors
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 set mouse=a
 set noswapfile
+syntax on "Enable syntax
+filetype plugin indent on
+set autowriteall ""automatically save any changes made to the buffer before it is hidden.
 let mapleader = ","
-
 set hidden " Allow background buffers without saving
 set spell spelllang=en_us
 set splitright " Split to right by default
 
+set number
+set relativenumber "Relative number line
+set cursorline
+set showcmd "Show command in bottom bar
+set showmatch "Highlight matching brackets
+set noshowmode " Don't show the current mode (airline.vim takes care of us)
+
+set expandtab    " Use Spaces
+set nowrap
+set tabstop=4 softtabstop=4 shiftwidth=4
+
+set ignorecase   " Ignore case when searching...
+set smartcase    " ...unless we type a capital
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
+set showtabline=2 " Always show tab bar
+
+"" Text Wrapping
+set textwidth=79
+set colorcolumn=80
+set nowrap
+
+let g:netrw_liststyle = 1 " Detail View
+let g:netrw_sizestyle = "H" " Human-readable file sizes
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
+let g:netrw_hide = 1 " hide dotfiles by default
+let g:netrw_banner = 0 " Turn off banner
+""" Explore in vertical split
+let g:netrw_winsize = 30
+
+set foldmethod=indent
+set foldlevel=20
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 " }}}
 
 " Plug Setup {{{
@@ -134,51 +171,6 @@ augroup END
 " }}}
 " }}}
 
-" Settings {{{
-set background=dark
-let g:enable_bold_font=1
-
-set number
-set relativenumber "Relative number line
-set cursorline
-set showcmd "Show command in bottom bar
-set showmatch "Highlight matching brackets
-set noshowmode " Don't show the current mode (airline.vim takes care of us)
-
-set expandtab    " Use Spaces
-set nowrap
-set shiftwidth=2 " Tab Size
-set tabstop=2    " Tab Size
-set ignorecase   " Ignore case when searching...
-set smartcase    " ...unless we type a capital
-set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
-set showtabline=2 " Always show tab bar
-
-"" Text Wrapping
-set textwidth=79
-set colorcolumn=80
-set nowrap
-
-let g:netrw_liststyle = 1 " Detail View
-let g:netrw_sizestyle = "H" " Human-readable file sizes
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
-let g:netrw_hide = 1 " hide dotfiles by default
-let g:netrw_banner = 0 " Turn off banner
-""" Explore in vertical split
-let g:netrw_winsize = 30
-
-augroup vimrc
-  au BufReadPre * setlocal foldmethod=indent
-  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-augroup END
-set foldcolumn=0
-set foldlevelstart=200
-set foldlevel=200  " disable auto folding
-nnoremap <silent> <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-vnoremap <silent> <space> zf
-
-" }}}
-
 " Keybindings {{{
 
 nnoremap j gj
@@ -225,6 +217,14 @@ au FileType python,c,cpp,lua,go set ts=4|set sw=4|set sts=4
 " check for and load file changes
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 
+" convert spaces to tabs when reading file
+autocmd! bufreadpost * set noexpandtab | retab! 4
+
+" convert tabs to spaces before writing file
+autocmd! bufwritepre * set expandtab | retab! 4
+
+" convert spaces to tabs after writing file (to show guides again)
+autocmd! bufwritepost * set noexpandtab | retab! 4i
 
 set autowriteall "Auto save when moving tab
 set autochdir
@@ -265,14 +265,15 @@ Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 call plug#end()
+" }}}
 
 " Colorscheme {{{
 augroup colorscheme_cfg
   autocmd!
+  set background=dark
+  let g:enable_bold_font=1
   let g:solarized_use16 = 1
   let g:solarized_termtrans= 1
   colorscheme solarized8
 augroup END
-" }}}
-
 " }}}
