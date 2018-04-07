@@ -88,7 +88,7 @@ local function run_once(cmd_arr)
   end
 end
 
-run_once({"nm-applet",  "start-pulseaudio-x11","xss-lock -- " .. lock_cmd, "unclutter -root" , "compton", "redshift -l 38.72:-9.15" }) -- entries must be comma-separated
+run_once({"nm-applet",  "start-pulseaudio-x11","xss-lock -- " .. lock_cmd, "unclutter -root" , "env allow_rgb10_configs=false compton", "redshift -l 38.72:-9.15" }) -- entries must be comma-separated
 -- }}}
 
 -- {{{ Menu

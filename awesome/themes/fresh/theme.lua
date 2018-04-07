@@ -14,8 +14,6 @@ local theme = {}
 
 theme.font          = "Noto Sans UI Bold 9"
 
---theme.bg_normal     = "#282c34"
---theme.bg_focus      = "#282c34"
 theme.bg_normal     = xrdb.background
 theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = theme.bg_normal
