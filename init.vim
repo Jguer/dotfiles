@@ -24,7 +24,7 @@ set noshowmode " Don't show the current mode (airline.vim takes care of us)
 
 set expandtab    " Use Spaces
 set nowrap
-set tabstop=4 softtabstop=4 shiftwidth=4
+set tabstop=2 softtabstop=2 shiftwidth=2
 
 set ignorecase   " Ignore case when searching...
 set smartcase    " ...unless we type a capital
@@ -216,15 +216,6 @@ au BufNewFile,BufRead *.h set filetype=c
 au FileType python,c,cpp,lua,go set ts=4|set sw=4|set sts=4
 " check for and load file changes
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
-
-" convert spaces to tabs when reading file
-autocmd! bufreadpost * set noexpandtab | retab! 4
-
-" convert tabs to spaces before writing file
-autocmd! bufwritepre * set expandtab | retab! 4
-
-" convert spaces to tabs after writing file (to show guides again)
-autocmd! bufwritepost * set noexpandtab | retab! 4i
 
 set autowriteall "Auto save when moving tab
 set autochdir
