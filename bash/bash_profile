@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 export GOPATH="$HOME/go"
+export EDITOR="nvim"
 [ -d "$GOPATH/bin" ] && export PATH="$PATH:$GOPATH/bin"
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 [ -d "$HOME/.luarocks/bin" ] && export PATH="$PATH:$HOME/.luarocks/bin"
