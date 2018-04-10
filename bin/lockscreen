@@ -6,9 +6,6 @@ else
   lockbg=$(find $HOME/Pictures/wallpapers/*.png -type f | shuf -n 1)
 fi
 
-# change layout to us
-setxkbmap us
-
 i3lock -n -e -k \
   -i "$lockbg" \
   --tiling \
