@@ -12,7 +12,7 @@ local gfs = require("gears.filesystem")
 local themes_path = gfs.get_configuration_dir() .. "themes/fresh/"
 local theme = {}
 
-theme.font          = "Noto Sans UI Bold 9"
+theme.font          = "Ubuntu Bold 9"
 
 theme.bg_normal     = xrdb.background
 theme.bg_focus      = theme.bg_normal
