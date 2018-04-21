@@ -76,6 +76,8 @@ augroup ale_cfg
   let g:ale_set_loclist = 1
   let g:ale_set_quickfix = 1
   let g:ale_lint_on_text_changed = "normal"
+  let g:ale_c_clang_options = '-std=gnu11 -Wall'
+  let g:ale_c_gcc_options = '-std=gnu11 -Wall'
 augroup END
 " }}}
 
