@@ -1,28 +1,35 @@
-.window-frame, .window-frame:backdrop {
- box-shadow: 0 0 0 black;
- border-style: none;
- margin: 0;
- border-radius: 0;
+/* Always use background color */
+GtkWindow {
+  background-color: @theme_bg_color;
+}
+
+/* Fix tooltip background override */
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.tooltip * {
+  background-color: transparent;
+}
+
+/* Fix Nautilus desktop window background override */
+NautilusWindow {
+  background-color: transparent;
+}
+.window-frame,
+.window-frame:backdrop {
+  box-shadow: 0 0 0 black;
+  border-style: none;
+  margin: 0;
+  border-radius: 0;
 }
 
 .titlebar {
- border-radius: 0;
+  border-radius: 0;
 }
 
 .window-frame.csd.popup {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.13);
-}
-
-headerbar.default-decoration {
- padding-top: 0px;
- padding-bottom: 0px;
- min-height: 0px;
- font-size: 0.6em;
-}
-
-headerbar.default-decoration button.titlebutton {
- padding: 0px;
- min-height: 0px;
 }
 
 .header-bar {
@@ -31,31 +38,6 @@ headerbar.default-decoration button.titlebutton {
   box-shadow: none;
 }
 
-@define-color theme_base_color #1d2021;
-@define-color theme_fg_color #bdae93;
-@define-color theme_active_color #504945;
-@define-color theme_insensitive_color #bdae93;
-@define-color theme_insensitive_bg #1d2021;
-
-@define-color theme_cursor_color #83a598;
-
-/* fallback mode */
-@define-color os_chrome_bg_color #1d2021;
-@define-color os_chrome_fg_color #bdae93;
-@define-color os_chrome_selected_bg_color #ebdbb2;
-@define-color os_chrome_selected_fg_color #504945;
-
-* {
-    /* Pidgin */
-    -GtkIMHtml-hyperlink-color: #83a598;
-    -GtkIMHtml-hyperlink-visited-color: #d3869b;
-    -GtkIMHtml-hyperlink-prelight-color: #fbf1c7;
-
-    /* Evolution */
-    -GtkHTML-link-color: #83a598;
-    -GtkHTML-vlink-color: #d3869b;
-    -GtkHTML-cite-color: #b8bb26;
-
-    -GtkWidget-link-color: #83a598;
-    -GtkWidget-visited-link-color: #d3869b;
+GtkLabel.title {
+  opacity: 0;
 }
