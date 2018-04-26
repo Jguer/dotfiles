@@ -1,5 +1,5 @@
+gtk-icon-theme-name   = "fresh"
 gtk-theme-name        = "Arc-Darker"
-gtk-icon-theme-name   = "Arc"
 gtk-cursor-theme-name = "Capitaine"
 gtk-font-name         = "Noto Sans UI 10"
 gtk-xft-antialias     = 1
