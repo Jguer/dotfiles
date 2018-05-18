@@ -33,10 +33,9 @@ xset -b r rate 190 35 &
 setxkbmap -layout "us,pt" -variant altgr-intl -option "grp:alt_shift_toggle" \
   -option caps:swapescape -option terminate:ctrl_alt_bksp &
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
 dbus-update-activation-environment --systemd DISPLAY
+# eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+# export SSH_AUTH_SOCK
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-export SSH_AUTH_SOCK
 
 exec awesome
