@@ -337,7 +337,7 @@ globalkeys = gears.table.join(
     {description = "screenshot window", group = "applications"}),
   awful.key({ modkey, "Shift" }, "c", function() awful.spawn("xkill") end,
     {description = "xkill", group = "applications"}),
-  awful.key({ modkey, }, "q", function() awful.spawn("firefox-nightly") end,
+  awful.key({ modkey, }, "q", function() awful.spawn("firefox-developer-edition") end,
     {description = "firefox", group = "applications"}),
   awful.key({ modkey, }, "p", function() xrandr.xrandr() end,
     {description = "xrandr", group = "applications"}),
