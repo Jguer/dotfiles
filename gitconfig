@@ -13,7 +13,7 @@
 [branch]
   autosetuprebase = always
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+  helper = /usr/lib/git-core/git-credential-libsecret
 [mergetool]
   prompt = true
 [merge]
@@ -27,9 +27,6 @@
 [diff]
   renames = copies
   indentHeuristic = true
-[diff "gpg"]
-  binary = true
-  textconv = gpg2 --decrypt --quiet --yes --compress-algo=none --no-encrypt-to --batch --use-agent
 [push]
   default = current
 [rebase]
@@ -39,5 +36,5 @@
   email = me@jguer.space
   name = Jguer
   signingkey = 09754DBECF21746F
-[url "https://github.com/"]
-  insteadOf = git://github.com/
+; [url "https://github.com/"]
+;   insteadOf = git://github.com/
