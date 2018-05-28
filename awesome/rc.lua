@@ -488,7 +488,6 @@ awful.rules.rules = {
   -- Floating clients.
   { rule_any = {
     instance = {
-      "DTA",  -- Firefox addon DownThemAll.
       "copyq",  -- Includes session name in class.
     },
     class = {
@@ -510,7 +509,8 @@ awful.rules.rules = {
       "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
     }
   }, properties = { floating = true }},
-
+  { rule = { class = "Firefox Developer Edition" },
+    properties = { maximized = false } },
   -- Add titlebars to normal clients and dialogs
   { rule_any = {type = { "dialog" }
     }, properties = { titlebars_enabled = true }
