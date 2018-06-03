@@ -251,6 +251,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " .-. Syntax .-.
 Plug 'sheerun/vim-polyglot'
