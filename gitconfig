@@ -1,19 +1,13 @@
 # ~/.gitconfig
-[alias]
-  assume = update-index --assume-unchanged
-  br = branch
-  ci = commit
-  co = checkout
-  dc = diff --cached
-  df = diff
-  last = log -1 HEAD
-  lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset %Cgreen%ad%Creset %s%C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --abbrev-commit
-  st = status
-  unassume = update-index --no-assume-changed
 [branch]
   autosetuprebase = always
+[commit]
+  gpgSign = true
 [credential]
   helper = /usr/lib/git-core/git-credential-libsecret
+[diff]
+  renames = copy
+  indentHeuristic = true
 [mergetool]
   prompt = true
 [merge]
@@ -24,14 +18,16 @@
   prompt = false
 [mergetool "nvimdiff"]
   cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[diff]
-  renames = copies
-  indentHeuristic = true
 [push]
-  default = current
+  default = simple
+  gpgSign = if-asked
 [rebase]
   autostash = true
   autosquash = true
+[url "ssh://aur@aur.archlinux.org/"]
+  insteadOf = https://aur.archlinux.org/
+  insteadOf = http://aur.archlinux.org/
+  insteadOf = git://aur.archlinux.org/
 [user]
   email = me@jguer.space
   name = Jguer
