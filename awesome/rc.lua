@@ -88,7 +88,11 @@ local function run_once(cmd_arr)
   end
 end
 
-run_once({"nm-applet",  "start-pulseaudio-x11","xss-lock -- " .. lock_cmd, "unclutter -root" , "env allow_rgb10_configs=false compton", "redshift -l 38.72:-9.15" }) -- entries must be comma-separated
+run_once({"nm-applet",
+  "numlockx",
+  "start-pulseaudio-x11", "xss-lock -- " .. lock_cmd,
+  "unclutter -root" , "env allow_rgb10_configs=false compton",
+  "redshift -l 38.72:-9.15" })
 -- }}}
 
 -- {{{ Menu
@@ -167,7 +171,6 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
--- @DOC_FOR_EACH_SCREEN@
 awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   set_wallpaper(s)
@@ -177,21 +180,15 @@ awful.screen.connect_for_each_screen(function(s)
   -- Each screen has its own tag table.
   awful.tag({ "◢", "◤", "◢", "◤", "◢", "◤"}, s, awful.layout.layouts[1])
 
-  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-  -- We need one layoutbox per screen.
   s.mylayoutbox = awful.widget.layoutbox(s)
   s.mylayoutbox:buttons(gears.table.join(
     awful.button({ }, 1, function () awful.layout.inc( 1) end),
     awful.button({ }, 3, function () awful.layout.inc(-1) end),
     awful.button({ }, 4, function () awful.layout.inc( 1) end),
     awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-  -- Create a taglist widget
+
   s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
-
-  -- Create a tasklist widget
   s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
-
-  -- Create the wibox
   s.mywibox = awful.wibar({ position = "top", screen = s, height= 20 })
 
   -- Add widgets to the wibox
