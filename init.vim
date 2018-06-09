@@ -2,18 +2,16 @@
 
 " Settings {{{
 
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+syntax on "Enable syntax
+filetype plugin indent on
 set termguicolors
 set clipboard=unnamedplus
 set mouse=a
 set noswapfile
-syntax on "Enable syntax
-filetype plugin indent on
 set autowriteall ""automatically save any changes made to the buffer before it is hidden.
 let mapleader = ","
 set hidden " Allow background buffers without saving
 set spell spelllang=en_us
-set splitright " Split to right by default
 
 set number
 set relativenumber "Relative number line
@@ -23,7 +21,6 @@ set showmatch "Highlight matching brackets
 set noshowmode " Don't show the current mode (airline.vim takes care of us)
 
 set expandtab    " Use Spaces
-set nowrap
 set tabstop=2 softtabstop=2 shiftwidth=2
 
 set ignorecase   " Ignore case when searching...
@@ -31,23 +28,16 @@ set smartcase    " ...unless we type a capital
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set showtabline=2 " Always show tab bar
 
-"" Text Wrapping
+" Text Wrapping {{{
 set textwidth=79
 set colorcolumn=80
 set nowrap
+"}}}
 
-let g:netrw_liststyle = 1 " Detail View
-let g:netrw_sizestyle = "H" " Human-readable file sizes
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
-let g:netrw_hide = 1 " hide dotfiles by default
-let g:netrw_banner = 0 " Turn off banner
-""" Explore in vertical split
-let g:netrw_winsize = 30
-
-set foldmethod=indent
-set foldlevel=20
+" Folding {{{
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
+" }}}
 " }}}
 
 " Plug Setup {{{
@@ -73,11 +63,17 @@ augroup ale_cfg
   autocmd!
   nmap <silent> <C-k> <Plug>(ale_previous_wrap)
   nmap <silent> <C-j> <Plug>(ale_next_wrap)
-  let g:ale_set_loclist = 1
-  let g:ale_set_quickfix = 1
+  let g:ale_set_loclist=1
+  let g:ale_sign_error=' ●'
+  let g:ale_sign_warning=' ●'
   let g:ale_lint_on_text_changed = "normal"
-  let g:ale_c_clang_options = '-std=gnu11 -Wall'
-  let g:ale_c_gcc_options = '-std=gnu11 -Wall'
+  let g:ale_lint_on_enter=1
+  let g:ale_lint_on_save=1
+  let g:ale_lint_on_filetype_changed=1
+  let g:ale_set_highlights=1
+  let g:ale_set_signs=1
+  let g:ale_c_clang_options = '-std=gnu11 -Wall -Wextra'
+  let g:ale_c_gcc_options = '-std=gnu11 -Wall -Wextra'
 augroup END
 " }}}
 
@@ -150,9 +146,30 @@ augroup END
 augroup airline_cfg
   autocmd!
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#buffer_idx_mode=1
+  let g:airline#extensions#tabline#tab_nr_type=1
+  let g:airline#extensions#tabline#show_tab_nr=0
+  let g:airline#extensions#tabline#show_close_button=0
+  let g:airline#extensions#tabline#exclude_preview=1
+  let g:airline#extensions#tabline#fnamecollapse=1
+  let g:airline#extensions#tabline#fnamemod=':~:.'
+  let g:airline#extensions#tabline#buffers_label='buffers'
+  let g:airline#extensions#tabline#tabs_label='tabs'
+  let g:airline#extensions#tabline#overflow_marker='…'
   let g:airline_highlighting_cache = 1
   let g:airline_powerline_fonts = 1
   let g:airline_theme='base16_google'
+augroup END
+" }}}
+
+" GitGutter {{{
+augroup gitgutter_cfg
+  autocmd!
+  let g:gitgutter_sign_added='┃'
+  let g:gitgutter_sign_modified='┃'
+  let g:gitgutter_sign_removed='◢'
+  let g:gitgutter_sign_removed_first_line='◥'
+  let g:gitgutter_sign_modified_removed='◢'
 augroup END
 " }}}
 
@@ -229,11 +246,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 " .-. Auto Completion .-.
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/deoplete-clangx', { 'for': 'C' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/neoinclude.vim'
 
 " .-. Appearance .-.
 Plug 'vim-airline/vim-airline'
@@ -251,11 +267,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
-Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'C' }
 
 " .-. Syntax .-.
 Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 call plug#end()
