@@ -1,6 +1,4 @@
----------------------------
--- Default awesome theme --
----------------------------
+-- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
@@ -10,10 +8,16 @@ local xrdb = xresources.get_current_theme()
 local util = require("awful.util")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
-local themes_path = gfs.get_configuration_dir() .. "themes/fresh/"
 local theme = {}
+local themes_path = gfs.get_configuration_dir() .. "fresh/"
 
-theme.font          = "Noto Sans Display Bold 9"
+theme.themes_path = themes_path
+
+theme.panel_height  = dpi(24)
+
+theme.font          = "Noto Sans Display Bold 10"
+theme.hotkeys_font  = "Noto Sans Bold 11"
+theme.hotkeys_description_font  = "Noto Sans 11"
 
 theme.bg_normal     = xrdb.background
 theme.bg_focus      = theme.bg_normal
@@ -37,6 +41,11 @@ theme.notification_shape = gears.shape.rounded_rect
 
 theme.useless_gap   = dpi(3)
 
+theme.hotkeys_modifiers_fg = xrdb.color12
+theme.hotkeys_border_color = xrdb.color3
+theme.hotkeys_shape = function(cr, width, height)
+  gears.shape.rounded_rect(cr, width, height, 2)
+end
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -101,22 +110,23 @@ theme.set_wallpaper = function(s)
 end
 
 -- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."layouts/fairhw.png"
-theme.layout_fairv = themes_path.."layouts/fairvw.png"
-theme.layout_floating  = themes_path.."layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."layouts/magnifierw.png"
-theme.layout_max = themes_path.."layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."layouts/tileleftw.png"
-theme.layout_tile = themes_path.."layouts/tilew.png"
-theme.layout_tiletop = themes_path.."layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."layouts/cornersew.png"
+theme.layout_fairh = themes_path.."layouts/fair.svg"
+theme.layout_fairv = themes_path.."layouts/fair.svg"
+theme.layout_floating  = themes_path.."layouts/floating.svg"
+theme.layout_magnifier = themes_path.."layouts/magnifier.svg"
+theme.layout_max = themes_path.."layouts/max.svg"
+theme.layout_fullscreen = themes_path.."layouts/fullscreen.svg"
+theme.layout_tilebottom = themes_path.."layouts/tilebottom.svg"
+theme.layout_tileleft   = themes_path.."layouts/tileleft.svg"
+theme.layout_tile = themes_path.."layouts/tile.svg"
+theme.layout_tiletop = themes_path.."layouts/tiletop.svg"
+theme.layout_spiral  = themes_path.."layouts/spiral.svg"
+theme.layout_dwindle = themes_path.."layouts/spiral.svg"
+theme.layout_cornernw = themes_path.."layouts/cornernw.svg"
+theme.layout_cornerne = themes_path.."layouts/cornerne.svg"
+theme.layout_cornersw = themes_path.."layouts/cornersw.svg"
+theme.layout_cornerse = themes_path.."layouts/cornerse.svg"
+theme_assets.recolor_layout(theme, xrdb.foreground)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
@@ -124,4 +134,3 @@ theme.icon_theme = fresh
 
 return theme
 
--- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
