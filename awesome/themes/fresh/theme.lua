@@ -112,7 +112,7 @@ theme.layout_cornerse = themes_path.."layouts/cornersew.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = Arc
+theme.icon_theme = fresh
 
 return theme
 
