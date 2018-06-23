@@ -1,12 +1,11 @@
 local setmetatable = setmetatable
-local textbox = require("wibox.widget.textbox")
-local button = require("awful.button")
-local gears = require("gears")
-local awful = require("awful")
-local beautiful = require("beautiful")
-local widget_base = require("wibox.widget.base")
-local wibox = require("wibox")
-local gears_color = require("gears.color")
+local button        = require("awful.button")
+local gears         = require("gears")
+local awful         = require("awful")
+local beautiful     = require("beautiful")
+local widget_base   = require("wibox.widget.base")
+local wibox         = require("wibox")
+local gears_color   = require("gears.color")
 local recolor_image = gears_color.recolor_image
 
 local pulse = { mt = {} }
@@ -110,6 +109,7 @@ function pulse.new(timeout)
       update_status(self)
     end
   }
+  pulse.instance = self
   return self
 end
 
