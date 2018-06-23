@@ -79,30 +79,30 @@ awful.screen.connect_for_each_screen(function(s)
   -- Each screen has its own tag table.
   awful.tag({ "◢", "◤", "◢", "◤", "◢", "◤"}, s, awful.layout.layouts[1])
 
-  s.mylayoutbox = awful.widget.layoutbox(s)
-  s.mylayoutbox:buttons(gears.table.join(
+  s.layoutbox = awful.widget.layoutbox(s)
+  s.layoutbox:buttons(gears.table.join(
     awful.button({ }, 1, function () awful.layout.inc( 1) end),
     awful.button({ }, 3, function () awful.layout.inc(-1) end),
     awful.button({ }, 4, function () awful.layout.inc( 1) end),
     awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 
-  s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
-  s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
-  s.mywibox = awful.wibar({ position = "top", screen = s, height = beautiful.panel_height })
+  s.taglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+  s.tasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+  s.wibox = awful.wibar({ position = "top", screen = s, height = beautiful.panel_height })
 
   -- Add widgets to the wibox
-  s.mywibox:setup {
+  s.wibox:setup {
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      s.mylayoutbox,
-      s.mytaglist,
+      s.layoutbox,
+      s.taglist,
     },
     {
       layout = wibox.layout.align.horizontal,
       expand = "outside",
       nil,
-      s.mytasklist,
+      s.tasklist,
     },
     widgets.right
   }
