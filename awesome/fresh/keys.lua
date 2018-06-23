@@ -8,6 +8,7 @@ local hotkeys = { mouse = {}, keys = {}}
 
 local xrandr = require("fresh.widgets.xrandr")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local pulse     = require("fresh.widgets.pulse")
 
 local altkey = "Mod1"
 
@@ -121,19 +122,19 @@ function hotkeys:init(args)
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
       {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ altkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ altkey,           }, "l",     function() awful.tag.incmwfact( 0.05)          end,
       {description = "increase master width factor", group = "layout"}),
-    awful.key({ altkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ altkey,           }, "h",     function() awful.tag.incmwfact(-0.05)          end,
       {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+    awful.key({ modkey, "Shift"   }, "h",     function() awful.tag.incnmaster( 1, nil, true) end,
       {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+    awful.key({ modkey, "Shift"   }, "l",     function() awful.tag.incnmaster(-1, nil, true) end,
       {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+    awful.key({ modkey, "Control" }, "h",     function() awful.tag.incncol( 1, nil, true)    end,
       {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+    awful.key({ modkey, "Control" }, "l",     function() awful.tag.incncol(-1, nil, true)    end,
       {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    awful.key({ modkey,           }, "space", function() awful.layout.inc( 1)                end,
       {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
       {description = "select previous", group = "layout"}),
@@ -142,17 +143,17 @@ function hotkeys:init(args)
       {description = "restore minimized", group = "client"}),
 
     -- Volume and Music
-    awful.key({}, "XF86AudioRaiseVolume", function () awful.spawn("amixer -D pulse sset Master 5%+", false)   end,
+    awful.key({}, "XF86AudioRaiseVolume", function() pulse.instance.set_volume("5%+") end,
       {description = "increase volume", group = "audio"}),
-    awful.key({ altkey, }, "Up", function () awful.spawn("amixer -D pulse sset Master 5%+", false)   end,
+    awful.key({ altkey, }, "Up", function () pulse.instance.set_volume("5%+") end,
       {description = "increase volume", group = "audio"}),
-    awful.key({}, "XF86AudioLowerVolume", function () awful.spawn("amixer -D pulse sset Master 5%-", false) end,
+    awful.key({}, "XF86AudioLowerVolume", function() pulse.instance.set_volume("5%-") end,
       {description = "decrease volume", group = "audio"}),
-    awful.key({ altkey, }, "Down", function () awful.spawn("amixer -D pulse sset Master 5%-", false) end,
+    awful.key({ altkey, }, "Down", function () pulse.instance.set_volume("5%-") end,
       {description = "decrease volume", group = "audio"}),
-    awful.key({}, "XF86AudioMute", function () awful.spawn("amixer -D pulse sset Master toggle", false) end,
+    awful.key({}, "XF86AudioMute", function () pulse.instance.toggle_mute() end,
       {description = "toggle volume", group = "audio"}),
-    awful.key({ altkey, }, "m", function () awful.spawn("amixer -D pulse sset Master toggle", false) end,
+    awful.key({ altkey, }, "m", function () pulse.instance.toggle_mute() end,
       {description = "toggle volume", group = "audio"}),
 
     awful.key({}, "XF86AudioPlay", function () awful.spawn("playerctl play-pause", false) end,
