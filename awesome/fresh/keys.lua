@@ -52,6 +52,13 @@ local focus_switch_byid = function(id)
   end
 end
 
+local focus_switch_byd = function(dir)
+  return function()
+    awful.client.focus.global_bydirection(dir)
+    -- if client.focus then client.focus:raise() end
+  end
+end
+
 function hotkeys:init(args)
   local args = args or {}
   local modkey = args.modkey
@@ -78,12 +85,21 @@ function hotkeys:init(args)
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
       {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "j", focus_switch_byid(1),
-      {description = "focus next by index", group = "client"}
-    ),
-    awful.key({ modkey,           }, "k", focus_switch_byid(-1),
-      {description = "focus previous by index", group = "client"}
-    ),
+    -- Switch By ID
+    -- awful.key({ modkey,           }, "j", focus_switch_byid(1),
+    --   {description = "focus next by index", group = "client"}
+    -- ),
+    -- awful.key({ modkey,           }, "k", focus_switch_byid(-1),
+    --   {description = "focus previous by index", group = "client"}
+    -- ),
+    awful.key({ modkey,           }, "l", focus_switch_byd("right"),
+      {description = "focus next by index", group = "client"}),
+    awful.key({ modkey,           }, "h", focus_switch_byd("left"),
+      {description = "focus previous by index", group = "client"}),
+    awful.key({ modkey,           }, "k", focus_switch_byd("up"),
+      {description = "focus next by index", group = "client"}),
+    awful.key({ modkey,           }, "j", focus_switch_byd("down"),
+      {description = "focus previous by index", group = "client"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -105,9 +121,9 @@ function hotkeys:init(args)
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
       {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ altkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
       {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ altkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
       {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
       {description = "increase the number of master clients", group = "layout"}),

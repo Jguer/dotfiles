@@ -35,11 +35,12 @@ theme.border_normal = xrdb.color12
 theme.border_focus  = xrdb.color3
 theme.border_marked = xrdb.color5
 
-theme.taglist_fg_occupied = xrdb.color12
+theme.taglist_fg_occupied   = xrdb.color12
 theme.tasklist_disable_icon = true
-theme.notification_shape = gears.shape.rounded_rect
+theme.notification_shape    = gears.shape.rounded_rect
 
-theme.useless_gap   = dpi(3)
+theme.useless_gap       = dpi(3)
+theme.gap_single_client = true
 
 theme.widget = {
   bg = xrdb.foreground,
