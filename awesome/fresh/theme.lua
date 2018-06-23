@@ -41,6 +41,12 @@ theme.notification_shape = gears.shape.rounded_rect
 
 theme.useless_gap   = dpi(3)
 
+theme.widget = {
+  bg = xrdb.foreground,
+  fg = xrdb.color12,
+  off = xrdb.color1
+}
+
 theme.hotkeys_modifiers_fg = xrdb.color12
 theme.hotkeys_border_color = xrdb.color3
 theme.hotkeys_shape = function(cr, width, height)
