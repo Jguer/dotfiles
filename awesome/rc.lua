@@ -1,5 +1,6 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
 -- {{{ Standard awesome library
+--
 local gears             = require("gears")
 local awful             = require("awful")
 local wibox             = require("wibox")
@@ -100,7 +101,7 @@ awful.screen.connect_for_each_screen(function(s)
     },
     {
       layout = wibox.layout.align.horizontal,
-      expand = "outside",
+      expand = "none",
       nil,
       s.tasklist,
     },
