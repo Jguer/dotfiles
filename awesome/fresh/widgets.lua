@@ -43,7 +43,7 @@ function widgets:init(args)
     pulse_bar,
   }
 
-  if (hostname == "harkonnen" ) then
+  if (string.match(hostname, "harkonnen")) then
     local battery_widget    = require("fresh.widgets.batteryarc")
     local brightness_widget = require("fresh.widgets.brightness")
     self.right = gears.table.join(self.right,
