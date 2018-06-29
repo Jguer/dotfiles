@@ -117,7 +117,7 @@ local _instance = nil;
 
 function pulse.mt:__call(...)
   if _instance == nil then
-    _instance = pulse.new(...)
+    _instance = self.new(...)
   end
   return _instance
 end
