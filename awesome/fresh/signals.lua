@@ -1,5 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local gears         = require("gears")
 
 local signals = {}
 
@@ -28,6 +29,11 @@ function signals:init()
     function(c)
       -- put client at the end of list
       awful.client.setslave(c)
+      client.connect_signal("manage", function (c)
+        c.shape = function(cr,w,h)
+          gears.shape.rounded_rect(cr,w,h,2)
+        end
+      end)
 
       -- startup placement
       if awesome.startup

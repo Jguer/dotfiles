@@ -20,7 +20,9 @@ function widgets:init(args)
   local hostname = readAll("/etc/hostname")
   local keyboardlayout = awful.widget.keyboardlayout()
 
-  local textclock = wibox.widget.textclock("GMT: %H:%M")
+  local textclock = wibox.widget.textclock("%H:%M %d/%b ")
+  local month_calendar = awful.widget.calendar_popup.month()
+  month_calendar:attach(textclock, 'tr')
 
   local pulse_bar = pulse(6)
 
