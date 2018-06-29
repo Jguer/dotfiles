@@ -3,6 +3,7 @@ local awful     = require("awful")
 local gears     = require("gears")
 local wibox     = require("wibox")
 local pulse     = require("fresh.widgets.pulse")
+local wseparator = require("fresh.widgets.separator")
 
 local widgets = { right = {}}
 
@@ -23,16 +24,7 @@ function widgets:init(args)
 
   local pulse_bar = pulse(6)
 
-  local separator = wibox.widget {
-    {
-      left   = 4,
-      right  = 4,
-      top    = 0,
-      bottom = 0,
-      widget = wibox.container.margin
-    },
-    widget             = wibox.container.background
-  }
+  local separator = wseparator.vertical()
 
   self.right = { -- Right widgets
     layout = wibox.layout.fixed.horizontal,
@@ -55,8 +47,7 @@ function widgets:init(args)
 
   self.right = gears.table.join(self.right,
     { separator,
-      textclock,
-      separator
+      textclock
     })
 end
 
