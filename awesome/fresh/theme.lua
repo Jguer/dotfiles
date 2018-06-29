@@ -19,7 +19,7 @@ theme.font          = "Noto Sans Display Bold 10"
 theme.hotkeys_font  = "Noto Sans Bold 11"
 theme.hotkeys_description_font  = "Noto Sans 11"
 
-theme.bg_normal     = xrdb.background .. "60"
+theme.bg_normal     = xrdb.background .. "80"
 theme.bg_systray = theme.bg_normal
 theme.systray_icon_spacing = dpi(4)
 

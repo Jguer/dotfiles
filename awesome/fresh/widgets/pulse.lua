@@ -61,7 +61,13 @@ function pulse.new(timeout)
     },
     background_color = beautiful.widget.bg,
     color            = beautiful.widget.fg,
-    shape            = gears.shape.rounded_bar,
+    shape            = function(cr, width, height)
+      gears.shape.rounded_rect(cr, width, height, 2)
+    end
+    ,
+    ticks = 5,
+    ticks_gap = 1,
+    ticks_size = 10,
     widget           = wibox.widget.progressbar,
   }
 
