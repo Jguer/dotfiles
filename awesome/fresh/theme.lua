@@ -33,9 +33,9 @@ theme.fg_focus      = xrdb.color3
 theme.fg_urgent     = xrdb.color1
 theme.fg_minimize   = xrdb.color6
 
-theme.border_width  = dpi(4)
-theme.useless_gap   = dpi(2)
-theme.border_normal = xrdb.color12
+theme.border_width  = dpi(3)
+theme.useless_gap   = dpi(3)
+theme.border_normal = xrdb.color4
 theme.border_focus  = xrdb.color3
 theme.border_marked = xrdb.color5
 
@@ -44,15 +44,15 @@ theme.tasklist_disable_icon = true
 theme.notification_shape    = gears.shape.rounded_rect
 theme.tasklist_align= "center"
 
-theme.gap_single_client = true
+theme.gap_single_client = false
 
 theme.widget = {
   bg = xrdb.foreground,
-  fg = xrdb.color12,
+  fg = xrdb.color4,
   off = xrdb.color1
 }
 
-theme.hotkeys_modifiers_fg = xrdb.color12
+theme.hotkeys_modifiers_fg = xrdb.color3
 theme.hotkeys_border_color = xrdb.color3
 theme.hotkeys_shape = function(cr, width, height)
   gears.shape.rounded_rect(cr, width, height, 2)
