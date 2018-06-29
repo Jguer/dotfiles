@@ -19,7 +19,10 @@ theme.font          = "Noto Sans Display Bold 10"
 theme.hotkeys_font  = "Noto Sans Bold 11"
 theme.hotkeys_description_font  = "Noto Sans 11"
 
-theme.bg_normal     = xrdb.background
+theme.bg_normal     = xrdb.background .. "60"
+theme.bg_systray = theme.bg_normal
+theme.systray_icon_spacing = dpi(4)
+
 theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = theme.bg_normal
 theme.bg_minimize   = theme.bg_normal
@@ -30,7 +33,8 @@ theme.fg_focus      = xrdb.color3
 theme.fg_urgent     = xrdb.color1
 theme.fg_minimize   = xrdb.color6
 
-theme.border_width  = dpi(2)
+theme.border_width  = dpi(4)
+theme.useless_gap   = dpi(2)
 theme.border_normal = xrdb.color12
 theme.border_focus  = xrdb.color3
 theme.border_marked = xrdb.color5
@@ -40,7 +44,6 @@ theme.tasklist_disable_icon = true
 theme.notification_shape    = gears.shape.rounded_rect
 theme.tasklist_align= "center"
 
-theme.useless_gap       = dpi(3)
 theme.gap_single_client = true
 
 theme.widget = {
@@ -54,6 +57,7 @@ theme.hotkeys_border_color = xrdb.color3
 theme.hotkeys_shape = function(cr, width, height)
   gears.shape.rounded_rect(cr, width, height, 2)
 end
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
