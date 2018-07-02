@@ -143,17 +143,17 @@ function hotkeys:init(args)
       {description = "restore minimized", group = "client"}),
 
     -- Volume and Music
-    awful.key({}, "XF86AudioRaiseVolume", function() pulse.instance.set_volume("5%+") end,
+    awful.key({}, "XF86AudioRaiseVolume", function() pulse().set_volume("5%+") end,
       {description = "increase volume", group = "audio"}),
-    awful.key({ altkey, }, "Up", function () pulse.instance.set_volume("5%+") end,
+    awful.key({ altkey, }, "Up", function () pulse().set_volume("5%+") end,
       {description = "increase volume", group = "audio"}),
-    awful.key({}, "XF86AudioLowerVolume", function() pulse.instance.set_volume("5%-") end,
+    awful.key({}, "XF86AudioLowerVolume", function() pulse().set_volume("5%-") end,
       {description = "decrease volume", group = "audio"}),
-    awful.key({ altkey, }, "Down", function () pulse.instance.set_volume("5%-") end,
+    awful.key({ altkey, }, "Down", function () pulse().set_volume("5%-") end,
       {description = "decrease volume", group = "audio"}),
-    awful.key({}, "XF86AudioMute", function () pulse.instance.toggle_mute() end,
+    awful.key({}, "XF86AudioMute", function () pulse().toggle_mute() end,
       {description = "toggle volume", group = "audio"}),
-    awful.key({ altkey, }, "m", function () pulse.instance.toggle_mute() end,
+    awful.key({ altkey, }, "m", function () pulse().toggle_mute() end,
       {description = "toggle volume", group = "audio"}),
 
     awful.key({}, "XF86AudioPlay", function () awful.spawn("playerctl play-pause", false) end,
