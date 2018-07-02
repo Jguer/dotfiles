@@ -111,7 +111,6 @@ function pulse.new(timeout)
       update_status(self)
     end
   }
-  pulse.instance = self
   return self
 end
 
