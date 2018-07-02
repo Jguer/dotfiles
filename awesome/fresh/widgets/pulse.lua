@@ -9,7 +9,8 @@ local gears_color   = require("gears.color")
 local recolor_image = gears_color.recolor_image
 
 local pulse = { mt = {} }
-local request_command = 'amixer -D pulse sget Master'
+local alsaCommand = 'amixer get Master | grep -P -o "\\[(on|off)\\]|[0-9]+(%=?)"';
+alsaCommand = "bash -c '"..alsaCommand.."'";
 
 local style = {
   width   = 100,
@@ -18,29 +19,24 @@ local style = {
 
 -- Callback for updating current status.
 local function update_status (self)
-  awful.spawn.easy_async(request_command, function(stdout, _, _, _)
-    local volume = string.match(stdout, "(%d?%d?%d)%%")
-    volume = tonumber(string.format("% 3d", volume))
-    local mute = string.match(stdout, "%[(o%D%D?)%]")
-
-    if self.mute ~= mute then
-      self.mute = mute
-      if mute == "off" then
+  awful.spawn.with_line_callback(alsaCommand, {
+    stdout = function(line)
+      if line:find("off") then
         self.icon:set_image(
           recolor_image(style.icon, beautiful.widget.off))
         self.dash:set_color(beautiful.widget.off)
-      else
+      elseif line:find("on") then
         self.icon:set_image(
           recolor_image(style.icon, beautiful.widget.bg))
         self.dash:set_color(beautiful.widget.fg)
+      else
+        local volume = tonumber(line:match("%d+"));
+        self.volume = volume
+        self.dash:set_value(volume/100)
       end
-    end
-
-    if self.volume ~= volume then
-      self.volume = volume
-      self.dash:set_value(volume/100)
-    end
-  end)
+    end;
+    stderr = function() end;
+  })
 end
 
 -- @return A pulse widget.
@@ -102,8 +98,8 @@ function pulse.new(timeout)
 
   -- Mouse bindings
   self:buttons(gears.table.join(
-    button({ }, 4, function() self.set_volume("5%+") end),
-    button({ }, 5, function() self.set_volume("5%-") end),
+    button({ }, 4, function() self.set_volume("2%+") end),
+    button({ }, 5, function() self.set_volume("2%-") end),
     button({ }, 1, function() self.toggle_mute() end)))
 
   update_status(self)
