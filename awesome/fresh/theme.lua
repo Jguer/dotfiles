@@ -39,7 +39,7 @@ theme.border_normal = xrdb.color4
 theme.border_focus  = xrdb.color3
 theme.border_marked = xrdb.color5
 
-theme.taglist_fg_occupied   = xrdb.color12
+theme.taglist_fg_occupied   = xrdb.color4
 theme.tasklist_disable_icon = true
 theme.notification_shape    = gears.shape.rounded_rect
 theme.tasklist_align= "center"
