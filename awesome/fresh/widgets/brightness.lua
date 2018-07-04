@@ -30,8 +30,10 @@ end
 
 function brightness.new(timeout)
   local icon = wibox.widget {
-    image  = recolor_image(style.icon, beautiful.widget.bg),
+    image  = recolor_image(style.icon, beautiful.widget.fg),
     resize = true,
+    forced_width = 24,
+    forced_height = 24,
     widget = wibox.widget.imagebox
   }
 
@@ -44,7 +46,7 @@ function brightness.new(timeout)
   }
 
   local layout = wibox.layout.fixed.horizontal()
-  layout:add(wibox.container.margin(icon, 0, 6, 3, 3))
+  layout:add(wibox.container.margin(icon, 0, 6, 3, 2))
   layout:add(text)
 
   local widget = wibox.container.constraint(layout, "exact", style.width)
@@ -53,14 +55,18 @@ function brightness.new(timeout)
   self.text = text
 
   self.set_brightness = function(step)
-    awful.spawn("light -S " .. step, false)
+    if step < 0 then
+      awful.spawn("light -U " .. -step, false)
+    else
+      awful.spawn("light -A " .. step, false)
+    end
     update_status(self)
   end
 
   -- Mouse bindings
   self:buttons(gears.table.join(
-    button({ }, 4, function() self.set_brightness("+2") end),
-    button({ }, 5, function() self.set_brightness("-2") end)))
+    button({ }, 4, function() self.set_brightness(2) end),
+    button({ }, 5, function() self.set_brightness(-2) end)))
 
   update_status(self)
   gears.timer {

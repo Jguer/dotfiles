@@ -24,14 +24,12 @@ local function update_status (self)
       if line:find("off") then
         self.icon:set_image(
           recolor_image(style.mute_icon, beautiful.widget.off))
-        self.dash:set_color(beautiful.widget.off)
       elseif line:find("on") then
         self.icon:set_image(
           recolor_image(style.icon, beautiful.widget.fg))
-        self.dash:set_color(beautiful.widget.fg)
       else
         local volume = tonumber(line:match("%d+"));
-        self.dash:set_text(volume .. "%")
+        self.text:set_text(volume .. "%")
       end
 
     end;
@@ -45,25 +43,27 @@ function pulse.new(timeout)
   local icon = wibox.widget {
     image  = recolor_image(style.icon, beautiful.widget.bg),
     resize = true,
+    forced_width = 24,
+    forced_height = 24,
     widget = wibox.widget.imagebox
   }
 
-  local dash = wibox.widget{
+  local text = wibox.widget{
     text = '0%',
     align  = 'center',
     valign = 'center',
-    forced_width = 30,
+    forced_width = 42,
     widget = wibox.widget.textbox
   }
 
   local layout = wibox.layout.fixed.horizontal()
-  layout:add(wibox.container.margin(icon, 0, 6, 3, 3))
-  layout:add(dash)
+  layout:add(wibox.container.margin(icon, 0, 6, 3, 2))
+  layout:add(text)
 
   local widget = wibox.container.constraint(layout, "exact", style.width)
   local self = widget_base.make_widget(widget)
   self.icon = icon
-  self.dash = dash
+  self.text = text
 
   self.set_volume = function(step)
     awful.spawn("amixer -D pulse sset Master ".. step, false)
