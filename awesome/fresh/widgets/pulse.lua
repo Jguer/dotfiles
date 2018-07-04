@@ -1,4 +1,4 @@
-local setmetatable = setmetatable
+local setmetatable  = setmetatable
 local button        = require("awful.button")
 local gears         = require("gears")
 local awful         = require("awful")
@@ -15,6 +15,7 @@ alsaCommand = "bash -c '"..alsaCommand.."'";
 local style = {
   width   = 56,
   icon    = beautiful.themes_path .. "widgets/audio.svg",
+  mute_icon    = beautiful.themes_path .. "widgets/mute.svg",
 }
 
 local function update_status (self)
@@ -22,7 +23,7 @@ local function update_status (self)
     stdout = function(line)
       if line:find("off") then
         self.icon:set_image(
-          recolor_image(style.icon, beautiful.widget.off))
+          recolor_image(style.mute_icon, beautiful.widget.off))
         self.dash:set_color(beautiful.widget.off)
       elseif line:find("on") then
         self.icon:set_image(
@@ -32,10 +33,12 @@ local function update_status (self)
         local volume = tonumber(line:match("%d+"));
         self.dash:set_text(volume .. "%")
       end
+
     end;
     stderr = function() end;
   })
 end
+
 
 -- @return A pulse widget.
 function pulse.new(timeout)
