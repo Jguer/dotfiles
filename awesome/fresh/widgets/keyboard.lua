@@ -34,11 +34,8 @@ function keyboard.new()
   self.icon = icon
   self.text = text
 
-  local month_calendar = awful.widget.calendar_popup.month()
-  month_calendar:attach(self, 'tr')
-
   -- Mouse bindings, for when you want to add GMT change
-  -- self:buttons(gears.table.join(button({ }, 1, function() self.toggle_mute() end)))
+  self:buttons(self.text:buttons())
 
   return self
 end
