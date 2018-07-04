@@ -27,17 +27,31 @@ local function show_battery_warning()
     width = 300,
   }
 end
+local notification local function show_battery_status()
+  awful.spawn.easy_async([[bash -c 'acpi']],
+    function(stdout, _, _, _)
+      notification = naughty.notify {
+        text = stdout,
+        title = "Battery status",
+        timeout = 5,
+        hover_timeout = 0.5,
+        width = 200,
+      }
+    end)
+end
 
 local function update_status (self)
   awful.spawn.with_line_callback("acpi", {
     stdout = function(line)
-      local _, status, charge_str, time = string.match(line, '(.+): (%a+), (%d?%d%d)%%,? ?.*')
+      local _, status, charge_str, _ = string.match(line, '(.+): (%a+), (%d?%d%d)%%,? ?.*')
       local charge = tonumber(charge_str)
 
       if self.mode == true then
-        self.text = charge_str .. "%"
+        self.text:set_text(charge .. "%")
       else
-        self.text = time
+        local time_left = string.match(line, ".-(%d+:%d+)")
+
+        self.text:set_text(time_left)
       end
 
       if status == 'Charging' then
@@ -49,7 +63,7 @@ local function update_status (self)
             show_battery_warning()
           end
         else
-          self.icon.image  = recolor_image(style.icon, beautiful.widget.bg)
+          self.icon.image  = recolor_image(style.icon, beautiful.widget.fg)
         end
       end
 
@@ -63,6 +77,8 @@ function battery.new(timeout)
   local icon = wibox.widget {
     image  = recolor_image(style.icon, beautiful.widget.bg),
     resize = true,
+    forced_width = 24,
+    forced_height = 24,
     widget = wibox.widget.imagebox
   }
 
@@ -70,12 +86,12 @@ function battery.new(timeout)
     text = '0%',
     align  = 'center',
     valign = 'center',
-    forced_width = 30,
+    forced_width = 48,
     widget = wibox.widget.textbox
   }
 
   local layout = wibox.layout.fixed.horizontal()
-  layout:add(wibox.container.margin(icon, 0, 6, 3, 3))
+  layout:add(wibox.container.margin(icon, 0, 0, 3, 2))
   layout:add(text)
 
   local widget = wibox.container.constraint(layout, "exact", style.width)
@@ -86,7 +102,14 @@ function battery.new(timeout)
 
   -- Mouse bindings
   self:buttons(gears.table.join(
-    button({ }, 1, function() self.mode = not self.mode end)))
+    button({ }, 1, function()
+      self.mode = not self.mode
+      update_status(self)
+    end)))
+
+
+  self:connect_signal("mouse::enter", function() show_battery_status(self) end)
+  self:connect_signal("mouse::leave", function() naughty.destroy(notification) end)
 
   update_status(self)
   gears.timer {

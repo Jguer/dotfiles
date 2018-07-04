@@ -1,6 +1,4 @@
 local setmetatable = setmetatable
-local button        = require("awful.button")
-local gears         = require("gears")
 local awful         = require("awful")
 local beautiful     = require("beautiful")
 local widget_base   = require("wibox.widget.base")
@@ -20,14 +18,15 @@ function timewidget.new()
   local icon = wibox.widget {
     image  = recolor_image(style.icon, beautiful.widget.fg),
     resize = true,
+    forced_width = 24,
+    forced_height = 24,
     widget = wibox.widget.imagebox
   }
 
   local text = wibox.widget.textclock("%H:%M", 60)
-  text.forced_width = 32
 
   local layout = wibox.layout.fixed.horizontal()
-  layout:add(wibox.container.margin(icon, 0, 6, 3, 3))
+  layout:add(wibox.container.margin(icon, 0, 2, 3, 2))
   layout:add(text)
 
   local widget = wibox.container.constraint(layout, "exact", style.width)
