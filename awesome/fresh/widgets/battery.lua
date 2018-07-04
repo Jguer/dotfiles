@@ -7,28 +7,59 @@ local widget_base   = require("wibox.widget.base")
 local wibox         = require("wibox")
 local gears_color   = require("gears.color")
 local recolor_image = gears_color.recolor_image
+local naughty = require("naughty")
 
-local brightness = { mt = {} }
+local battery = { mt = {} }
 
 local style = {
   width   = 56,
-  icon    = beautiful.themes_path .. "widgets/brightness.svg",
+  icon    = beautiful.themes_path .. "widgets/battery.svg",
 }
 
---local GET_BRIGHTNESS_CMD = "xbacklight -get"
-local brightness_cmd = "light -G"
+local function show_battery_warning()
+  naughty.notify {
+    icon = recolor_image(style.icon, beautiful.widget.off),
+    icon_size = 100,
+    text = "I keep hearing about battery innovation, but it never makes it to my phone.",
+    title = "Battery is dying",
+    timeout = 5,
+    hover_timeout = 0.5,
+    width = 300,
+  }
+end
 
 local function update_status (self)
-  awful.spawn.with_line_callback(brightness_cmd, {
+  awful.spawn.with_line_callback("acpi", {
     stdout = function(line)
-      local brightness_level = tonumber(string.format("%.0f", line))
-      self.text:set_text(brightness_level .. "%")
+      local _, status, charge_str, time = string.match(line, '(.+): (%a+), (%d?%d%d)%%,? ?.*')
+      local charge = tonumber(charge_str)
+
+      if self.mode == true then
+        self.text = charge_str .. "%"
+      else
+        self.text = time
+      end
+
+      if status == 'Charging' then
+        self.icon.image  = recolor_image(style.icon, beautiful.widget.charging)
+      else
+        if charge < 15 then
+          self.icon.image  = recolor_image(style.icon, beautiful.widget.off)
+          if status ~= 'Charging' then
+            show_battery_warning()
+          end
+        else
+          self.icon.image  = recolor_image(style.icon, beautiful.widget.bg)
+        end
+      end
+
     end;
     stderr = function() end;
   })
 end
 
-function brightness.new(timeout)
+-- @return A battery widget.
+function battery.new(timeout)
   local icon = wibox.widget {
     image  = recolor_image(style.icon, beautiful.widget.bg),
     resize = true,
@@ -51,16 +82,11 @@ function brightness.new(timeout)
   local self = widget_base.make_widget(widget)
   self.icon = icon
   self.text = text
-
-  self.set_brightness = function(step)
-    awful.spawn("light -S " .. step, false)
-    update_status(self)
-  end
+  self.mode = true
 
   -- Mouse bindings
   self:buttons(gears.table.join(
-    button({ }, 4, function() self.set_brightness("+2") end),
-    button({ }, 5, function() self.set_brightness("-2") end)))
+    button({ }, 1, function() self.mode = not self.mode end)))
 
   update_status(self)
   gears.timer {
@@ -76,11 +102,11 @@ end
 
 local _instance = nil;
 
-function brightness.mt:__call(...)
+function battery.mt:__call(...)
   if _instance == nil then
     _instance = self.new(...)
   end
   return _instance
 end
 
-return setmetatable(brightness, brightness.mt)
+return setmetatable(battery, battery.mt)

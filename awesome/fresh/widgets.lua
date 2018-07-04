@@ -1,9 +1,11 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
-local awful     = require("awful")
-local gears     = require("gears")
-local wibox     = require("wibox")
-local pulse     = require("fresh.widgets.pulse")
+local awful      = require("awful")
+local gears      = require("gears")
+local wibox      = require("wibox")
+local wpulse     = require("fresh.widgets.pulse")
 local wseparator = require("fresh.widgets.separator")
+local wtime      = require("fresh.widgets.timewidget")
+local wkeyboard  = require("fresh.widgets.keyboard")
 
 local widgets = { right = {}}
 
@@ -18,38 +20,30 @@ function widgets:init(args)
   local args = args or {}
 
   local hostname = readAll("/etc/hostname")
-  local keyboardlayout = awful.widget.keyboardlayout()
-
-  local textclock = wibox.widget.textclock("%H:%M %d/%b ")
-  local month_calendar = awful.widget.calendar_popup.month()
-  month_calendar:attach(textclock, 'tr')
-
-  local pulse_bar = pulse(6)
-
   local separator = wseparator.vertical()
 
   self.right = { -- Right widgets
     layout = wibox.layout.fixed.horizontal,
     wibox.widget.systray(),
     separator,
-    keyboardlayout,
+    wkeyboard(),
     separator,
-    pulse_bar,
+    wpulse(6),
   }
 
   if (string.match(hostname, "harkonnen")) then
-    local battery_widget    = require("fresh.widgets.batteryarc")
-    local brightness_widget = require("fresh.widgets.brightness")
+    local wbattery = require("fresh.widgets.battery")
+    local wbrightness = require("fresh.widgets.brightness")
     self.right = gears.table.join(self.right,
       { separator,
-        battery_widget,
+        wbattery(30),
         separator,
-        brightness_widget })
+        wbrightness(30)})
   end
 
   self.right = gears.table.join(self.right,
     { separator,
-      textclock
+      wtime()
     })
 end
 
