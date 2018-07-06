@@ -9,7 +9,7 @@ local recolor_image = gears_color.recolor_image
 local timewidget = { mt = {} }
 
 local style = {
-  width   = 72,
+  width   = 100,
   icon    = beautiful.themes_path .. "widgets/clock.svg",
 }
 
@@ -18,15 +18,15 @@ function timewidget.new()
   local icon = wibox.widget {
     image  = recolor_image(style.icon, beautiful.widget.fg),
     resize = true,
-    forced_width = 24,
-    forced_height = 24,
+    forced_width = 16,
+    forced_height = 16,
     widget = wibox.widget.imagebox
   }
 
-  local text = wibox.widget.textclock("%H:%M", 60)
+  local text = wibox.widget.textclock("%I:%M %p", 60)
 
   local layout = wibox.layout.fixed.horizontal()
-  layout:add(wibox.container.margin(icon, 0, 2, 3, 2))
+  layout:add(wibox.container.margin(icon, 0, 2, 4, 4))
   layout:add(text)
 
   local widget = wibox.container.constraint(layout, "exact", style.width)
