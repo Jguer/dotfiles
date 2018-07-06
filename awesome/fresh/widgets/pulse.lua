@@ -43,8 +43,8 @@ function pulse.new(timeout)
   local icon = wibox.widget {
     image  = recolor_image(style.icon, beautiful.widget.bg),
     resize = true,
-    forced_width = 24,
-    forced_height = 24,
+    forced_width = 16,
+    forced_height = 16,
     widget = wibox.widget.imagebox
   }
 
@@ -57,7 +57,7 @@ function pulse.new(timeout)
   }
 
   local layout = wibox.layout.fixed.horizontal()
-  layout:add(wibox.container.margin(icon, 0, 6, 3, 2))
+  layout:add(wibox.container.margin(icon, 0, 2, 4, 4))
   layout:add(text)
 
   local widget = wibox.container.constraint(layout, "exact", style.width)
