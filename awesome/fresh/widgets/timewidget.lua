@@ -9,7 +9,7 @@ local recolor_image = gears_color.recolor_image
 local timewidget = { mt = {} }
 
 local style = {
-  width   = 100,
+  width   = 84,
   icon    = beautiful.themes_path .. "widgets/clock.svg",
 }
 
