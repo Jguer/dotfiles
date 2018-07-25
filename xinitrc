@@ -29,9 +29,11 @@ if [ "$(cat /etc/hostname)" = "atreides" ]; then
   xrandr --output HDMI-A-0 --primary --auto --right-of DVI-I-1
 fi
 
-xset -b r rate 190 35 &
+xset r rate 300 40
 setxkbmap -layout "us,pt" -variant altgr-intl -option "grp:alt_shift_toggle" \
   -option caps:swapescape -option terminate:ctrl_alt_bksp &
+
+unclutter -noevents -idle 2 -jitter 1 -root &>/dev/null &
 
 dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)

@@ -16,5 +16,5 @@ run_once({
   "nm-applet",
   "numlockx",
   "start-pulseaudio-x11", "xss-lock -- lockscreen " .. beautiful.wallpaper,
-  "unclutter -root" , "compton",
+  "compton",
   "redshift -l 38.72:-9.15" })
