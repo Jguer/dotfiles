@@ -13,8 +13,4 @@ local function run_once(cmd_arr)
 end
 
 run_once({
-  "nm-applet",
-  "numlockx",
-  "start-pulseaudio-x11", "xss-lock -- lockscreen " .. beautiful.wallpaper,
-  "compton",
-  "redshift -l 38.72:-9.15" })
+  "xss-lock -- lockscreen " .. beautiful.wallpaper})

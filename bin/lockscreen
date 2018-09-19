@@ -3,7 +3,8 @@
 if [ $1 ]; then
   lockbg="$1"
 else
-  lockbg=$(find $HOME/Pictures/wallpapers/*.png -type f | shuf -n 1)
+  # lockbg=$(find $HOME/Pictures/wallpapers/*.png -type f | shuf -n 1)
+  lockbg="$HOME/.config/awesome/fresh/background.png"
 fi
 
 i3lock -n \
