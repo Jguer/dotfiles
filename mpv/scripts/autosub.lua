@@ -1,16 +1,14 @@
--- requires subliminal, version 1.0 or newer
 -- default keybinding: b
--- add the following to your input.conf to change the default keybinding:
--- keyname script_binding auto_load_subs
 local utils = require 'mp.utils'
 function load_sub_fn()
-  subl = "/bin/subdl" -- use 'which subliminal' to find the path
+  subl = "/bin/subdl"
   path = mp.get_property("path")
   srt_path = string.gsub(path, "%.%w+$", ".srt")
+  srt_args = "--lang=fre,eng --existing=bypass --output="..path
   mp.msg.info("Searching subtitle")
   mp.osd_message("Searching subtitle")
   t = {}
-  t.args = {subl,path}
+  t.args = {subl, srt_args, path}
   res = utils.subprocess(t)
   if res.status == 0 then
     mp.commandv("rescan_external_files", "reselect")
