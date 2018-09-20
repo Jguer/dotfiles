@@ -1,16 +1,13 @@
 #!/bin/sh
 
-# Launch dbus
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-  for f in /etc/X11/xinit/xinitrc.d/?*; do
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
     [ -x "$f" ] && . "$f"
   done
   unset f
 fi
-
-# Load our X resources
-[[ -f ~/.config/.Xresources ]] && xrdb -merge -I$HOME/.config/.Xresources.d ~/.config/.Xresources
 
 if [ "$(cat /etc/hostname)" = "atreides" ]; then
   xrandr --output HDMI-1 --primary --auto --right-of DVI-I-1
@@ -21,10 +18,10 @@ setxkbmap -model "evdev" -rules "evdev" \
   -layout "us,pt" -variant "altgr-intl,sundeadkeys" \
   -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp &
 unclutter -noevents -idle 2 -jitter 1 -root &
-eval "$(gnome-keyring-daemon --replace --daemonize --components=secrets,ssh,pcks11)"
-export SSH_AUTH_SOCK
+eval "$(gnome-keyring-daemon --start --components=secrets,ssh,pcks11)"
+export SSH_AUTH_SOCK GPG_AGENT_INFO GNOME_KEYRING_PID GNOME_KEYRING_CONTROL
 
-lxpolkit &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nm-applet &
 numlockx &
 start-pulseadio-x11 &
