@@ -24,10 +24,6 @@
 [rebase]
   autostash = true
   autosquash = true
-[url "ssh://aur@aur.archlinux.org/"]
-  insteadOf = https://aur.archlinux.org/
-  insteadOf = http://aur.archlinux.org/
-  insteadOf = git://aur.archlinux.org/
 [user]
   email = me@jguer.space
   name = Jguer

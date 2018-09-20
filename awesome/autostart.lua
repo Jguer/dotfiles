@@ -13,4 +13,5 @@ local function run_once(cmd_arr)
 end
 
 run_once({
-  "xss-lock -- lockscreen " .. beautiful.wallpaper})
+  "xss-lock -- lockscreen " .. beautiful.wallpaper
+  })

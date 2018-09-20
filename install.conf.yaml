@@ -11,6 +11,8 @@
     ~/.bashrc: bash/bashrc
     ~/.bash_profile: bash/bash_profile
     ~/.config/fish/config.fish: config.fish
+    ~/.Xresources: Xresources
+    ~/.xinitrc: xinitrc
     # DE
     ~/.icons/fresh: fresh
     ~/.compton.conf: compton.conf
@@ -19,11 +21,8 @@
     ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/fontconfig/fonts.conf: fonts.conf
-    ~/.Xresources: Xresources
-    ~/.xinitrc: xinitrc
-    ~/Templates: Templates
+    ~/.config/user-dirs.dirs: user-dirs.dirs
     # Applications
-    ~/bin: bin
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.gitconfig: gitconfig
     ~/.config/mpv: mpv

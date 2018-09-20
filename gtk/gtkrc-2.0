@@ -1,7 +1,7 @@
 gtk-icon-theme-name   = "fresh"
 gtk-theme-name        = "Arc-Darker"
 gtk-cursor-theme-name = "Capitaine"
-gtk-font-name         = "Noto Sans UI 10"
+gtk-font-name         = "Roboto 11"
 gtk-xft-antialias     = 1
 gtk-xft-hinting       = 1
 gtk-xft-hintstyle     = "hintslight"

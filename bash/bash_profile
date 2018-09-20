@@ -5,7 +5,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 [ -d "$GOPATH/bin" ] && export PATH="$PATH:$GOPATH/bin"
-[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+[ -d "$HOME/dotfiles/bin" ] && export PATH="$PATH:$HOME/dotfiles/bin"
 [ -d "$HOME/.luarocks/bin" ] && export PATH="$PATH:$HOME/.luarocks/bin"
 
 export GPG_TTY=$(tty)
