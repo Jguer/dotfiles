@@ -1,4 +1,4 @@
--- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
+-- vim:fdm=marker foldlevel=2 tabstop=2 shiftwidth=2
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
@@ -177,12 +177,15 @@ function hotkeys:init(args)
       {description = "xrandr", group = "applications"}),
     awful.key({ modkey, }, "z", function() dropdown:toggle() end,
       {description = "quake terminal", group = "applications"}),
+    awful.key({ altkey, }, "e", function ()
+      awful.spawn("rofi-power " .. beautiful.themes_path .. "fresh.rasi") end,
+    {description = "end session", group = "applications"}),
     awful.key({ modkey, }, "x", function ()
       awful.spawn("rofi -combi-modi window,drun,ssh -theme "
         .. beautiful.themes_path .. "fresh.rasi".." -show combi") end,
     {description = "show rofi", group = "applications"}),
     awful.key({ modkey, }, "e", function() awful.spawn("lockscreen " .. beautiful.wallpaper) end,
-      {description = "lock Screen", group = "applications"})
+      {description = "lock screen", group = "applications"})
   )
   -- }}}
 

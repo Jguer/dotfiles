@@ -20,7 +20,7 @@ unclutter -noevents -idle 2 -jitter 1 -root &
 nm-applet &
 numlockx &
 start-pulseadio-x11 &
-compton &
+compton --config ~/.compton.conf &
 redshift -l 38.72:-9.15 &
 
 exec awesome

@@ -28,3 +28,9 @@
   email = me@jguer.space
   name = Jguer
   signingkey = 09754DBECF21746F
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+[url "git@github.com:"]
+  pushInsteadOf = "git://github.com/"
+[url "git@github.com:"]
+  pushInsteadOf = "https://github.com/"
