@@ -4,7 +4,7 @@
 [commit]
   gpgSign = true
 [credential]
-  helper = /usr/lib/git-core/git-credential-libsecret
+	helper = /usr/lib/git-core/git-credential-libsecret
 [diff]
   renames = copy
   indentHeuristic = true
