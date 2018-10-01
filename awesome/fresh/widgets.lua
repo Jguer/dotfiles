@@ -31,7 +31,7 @@ function widgets:init(args)
     wpulse(6),
   }
 
-  if (string.match(hostname, "harkonnen")) then
+  if (not string.match(hostname, "atreides")) then
     local wbattery = require("fresh.widgets.battery")
     local wbrightness = require("fresh.widgets.brightness")
     self.right = gears.table.join(self.right,

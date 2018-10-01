@@ -4,7 +4,7 @@ function load_sub_fn()
   subl = "/bin/subdl"
   path = mp.get_property("path")
   srt_path = string.gsub(path, "%.%w+$", ".srt")
-  srt_args = "--lang=fre,eng --existing=bypass --output="..path
+  srt_args = "--lang=fre,eng --existing=bypass --output=".. srt_path
   mp.msg.info("Searching subtitle")
   mp.osd_message("Searching subtitle")
   t = {}
