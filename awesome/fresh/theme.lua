@@ -15,9 +15,9 @@ theme.themes_path = themes_path
 
 theme.panel_height  = dpi(24)
 
-theme.font          = "Roboto 11"
-theme.hotkeys_font  = "Roboto Bold 11"
-theme.hotkeys_description_font  = "Roboto 11"
+theme.font          = "Arimo Bold 11"
+theme.hotkeys_font  = "Arimo Bold 11"
+theme.hotkeys_description_font  = "Arimo 11"
 
 theme.bg_normal     = xrdb.background .. "80"
 theme.bg_systray = theme.bg_normal
