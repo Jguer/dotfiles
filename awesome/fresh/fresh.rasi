@@ -18,7 +18,7 @@
    blackselect:      #303030;
    darkgray:         #848484;
    scrollbarcolor:   #505050;
-   font: "Noto Sans UI 11";
+   font: "Arimo 12";
    background-color: @blackdarkest;
 }
 

@@ -41,7 +41,7 @@ function brightness.new(timeout)
     text = '0%',
     align  = 'center',
     valign = 'center',
-    forced_width = 30,
+    forced_width = 40,
     widget = wibox.widget.textbox
   }
 
