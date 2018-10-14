@@ -1,28 +1,23 @@
 #!/usr/bin/bash
+dbus-daemon --session &
+start-pulseaudio-x11
+
+eval `ssh-agent -s`
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-
-if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-   eval $(dbus-launch --sh-syntax --exit-with-session)
-fi
-
-export $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 
 if [ "$(cat /etc/hostname)" = "atreides" ]; then
   xrandr --output DVI-D-1 --primary --auto --right-of HDMI-A-0
 fi
 
-# xset r rate 300 40
 setxkbmap -model "evdev" -rules "evdev" \
   -layout "us,pt" -variant "altgr-intl,sundeadkeys" \
-  -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp &
+  -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp
 
-/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-unclutter -noevents -idle 2 -jitter 1 -root &
-nm-applet &
-numlockx &
-start-pulseadio-x11 &
 compton --config ~/.compton.conf &
-redshift -l 38.72:-9.15 &
 
 exec awesome

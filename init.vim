@@ -4,14 +4,14 @@
 
 syntax on "Enable syntax
 filetype plugin indent on
-set termguicolors
+" set termguicolors
 set clipboard=unnamedplus
 set mouse=a
 set noswapfile
 set autowriteall ""automatically save any changes made to the buffer before it is hidden.
 let mapleader = ","
 set hidden " Allow background buffers without saving
-set spell spelllang=en_us
+" set spell spelllang=en_us
 
 set number
 set relativenumber "Relative number line
@@ -142,23 +142,12 @@ augroup rainbow_cfg
 augroup END
 " }}}
 
-" Airline {{{
-augroup airline_cfg
+" LightLine {{{
+augroup lightline_cfg
   autocmd!
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#buffer_idx_mode=1
-  let g:airline#extensions#tabline#tab_nr_type=1
-  let g:airline#extensions#tabline#show_tab_nr=0
-  let g:airline#extensions#tabline#show_close_button=0
-  let g:airline#extensions#tabline#exclude_preview=1
-  let g:airline#extensions#tabline#fnamecollapse=1
-  let g:airline#extensions#tabline#fnamemod=':~:.'
-  let g:airline#extensions#tabline#buffers_label='buffers'
-  let g:airline#extensions#tabline#tabs_label='tabs'
-  let g:airline#extensions#tabline#overflow_marker='…'
-  let g:airline_highlighting_cache = 1
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme='base16_google'
+  let g:lightline = {
+        \ 'colorscheme': 'snazzy',
+        \ }
 augroup END
 " }}}
 
@@ -232,7 +221,7 @@ nnoremap Q <nop>
 au FocusLost,WinLeave * :silent! noautocmd w
 au FocusGained,BufEnter * :silent! !
 au BufNewFile,BufRead *.h set filetype=c
-au FileType python,c,cpp,lua,go set ts=4|set sw=4|set sts=4
+au FileType python,c,cpp,go set ts=4|set sw=4|set sts=4
 " check for and load file changes
 autocmd WinEnter,BufWinEnter,FocusGained * checktime
 
@@ -252,10 +241,12 @@ Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
 " .-. Appearance .-.
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'w0ng/vim-hybrid'
+Plug 'connorholyday/vim-snazzy'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " .-. Util .-.
 Plug 'scrooloose/nerdtree'
@@ -280,10 +271,6 @@ call plug#end()
 " Colorscheme {{{
 augroup colorscheme_cfg
   autocmd!
-  set background=dark
-  let g:enable_bold_font=1
-  let g:solarized_use16 = 1
-  let g:solarized_termtrans= 1
-  colorscheme solarized8
+  colorscheme snazzy
 augroup END
 " }}}
