@@ -1,5 +1,4 @@
 #{{{ Colours
-set guioptions Noto Sans 11
 
 set default-bg                  "#282c34"
 set default-fg                  "#353b45"
