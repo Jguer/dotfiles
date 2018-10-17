@@ -4,15 +4,15 @@
       relink: true
       create: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     # Login Session
     ~/.bashrc: bash/bashrc
     ~/.bash_profile: bash/bash_profile
-    ~/.config/fish/config.fish: config.fish
-    ~/.Xresources: Xresources
-    ~/.xinitrc: xinitrc
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.Xresources: shell/Xresources
+    ~/.xinitrc: shell/xinitrc
     # DE
     ~/.icons/fresh: fresh
     ~/.compton.conf: compton.conf
@@ -30,4 +30,4 @@
     ~/.config/zathura/zathurarc: zathurarc
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
