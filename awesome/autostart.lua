@@ -38,8 +38,8 @@ autorun["all"] = {
 }
 
 autorun["atreides"] = {
-  "compton --config compton.conf"
+  "compton --config /home/jguer/.compton.conf"
 }
 
 run_once(autorun["all"])
-run_once(autorun[hostname] or {})
+run_once(autorun[hostname:gsub("%s+", "")] or {})

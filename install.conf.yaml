@@ -8,9 +8,9 @@
 
 - link:
     # Login Session
-    ~/.bashrc: bash/bashrc
-    ~/.bash_profile: bash/bash_profile
-    ~/.config/fish/config.fish: fish/config.fish
+    ~/.zshrc: shell/zshrc
+    ~/.zimrc: shell/zimrc
+    ~/.zprofile: shell/zprofile
     ~/.Xresources: shell/Xresources
     ~/.xinitrc: shell/xinitrc
     # DE
