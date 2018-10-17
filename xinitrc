@@ -18,6 +18,6 @@ setxkbmap -model "evdev" -rules "evdev" \
   -layout "us,pt" -variant "altgr-intl,sundeadkeys" \
   -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp
 
-compton --config ~/.compton.conf &
+ &
 
 exec awesome
