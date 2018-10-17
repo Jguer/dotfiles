@@ -7,12 +7,12 @@
 
 /* global settings and color variables */
 * {
-   maincolor:        #3971ed;
+   maincolor:        rgba ( 87, 199, 255, 100 % );
    highlight:        bold #c78c1e;
-   urgentcolor:      #99291f;
+   urgentcolor:      rgba ( 255, 92, 87, 100 % );
 
-   fgwhite:          #d6d5c8;
-   blackdarkest:     #000617;
+   fgwhite:          rgba ( 226, 228, 229, 100 % );
+   blackdarkest:     rgba ( 40, 42, 54, 100 % );
    blackwidget:      #000617;
    blackentry:       #000617;
    blackselect:      #303030;

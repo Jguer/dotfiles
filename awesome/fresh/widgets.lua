@@ -17,7 +17,6 @@ local function readAll(file)
 end
 
 function widgets:init(args)
-  local args = args or {}
 
   local hostname = readAll("/etc/hostname")
   local separator = wseparator.vertical()

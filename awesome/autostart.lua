@@ -1,6 +1,5 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
-local gears      = require("gears")
 
 
 local function readAll(file)
@@ -21,7 +20,7 @@ local function run_once(cmd_arr)
       findme = cmd:sub(0, firstspace-1)
     end
     awful.spawn.easy_async(string.format("pgrep -u %s -x %s", user, findme),
-      function(stdout, stderr, reason, exit_code)
+      function(_, _, _, exit_code)
         if exit_code ~= 0 then
           awful.spawn(cmd,false)
         end
@@ -29,10 +28,10 @@ local function run_once(cmd_arr)
     end
   end
 
-autorun = {}
+local autorun = {}
 autorun["all"] = {
   "xss-lock -- lockscreen " .. beautiful.wallpaper,
-  "redshift -l 38.72:-9.15",
+  "redshift -l 38.72:-9.15 -t 5700:3600",
   "numlockx",
   "nm-applet",
   "unclutter -noevents -idle 2 -jitter 1 -root"
