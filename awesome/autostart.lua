@@ -37,5 +37,9 @@ autorun["all"] = {
   "unclutter -noevents -idle 2 -jitter 1 -root"
 }
 
+autorun["atreides"] = {
+  "compton --config compton.conf"
+}
+
 run_once(autorun["all"])
 run_once(autorun[hostname] or {})
