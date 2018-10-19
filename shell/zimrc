@@ -1,18 +1,12 @@
 #!/bin/zsh
 
-zmodules=(archive directory environment input git history ssh utility \
-          syntax-highlighting history-substring-search prompt completion)
-zprompt_theme='pure'
-
-setopt CORRECT
-
+zmodules=(archive utility directory environment input git history \
+  syntax-highlighting history-substring-search autosuggestions prompt completion)
+zprompt_theme='lean'
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-
 ztermtitle='%~'
-#
 # Set to vi or emacs
 zinput_mode='emacs'
 zdouble_dot_expand='true'
 zhighlighters=(main brackets cursor)
-zssh_ids=(id_rsa aur)
 

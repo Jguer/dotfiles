@@ -1,4 +1,25 @@
 #!/bin/zsh
 
+setopt HIST_EXPIRE_DUPS_FIRST # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt HIST_IGNORE_DUPS       # ignore duplicated commands history list
+setopt HIST_REDUCE_BLANKS     # prevent superfluous blanks from being added to the HISTFILE
+setopt HIST_VERIFY            # show command with history expansion to user before running it
+setopt INC_APPEND_HISTORY     # add commands to HISTFILE in order of execution
+setopt AUTO_PUSHD             # make cd push the old directory onto the directory stack
+setopt PUSHD_IGNORE_DUPS      # don’t push duplicates on the directory stack
+setopt PUSHD_MINUS            # do stuff with cd '+' and '-'
+setopt NO_BG_NICE             # prevents background jobs being given a lower priority
+setopt NO_HUP                 # prevents SIGHUP to jobs on shell exit
+setopt NO_BEEP                # don't beep at me
+setopt CLOBBER
+setopt NO_FLOW_CONTROL        # disable output flow control
+setopt LONG_LIST_JOBS         # print job notifications in the long format
+setopt LOCAL_OPTIONS          # allow functions to have local options
+setopt LOCAL_TRAPS            # allow functions to have local traps
+setopt PROMPT_SUBST           # expand prompt sequences
+setopt CORRECT                # auto-correct commands
+setopt COMPLETE_IN_WORD       # don't nice background tasks
+setopt RM_STAR_SILENT         # dont ask for confirmation in rm globs*
+
 # Start zim
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
