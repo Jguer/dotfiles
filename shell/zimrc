@@ -4,7 +4,7 @@ zmodules=(directory environment git history input archive utility \
   syntax-highlighting history-substring-search autosuggestions prompt completion)
 zprompt_theme='lean'
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-ztermtitle='%~'
+ztermtitle='%m:%~'
 # Set to vi or emacs
 zinput_mode='emacs'
 zhighlighters=(main brackets cursor)
