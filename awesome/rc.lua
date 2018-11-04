@@ -17,7 +17,7 @@ end
 --}}}
 
 local modkey = "Mod4"
-local hostname = readAll("/etc/hostname")
+local hostname = readAll("/etc/hostname"):gsub("%s+", "")
 
 awful.layout.layouts = {
   awful.layout.suit.tile,
