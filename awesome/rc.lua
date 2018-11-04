@@ -89,6 +89,7 @@ awful.screen.connect_for_each_screen(function(s)
 
   s.taglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
   s.tasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+
   s.wibox = awful.wibar({ position = "top", screen = s, height = beautiful.panel_height })
 
   -- Add widgets to the wibox
