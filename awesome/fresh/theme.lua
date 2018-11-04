@@ -1,13 +1,13 @@
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
 
 local theme_assets = require("beautiful.theme_assets")
-local xresources = require("beautiful.xresources")
+local xresources   = require("beautiful.xresources")
+local util         = require("awful.util")
+local gears        = require("gears")
+local gfs          = require("gears.filesystem")
+
 local dpi = xresources.apply_dpi
 local xrdb = xresources.get_current_theme()
-
-local util = require("awful.util")
-local gears = require("gears")
-local gfs = require("gears.filesystem")
 local theme = {}
 local themes_path = gfs.get_configuration_dir() .. "fresh/"
 
@@ -42,7 +42,6 @@ theme.border_marked = xrdb.color5
 theme.taglist_fg_occupied   = xrdb.color4
 theme.tasklist_disable_icon = true
 theme.notification_shape    = gears.shape.rounded_rect
-theme.tasklist_align= "center"
 
 theme.gap_single_client = false
 
@@ -114,9 +113,7 @@ theme.layout_cornersw = themes_path.."layouts/cornersw.svg"
 theme.layout_cornerse = themes_path.."layouts/cornerse.svg"
 theme_assets.recolor_layout(theme, xrdb.foreground)
 
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = fresh
+theme.icon_theme = "fresh"
 
 return theme
 

@@ -1,5 +1,4 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
-local awful      = require("awful")
 local gears      = require("gears")
 local wibox      = require("wibox")
 local wpulse     = require("fresh.widgets.pulse")
@@ -9,16 +8,8 @@ local wkeyboard  = require("fresh.widgets.keyboard")
 
 local widgets = { right = {}}
 
-local function readAll(file)
-  local f = assert(io.open(file, "rb"))
-  local content = f:read("*all")
-  f:close()
-  return content
-end
 
-function widgets:init(args)
-
-  local hostname = readAll("/etc/hostname")
+function widgets:init(hostname)
   local separator = wseparator.vertical()
 
   self.right = { -- Right widgets
