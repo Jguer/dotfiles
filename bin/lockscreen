@@ -10,6 +10,7 @@ fi
 i3lock -n \
   --image="$lockbg" \
   --tiling \
+  --pass-media-keys \
   --insidecolor=EBDBB233 \
   --insidevercolor=FABD2FFF \
   --insidewrongcolor=FB4934FF \

@@ -41,5 +41,9 @@ autorun["atreides"] = {
   "compton --config /home/jguer/.compton.conf"
 }
 
+autorun["fenring"] = {
+  "blueman-applet"
+}
+
 run_once(autorun["all"])
 run_once(autorun[hostname:gsub("%s+", "")] or {})
