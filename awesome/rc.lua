@@ -1,20 +1,24 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
--- {{{ Standard awesome library
+-- {{{ Local variables
 --
-local gears             = require("gears")
-local awful             = require("awful")
-local wibox             = require("wibox")
-local beautiful         = require("beautiful")
-local quake             = require("quake")
+local gears     = require("gears")
+local awful     = require("awful")
+local wibox     = require("wibox")
+local beautiful = require("beautiful")
+local quake     = require("quake")
 require("awful.autofocus")
--- }}}
 
--- Error handling
-require("fresh.ercheck-config") -- load file with error handling
-
-beautiful.init(gears.filesystem.get_configuration_dir() .. "fresh/theme.lua")
+--- {{{ Local functions
+local function readAll(file)
+  local f = assert(io.open(file, "rb"))
+  local content = f:read("*all")
+  f:close()
+  return content
+end
+--}}}
 
 local modkey = "Mod4"
+local hostname = readAll("/etc/hostname")
 
 awful.layout.layouts = {
   awful.layout.suit.tile,
@@ -24,8 +28,37 @@ awful.layout.layouts = {
   awful.layout.suit.tile.top,
   awful.layout.suit.floating,
 }
+-- }}}
 
--- {{{ Menu
+
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+  naughty.notify({ preset = naughty.config.presets.critical,
+      title = "Oops, there were errors during startup!",
+    text = awesome.startup_errors })
+end
+
+-- Handle runtime errors after startup
+do
+  local in_error = false
+  awesome.connect_signal("debug::error", function (err)
+    -- Make sure we don't go into an endless error loop
+    if in_error then return end
+    in_error = true
+
+    naughty.notify({ preset = naughty.config.presets.critical,
+        title = "Oops, an error happened!",
+      text = tostring(err) })
+    in_error = false
+  end)
+end
+-- }}}
+
+beautiful.init(gears.filesystem.get_configuration_dir() .. "fresh/theme.lua")
+
+-- {{{ Wibar
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
   awful.button({ }, 1, function(t) t:view_only() end),
@@ -49,14 +82,15 @@ local tasklist_buttons = gears.table.join(
     if c == client.focus then
       c.minimized = true
     else
-      -- Without this, the following
-      -- :isvisible() makes no sense
+      -- c:emit_signal(
+      --   "request::activate",
+      --   "tasklist",
+      --   {raise = true}
+      --   )
       c.minimized = false
       if not c:isvisible() and c.first_tag then
         c.first_tag:view_only()
       end
-      -- This will also un-minimize
-      -- the client, if needed
       client.focus = c
       c:raise()
     end
@@ -71,8 +105,9 @@ local tasklist_buttons = gears.table.join(
 
 -- Widgets
 local widgets = require("fresh.widgets") -- load file with hotkeys configuration
-widgets:init()
+widgets:init(hostname)
 
+screen.connect_signal("property::geometry", beautiful.set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   beautiful.set_wallpaper(s)
@@ -94,19 +129,17 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Add widgets to the wibox
   s.wibox:setup {
-    layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       s.layoutbox,
       s.taglist,
     },
     {
-      layout = wibox.layout.align.horizontal,
-      expand = "none",
-      nil,
+      layout = wibox.layout.flex.horizontal,
       s.tasklist,
     },
-    widgets.right
+    widgets.right,
+    layout = wibox.layout.align.horizontal
   }
 end)
 -- }}}
@@ -116,7 +149,7 @@ local hotkeys = require("fresh.keys") -- load file with hotkeys configuration
 hotkeys:init({ modkey = modkey})
 
 -- Rules
-local rules = require("fresh.rules") -- load file with rules configuration
+local rules = require("rules") -- load file with rules configuration
 rules:init({ hotkeys = hotkeys})
 
 -- {{{ TitleBar
@@ -145,15 +178,11 @@ client.connect_signal("request::titlebars", function(c)
       layout  = wibox.layout.fixed.horizontal
     },
     { -- Middle
-      { -- Title
-        align  = "center",
-        widget = awful.titlebar.widget.titlewidget(c)
-    },
     buttons = buttons,
     layout  = wibox.layout.flex.horizontal
     },
     { -- Right
-      awful.titlebar.widget.closebutton    (c),
+      awful.titlebar.widget.closebutton(c),
       layout = wibox.layout.fixed.horizontal()
     },
     layout = wibox.layout.align.horizontal
@@ -162,8 +191,44 @@ end)
 -- }}}
 
 -- Signals
-local signals = require("fresh.signals")
+local signals = require("signals")
 signals:init()
 
--- Autostart Applications
-require("autostart")
+-- Autostart Applications {{{
+local function run_once(cmd_arr)
+  local user = os.getenv("USER")
+  for _, cmd in ipairs(cmd_arr) do
+    local findme = cmd
+    local firstspace = cmd:find(" ")
+    if firstspace then
+      findme = cmd:sub(0, firstspace-1)
+    end
+    awful.spawn.easy_async(string.format("pgrep -u %s -x %s", user, findme), function(_, _, _, exit_code)
+      if exit_code ~= 0 then
+        awful.spawn(cmd,false)
+      end
+    end)
+  end
+end
+
+local autorun = {}
+autorun["all"] = {
+  "xss-lock -- lockscreen " .. beautiful.wallpaper,
+  "redshift -l 38.72:-9.15 -t 5700:3600",
+  "numlockx",
+  "nm-applet",
+  "unclutter -noevents -idle 2 -jitter 1 -root"
+}
+
+autorun["atreides"] = {
+  "compton --config /home/jguer/dotfiles/compton.conf"
+}
+
+autorun["fenring"] = {
+  "blueman-applet"
+}
+
+run_once(autorun["all"])
+run_once(autorun[hostname] or {})
+-- }}}
+

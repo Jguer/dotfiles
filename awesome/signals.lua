@@ -1,6 +1,6 @@
-local awful = require("awful")
+local awful     = require("awful")
 local beautiful = require("beautiful")
-local gears         = require("gears")
+local gears     = require("gears")
 
 local signals = {}
 
@@ -63,9 +63,6 @@ function signals:init()
   client.connect_signal("mouse::enter", do_sloppy_focus)
   client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
   client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
-
-  -- wallpaper update on screen geometry change
-  screen.connect_signal("property::geometry", beautiful.set_wallpaper)
 
   screen.connect_signal("list", awesome.restart)
 end
