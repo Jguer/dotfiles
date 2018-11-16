@@ -2,6 +2,7 @@ local setmetatable  = setmetatable
 local button        = require("awful.button")
 local gears         = require("gears")
 local awful         = require("awful")
+local naughty       = require("naughty")
 local beautiful     = require("beautiful")
 local widget_base   = require("wibox.widget.base")
 local wibox         = require("wibox")
@@ -73,6 +74,10 @@ function pulse.new(timeout)
   self.toggle_mute = function()
     awful.spawn("amixer -D pulse sset Master toggle", false)
     update_status(self)
+  end
+
+  self.toggle_mic = function()
+    awful.spawn("amixer set Capture toggle", false)
   end
 
   -- Mouse bindings
