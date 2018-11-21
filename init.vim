@@ -63,10 +63,7 @@ Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 " .-. Appearance .-.
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'w0ng/vim-hybrid'
 Plug 'connorholyday/vim-snazzy'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " .-. Util .-.
 Plug 'scrooloose/nerdtree'
