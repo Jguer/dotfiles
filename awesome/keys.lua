@@ -149,6 +149,8 @@ function hotkeys:init(args)
       {description = "toggle volume", group = "audio"}),
     awful.key({ altkey, }, "m", function () pulse().toggle_mute() end,
       {description = "toggle volume", group = "audio"}),
+    awful.key({}, "XF86AudioMicMute", function () pulse().toggle_mic() end,
+      {description = "toggle mic", group = "audio"}),
 
     awful.key({}, "XF86AudioPlay", function () awful.spawn("playerctl play-pause", false) end,
       {description = "Play media", group = "audio"}),

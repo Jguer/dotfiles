@@ -15,10 +15,10 @@ sudo pacman -S --needed --noconfirm git
 mkdir -p "$buildroot"
 cd "$buildroot" || exit 1
 
-curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz
-tar -xvf yay.tar.gz
+curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/yay-bin.tar.gz
+tar -xvf yay-bin.tar.gz
 
-cd "${buildroot}/yay" || exit 1
+cd "${buildroot}/yay-bin" || exit 1
 makepkg --syncdeps --install --noconfirm
 
 cd "$HOME" || exit 1
