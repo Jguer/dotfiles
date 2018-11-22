@@ -133,7 +133,6 @@ autorun["all"] = {
   "xss-lock -- lockscreen " .. beautiful.wallpaper,
   "redshift -l 38.72:-9.15 -t 5700:3600",
   "numlockx",
-  "nm-applet",
   "unclutter -noevents -idle 2 -jitter 1 -root"
 }
 
@@ -141,9 +140,13 @@ autorun["atreides"] = {
   "compton --config /home/jguer/dotfiles/compton.conf"
 }
 
+
 autorun["fenring"] = {
+  "nm-applet",
   "blueman-applet"
 }
+autorun["harkonnen"] = autorun["fenring"]
+autorun["moritani"] = autorun["fenring"]
 
 run_once(autorun["all"])
 run_once(autorun[hostname] or {})
