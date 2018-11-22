@@ -55,15 +55,21 @@ call plug#begin('~/.local/share/nvim/plugged')
 " .-. Auto Completion .-.
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-clangx', { 'for': 'C' }
-Plug 'Shougo/neoinclude.vim'
-Plug 'zchee/deoplete-go', { 'do': 'go get -u github.com/nsf/gocode & make', 'for': 'go'}
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
+
+" .-.Go .-.
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
+
+" .-. C based .-.
+Plug 'Shougo/deoplete-clangx', { 'for': 'C' }
+Plug 'Shougo/neoinclude.vim', { 'for': 'C' }
 
 " .-. Appearance .-.
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'connorholyday/vim-snazzy'
+Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'C' }
 
 " .-. Util .-.
 Plug 'scrooloose/nerdtree'
@@ -75,11 +81,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sbdchd/neoformat'
-Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'C' }
 
 " .-. Syntax .-.
 Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 call plug#end()
@@ -175,6 +179,7 @@ call plug#end()
   let g:neoformat_run_all_formatters = 1
   let g:neoformat_only_msg_on_error = 1
 " }}}
+
 " }}}
 
 " Keybindings {{{
