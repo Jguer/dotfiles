@@ -1,4 +1,4 @@
-gtk-icon-theme-name   = "fresh"
-gtk-theme-name        = "Arc-Darker"
-gtk-cursor-theme-name = "elementary"
+gtk-icon-theme-name   = "Papirus-Dark"
+gtk-theme-name        = "Adapta-Eta"
+gtk-cursor-theme-name = "Adwaita"
 gtk-font-name         = "Arimo 11"
