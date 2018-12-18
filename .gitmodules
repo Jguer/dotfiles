@@ -2,8 +2,5 @@
   path = dotbot
   url = https://github.com/anishathalye/dotbot
 [submodule "shell/zimfw"]
-	path = shell/zimfw
-	url = https://github.com/zimfw/zimfw.git
-[submodule "shell/pure"]
-	path = shell/pure
-	url = https://github.com/sindresorhus/pure.git
+  path = shell/zimfw
+  url = https://github.com/zimfw/zimfw.git

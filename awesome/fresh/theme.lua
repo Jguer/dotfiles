@@ -20,13 +20,12 @@ theme.hotkeys_font  = "Arimo Bold 11"
 theme.hotkeys_description_font  = "Arimo 11"
 
 theme.bg_normal     = xrdb.background .. "80"
-theme.bg_systray = theme.bg_normal
-theme.systray_icon_spacing = dpi(4)
+theme.systray_icon_spacing = dpi(2)
 
 theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = theme.bg_normal
 theme.bg_minimize   = theme.bg_normal
-theme.bg_systray    = theme.bg_normal
+-- theme.bg_systray    = xrdb.background
 
 theme.fg_normal     = xrdb.foreground
 theme.fg_focus      = xrdb.color3
@@ -48,7 +47,7 @@ theme.gap_single_client = false
 
 theme.widget = {
   bg = xrdb.foreground,
-  fg = xrdb.color4,
+  fg = xrdb.foreground,
   charging = xrdb.color2,
   off = xrdb.color1
 }
@@ -113,8 +112,6 @@ theme.layout_cornerne = themes_path.."layouts/cornerne.svg"
 theme.layout_cornersw = themes_path.."layouts/cornersw.svg"
 theme.layout_cornerse = themes_path.."layouts/cornerse.svg"
 theme_assets.recolor_layout(theme, xrdb.foreground)
-
-theme.icon_theme = "fresh"
 
 return theme
 
