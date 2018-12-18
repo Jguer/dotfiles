@@ -1,0 +1,105 @@
+# Maintainer: Jguer <me@jguer.space>
+
+pkgbase=jguer
+pkgname=(jguer-base jguer-desktop jguer-linters)
+_pkgname=jguer
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Base packages for jguer system configuration"
+arch=('any')
+url="https://github.com/jguer/dotfiles"
+license=('GPL3')
+
+source=('00-keyboard.conf'
+        '00-NetworkManager.conf'
+        '00-dnsmasq.conf')
+
+
+md5sums=('98a700e87c309cce369dbf6c44bd852e'
+         'fcc1f9f81043adf0bc991b586926434c'
+         '5868f111be2061cdc4b0e3c7e99bc00c')
+
+package_jguer-linters() {
+  depends=(
+      'acpi'
+      'alsa-tools'
+      'alsa-utils'
+      'arc-gtk-theme'
+      'awesome'
+      'bash-completion'
+      'browserpass'
+      'cheese'
+      'compton'
+      )
+}
+
+package_jguer-desktop() {
+  depends=(
+      'adapta-gtk-theme'
+      'awesome'
+      'breeze-icons'
+      'browserpass'
+      'cheese'
+      'compton'
+      'firefox-developer-edition'
+      'nautilus'
+      'file-roller'
+      'syncthing'
+      'gnome-calculator'
+      'gnome-usage'
+      'deluge'
+      'gvfs-gphoto2'
+      'gvfs-mtp'
+      'gvfs-nfs'
+      'kitty'
+      'mpv'
+      )
+
+}
+
+package_jguer-base() {
+  install=jguer-base.install
+  depends=(
+      'acpi'
+      'alsa-tools'
+      'alsa-utils'
+      'bash-completion'
+      'dhclient'
+      'gnome-keyring'
+      'go'
+      'htop'
+      'network-manager-applet'
+      'networkmanager'
+      'networkmanager-openvpn'
+      'networkmanager-pptp'
+      'noto-fonts'
+      'noto-fonts-cjk'
+      'noto-fonts-emoji'
+      'openssh'
+      'openvpn-update-resolv-conf-git'
+      'pavucontrol'
+      'polkit-gnome'
+      'pulseaudio'
+      'pulseaudio-alsa'
+      'python-neovim'
+      'redshift'
+      'rofi'
+      'terminus-font'
+      'thermald'
+      'tlp'
+      'dhclient'
+      'tlp-rdw'
+      'ttf-croscore'
+      'ttf-iosevka-ss04'
+      'ttf-iosevka-term-ss04'
+      'wget'
+      'xorg-xinit'
+      'xsel'
+      'ntfs-3g'
+      'zsh'
+  )
+
+    install -Dm0644 00-keyboard.conf "$pkgdir/etc/X11/xorg.conf.d/00-keyboard.conf"
+    install -Dm0644 00-NetworkManager.conf "$pkgdir/etc/NetworkManager/conf.d/00-NetworkManager.conf"
+    install -Dm0644 00-dnsmasq.conf "$pkgdir/etc/NetworkManager/dnsmasq.d/00-dnsmasq.conf"
+}
