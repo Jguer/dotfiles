@@ -21,15 +21,7 @@ md5sums=('98a700e87c309cce369dbf6c44bd852e'
 
 package_jguer-linters() {
   depends=(
-      'acpi'
-      'alsa-tools'
-      'alsa-utils'
-      'arc-gtk-theme'
-      'awesome'
-      'bash-completion'
-      'browserpass'
-      'cheese'
-      'compton'
+      'yapf'
       )
 }
 
@@ -68,15 +60,10 @@ package_jguer-base() {
       'gnome-keyring'
       'go'
       'htop'
-      'network-manager-applet'
-      'networkmanager'
-      'networkmanager-openvpn'
-      'networkmanager-pptp'
       'noto-fonts'
       'noto-fonts-cjk'
       'noto-fonts-emoji'
       'openssh'
-      'openvpn-update-resolv-conf-git'
       'pavucontrol'
       'polkit-gnome'
       'pulseaudio'
@@ -90,8 +77,6 @@ package_jguer-base() {
       'dhclient'
       'tlp-rdw'
       'ttf-croscore'
-      'ttf-iosevka-ss04'
-      'ttf-iosevka-term-ss04'
       'wget'
       'xorg-xinit'
       'xsel'
