@@ -9,7 +9,7 @@ local recolor_image = gears_color.recolor_image
 local keyboard = { mt = {} }
 
 local style = {
-  width   = 55,
+  width   = 45,
   icon    = beautiful.themes_path .. "widgets/keyboard.svg",
 }
 
