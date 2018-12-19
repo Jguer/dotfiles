@@ -131,13 +131,10 @@ end
 local autorun = {}
 autorun["all"] = {
   "xss-lock -- lockscreen " .. beautiful.wallpaper,
-  "redshift -l 38.72:-9.15 -t 5700:3600",
   "numlockx",
   "unclutter -noevents -idle 2 -jitter 1 -root",
-  "compton --config /home/jguer/dotfiles/compton.conf"
-}
-
-autorun["atreides"] = {
+  "compton --config /home/jguer/dotfiles/compton.conf",
+  "redshift-gtk -l 38.72:-9.15 -t 6500:3400"
 }
 
 autorun["fenring"] = {
