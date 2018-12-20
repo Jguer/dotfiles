@@ -55,7 +55,7 @@ do
 end
 -- }}}
 
-beautiful.init(gears.filesystem.get_configuration_dir() .. "fresh/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "saturnalia/theme.lua")
 
 -- Wibar
 local widgets = require("widgets") -- load file with hotkeys configuration
@@ -132,13 +132,13 @@ local autorun = {}
 autorun["all"] = {
   "xss-lock -- lockscreen " .. beautiful.wallpaper,
   "numlockx",
+  "nm-applet",
   "unclutter -noevents -idle 2 -jitter 1 -root",
   "compton --config /home/jguer/dotfiles/compton.conf",
   "redshift-gtk -l 38.72:-9.15 -t 6500:3400"
 }
 
 autorun["fenring"] = {
-  "nm-applet",
   "blueman-applet"
 }
 autorun["harkonnen"] = autorun["fenring"]

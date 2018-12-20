@@ -1,14 +1,12 @@
 -- vim:fdm=marker foldlevel=2 tabstop=2 shiftwidth=2
-local awful = require("awful")
-local beautiful = require("beautiful")
-local gears = require("gears")
-local quake = require("quake")
-
-local hotkeys = { mouse = {}, keys = {}}
-
-local xrandr = require("fresh.widgets.xrandr")
+local awful         = require("awful")
+local beautiful     = require("beautiful")
+local gears         = require("gears")
+local quake         = require("quake")
+local hotkeys       = { mouse = {}, keys = {}}
+local xrandr        = require("vex.xrandr")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-local pulse     = require("fresh.widgets.pulse")
+local pulse         = require("vex.pulse")
 
 local altkey = "Mod1"
 
