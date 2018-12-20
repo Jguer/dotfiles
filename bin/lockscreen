@@ -4,38 +4,52 @@ if [ $1 ]; then
   lockbg="$1"
 else
   # lockbg=$(find $HOME/Pictures/wallpapers/*.png -type f | shuf -n 1)
-  lockbg="$HOME/.config/awesome/fresh/background.png"
+  lockbg="$HOME/.config/awesome/saturnalia/wallpaper.png"
 fi
 
+B='#282a36cc' # blank
+C='#34353eCC' # clear ish
+D='#f3f99dCC' # default
+T='#e2e4e5ee' # text
+W='#34353eCC' # wrong
+H='#57c7ffCC' # Highlight
+V='#ff5c57bb' # verifying
+
 i3lock -n \
+  --insidevercolor=$C \
+  --ringvercolor=$V \
+  --insidewrongcolor=$C \
+  --ringwrongcolor=$W \
+  --insidecolor=$B \
+  --ringcolor=$D \
+  --linecolor=$B \
+  --separatorcolor=$D \
+  --verifcolor=$T \
+  --wrongcolor=$T \
+  --timecolor=$T \
+  --datecolor=$T \
+  --layoutcolor=$T \
+  --keyhlcolor=$H \
+  --bshlcolor=$W \
   --image="$lockbg" \
   --tiling \
+  --keylayout 0 \
   --pass-media-keys \
-  --insidecolor=EBDBB233 \
-  --insidevercolor=FABD2FFF \
-  --insidewrongcolor=FB4934FF \
-  --ringcolor=282828FF \
-  --ringvercolor=282828FF \
-  --ringwrongcolor=282828FF \
-  --linecolor=EBDBB2FF \
-  --keyhlcolor=EBDBB2FF \
-  --bshlcolor=FB4934FF \
-  --separatorcolor=282828FF \
-  --timecolor=EBDBB2FF \
-  --datecolor=EBDBB2FF \
-  --layoutcolor=00000000 \
-  --indpos='x+100:y+720' \
-  --timepos='x+210:y+722' \
   --timestr='%H:%M' \
-  --time-font='Noto Sans UI' \
-  --datepos='x+210:y+742' \
-  --date-font='Noto Sans UI Bold' \
+  --time-font='Arimo Bold' \
+  --date-font='Arimo Bold' \
+  --timesize=48 \
+  --datesize=18 \
+  --indicator \
   --datestr="%A, %d %b" \
   --force-clock \
   --refresh-rate=30 \
-  --radius=32 \
-  --ring-width=4 \
+  --radius=100 \
+  --ring-width=5 \
   --veriftext='' \
   --wrongtext='' \
   --noinputtext='' \
+  --locktext='' \
+  --lockfailedtext='' \
+  --show-failed-attempts \
   --ignore-empty-password
