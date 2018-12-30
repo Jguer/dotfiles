@@ -39,7 +39,7 @@ theme.border_normal = xrdb.color1
 theme.border_focus  = xrdb.color3
 theme.border_marked = xrdb.color5
 
-theme.gap_single_client = false
+-- theme.gap_single_client = false
 
 -- Wibar {{{
 
