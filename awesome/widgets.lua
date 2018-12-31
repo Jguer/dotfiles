@@ -51,8 +51,8 @@ local function right_widgets(hostname, s)
   }
 
   if (not string.match(hostname, "atreides")) then
-    local wbattery = require("fresh.widgets.battery")
-    local wbrightness = require("fresh.widgets.brightness")
+    local wbattery = require("vex.battery")
+    local wbrightness = require("vex.brightness")
     right = gears.table.join(right, {wbattery(30), wbrightness(30)})
   end
 
