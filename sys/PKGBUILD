@@ -12,10 +12,10 @@ license=('GPL3')
 
 source=('00-keyboard.conf'
         '00-NetworkManager.conf'
-        '00-dnsmasq.conf')
+        'dnsmasq.conf')
 
 
-md5sums=('98a700e87c309cce369dbf6c44bd852e'
+md5sums=('4165140fbc6bc6fba6c7c59ac0453aae'
          'fcc1f9f81043adf0bc991b586926434c'
          '5868f111be2061cdc4b0e3c7e99bc00c')
 
@@ -86,5 +86,5 @@ package_jguer-base() {
 
     install -Dm0644 00-keyboard.conf "$pkgdir/etc/X11/xorg.conf.d/00-keyboard.conf"
     install -Dm0644 00-NetworkManager.conf "$pkgdir/etc/NetworkManager/conf.d/00-NetworkManager.conf"
-    install -Dm0644 00-dnsmasq.conf "$pkgdir/etc/NetworkManager/dnsmasq.d/00-dnsmasq.conf"
+    install -Dm0644 dnsmasq.conf "$pkgdir/etc/NetworkManager/dnsmasq.d/dnsmasq.conf"
 }
