@@ -68,6 +68,7 @@ local function new(vpn_dir, prefix, refresh)
             if w._private.connected ~= "off" then
                 awful.spawn(
                     "sudo kill " .. w._private.ovpns[w._private.connected],
+                    true,
                     function()
                         if w._private.selected == "off" then
                             w:force_update()
@@ -80,13 +81,14 @@ local function new(vpn_dir, prefix, refresh)
                 w._private.ovpns[w._private.selected] =
                     awful.spawn(
                     "sudo openvpn " .. w._private.vpn_dir .. "/" .. w._private.selected .. ".ovpn",
-                    false,
+                    true,
                     function()
                         w:force_update()
                     end
                 )
             end
         end
+        w._select_timer:stop()
     end
 
     function w._private.vpn_update()
