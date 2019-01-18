@@ -44,6 +44,7 @@ theme.border_marked = xrdb.color5
 -- Wibar {{{
 
 theme.tasklist_disable_icon = true
+-- theme.tasklist_disable_task_name = true
 theme.tasklist_align = "center"
 theme.tasklist_font = "Iosevka SS04 Medium 11"
 

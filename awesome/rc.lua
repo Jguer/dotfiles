@@ -5,7 +5,11 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local naughty = require("naughty")
 require("awful.autofocus")
+
+local awesome = awesome
+local client = client
 
 --- {{{ Local functions
 local function readAll(file)
@@ -166,10 +170,6 @@ autorun["all"] = {
     "unclutter -noevents -idle 2 -jitter 1 -root",
     "compton --config /home/jguer/dotfiles/compton.conf",
     "redshift-gtk -l 38.72:-9.15 -t 6500:3400"
-}
-
-autorun["atreides"] = {
-    "pulseeffects --gapplication-service"
 }
 
 autorun["laptop"] = {
