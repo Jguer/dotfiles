@@ -1,4 +1,5 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
+-- luacheck: globals client awesome
 -- {{{ Local variables
 --
 local gears = require("gears")
@@ -7,9 +8,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 require("awful.autofocus")
-
-local awesome = awesome
-local client = client
 
 --- {{{ Local functions
 local function readAll(file)

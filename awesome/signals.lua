@@ -1,3 +1,4 @@
+-- luacheck: globals client screen awesome
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
@@ -28,7 +29,6 @@ function signals:init()
     client.connect_signal(
         "manage",
         function(c)
-            -- put client at the end of list
             awful.client.setslave(c)
             client.connect_signal(
                 "manage",

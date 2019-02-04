@@ -1,4 +1,5 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
+-- luacheck: globals client awesome screen
 local gears = require("gears")
 local wibox = require("wibox")
 local wpulse = require("vex.pulse")

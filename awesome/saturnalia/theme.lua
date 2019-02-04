@@ -31,7 +31,6 @@ theme.bg_systray = theme.bg_normal
 theme.fg_normal = xrdb.foreground
 theme.fg_focus = xrdb.color3
 theme.fg_urgent = xrdb.color1
-
 theme.fg_minimize = xrdb.color6
 
 theme.border_width = dpi(3)
@@ -44,19 +43,12 @@ theme.border_marked = xrdb.color5
 
 -- Wibar {{{
 
-theme.taglist_fg_focus = "#ebdbb2"
-theme.taglist_fg_empty = "#3c3836"
-theme.taglist_fg_occupied = "#7c6f64"
-theme.taglist_fg_urgent = "#cc241d"
+theme.taglist_fg_focus = xrdb.color3
+theme.taglist_fg_empty = xrdb.foreground
+theme.taglist_fg_occupied = xrdb.color1
+theme.taglist_fg_urgent = xrdb.color5
 theme.taglist_bg_focus = "#15151500"
--- theme.tasklist_disable_icon = true
--- theme.tasklist_disable_task_name = true
--- theme.tasklist_align = "center"
--- theme.tasklist_font = "Iosevka SS04 Medium 11"
-
-theme.taglist_fg_occupied = xrdb.color4
 theme.taglist_spacing = dpi(4)
--- theme.taglist_font = "Roboto Bold 11"
 
 theme.widget = {
     bg = xrdb.foreground,
