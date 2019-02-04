@@ -155,7 +155,51 @@ function widgets:init(hostname)
             -- s.layoutbox = awful.widget.layoutbox(s)
 
             s.taglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
-            s.tasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+            s.tasklist =
+                awful.widget.tasklist {
+                screen = s,
+                filter = awful.widget.tasklist.filter.currenttags,
+                buttons = tasklist_buttons,
+                layout = {
+                    spacing_widget = {
+                        {
+                            forced_width = 0,
+                            forced_height = beautiful.systray_icon_spacing,
+                            thickness = 0,
+                            color = "#77777700",
+                            widget = wibox.widget.separator
+                        },
+                        valign = "center",
+                        halign = "center",
+                        widget = wibox.container.place
+                    },
+                    spacing = 10,
+                    layout = wibox.layout.fixed.horizontal
+                },
+                -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+                -- not a widget instance.
+                widget_template = {
+                    {
+                        wibox.widget.base.make_widget(),
+                        forced_height = 4,
+                        id = "background_role",
+                        widget = wibox.container.background
+                    },
+                    {
+                        {
+                            id = "clienticon",
+                            widget = awful.widget.clienticon
+                        },
+                        margins = 0,
+                        widget = wibox.container.margin
+                    },
+                    nil,
+                    create_callback = function(self, c, index, objects) --luacheck: no unused args
+                        self:get_children_by_id("clienticon")[1].client = c
+                    end,
+                    layout = wibox.layout.align.vertical
+                }
+            }
 
             s.wibox = awful.wibar({position = "top", screen = s, height = beautiful.panel_height})
 

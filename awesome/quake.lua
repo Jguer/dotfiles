@@ -195,7 +195,9 @@ end
 
 return setmetatable(
     quake,
-    {__call = function(_, ...)
+    {
+        __call = function(_, ...)
             return quake:new(...)
-        end}
+        end
+    }
 )
