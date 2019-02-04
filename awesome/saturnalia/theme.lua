@@ -19,12 +19,13 @@ theme.font = "Arimo Bold 11"
 theme.hotkeys_font = "Iosevka SS04 Medium 11"
 theme.hotkeys_description_font = "Arimo 11"
 
-theme.bg_normal = xrdb.background .. "80"
+theme.bg_normal = xrdb.background
 theme.systray_icon_spacing = dpi(2)
+theme.wibar_bg = xrdb.background .. "00"
 
-theme.bg_focus = theme.bg_normal
-theme.bg_urgent = theme.bg_normal
-theme.bg_minimize = theme.bg_normal
+theme.bg_focus = xrdb.color3
+theme.bg_urgent = xrdb.color1
+theme.bg_minimize = xrdb.color6
 theme.bg_systray = theme.bg_normal
 
 theme.fg_normal = xrdb.foreground
@@ -43,10 +44,15 @@ theme.border_marked = xrdb.color5
 
 -- Wibar {{{
 
-theme.tasklist_disable_icon = true
+theme.taglist_fg_focus = "#ebdbb2"
+theme.taglist_fg_empty = "#3c3836"
+theme.taglist_fg_occupied = "#7c6f64"
+theme.taglist_fg_urgent = "#cc241d"
+theme.taglist_bg_focus = "#15151500"
+-- theme.tasklist_disable_icon = true
 -- theme.tasklist_disable_task_name = true
-theme.tasklist_align = "center"
-theme.tasklist_font = "Iosevka SS04 Medium 11"
+-- theme.tasklist_align = "center"
+-- theme.tasklist_font = "Iosevka SS04 Medium 11"
 
 theme.taglist_fg_occupied = xrdb.color4
 theme.taglist_spacing = dpi(4)
