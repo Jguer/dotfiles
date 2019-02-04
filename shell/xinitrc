@@ -1,4 +1,6 @@
 #!/bin/sh
+export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
+
 dbus-daemon --session &
 start-pulseaudio-x11
 

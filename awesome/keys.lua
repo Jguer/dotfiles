@@ -1,4 +1,5 @@
 -- vim:fdm=marker foldlevel=2 tabstop=2 shiftwidth=2
+-- luacheck: globals client awesome root
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
