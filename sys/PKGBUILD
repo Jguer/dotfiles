@@ -15,7 +15,7 @@ source=('00-keyboard.conf'
         '00-dnsmasq.conf')
 
 
-md5sums=('98a700e87c309cce369dbf6c44bd852e'
+md5sums=('4165140fbc6bc6fba6c7c59ac0453aae'
          'fcc1f9f81043adf0bc991b586926434c'
          '5868f111be2061cdc4b0e3c7e99bc00c')
 
