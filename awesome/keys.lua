@@ -3,7 +3,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
-local quake = require("quake")
 local hotkeys = {mouse = {}, keys = {}}
 local xrandr = require("vex.xrandr")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
@@ -68,18 +67,6 @@ function hotkeys:init(args)
   local args = args or {}
   local modkey = args.modkey
 
-  local dropdown =
-    quake(
-    {
-      app = "kitty",
-      argname = "--class=%s",
-      width = 0.5,
-      height = 0.3,
-      vert = "bottom",
-      horiz = "right",
-      followtag = true
-    }
-  )
   -- {{{ Global Mouse
   self.mouse.root =
     awful.util.table.join(
@@ -340,14 +327,6 @@ function hotkeys:init(args)
         xrandr.xrandr()
       end,
       {description = "xrandr", group = "applications"}
-    ),
-    awful.key(
-      {modkey},
-      "z",
-      function()
-        dropdown:toggle()
-      end,
-      {description = "quake terminal", group = "applications"}
     ),
     awful.key(
       {altkey},

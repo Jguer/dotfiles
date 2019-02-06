@@ -20,36 +20,49 @@ theme.hotkeys_font = "Iosevka SS04 Medium 11"
 theme.hotkeys_description_font = "Arimo 11"
 
 theme.bg_normal = xrdb.background
-theme.systray_icon_spacing = dpi(2)
+theme.systray_icon_spacing = dpi(3)
 theme.wibar_bg = xrdb.background .. "00"
 
-theme.bg_focus = xrdb.color3
-theme.bg_urgent = xrdb.color1
-theme.bg_minimize = xrdb.color6
-theme.bg_systray = theme.bg_normal
-
+-- Normal
+theme.bg_systray = theme.bg_normal .. "00"
 theme.fg_normal = xrdb.foreground
-theme.fg_focus = xrdb.color3
-theme.fg_urgent = xrdb.color1
-theme.fg_minimize = xrdb.color6
-
-theme.border_width = dpi(3)
-theme.useless_gap = dpi(3)
 theme.border_normal = xrdb.color1
+theme.tasklist_bg_normal = xrdb.color1
+theme.hotkeys_modifiers_fg = xrdb.color3
+
+-- Focus
+theme.fg_focus = xrdb.color3
+theme.bg_focus = xrdb.bg_normal
 theme.border_focus = xrdb.color3
-theme.border_marked = xrdb.color5
-
--- theme.gap_single_client = false
-
--- Wibar {{{
-
 theme.taglist_fg_focus = xrdb.color3
-theme.taglist_fg_empty = xrdb.foreground
+theme.taglist_bg_focus = "#15151500"
+
+-- Urgent
+theme.bg_urgent = xrdb.color1
+theme.fg_urgent = xrdb.color1
 theme.taglist_fg_occupied = xrdb.color1
 theme.taglist_fg_urgent = xrdb.color5
-theme.taglist_bg_focus = "#15151500"
+
+-- Minimized
+theme.bg_minimize = xrdb.color6
+theme.fg_minimize = xrdb.color6
+
+-- Empty
+theme.taglist_fg_empty = xrdb.foreground
+
+-- Marked
+theme.border_marked = xrdb.color5
+theme.hotkeys_border_color = xrdb.color3
+
+-- Spacings
+theme.calendar_normal_border_width = dpi(1)
+theme.calendar_weekday_border_width = dpi(1)
+theme.calendar_weekday_border_color = xrdb.color2
+theme.border_width = dpi(3)
+theme.useless_gap = dpi(3)
 theme.taglist_spacing = dpi(4)
 
+-- Wibar {{{
 theme.widget = {
     bg = xrdb.foreground,
     fg = xrdb.foreground,
@@ -61,8 +74,6 @@ theme.widget = {
 -- }}}
 
 theme.notification_shape = gears.shape.rounded_rect
-theme.hotkeys_modifiers_fg = xrdb.color3
-theme.hotkeys_border_color = xrdb.color3
 theme.hotkeys_shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 2)
 end

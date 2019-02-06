@@ -21,7 +21,25 @@ local taglist_buttons =
             t:view_only()
         end
     ),
+    awful.button(
+        {"Mod4"},
+        1,
+        function(t)
+            if client.focus then
+                client.focus:move_to_tag(t)
+            end
+        end
+    ),
     awful.button({}, 3, awful.tag.viewtoggle),
+    awful.button(
+        {"Mod4"},
+        3,
+        function(t)
+            if client.focus then
+                client.focus:toggle_tag(t)
+            end
+        end
+    ),
     awful.button(
         {},
         4,
@@ -38,6 +56,7 @@ local taglist_buttons =
     )
 )
 
+-- @TASKLIST_BUTTON@
 local tasklist_buttons =
     gears.table.join(
     awful.button(
@@ -47,18 +66,15 @@ local tasklist_buttons =
             if c == client.focus then
                 c.minimized = true
             else
-                -- c:emit_signal(
-                --   "request::activate",
-                --   "tasklist",
-                --   {raise = true}
-                --   )
-                c.minimized = false
-                if not c:isvisible() and c.first_tag then
-                    c.first_tag:view_only()
-                end
-                client.focus = c
-                c:raise()
+                c:emit_signal("request::activate", "tasklist", {raise = true})
             end
+        end
+    ),
+    awful.button(
+        {},
+        3,
+        function()
+            awful.menu.client_list({theme = {width = 250}})
         end
     ),
     awful.button(
@@ -84,6 +100,7 @@ local function right_widgets(hostname, s)
         -- Right widgets
         layout = wibox.layout.fixed.horizontal,
         wibox.widget.systray(),
+        vpn("/home/jguer/docs/vpns/proxy", "vpn "),
         wkeyboard(),
         wpulse(6)
     }
@@ -155,7 +172,13 @@ function widgets:init(hostname)
 
             -- s.layoutbox = awful.widget.layoutbox(s)
 
-            s.taglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+            s.taglist =
+                awful.widget.taglist {
+                screen = s,
+                filter = awful.widget.taglist.filter.all,
+                buttons = taglist_buttons
+            }
+
             s.tasklist =
                 awful.widget.tasklist {
                 screen = s,
@@ -164,8 +187,8 @@ function widgets:init(hostname)
                 layout = {
                     spacing_widget = {
                         {
-                            forced_width = 0,
-                            forced_height = beautiful.systray_icon_spacing,
+                            forced_width = 5,
+                            forced_height = 4,
                             thickness = 0,
                             color = "#77777700",
                             widget = wibox.widget.separator
@@ -191,7 +214,8 @@ function widgets:init(hostname)
                             id = "clienticon",
                             widget = awful.widget.clienticon
                         },
-                        margins = 0,
+                        left = 4,
+                        bottom = 0,
                         widget = wibox.container.margin
                     },
                     nil,
@@ -204,21 +228,42 @@ function widgets:init(hostname)
 
             s.wibox = awful.wibar({position = "top", screen = s, height = beautiful.panel_height})
 
-            local vpn_widget = vpn("/home/jguer/docs/vpns/proxy", "vpn: ")
-
             -- Add widgets to the wibox
             s.wibox:setup {
+                layout = wibox.layout.align.horizontal,
+                expand = "none",
                 {
-                    vpn_widget,
-                    s.taglist,
+                    {
+                        s.tasklist,
+                        left = 10,
+                        right = 10,
+                        widget = wibox.container.margin
+                    },
                     layout = wibox.layout.fixed.horizontal
                 },
                 {
-                    s.tasklist,
-                    layout = wibox.layout.flex.horizontal
+                    {
+                        {
+                            s.taglist,
+                            left = 10,
+                            right = 10,
+                            top = 2,
+                            bottom = 2,
+                            widget = wibox.container.margin
+                        },
+                        bg = beautiful.bg_normal,
+                        shape = gears.shape.hexagon,
+                        shape_border_color = beautiful.border_color,
+                        shape_border_width = beautiful.border_width,
+                        widget = wibox.container.background
+                    },
+                    layout = wibox.layout.fixed.horizontal
                 },
-                right_widgets(hostname, s),
-                layout = wibox.layout.align.horizontal
+                {
+                    right_widgets(hostname, s),
+                    bg = beautiful.bg_normal,
+                    widget = wibox.container.background
+                }
             }
         end
     )
