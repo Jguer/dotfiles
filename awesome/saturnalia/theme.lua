@@ -28,18 +28,20 @@ theme.bg_systray = theme.bg_normal .. "00"
 theme.fg_normal = xrdb.foreground
 theme.border_normal = xrdb.color1
 theme.tasklist_bg_normal = xrdb.color1
+theme.tasklist_bg_focus = xrdb.color3
+theme.tasklist_bg_urgent = xrdb.color5
 theme.hotkeys_modifiers_fg = xrdb.color3
 
 -- Focus
 theme.fg_focus = xrdb.color3
-theme.bg_focus = xrdb.bg_normal
+theme.bg_focus = theme.bg_normal
 theme.border_focus = xrdb.color3
 theme.taglist_fg_focus = xrdb.color3
 theme.taglist_bg_focus = "#15151500"
 
 -- Urgent
-theme.bg_urgent = xrdb.color1
-theme.fg_urgent = xrdb.color1
+theme.bg_urgent = theme.bg_normal
+theme.fg_urgent = xrdb.color5
 theme.taglist_fg_occupied = xrdb.color1
 theme.taglist_fg_urgent = xrdb.color5
 
