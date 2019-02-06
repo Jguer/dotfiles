@@ -128,7 +128,7 @@ theme.layout_cornerse = themes_path .. "layouts/cornerse.svg"
 theme_assets.recolor_layout(theme, xrdb.foreground)
 -- }}}
 
-theme.wallpaper = themes_path .. "wallpaper.png"
+theme.wallpaper = themes_path .. "wallpaper.jpg"
 theme.set_wallpaper = function(s)
     if util.file_readable(theme.wallpaper) then
         gears.wallpaper.maximized(theme.wallpaper, s, true)
