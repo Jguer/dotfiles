@@ -3,7 +3,7 @@
 pkgbase=jguer
 pkgname=(jguer-base jguer-desktop jguer-linters)
 _pkgname=jguer
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Base packages for jguer system configuration"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 
 source=('00-keyboard.conf'
         '00-NetworkManager.conf'
-        '00-dnsmasq.conf')
+        'dnsmasq.conf')
 
 
 md5sums=('4165140fbc6bc6fba6c7c59ac0453aae'
@@ -86,5 +86,5 @@ package_jguer-base() {
 
     install -Dm0644 00-keyboard.conf "$pkgdir/etc/X11/xorg.conf.d/00-keyboard.conf"
     install -Dm0644 00-NetworkManager.conf "$pkgdir/etc/NetworkManager/conf.d/00-NetworkManager.conf"
-    install -Dm0644 00-dnsmasq.conf "$pkgdir/etc/NetworkManager/dnsmasq.d/00-dnsmasq.conf"
+    install -Dm0644 dnsmasq.conf "$pkgdir/etc/NetworkManager/dnsmasq.d/dnsmasq.conf"
 }
