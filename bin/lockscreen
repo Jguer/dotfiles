@@ -4,7 +4,7 @@ if [ $1 ]; then
   lockbg="$1"
 else
   # lockbg=$(find $HOME/Pictures/wallpapers/*.png -type f | shuf -n 1)
-  lockbg="$HOME/.config/awesome/saturnalia/wallpaper.png"
+  lockbg="$HOME/.config/awesome/saturnalia/wallpaper.jpg"
 fi
 
 B='#282a36cc' # blank
