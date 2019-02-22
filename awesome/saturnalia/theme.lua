@@ -79,6 +79,8 @@ theme.notification_shape = gears.shape.rounded_rect
 theme.hotkeys_shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 2)
 end
+theme.tooltip_align = "bottom"
+theme.tooltip_border_width = dpi(0)
 
 -- Title Bar {{{
 theme.titlebar_close_button_normal = themes_path .. "titlebar/close_normal.png"
