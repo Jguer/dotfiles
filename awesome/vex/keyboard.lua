@@ -9,7 +9,7 @@ local recolor_image = gears_color.recolor_image
 local keyboard = {mt = {}}
 
 local style = {
-    width = 41,
+    width = 48,
     icon = beautiful.themes_path .. "icons/keyboard.svg"
 }
 
@@ -19,17 +19,16 @@ function keyboard.new()
         wibox.widget {
         image = recolor_image(style.icon, beautiful.widget.fg),
         resize = true,
-        forced_width = 16,
-        forced_height = 16,
+        -- forced_width = 20,
+        forced_height = 20,
         widget = wibox.widget.imagebox
     }
 
     local text = awful.widget.keyboardlayout()
 
-    local layout = wibox.layout.fixed.horizontal(wibox.container.place(icon), text)
+    local layout = wibox.layout.align.horizontal(wibox.container.place(icon), text)
 
-    local widget = wibox.container.constraint(layout, "exact", style.width)
-    local self = widget_base.make_widget(widget)
+    local self = widget_base.make_widget(layout)
     self.icon = icon
     self.text = text
 
