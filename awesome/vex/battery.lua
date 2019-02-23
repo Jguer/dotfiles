@@ -10,10 +10,11 @@ local recolor_image = gears_color.recolor_image
 local naughty = require("naughty")
 
 local battery = {mt = {}}
+local notification
 
 local style = {
     width = 56,
-    icon = beautiful.themes_path .. "icons/battery.svg"
+    icon = beautiful.themes_path .. "icons/battery-full.svg"
 }
 
 local function show_battery_warning()
@@ -27,7 +28,7 @@ local function show_battery_warning()
         width = 300
     }
 end
-local notification
+
 local function show_battery_status()
     awful.spawn.easy_async(
         [[bash -c 'acpi']],
