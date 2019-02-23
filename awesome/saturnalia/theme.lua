@@ -79,6 +79,8 @@ theme.notification_shape = gears.shape.rounded_rect
 theme.hotkeys_shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 2)
 end
+theme.tooltip_align = "bottom"
+theme.tooltip_border_width = dpi(0)
 
 -- Title Bar {{{
 theme.titlebar_close_button_normal = themes_path .. "titlebar/close_normal.png"
@@ -128,7 +130,7 @@ theme.layout_cornerse = themes_path .. "layouts/cornerse.svg"
 theme_assets.recolor_layout(theme, xrdb.foreground)
 -- }}}
 
-theme.wallpaper = themes_path .. "wallpaper.jpg"
+theme.wallpaper = themes_path .. "wallpaper.png"
 theme.set_wallpaper = function(s)
     if util.file_readable(theme.wallpaper) then
         gears.wallpaper.maximized(theme.wallpaper, s, true)
@@ -136,4 +138,9 @@ theme.set_wallpaper = function(s)
         gears.wallpaper.set(theme.bg_normal)
     end
 end
+
+theme.icon = function(utf, color)
+    return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color, utf)
+end
+
 return theme

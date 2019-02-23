@@ -3,80 +3,64 @@ local button = require("awful.button")
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
-local widget_base = require("wibox.widget.base")
 local wibox = require("wibox")
-local gears_color = require("gears.color")
-local recolor_image = gears_color.recolor_image
+local spawn = require("awful.spawn")
+local timer = require("gears.timer")
+local gtable = require("gears.table")
 
 local pulse = {mt = {}}
-local alsaCommand = 'amixer get Master | grep -P -o "\\[(on|off)\\]|[0-9]+(%=?)"'
-alsaCommand = "bash -c '" .. alsaCommand .. "'"
+local command =
+    "pacmd list-sinks | sed -n -e '/*/,$!d' -e '/index/p' -e '/base volume/d' -e '/volume:/p' -e '/muted:/p' -e '/device\\.string/p'"
 
-local style = {
-    width = 56,
-    icon = beautiful.themes_path .. "icons/audio.svg",
-    mute_icon = beautiful.themes_path .. "icons/mute.svg"
-}
-
-local function update_status(self)
-    awful.spawn.with_line_callback(
-        alsaCommand,
-        {
-            stdout = function(line)
-                if line:find("off") then
-                    self.icon:set_image(recolor_image(style.mute_icon, beautiful.widget.off))
-                elseif line:find("on") then
-                    self.icon:set_image(recolor_image(style.icon, beautiful.widget.fg))
-                else
-                    local volume = tonumber(line:match("%d+"))
-                    self.text:set_text(volume .. "%")
-                end
-            end,
-            stderr = function()
-            end
-        }
-    )
+function pulse:force_update()
+    self._timer:emit_signal("timeout")
 end
 
 -- @return A pulse widget.
-function pulse.new(timeout)
-    local icon =
+local function new(timeout)
+    local self =
         wibox.widget {
-        image = recolor_image(style.icon, beautiful.widget.bg),
-        resize = true,
-        forced_width = 16,
-        forced_height = 16,
-        widget = wibox.widget.imagebox
-    }
-
-    local text =
-        wibox.widget {
-        text = "0%",
+        markup = string.format("%s %s%%", beautiful.icon("", beautiful.widget.fg), 0),
         align = "center",
         valign = "center",
-        forced_width = 42,
         widget = wibox.widget.textbox
     }
+    gtable.crush(self, pulse, true)
 
-    local layout = wibox.layout.fixed.horizontal(wibox.container.place(icon), text)
-
-    local widget = wibox.container.constraint(layout, "exact", style.width)
-    local self = widget_base.make_widget(widget)
-    self.icon = icon
-    self.text = text
+    self.volume = "0"
+    self._private.refresh = timeout or 12
 
     self.set_volume = function(step)
-        awful.spawn("amixer -D pulse sset Master " .. step, false)
-        update_status(self)
+        spawn.easy_async("amixer -D pulse sset Master " .. step, self._private.update)
     end
 
     self.toggle_mute = function()
-        awful.spawn("amixer -D pulse sset Master toggle", false)
-        update_status(self)
+        spawn.easy_async("amixer -D pulse sset Master toggle", self._private.update)
     end
 
     self.toggle_mic = function()
         awful.spawn("amixer set Capture toggle", false)
+    end
+
+    function self._private.update()
+        spawn.easy_async_with_shell(
+            command,
+            function(stdout, _, _, _)
+                local muted = string.match(stdout, "muted: (%S+)") or "N/A"
+
+                for v in string.gmatch(stdout, ":.-(%d+)%%") do
+                    self.volume = v
+                end
+
+                if muted == "no" then
+                    self:set_markup(string.format("%s %s%%", beautiful.icon("", beautiful.widget.fg), self.volume))
+                else
+                    self:set_markup(string.format("%s %s%%", beautiful.icon("", beautiful.widget.off), self.volume))
+                end
+
+                self._timer:again()
+            end
+        )
     end
 
     -- Mouse bindings
@@ -96,25 +80,12 @@ function pulse.new(timeout)
                     self.set_volume("2%-")
                 end
             ),
-            button(
-                {},
-                1,
-                function()
-                    self.toggle_mute()
-                end
-            )
+            button({}, 1, self.toggle_mute)
         )
     )
 
-    update_status(self)
-    gears.timer {
-        timeout = timeout,
-        call_now = true,
-        autostart = true,
-        callback = function()
-            update_status(self)
-        end
-    }
+    self._timer = timer.weak_start_new(self._private.refresh, self._private.update)
+    self:force_update()
     return self
 end
 
@@ -122,7 +93,7 @@ local _instance = nil
 
 function pulse.mt:__call(...)
     if _instance == nil then
-        _instance = self.new(...)
+        _instance = new(...)
     end
     return _instance
 end

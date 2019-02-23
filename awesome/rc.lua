@@ -19,7 +19,8 @@ end
 --}}}
 
 local modkey = "Mod4"
-local hostname = readAll("/etc/hostname"):gsub("%s+", "")
+-- local hostname = readAll("/etc/hostname"):gsub("%s+", "")
+local hostname = io.lines("/proc/sys/kernel/hostname")()
 
 awful.layout.layouts = {
     awful.layout.suit.tile,
