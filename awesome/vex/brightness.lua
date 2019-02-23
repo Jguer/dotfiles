@@ -37,8 +37,8 @@ function brightness.new(timeout)
         wibox.widget {
         image = recolor_image(style.icon, beautiful.widget.fg),
         resize = true,
-        forced_width = 16,
-        forced_height = 16,
+        forced_width = 20,
+        forced_height = 20,
         widget = wibox.widget.imagebox
     }
 

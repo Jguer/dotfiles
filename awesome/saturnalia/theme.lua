@@ -138,4 +138,9 @@ theme.set_wallpaper = function(s)
         gears.wallpaper.set(theme.bg_normal)
     end
 end
+
+theme.icon = function(utf, color)
+    return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color, utf)
+end
+
 return theme
