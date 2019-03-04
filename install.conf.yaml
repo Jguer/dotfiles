@@ -22,7 +22,7 @@
     ~/.config/fontconfig/fonts.conf: fonts.conf
     ~/.config/user-dirs.dirs: user-dirs.dirs
     ~/.icons/saturnalia: gtk/icon
-    ~/.themes/saturnalia: gtk/icon
+    ~/.themes/saturnalia: gtk/theme
     # Applications
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.gitconfig: gitconfig
