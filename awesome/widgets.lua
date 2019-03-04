@@ -100,8 +100,8 @@ local function right_widgets(hostname, s)
         -- Right widgets
         layout = wibox.layout.fixed.horizontal,
         wibox.widget.systray(),
-        vpn("/home/jguer/docs/vpns/proxy", "vpn "),
         wkeyboard(),
+        vpn("/home/jguer/docs/vpns/proxy", "vpn "),
         wpulse(6)
     }
 
@@ -242,28 +242,10 @@ function widgets:init(hostname)
                     layout = wibox.layout.fixed.horizontal
                 },
                 {
-                    {
-                        {
-                            s.taglist,
-                            left = 10,
-                            right = 10,
-                            top = 2,
-                            bottom = 2,
-                            widget = wibox.container.margin
-                        },
-                        bg = beautiful.bg_normal,
-                        shape = gears.shape.hexagon,
-                        shape_border_color = beautiful.border_color,
-                        shape_border_width = beautiful.border_width,
-                        widget = wibox.container.background
-                    },
+                    s.taglist,
                     layout = wibox.layout.fixed.horizontal
                 },
-                {
-                    right_widgets(hostname, s),
-                    bg = beautiful.bg_normal,
-                    widget = wibox.container.background
-                }
+                right_widgets(hostname, s)
             }
         end
     )

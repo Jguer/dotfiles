@@ -15,8 +15,7 @@ rules.base_properties = {
 
 rules.floating_any = {
     class = {
-        "Sxiv",
-        "mpv"
+        "Sxiv"
     },
     role = {"AlarmWindow", "pop-up"},
     type = {"dialog"}

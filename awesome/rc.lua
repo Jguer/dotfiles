@@ -9,18 +9,38 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 require("awful.autofocus")
 
---- {{{ Local functions
-local function readAll(file)
-    local f = assert(io.open(file, "rb"))
-    local content = f:read("*all")
-    f:close()
-    return content
-end
---}}}
-
 local modkey = "Mod4"
 -- local hostname = readAll("/etc/hostname"):gsub("%s+", "")
 local hostname = io.lines("/proc/sys/kernel/hostname")()
+
+-- Icon size
+naughty.config.defaults["icon_size"] = beautiful.notification_icon_size
+
+-- Timeouts
+naughty.config.defaults.timeout = 5
+naughty.config.presets.low.timeout = 2
+naughty.config.presets.critical.timeout = 12
+
+-- Apply theme variables
+naughty.config.padding = 6
+naughty.config.spacing = beautiful.notification_spacing
+naughty.config.defaults.margin = beautiful.notification_margin
+naughty.config.defaults.border_width = beautiful.notification_border_width
+
+naughty.config.presets.normal = {
+    fg = beautiful.notification_fg,
+    bg = beautiful.notification_bg
+}
+
+naughty.config.presets.low = {
+    fg = beautiful.notification_fg,
+    bg = beautiful.notification_bg
+}
+
+naughty.config.presets.critical = {
+    fg = beautiful.notification_crit_fg,
+    bg = beautiful.notification_crit_bg
+}
 
 awful.layout.layouts = {
     awful.layout.suit.tile,
@@ -177,4 +197,5 @@ autorun["laptop"] = {
 
 run_once(autorun["all"])
 run_once(autorun[hostname] or autorun["laptop"])
+
 -- }}}
