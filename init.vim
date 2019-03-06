@@ -72,8 +72,8 @@ Plug 'Shougo/neoinclude.vim', { 'for': 'C' }
 " .-. Appearance .-.
 Plug 'itchyny/lightline.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'connorholyday/vim-snazzy'
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'C' }
+Plug 'chriskempson/base16-vim'
 
 " .-. Util .-.
 Plug 'scrooloose/nerdtree'
@@ -164,7 +164,7 @@ call plug#end()
 
 " LightLine {{{
   let g:lightline = {
-        \ 'colorscheme': 'snazzy',
+        \ 'colorscheme': 'wombat',
         \ }
 " }}}
 
@@ -234,5 +234,7 @@ set autoread
 " }}}
 
 " Colorscheme {{{
-  colorscheme snazzy
+  set termguicolors
+  let base16colorspace=256
+  colorscheme base16-default-dark
 " }}}

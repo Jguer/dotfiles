@@ -15,35 +15,34 @@ theme.themes_path = themes_path
 
 theme.panel_height = dpi(24)
 
-theme.font = "Arimo Bold 11"
-theme.hotkeys_font = "Iosevka SS04 Medium 11"
-theme.hotkeys_description_font = "Arimo 11"
+theme.font = "Arimo Bold " .. dpi(11)
+theme.hotkeys_font = "Iosevka SS04 Medium " .. dpi(11)
+theme.hotkeys_description_font = "Arimo" .. dpi(11)
 
 theme.bg_normal = xrdb.background
-theme.systray_icon_spacing = dpi(3)
-theme.wibar_bg = xrdb.background .. "00"
+theme.wibar_bg = xrdb.background .. "90"
 
 -- Normal
-theme.bg_systray = theme.bg_normal .. "00"
-theme.fg_normal = xrdb.foreground
 theme.border_normal = xrdb.color1
-theme.tasklist_bg_normal = xrdb.color1
-theme.tasklist_bg_focus = xrdb.color3
-theme.tasklist_bg_urgent = xrdb.color5
+theme.fg_normal = xrdb.foreground
 theme.hotkeys_modifiers_fg = xrdb.color3
+theme.snap_fg = theme.bg_focus
+theme.tasklist_bg_normal = xrdb.color1
 
 -- Focus
-theme.fg_focus = xrdb.color3
 theme.bg_focus = theme.bg_normal
 theme.border_focus = xrdb.color3
+theme.fg_focus = xrdb.color3
+theme.taglist_bg_focus = theme.bg_normal .. "00"
 theme.taglist_fg_focus = xrdb.color3
-theme.taglist_bg_focus = "#15151500"
+theme.tasklist_bg_focus = xrdb.color3
 
 -- Urgent
 theme.bg_urgent = theme.bg_normal
 theme.fg_urgent = xrdb.color5
 theme.taglist_fg_occupied = xrdb.color1
 theme.taglist_fg_urgent = xrdb.color5
+theme.tasklist_bg_urgent = xrdb.color5
 
 -- Minimized
 theme.bg_minimize = xrdb.color6
@@ -62,9 +61,10 @@ theme.calendar_weekday_border_width = dpi(1)
 theme.calendar_weekday_border_color = xrdb.color2
 theme.border_width = dpi(3)
 theme.useless_gap = dpi(3)
+theme.systray_icon_spacing = dpi(3)
 theme.taglist_spacing = dpi(4)
 
--- Wibar {{{
+-- Widgets {{{
 theme.widget = {
     bg = xrdb.foreground,
     fg = xrdb.foreground,
@@ -75,7 +75,29 @@ theme.widget = {
 }
 -- }}}
 
+-- Wibar {{{
+theme.wibar_border_width = dpi(2)
+theme.wibar_border_color = xrdb.background .. "00"
+-- }}}
+
+-- Notification {{{
 theme.notification_shape = gears.shape.rounded_rect
+theme.notification_border_color = xrdb.color10
+theme.notification_bg = xrdb.background
+theme.notification_fg = xrdb.foreground
+theme.notification_font = theme.font
+theme.notification_crit_bg = xrdb.color3
+theme.notification_crit_fg = xrdb.color0
+theme.notification_border_width = dpi(0)
+theme.notification_border_radius = dpi(6)
+theme.notification_icon_size = dpi(60)
+theme.notification_margin = dpi(15)
+theme.notification_opacity = 1
+theme.notification_padding = dpi(6)
+theme.notification_spacing = dpi(6)
+
+--- }}}
+
 theme.hotkeys_shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 2)
 end
