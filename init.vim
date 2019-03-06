@@ -13,8 +13,12 @@ let mapleader = ","
 set hidden " Allow background buffers without saving
 " set spell spelllang=en_us
 
-set number
-set relativenumber "Relative number line
+" Relative line numbers
+set number relativenumber
+" Always show at least one line above/below the cursor.
+set scrolloff=1
+" Always show at least one line left/right of the cursor.
+set sidescrolloff=5
 set cursorline
 set showcmd "Show command in bottom bar
 set showmatch "Highlight matching brackets
