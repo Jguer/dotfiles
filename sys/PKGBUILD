@@ -3,7 +3,7 @@
 pkgbase=jguer
 pkgname=(jguer-base jguer-desktop jguer-linters)
 _pkgname=jguer
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Base packages for jguer system configuration"
 arch=('any')
@@ -12,6 +12,7 @@ license=('GPL3')
 
 source=('00-keyboard.conf'
         '00-NetworkManager.conf'
+        '30-touchpad.conf'
         'dnsmasq.conf'
         'makepkg.conf'
         'pacman.conf'
@@ -20,6 +21,7 @@ source=('00-keyboard.conf'
 
 md5sums=('4165140fbc6bc6fba6c7c59ac0453aae'
          'fcc1f9f81043adf0bc991b586926434c'
+         '5525db30b3e9b8c7d367be13fc995fe8'
          '5868f111be2061cdc4b0e3c7e99bc00c'
          'cbe413644f0fc089e36b4f0e0ff0642f'
          '70294257a6ff7fb01462b13e437c1408')
@@ -93,6 +95,7 @@ package_jguer-base() {
   )
 
     install -Dm0644 00-keyboard.conf "$pkgdir/etc/X11/xorg.conf.d/00-keyboard.conf"
+    install -Dm0644 30-touchpad.conf "$pkgdir/etc/X11/xorg.conf.d/30-touchpad.conf"
     install -Dm0644 00-NetworkManager.conf "$pkgdir/etc/NetworkManager/conf.d/00-NetworkManager.conf"
     install -Dm0644 dnsmasq.conf "$pkgdir/etc/NetworkManager/dnsmasq.d/dnsmasq.conf"
     install -Dm0644 makepkg.conf "$pkgdir/etc/makepkg.conf"
