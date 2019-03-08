@@ -3,7 +3,7 @@
 pkgbase=jguer
 pkgname=(jguer-base jguer-desktop jguer-linters)
 _pkgname=jguer
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Base packages for jguer system configuration"
 arch=('any')
@@ -12,12 +12,17 @@ license=('GPL3')
 
 source=('00-keyboard.conf'
         '00-NetworkManager.conf'
-        'dnsmasq.conf')
+        'dnsmasq.conf'
+        'makepkg.conf'
+        'pacman.conf'
+        )
 
 
 md5sums=('4165140fbc6bc6fba6c7c59ac0453aae'
          'fcc1f9f81043adf0bc991b586926434c'
-         '5868f111be2061cdc4b0e3c7e99bc00c')
+         '5868f111be2061cdc4b0e3c7e99bc00c'
+         'cbe413644f0fc089e36b4f0e0ff0642f'
+         '70294257a6ff7fb01462b13e437c1408')
 
 package_jguer-linters() {
   depends=(
@@ -27,10 +32,8 @@ package_jguer-linters() {
 
 package_jguer-desktop() {
   depends=(
-      'adapta-gtk-theme'
       'awesome'
       'breeze-icons'
-      'browserpass'
       'cheese'
       'compton'
       'firefox-developer-edition'
@@ -45,6 +48,7 @@ package_jguer-desktop() {
       'gvfs-nfs'
       'kitty'
       'mpv'
+      'cmus'
       )
 
 }
@@ -57,10 +61,13 @@ package_jguer-base() {
       'alsa-utils'
       'bash-completion'
       'dhclient'
+      'dnsmasq'
       'gnome-keyring'
       'go'
       'htop'
       'noto-fonts'
+      'otf-fira-code'
+      'otf-fira-mono'
       'noto-fonts-cjk'
       'noto-fonts-emoji'
       'ttf-ionicons'
@@ -88,4 +95,6 @@ package_jguer-base() {
     install -Dm0644 00-keyboard.conf "$pkgdir/etc/X11/xorg.conf.d/00-keyboard.conf"
     install -Dm0644 00-NetworkManager.conf "$pkgdir/etc/NetworkManager/conf.d/00-NetworkManager.conf"
     install -Dm0644 dnsmasq.conf "$pkgdir/etc/NetworkManager/dnsmasq.d/dnsmasq.conf"
+    install -Dm0644 makepkg.conf "$pkgdir/etc/makepkg.conf"
+    install -Dm0644 pacman.conf "$pkgdir/etc/pacman.conf"
 }

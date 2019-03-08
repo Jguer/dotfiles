@@ -8,7 +8,7 @@
 #################################################################################
 
 buildroot="$(mktemp -d)"
-pkg="yay"
+pkg="yay-bin"
 
 sudo -v
 sudo pacman -S --needed --noconfirm git
