@@ -2,11 +2,11 @@ post_install() {
     systemctl enable --now systemd-timesyncd
     # ln -sf /usr/share/zoneinfo/Europe/Lisbon "/etc/localtime"
     # sed 's/#en_IE/en_IE/' -i /etc/locale.gen
-    locale-gen
+    # locale-gen
     systemctl enable --now tlp.service
     systemctl enable --now tlp-sleep.service
     systemctl mask systemd-rfkill.socket
     systemctl enable --now thermald
-    # systemctl enable --now NetworkManager
+    systemctl enable --now NetworkManager
     systemctl enable --now avahi-daemon
 }
