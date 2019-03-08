@@ -20,7 +20,7 @@ theme.hotkeys_font = "Iosevka SS04 Medium " .. dpi(11)
 theme.hotkeys_description_font = "Arimo" .. dpi(11)
 
 theme.bg_normal = xrdb.background
-theme.wibar_bg = xrdb.background .. "90"
+theme.wibar_bg = xrdb.background .. "95"
 
 -- Normal
 theme.border_normal = xrdb.color1
