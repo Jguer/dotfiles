@@ -9,8 +9,7 @@ local timer = require("gears.timer")
 local gtable = require("gears.table")
 
 local pulse = {mt = {}}
-local command =
-    "pacmd list-sinks | sed -n -e '/*/,$!d' -e '/index/p' -e '/base volume/d' -e '/volume:/p' -e '/muted:/p' -e '/device\\.string/p'"
+local command = "amixer -D pulse sget Master | tail -n 1"
 
 function pulse:force_update()
     self._timer:emit_signal("timeout")
@@ -46,13 +45,10 @@ local function new(timeout)
         spawn.easy_async_with_shell(
             command,
             function(stdout, _, _, _)
-                local muted = string.match(stdout, "muted: (%S+)") or "N/A"
+                local status = string.match(stdout, "%[(o%D%D?)%]") or "N/A"
+                self.volume = string.match(stdout, "(%d?%d?%d)%%") or "0"
 
-                for v in string.gmatch(stdout, ":.-(%d+)%%") do
-                    self.volume = v
-                end
-
-                if muted == "no" then
+                if status == "on" then
                     self:set_markup(string.format("%s %s%%", beautiful.icon("", beautiful.widget.fg), self.volume))
                 else
                     self:set_markup(string.format("%s %s%%", beautiful.icon("", beautiful.widget.off), self.volume))

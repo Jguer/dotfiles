@@ -3,7 +3,7 @@
 pkgbase=jguer
 pkgname=(jguer-base jguer-desktop jguer-linters)
 _pkgname=jguer
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Base packages for jguer system configuration"
 arch=('any')
@@ -82,7 +82,6 @@ package_jguer-base() {
       'redshift'
       'rofi'
       'terminus-font'
-      'thermald'
       'tlp'
       'dhclient'
       'tlp-rdw'
