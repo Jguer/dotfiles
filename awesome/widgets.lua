@@ -101,7 +101,6 @@ local function right_widgets(hostname, s)
         layout = wibox.layout.fixed.horizontal,
         wibox.widget.systray(),
         wkeyboard(),
-        vpn("/home/jguer/docs/vpns/proxy", "vpn "),
         wpulse(6)
     }
 
