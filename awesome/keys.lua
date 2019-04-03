@@ -316,7 +316,7 @@ function hotkeys:init(args)
       {modkey},
       "q",
       function()
-        awful.spawn("firefox-developer-edition")
+        awful.spawn("firefox")
       end,
       {description = "firefox", group = "applications"}
     ),
