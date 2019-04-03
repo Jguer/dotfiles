@@ -38,7 +38,7 @@ package_jguer-desktop() {
       'breeze-icons'
       'cheese'
       'compton'
-      'firefox-developer-edition'
+      'firefox'
       'nautilus'
       'file-roller'
       'syncthing'
