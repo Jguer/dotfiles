@@ -10,6 +10,7 @@ local gtable = require("gears.table")
 
 local pulse = {mt = {}}
 local command = "amixer -D pulse sget Master | tail -n 1"
+local get_sink = "pacmd list-sinks | grep '* index:' | cut -b12-"
 
 function pulse:force_update()
     self._timer:emit_signal("timeout")
@@ -30,7 +31,7 @@ local function new(timeout)
     self._private.refresh = timeout or 12
 
     self.set_volume = function(step)
-        spawn.easy_async("amixer -D pulse sset Master " .. step, self._private.update)
+        spawn.easy_async("pactl set-sink-volume @DEFAULT_SINK@ " .. step, self._private.update)
     end
 
     self.toggle_mute = function()
@@ -66,14 +67,21 @@ local function new(timeout)
                 {},
                 4,
                 function()
-                    self.set_volume("2%+")
+                    self.set_volume("+2%")
                 end
             ),
             button(
                 {},
                 5,
                 function()
-                    self.set_volume("2%-")
+                    self.set_volume("-2%")
+                end
+            ),
+            button(
+                {},
+                3,
+                function()
+                  awful.spawn("pavucontrol")
                 end
             ),
             button({}, 1, self.toggle_mute)
