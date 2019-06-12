@@ -279,6 +279,31 @@ function hotkeys:init(args)
       end,
       {description = "Next media", group = "audio"}
     ),
+    awful.key(
+      {altkey},
+      "Home",
+      function()
+        awful.spawn("playerctl play-pause", false)
+      end,
+      {description = "Play media", group = "audio"}
+    ),
+    awful.key(
+      {altkey},
+      "Insert",
+      function()
+        awful.spawn("playerctl previous", false)
+      end,
+      {description = "Previous media", group = "audio"}
+    ),
+    awful.key(
+      {altkey},
+      "Prior",
+      function()
+        awful.spawn("playerctl next", false)
+      end,
+      {description = "Next media", group = "audio"}
+    ),
+
     -- Applications
     awful.key(
       {modkey},
