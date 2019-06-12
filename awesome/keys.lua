@@ -203,7 +203,7 @@ function hotkeys:init(args)
       {},
       "XF86AudioRaiseVolume",
       function()
-        pulse().set_volume("5%+")
+        pulse().set_volume("+2%")
       end,
       {description = "increase volume", group = "audio"}
     ),
@@ -211,7 +211,7 @@ function hotkeys:init(args)
       {altkey},
       "Up",
       function()
-        pulse().set_volume("5%+")
+        pulse().set_volume("+2%")
       end,
       {description = "increase volume", group = "audio"}
     ),
@@ -219,7 +219,7 @@ function hotkeys:init(args)
       {},
       "XF86AudioLowerVolume",
       function()
-        pulse().set_volume("5%-")
+        pulse().set_volume("-2%")
       end,
       {description = "decrease volume", group = "audio"}
     ),
@@ -227,7 +227,7 @@ function hotkeys:init(args)
       {altkey},
       "Down",
       function()
-        pulse().set_volume("5%-")
+        pulse().set_volume("-2%")
       end,
       {description = "decrease volume", group = "audio"}
     ),
