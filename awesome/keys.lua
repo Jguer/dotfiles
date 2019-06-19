@@ -83,6 +83,9 @@ function hotkeys:init(args)
     awful.key({modkey}, "s", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
     awful.key({modkey}, "Left", awful.tag.viewprev, {description = "view previous", group = "tag"}),
     awful.key({modkey}, "Right", awful.tag.viewnext, {description = "view next", group = "tag"}),
+    awful.key({altkey}, "j", awful.tag.viewprev, {description = "view previous", group = "tag"}),
+    awful.key({altkey}, "k", awful.tag.viewnext, {description = "view next", group = "tag"}),
+
     awful.key({modkey}, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
     -- Switch By ID
     -- awful.key({ modkey,           }, "j", focus_switch_byid(1),
@@ -449,6 +452,19 @@ function hotkeys:init(args)
       {description = "toggle fullscreen", group = "client"}
     ),
     awful.key(
+      {altkey},
+      "u",
+      function(c)
+        local i = awful.tag.selected(client.focus.screen).index
+        local tag = awful.tag.gettags(client.focus.screen)[i - 1]
+        if tag then
+          c:tags({tag})
+          awful.tag.viewprev()
+        end
+      end,
+      {description = "move to previous tag", group = "client"}
+    ),
+    awful.key(
       {modkey, "Shift"},
       "Left",
       function(c)
@@ -461,6 +477,20 @@ function hotkeys:init(args)
       end,
       {description = "move to previous tag", group = "client"}
     ),
+    awful.key(
+      {altkey},
+      "i",
+      function(c)
+        local i = awful.tag.selected(client.focus.screen).index
+        local tag = awful.tag.gettags(client.focus.screen)[i + 1]
+        if tag then
+          c:tags({tag})
+          awful.tag.viewnext()
+        end
+      end,
+      {description = "move to next tag", group = "client"}
+    ),
+
     awful.key(
       {modkey, "Shift"},
       "Right",

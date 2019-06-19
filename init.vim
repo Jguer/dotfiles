@@ -70,10 +70,11 @@ Plug 'Shougo/deoplete-clangx', { 'for': 'C' }
 Plug 'Shougo/neoinclude.vim', { 'for': 'C' }
 
 " .-. Appearance .-.
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'C' }
 Plug 'chriskempson/base16-vim'
+Plug 'ayu-theme/ayu-vim'
 
 " .-. Util .-.
 Plug 'scrooloose/nerdtree'
@@ -162,10 +163,8 @@ call plug#end()
   au Syntax * RainbowParenthesesLoadBraces
 " }}}
 
-" LightLine {{{
-  let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \ }
+" Airline {{{
+  let g:airline_theme='ayu'
 " }}}
 
 " GitGutter {{{
@@ -237,4 +236,10 @@ set autoread
   set termguicolors
   let base16colorspace=256
   colorscheme base16-default-dark
+  let ayucolor="mirage"
+  colorscheme ayu
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+  highlight Normal guibg=none
+  highlight NonText guibg=none
 " }}}
