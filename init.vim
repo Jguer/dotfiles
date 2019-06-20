@@ -61,18 +61,9 @@ Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
-" .-.Go .-.
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go'}
-
-" .-. C based .-.
-Plug 'Shougo/deoplete-clangx', { 'for': 'C' }
-Plug 'Shougo/neoinclude.vim', { 'for': 'C' }
-
 " .-. Appearance .-.
 Plug 'vim-airline/vim-airline'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': 'C' }
 Plug 'chriskempson/base16-vim'
 Plug 'ayu-theme/ayu-vim'
 
@@ -142,15 +133,6 @@ call plug#end()
   noremap <Leader>n :NERDTreeToggle<CR>
 " }}}
 
-" Vim Go {{{
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_types = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_extra_types = 1
-" }}}
-
 " Better Whitespace {{{
   let g:better_whitespace_filetypes_blacklist=['markdown', 'diff', 'gitcommit', 'unite', 'qf', 'help']
   autocmd BufEnter * EnableStripWhitespaceOnSave
@@ -173,14 +155,6 @@ call plug#end()
   let g:gitgutter_sign_removed='◢'
   let g:gitgutter_sign_removed_first_line='◥'
   let g:gitgutter_sign_modified_removed='◢'
-" }}}
-
-" NeoFormat {{{
-  let g:neoformat_basic_format_align = 0
-  let g:neoformat_basic_format_retab = 1
-  let g:neoformat_basic_format_trim = 1
-  let g:neoformat_run_all_formatters = 1
-  let g:neoformat_only_msg_on_error = 1
 " }}}
 
 " }}}

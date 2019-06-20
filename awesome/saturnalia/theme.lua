@@ -13,11 +13,11 @@ local themes_path = gfs.get_configuration_dir() .. "saturnalia/"
 
 theme.themes_path = themes_path
 
-theme.panel_height = dpi(24)
+theme.panel_height = dpi(28)
 
-theme.font = "Arimo Bold " .. dpi(11)
-theme.hotkeys_font = "Iosevka SS04 Medium " .. dpi(11)
-theme.hotkeys_description_font = "Arimo" .. dpi(11)
+theme.font = "sans bold " .. dpi(11)
+theme.hotkeys_font = "monospace " .. dpi(11)
+theme.hotkeys_description_font = "sans " .. dpi(11)
 
 theme.bg_normal = xrdb.background
 theme.wibar_bg = xrdb.background
@@ -89,12 +89,12 @@ theme.notification_font = theme.font
 theme.notification_crit_bg = xrdb.color3
 theme.notification_crit_fg = xrdb.color0
 theme.notification_border_width = dpi(0)
-theme.notification_border_radius = dpi(6)
+theme.notification_border_radius = dpi(3)
 theme.notification_icon_size = dpi(60)
 theme.notification_margin = dpi(15)
 theme.notification_opacity = 1
-theme.notification_padding = dpi(6)
-theme.notification_spacing = dpi(6)
+theme.notification_padding = dpi(20)
+theme.notification_spacing = dpi(10)
 
 --- }}}
 

@@ -1,38 +1,19 @@
-Xft.antialias:  1
-Xft.autohint:   0
-Xft.dpi:        96
-Xft.hinting:    0
-Xft.hintstyle:  hintslight
-Xft.lcdfilter:  lcddefault
-Xft.rgba:       rgb
-
-*foreground:   #d5d8da
-*background:   #1c1e26
-*cursorcolor:  #e95678
-
-*color0:       #1c1e26
-*color1:       #e95678
-*color2:       #29d398
-*color3:       #fab795
-*color4:       #26bbd9
-*color5:       #b877db
-*color6:       #59e1e3
-*color7:       #2e303e
-
-*color8:       #232530
-*color9:       #ec6a88
-*color10:      #3fdaa4
-*color11:      #fbc3a7
-*color12:      #3fc4de
-*color13:      #f075b5
-*color14:      #6be4e6
-*color15:      #d5d8da
-
-! note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
-! use 'shell' template to set these if necessary
-*color16:      #2e303e
-*color17:      #6c6f93
-*color18:      #25b0bc
-*color19:      #f09483
-*color20:      #e95378
-*color21:      #fab38e
+*color0: #191c26
+*color1: #e95865
+*color2: #ade36b
+*color3: #fdc253
+*color4: #2d90cf
+*color5: #c9adfe
+*color6: #85e2bf
+*color7: #bbbbbb
+*color8: #555555
+*color9: #e95865
+*color10: #c0e436
+*color11: #fed96d
+*color12: #5555ff
+*color13: #ff55ff
+*color14: #98ffd9
+*color15: #ffffff
+*background: #191c26
+*foreground: #d0cec3
+*cursorColor: #fdc253
