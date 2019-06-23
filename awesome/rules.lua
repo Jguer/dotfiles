@@ -9,6 +9,9 @@ rules.base_properties = {
     border_width = beautiful.border_width,
     border_color = beautiful.border_normal,
     focus = awful.client.focus.filter,
+    size_hints_honor = false,
+    honor_workarea = true,
+    honor_padding = true,
     raise = true,
     screen = awful.screen.preferred
 }
