@@ -1,10 +1,10 @@
 # ~/.gitconfig
 [branch]
   autosetuprebase = always
+[credential]
+  helper = /usr/lib/git-core/git-credential-libsecret
 [commit]
   gpgSign = true
-[credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
 [diff]
   renames = copy
   indentHeuristic = true
@@ -26,7 +26,7 @@
 [user]
   email = me@jguer.space
   name = Jguer
-  signingkey = 09754DBECF21746F
+  signingkey = 6D6CC9BEA8556B35
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [url "git@github.com:"]
