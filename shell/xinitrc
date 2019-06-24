@@ -14,14 +14,17 @@ export SSH_AUTH_SOCK
 
 if [ "$(cat /etc/hostname)" = "atreides" ]; then
   xrandr --output DVI-D-1 --primary --auto --left-of HDMI-A-0
+elif [ "$(cat /etc/hostname)" = "arakis" ]; then
+  /usr/bin/lxpolkit &
+  xrandr --output HDMI-1 --primary --mode 1920x1080 --above eDP-1
 fi
-
-# setxkbmap -model "evdev" -rules "evdev" \
-#   -layout "us,pt" -variant "altgr-intl,sundeadkeys" \
-#   -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp
 
 xset s 1200 1300
 xset dpms 1200 1300 1400
 xset r rate 350 60
+
+# setxkbmap -model "evdev" -rules "evdev" \
+#   -layout "us,pt" -variant "altgr-intl,sundeadkeys" \
+#   -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp
 
 exec awesome

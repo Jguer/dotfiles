@@ -8,7 +8,7 @@ export GPG_TTY=$(tty)
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 typeset -gU cdpath fpath mailpath path
-path+=("$HOME/dotfiles/bin" "$GOPATH/bin")
+path+=("$HOME/dotfiles/bin" "$GOPATH/bin" "$HOME/.local/bin")
 
 # Change default zim location
 export ZIM_HOME=${HOME}/dotfiles/shell/zimfw
