@@ -23,16 +23,16 @@ theme.bg_normal = xrdb.background
 theme.wibar_bg = xrdb.background
 
 -- Normal
-theme.border_normal = xrdb.color1
+theme.border_normal = xrdb.color4
 theme.fg_normal = xrdb.foreground
 theme.hotkeys_modifiers_fg = xrdb.color3
 theme.snap_fg = theme.bg_focus
-theme.tasklist_bg_normal = xrdb.color1
+theme.tasklist_bg_normal = xrdb.color4
 
 -- Focus
 theme.bg_focus = theme.bg_normal
-theme.border_focus = xrdb.color3
 theme.fg_focus = xrdb.color3
+theme.border_focus = xrdb.color3
 theme.taglist_bg_focus = theme.bg_normal .. "00"
 theme.taglist_fg_focus = xrdb.color3
 theme.tasklist_bg_focus = xrdb.color3
@@ -40,7 +40,7 @@ theme.tasklist_bg_focus = xrdb.color3
 -- Urgent
 theme.bg_urgent = theme.bg_normal
 theme.fg_urgent = xrdb.color5
-theme.taglist_fg_occupied = xrdb.color1
+theme.taglist_fg_occupied = xrdb.color4
 theme.taglist_fg_urgent = xrdb.color5
 theme.tasklist_bg_urgent = xrdb.color5
 
