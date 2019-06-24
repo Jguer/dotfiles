@@ -13,11 +13,15 @@ export SSH_AUTH_SOCK
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 if [ "$(cat /etc/hostname)" = "atreides" ]; then
-  xrandr --output HDMI-A-0 --primary --auto --left-of DVI-I-1
+  xrandr --output DVI-D-1 --primary --auto --left-of HDMI-A-0
 fi
 
 # setxkbmap -model "evdev" -rules "evdev" \
 #   -layout "us,pt" -variant "altgr-intl,sundeadkeys" \
 #   -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp
+
+xset s 1200 1300
+xset dpms 1200 1300 1400
+xset r rate 350 60
 
 exec awesome

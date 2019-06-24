@@ -13,13 +13,13 @@ configuration {
 }
 
 * {
-	background-color:            #191c26;
+	background-color:            #191c2690;
 	text-color:                  #d0cec3;
-	selbg:                       #2d90cf;
+	selbg:                       #2d90cf90;
 	selfg:                       #191c26;
-	actbg:                       #191c26;
-	urgbg:                       #e95865;
-	winbg:						 #85e2bf;
+	actbg:                       #191c2690;
+	urgbg:                       #e9586590;
+	winbg:						 #2d90cf90;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
