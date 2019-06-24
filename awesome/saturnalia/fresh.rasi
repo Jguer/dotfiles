@@ -1,148 +1,133 @@
 /**
- * ROFI Color theme
- * User: mbfraga
- * Copyright: Martin B. Fraga
- * Modified by: Jguer
+ * User: deadguy
+ * Copyright: deadguy
  */
 
-/* global settings and color variables */
-* {
-   maincolor:        rgba ( 87, 199, 255, 100 % );
-   highlight:        bold #c78c1e;
-   urgentcolor:      rgba ( 255, 92, 87, 100 % );
+configuration {
+	display-drun:    "Run";
+	display-run:     "Execute";
+	display-window:  "Window";
+	show-icons:      true;
+	sidebar-mode:    true;
+	font: "sans 12";
+}
 
-   fgwhite:          rgba ( 226, 228, 229, 100 % );
-   blackdarkest:     rgba ( 40, 42, 54, 100 % );
-   blackwidget:      #000617;
-   blackentry:       #000617;
-   blackselect:      #303030;
-   darkgray:         #848484;
-   scrollbarcolor:   #505050;
-   font: "sans 12";
-   background-color: @blackdarkest;
+* {
+	background-color:            #191c26;
+	text-color:                  #d0cec3;
+	selbg:                       #2d90cf;
+	selfg:                       #191c26;
+	actbg:                       #191c26;
+	urgbg:                       #e95865;
+	winbg:						 #85e2bf;
+
+	selected-normal-foreground:  @winbg;
+	normal-foreground:           @text-color;
+	selected-normal-background:  @actbg;
+	normal-background:           @background-color;
+
+	selected-urgent-foreground:  @background-color;
+	urgent-foreground:           @text-color;
+	selected-urgent-background:  @urgbg;
+	urgent-background:           @background-color;
+
+	selected-active-foreground:  @winbg;
+	active-foreground:           @text-color;
+	selected-active-background:  @actbg;
+	active-background:           @selbg;
+
+	line-margin:                 2;
+	line-padding:                2;
+	separator-style:             "none";
+	hide-scrollbar:              "true";
+	margin:                      0;
+	padding:                     0;
 }
 
 window {
-   background-color: @blackdarkest;
-   anchor: north;
-   location: north;
-   y-offset: 20%;
+	location:	 west;
+	anchor:		 west;
+	height:		 100%;
+	width:		 22%;
+	orientation: horizontal;
+	children:	 [mainbox];
 }
 
 mainbox {
-   background-color: @blackdarkest;
-   spacing:0px;
-   children: [inputbar, message, sidebar, listview];
+	spacing:  0.8em;
+	children: [ entry,listview,sidebar ];
 }
 
-message {
-   padding: 6px 10px;
-   background-color:@blackwidget;
-}
-
-textbox {
-   text-color:@darkgray;
-   background-color:@blackwidget;
-}
-
-listview {
-   fixed-height: false;
-   dynamic: true;
-   scrollbar: true;
-   spacing: 0px;
-   padding: 1px 0px 0px 0px;
-   margin: 0px 0px 1px 0px;
-   background: @blackdarkest;
-}
-
-element {
-   padding: 2px 15px;
-}
-
-element normal.normal {
-   padding: 0px 15px;
-   background-color: @blackentry;
-   text-color: @fgwhite;
-}
-
-element normal.urgent {
-   background-color: @blackentry;
-   text-color: @urgentcolor;
-}
-
-element normal.active {
-   background-color: @blackentry;
-   text-color: @maincolor;
-}
-
-element selected.normal {
-    background-color: @blackselect;
-    text-color:       @fgwhite;
-}
-
-element selected.urgent {
-    background-color: @urgentcolor;
-    text-color:       @blackdarkest;
-}
-
-element selected.active {
-    background-color: @maincolor;
-    text-color:       @blackdarkest;
-}
-
-element alternate.normal {
-    background-color: @blackentry;
-    text-color:       @fgwhite;
-}
-
-element alternate.urgent {
-    background-color: @blackentry;
-    text-color:       @urgentcolor;
-}
-
-element alternate.active {
-    background-color: @blackentry;
-    text-color:       @maincolor;
-}
-
-scrollbar {
-   background-color: @blackwidget;
-   handle-color: @darkgray;
-   handle-width: 15px;
-}
-
-sidebar {
-   background-color: @blackwidget;
-}
-
-button {
-   background-color: @blackwidget;
-   text-color:       @darkgray;
-}
+button { padding: 5px 2px; }
 
 button selected {
-    text-color:       @maincolor;
+	background-color: @active-background;
+	text-color:       @background-color;
 }
 
 inputbar {
-   background-color: @blackdarkest;
-   spacing: 0px;
+	padding: 5px;
+	spacing: 5px;
 }
 
-prompt {
-   padding:6px 9px;
-   background-color: @maincolor;
-   text-color:@blackwidget;
+listview {
+	spacing: 0.5em;
+	dynamic: false;
+	cycle:   true;
 }
+
+element { padding: 10px; }
 
 entry {
-   padding:6px 10px;
-   background-color:@blackwidget;
-   text-color:@fgwhite;
+	expand:         false;
+	text-color:     @normal-foreground;
+	vertical-align: 1;
+	padding:        5px;
 }
 
-case-indicator {
-   padding:6px 10px;
-   text-color:@maincolor;
-   background-color:@blackwidget;
+element normal.normal {
+	background-color: @normal-background;
+	text-color:       @normal-foreground;
+}
+
+element normal.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+
+element normal.active {
+	background-color: @active-background;
+	text-color:       @active-foreground;
+}
+
+element selected.normal {
+	background-color: @selected-normal-background;
+	text-color:       @selected-normal-foreground;
+	border:           0 5px solid 0 0;
+	border-color:	    @active-background;
+}
+
+element selected.urgent {
+	background-color: @selected-urgent-background;
+	text-color:       @selected-urgent-foreground;
+}
+
+element selected.active {
+	background-color: @selected-active-background;
+	text-color:       @selected-active-foreground;
+}
+
+element alternate.normal {
+	background-color: @normal-background;
+	text-color:       @normal-foreground;
+}
+
+element alternate.urgent {
+	background-color: @urgent-background;
+	text-color:       @urgent-foreground;
+}
+
+element alternate.active {
+	background-color: @active-background;
+	text-color:       @active-foreground;
 }
