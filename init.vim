@@ -68,7 +68,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'ayu-theme/ayu-vim'
 
 " .-. Util .-.
-Plug 'scrooloose/nerdtree'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'kristijanhusak/defx-icons'
 Plug 'easymotion/vim-easymotion'
 Plug 'dietsche/vim-lastplace'
 Plug 'majutsushi/tagbar'
@@ -128,11 +129,6 @@ call plug#end()
   nmap ga <Plug>(EasyAlign)
 " }}}
 
-" NerdTree {{{
-  nnoremap <silent> <F8> :NERDTreeToggle<CR>
-  noremap <Leader>n :NERDTreeToggle<CR>
-" }}}
-
 " Better Whitespace {{{
   let g:better_whitespace_filetypes_blacklist=['markdown', 'diff', 'gitcommit', 'unite', 'qf', 'help']
   autocmd BufEnter * EnableStripWhitespaceOnSave
@@ -155,6 +151,21 @@ call plug#end()
   let g:gitgutter_sign_removed='◢'
   let g:gitgutter_sign_removed_first_line='◥'
   let g:gitgutter_sign_modified_removed='◢'
+" }}}
+
+" DeFX {{{
+
+call defx#custom#option('_', {
+      \ 'winwidth': 40,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'columns': 'indent:git:icons:filename:type',
+      \ 'show_ignored_files': 1,
+      \ 'toggle': 1,
+      \ })
+
+  nnoremap <silent> <F8> :Defx<CR>
+  noremap <Leader>n :Defx<CR>
 " }}}
 
 " }}}

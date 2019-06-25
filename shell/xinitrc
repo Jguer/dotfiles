@@ -1,13 +1,21 @@
 #!/bin/sh
-export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
 
-dbus-daemon --session &
-start-pulseaudio-x11
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
 
-eval $(ssh-agent -s)
-dbus-update-activation-environment --systemd DISPLAY
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+# dbus-daemon --session &
+# dbus-update-activation-environment --systemd --all
+
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+export GPG_AGENT_INFO
+export GNOME_KEYRING_CONTROL
+export GNOME_KEYRING_PID
+
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
@@ -23,8 +31,10 @@ xset s 1200 1300
 xset dpms 1200 1300 1400
 xset r rate 350 60
 
+start-pulseaudio-x11 &
+
 # setxkbmap -model "evdev" -rules "evdev" \
 #   -layout "us,pt" -variant "altgr-intl,sundeadkeys" \
 #   -option "grp:alt_shift_toggle" -option caps:swapescape -option terminate:ctrl_alt_bksp
 
-exec awesome
+exec dbus-launch --sh-syntax --exit-with-session awesome
