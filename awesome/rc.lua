@@ -90,7 +90,7 @@ do
 end
 -- }}}
 
-beautiful.init(gears.filesystem.get_configuration_dir() .. "saturnalia/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "ayurt/theme.lua")
 
 -- Wibar
 local widgets = require("widgets") -- load file with hotkeys configuration
