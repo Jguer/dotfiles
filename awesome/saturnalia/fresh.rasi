@@ -16,12 +16,12 @@ configuration {
 	background-color:            #191c2690;
 	text-color:                  #d0cec3;
 	selbg:                       #2d90cf90;
-	selfg:                       #191c26;
+	selfg:                       #fdc253;
 	actbg:                       #191c2690;
 	urgbg:                       #e9586590;
 	winbg:						 #2d90cf90;
 
-	selected-normal-foreground:  @winbg;
+	selected-normal-foreground:  @selfg;
 	normal-foreground:           @text-color;
 	selected-normal-background:  @actbg;
 	normal-background:           @background-color;
@@ -31,9 +31,9 @@ configuration {
 	selected-urgent-background:  @urgbg;
 	urgent-background:           @background-color;
 
-	selected-active-foreground:  @winbg;
+	selected-active-foreground:  @selfg;
 	active-foreground:           @text-color;
-	selected-active-background:  @actbg;
+	selected-active-background:  @selbg;
 	active-background:           @selbg;
 
 	line-margin:                 2;
