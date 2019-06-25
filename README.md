@@ -1,15 +1,18 @@
 # Dotfiles
 
-### Saturnalia
+### Ayur
 
-Based on vscode-horizon theme
+Based on the [ayu](https://github.com/ayu-theme/ayu-vim) theme.
 
-<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/saturnalia-clean.png" width="650">
+<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/ayurt-busy.png" width="650">
 
-<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/saturnalia-dirty.png" width="650">
+<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/ayurt-clean.png" width="650">
+
+Background from [here](https://www.deviantart.com/niivu/art/Wash-Away-The-Rain-801760414)
 
 ### Applications
 
+**OS**: Arch/Fedora
 **WM**: AwesomeWM  
 **LockScreen**: i3-color  
 **Compositor**: Compton  
@@ -18,7 +21,7 @@ Based on vscode-horizon theme
 **Browser**: Firefox  
 **Development Environment**: VSCode  
 **Document Viewer**: Zathura  
-**File Manager**: Nautilus  
+**File Manager**: Nemo  
 **Music**: cmus  
 **Text Editor**: Neovim  
 **Video**: MPV
