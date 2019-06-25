@@ -9,7 +9,7 @@ local gfs = require("gears.filesystem")
 local dpi = xresources.apply_dpi
 local xrdb = xresources.get_current_theme()
 local theme = {}
-local themes_path = gfs.get_configuration_dir() .. "saturnalia/"
+local themes_path = gfs.get_configuration_dir() .. "ayurt/"
 
 theme.themes_path = themes_path
 
