@@ -17,6 +17,6 @@ export ZIM_HOME=${HOME}/dotfiles/shell/zimfw
 [[ -s ${ZIM_HOME}/login_init.zsh ]] && source ${ZIM_HOME}/login_init.zsh
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
+  exec startx > ${HOME}/.xoutput 2>&1
 fi
 
