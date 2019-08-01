@@ -169,15 +169,6 @@ function widgets:init(hostname)
             -- Each screen has its own tag table.
             awful.tag({"α", "β", "δ", "Θ", "Ω", "λ", "π"}, s, awful.layout.layouts[1])
 
-            -- s.layoutbox = awful.widget.layoutbox(s)
-
-            -- s.taglist =
-            --     awful.widget.taglist {
-            --     screen = s,
-            --     filter = awful.widget.taglist.filter.all,
-            --     buttons = taglist_buttons
-            -- }
-
             s.taglist =
                 awful.widget.taglist {
                 screen = s,
