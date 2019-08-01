@@ -187,7 +187,7 @@ autorun["all"] = {
     "numlockx",
     "nm-applet",
     "unclutter -noevents -idle 2 -jitter 1 -root",
-    "compton --config /home/jguer/dotfiles/compton.conf",
+    "compton",
     "redshift-gtk -l 38.72:-9.15 -t 6500:3400"
 }
 
