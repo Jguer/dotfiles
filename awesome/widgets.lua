@@ -243,8 +243,6 @@ function widgets:init(hostname)
                     spacing = 10,
                     layout = wibox.layout.fixed.horizontal
                 },
-                -- Notice that there is *NO* wibox.wibox prefix, it is a template,
-                -- not a widget instance.
                 widget_template = {
                     {
                         wibox.widget.base.make_widget(),
