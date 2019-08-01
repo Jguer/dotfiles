@@ -84,7 +84,7 @@ theme.widget = {
 
 -- Wibar {{{
 theme.wibar_border_width = dpi(2)
-theme.wibar_border_color = xrdb.background .. "00"
+theme.wibar_border_color = theme.bg_normal .. "00"
 -- }}}
 
 -- Notification {{{
