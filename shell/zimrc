@@ -1,11 +1,9 @@
 #!/bin/zsh
 
 zmodules=(directory environment git history input archive utility \
-  syntax-highlighting history-substring-search autosuggestions prompt completion)
-zprompt_theme='lean'
-SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+  autosuggestions prompt completion syntax-highlighting history-substring-search)
+zprompt_theme='pure'
 ztermtitle='%m:%~'
 # Set to vi or emacs
 zinput_mode='emacs'
-zhighlighters=(main brackets cursor)
-
+zhighlighters=(main brackets pattern cursor)
