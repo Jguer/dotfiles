@@ -171,11 +171,55 @@ function widgets:init(hostname)
 
             -- s.layoutbox = awful.widget.layoutbox(s)
 
+            -- s.taglist =
+            --     awful.widget.taglist {
+            --     screen = s,
+            --     filter = awful.widget.taglist.filter.all,
+            --     buttons = taglist_buttons
+            -- }
+
             s.taglist =
                 awful.widget.taglist {
                 screen = s,
                 filter = awful.widget.taglist.filter.all,
-                buttons = taglist_buttons
+                buttons = taglist_buttons,
+                layout = {
+                    spacing_widget = {
+                        {
+                            forced_width = 5,
+                            forced_height = 24,
+                            thickness = 1,
+                            color = beautiful.taglist_separator,
+                            widget = wibox.widget.separator
+                        },
+                        valign = "center",
+                        halign = "center",
+                        widget = wibox.container.place
+                    },
+                    spacing = 1,
+                    layout = wibox.layout.fixed.horizontal
+                },
+                widget_template = {
+                    {
+                        wibox.widget.base.make_widget(),
+                        forced_height = 5,
+                        id = "background_role",
+                        widget = wibox.container.background
+                    },
+                    {
+                        {
+                            id = "text_role",
+                            widget = wibox.widget.textbox
+                        },
+                        -- margins = 5,
+                        left = 10,
+                        right = 10,
+                        top = -5,
+                        widget = wibox.container.margin
+                    },
+                    nil,
+                    layout = wibox.layout.align.vertical
+                }
             }
 
             s.tasklist =
@@ -189,7 +233,7 @@ function widgets:init(hostname)
                             forced_width = 5,
                             forced_height = 4,
                             thickness = 0,
-                            color = "#77777700",
+                            color = beautiful.tasklist_separator,
                             widget = wibox.widget.separator
                         },
                         valign = "center",

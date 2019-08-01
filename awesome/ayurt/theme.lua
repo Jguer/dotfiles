@@ -27,29 +27,19 @@ theme.border_normal = xrdb.color4
 theme.fg_normal = xrdb.foreground
 theme.hotkeys_modifiers_fg = xrdb.color3
 theme.snap_fg = theme.bg_focus
-theme.tasklist_bg_normal = xrdb.color4
 
 -- Focus
 theme.bg_focus = theme.bg_normal
 theme.fg_focus = xrdb.color3
-theme.border_focus = xrdb.color3
-theme.taglist_bg_focus = theme.bg_normal .. "00"
-theme.taglist_fg_focus = xrdb.color3
-theme.tasklist_bg_focus = xrdb.color3
+theme.border_focus = theme.fg_focus
 
 -- Urgent
 theme.bg_urgent = theme.bg_normal
 theme.fg_urgent = xrdb.color5
-theme.taglist_fg_occupied = xrdb.color4
-theme.taglist_fg_urgent = xrdb.color5
-theme.tasklist_bg_urgent = xrdb.color5
 
 -- Minimized
 theme.bg_minimize = xrdb.color6
 theme.fg_minimize = xrdb.color6
-
--- Empty
-theme.taglist_fg_empty = xrdb.foreground
 
 -- Marked
 theme.border_marked = xrdb.color5
@@ -62,7 +52,24 @@ theme.calendar_weekday_border_color = xrdb.color2
 theme.border_width = dpi(3)
 theme.useless_gap = dpi(3)
 theme.systray_icon_spacing = dpi(3)
+
+-- taglist {{{
+theme.taglist_bg_focus = theme.fg_focus
+theme.taglist_fg_focus = theme.fg_normal
+theme.taglist_bg_occupied = xrdb.color4
+theme.taglist_bg_urgent = theme.fg_urgent
+theme.taglist_separator = xrdb.color8
 theme.taglist_spacing = dpi(4)
+-- theme.taglist_bg_empty = xrdb.foreground
+-- }}}
+
+-- tasklist {{{
+theme.tasklist_bg_urgent = theme.fg_urgent
+theme.tasklist_bg_focus = theme.fg_focus
+theme.tasklist_bg_normal = xrdb.color4
+theme.tasklist_separator = xrdb.color8
+
+-- }}}
 
 -- Widgets {{{
 theme.widget = {
