@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-zmodules=(directory environment git history input archive utility \
+zmodules=(directory environment git git-info history input archive utility \
   autosuggestions prompt completion syntax-highlighting history-substring-search)
-zprompt_theme='pure'
+zprompt_theme='lean'
 ztermtitle='%m:%~'
 # Set to vi or emacs
 zinput_mode='emacs'
