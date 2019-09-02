@@ -57,7 +57,7 @@ endif
 " Plugin Load {{{
 call plug#begin('~/.local/share/nvim/plugged')
 " .-. Auto Completion .-.
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 
