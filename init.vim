@@ -64,8 +64,8 @@ Plug 'Shougo/neosnippet' | Plug 'Shougo/neosnippet-snippets'
 " .-. Appearance .-.
 Plug 'vim-airline/vim-airline'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'Rigellute/shades-of-purple.vim'
 
 " .-. Util .-.
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -139,10 +139,6 @@ call plug#end()
   au Syntax * RainbowParenthesesLoadRound
   au Syntax * RainbowParenthesesLoadSquare
   au Syntax * RainbowParenthesesLoadBraces
-" }}}
-
-" Airline {{{
-  let g:airline_theme='ayu'
 " }}}
 
 " GitGutter {{{
@@ -219,12 +215,8 @@ set autoread
 
 " Colorscheme {{{
   set termguicolors
-  let base16colorspace=256
-  colorscheme base16-default-dark
-  let ayucolor="mirage"
-  colorscheme ayu
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
-  highlight Normal guibg=none
-  highlight NonText guibg=none
+  syntax enable
+  colorscheme shades_of_purple
+  let g:shades_of_purple_airline = 1
+  let g:airline_theme='shades_of_purple'
 " }}}
