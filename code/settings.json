@@ -1,0 +1,73 @@
+{
+    "keyboard.dispatch": "keyCode",
+    "telemetry.enableTelemetry": false,
+    "extensions.ignoreRecommendations": true,
+    "workbench.colorTheme": "Shades of Purple",
+    "workbench.sideBar.location": "right",
+    "workbench.iconTheme": "material-icon-theme",
+    // Theme Setup.
+    "editor.fontFamily": "'Fira Code Retina', 'Fira Sans', monospace",
+    "terminal.integrated.fontFamily": "'Fira Code Retina', monospace",
+    "editor.fontSize": 15,
+    "editor.lineHeight": 22.0,
+    "editor.letterSpacing": 0.5,
+    "editor.minimap.enabled": false,
+    "editor.fontWeight": "400",
+    "editor.fontLigatures": true,
+    "editor.cursorStyle": "line",
+    "editor.cursorWidth": 3,
+    "editor.renderWhitespace": "all",
+    "editor.snippetSuggestions": "top",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.glyphMargin": true,
+    "workbench.editor.enablePreview": false,
+    "explorer.confirmDragAndDrop": false,
+    // Formatting Optional.
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    // Files
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/_site": true,
+        "**/tmp": true,
+        "**/*.pyc": true,
+        "**/*.asset-cache": true,
+        "**/*.cache": true,
+        "**/*.jekyll-cache": true,
+        "**/*.tweet-cache": true,
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/*.egg-info": true,
+        "**/*.coverage": true,
+        "**/celerybeat-schedule": true,
+        "**/node_modules": true,
+        "**/bower_components": true
+    },
+    "files.insertFinalNewline": true,
+    "files.autoSave": "onFocusChange",
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
+    // -- Extensions --
+    "indentRainbow.colors": [
+        "rgba(165, 153, 233,0.5)",
+        "rgba(165, 153, 233,0.4)",
+        "rgba(165, 153, 233,0.3)",
+        "rgba(165, 153, 233,0.2)",
+        "rgba(165, 153, 233,0.1)"
+    ],
+    "vim.foldfix": true,
+    "vim.highlightedyank.enable": true,
+    "vim.leader": ",",
+    "vim.useSystemClipboard": true,
+}
