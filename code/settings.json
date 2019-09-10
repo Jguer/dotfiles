@@ -70,4 +70,8 @@
     "vim.highlightedyank.enable": true,
     "vim.leader": ",",
     "vim.useSystemClipboard": true,
+    "gitProjectManager.baseProjectsFolders": [
+        "/home/jguer/projects"
+    ],
+    "gitProjectManager.storeRepositoriesBetweenSessions": true
 }
