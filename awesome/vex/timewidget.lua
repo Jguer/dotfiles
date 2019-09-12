@@ -8,9 +8,7 @@ local gears = require("gears")
 
 local timewidget = {mt = {}}
 
-local style = {
-    icon = beautiful.themes_path .. "widgets/clock.svg"
-}
+local style = {icon = beautiful.themes_path .. "widgets/clock.svg"}
 
 -- @return A pulse widget.
 function timewidget.new()
@@ -28,21 +26,13 @@ function timewidget.new()
     month_calendar:attach(self, "tr")
 
     -- Mouse bindings, for when you want to add GMT change
-    self:buttons(
-        gears.table.join(
-            button(
-                {},
-                1,
-                function()
-                    if text.timezone == "Europe/Paris" then
-                        text.timezone = "Europe/Lisbon"
-                    else
-                        text.timezone = "Europe/Paris"
-                    end
-                end
-            )
-        )
-    )
+    self:buttons(gears.table.join(button({}, 1, function()
+        if text.timezone == "Europe/Paris" then
+            text.timezone = "Europe/Lisbon"
+        else
+            text.timezone = "Europe/Paris"
+        end
+    end)))
 
     return self
 end
@@ -50,9 +40,7 @@ end
 local _instance = nil
 
 function timewidget.mt:__call(...)
-    if _instance == nil then
-        _instance = self.new(...)
-    end
+    if _instance == nil then _instance = self.new(...) end
     return _instance
 end
 

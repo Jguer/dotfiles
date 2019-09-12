@@ -8,15 +8,11 @@ local recolor_image = gears_color.recolor_image
 
 local keyboard = {mt = {}}
 
-local style = {
-    width = 48,
-    icon = beautiful.themes_path .. "icons/keyboard.svg"
-}
+local style = {width = 48, icon = beautiful.themes_path .. "icons/keyboard.svg"}
 
 -- @return A pulse widget.
 function keyboard.new()
-    local icon =
-        wibox.widget {
+    local icon = wibox.widget{
         image = recolor_image(style.icon, beautiful.widget.fg),
         resize = true,
         -- forced_width = 20,
@@ -26,7 +22,8 @@ function keyboard.new()
 
     local text = awful.widget.keyboardlayout()
 
-    local layout = wibox.layout.align.horizontal(wibox.container.place(icon), text)
+    local layout = wibox.layout.align.horizontal(wibox.container.place(icon),
+                                                 text)
 
     local self = widget_base.make_widget(layout)
     self.icon = icon
@@ -41,9 +38,7 @@ end
 local _instance = nil
 
 function keyboard.mt:__call(...)
-    if _instance == nil then
-        _instance = self.new(...)
-    end
+    if _instance == nil then _instance = self.new(...) end
     return _instance
 end
 
