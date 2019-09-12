@@ -79,5 +79,6 @@
     "latex-workshop.docker.enabled": true,
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.synctex.afterBuild.enabled": true,
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "color-highlight.markerType": "dot-before"
 }
