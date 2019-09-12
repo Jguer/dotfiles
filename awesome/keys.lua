@@ -360,7 +360,7 @@ function hotkeys:init(args)
       {altkey},
       "e",
       function()
-        awful.spawn("rofi-power " .. beautiful.themes_path .. "ayurt.rasi")
+        awful.spawn("rofi-power " .. beautiful.themes_path .. "rofi.rasi")
       end,
       {description = "end session", group = "applications"}
     ),
@@ -369,7 +369,7 @@ function hotkeys:init(args)
       "x",
       function()
         awful.spawn(
-          "rofi -combi-modi window,drun,ssh -theme " .. beautiful.themes_path .. "ayurt.rasi" .. " -show combi"
+          "rofi -combi-modi window,drun,ssh -theme " .. beautiful.themes_path .. "rofi.rasi" .. " -show combi"
         )
       end,
       {description = "show rofi", group = "applications"}
