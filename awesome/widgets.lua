@@ -8,6 +8,7 @@ local wkeyboard = require("vex.keyboard")
 local beautiful = require("beautiful")
 local awful = require("awful")
 local vpn = require("vex.vpn")
+local wsystray = require("vex.systraypopup")
 
 local widgets = {}
 
@@ -45,7 +46,6 @@ local function right_widgets(hostname, s)
     local right = {
         -- Right widgets
         layout = wibox.layout.fixed.horizontal,
-        wibox.widget.systray(),
         wkeyboard(),
         wpulse(6)
     }
@@ -68,6 +68,7 @@ local function right_widgets(hostname, s)
                                          function() awful.layout.inc(-1) end)))
 
     right = gears.table.join(right, {
+        wsystray(),
         wtime(),
         s.layoutbox,
         spacing = 10,
@@ -173,6 +174,7 @@ function widgets:init(hostname)
             s.wibox = awful.wibar({
                 position = "top",
                 screen = s,
+                bg = '#00000000',
                 height = beautiful.panel_height
             })
 
