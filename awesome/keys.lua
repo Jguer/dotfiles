@@ -205,10 +205,10 @@ function hotkeys:init(args)
     awful.key({modkey}, "Return", function() awful.spawn("kitty") end,
               {description = "open a terminal", group = "applications"}),
                                       awful.key({}, "Print", function()
-        awful.spawn("scrot -m -d 3")
+        awful.spawn("screenshot")
     end, {description = "screenshot screen", group = "applications"}),
                                       awful.key({modkey}, "Print", function()
-        awful.spawn("scrot -u -d 1")
+        awful.spawn("screenshot -s")
     end, {description = "screenshot window", group = "applications"}),
                                       awful.key({modkey, "Shift"}, "c",
                                                 function()
