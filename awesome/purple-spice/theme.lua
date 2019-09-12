@@ -1,5 +1,4 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
-
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local util = require("awful.util")
@@ -115,28 +114,46 @@ theme.tooltip_border_width = dpi(0)
 theme.titlebar_close_button_normal = themes_path .. "titlebar/close_normal.png"
 theme.titlebar_close_button_focus = themes_path .. "titlebar/close_focus.png"
 
-theme.titlebar_minimize_button_normal = themes_path .. "titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus = themes_path .. "titlebar/minimize_focus.png"
+theme.titlebar_minimize_button_normal = themes_path ..
+                                            "titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus = themes_path ..
+                                           "titlebar/minimize_focus.png"
 
-theme.titlebar_ontop_button_normal_inactive = themes_path .. "titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive = themes_path .. "titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path .. "titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active = themes_path .. "titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_inactive =
+    themes_path .. "titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_inactive =
+    themes_path .. "titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_active =
+    themes_path .. "titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_active =
+    themes_path .. "titlebar/ontop_focus_active.png"
 
-theme.titlebar_sticky_button_normal_inactive = themes_path .. "titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive = themes_path .. "titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path .. "titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active = themes_path .. "titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_inactive =
+    themes_path .. "titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_inactive =
+    themes_path .. "titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_active =
+    themes_path .. "titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_active =
+    themes_path .. "titlebar/sticky_focus_active.png"
 
-theme.titlebar_floating_button_normal_inactive = themes_path .. "titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive = themes_path .. "titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themes_path .. "titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active = themes_path .. "titlebar/floating_focus_active.png"
+theme.titlebar_floating_button_normal_inactive =
+    themes_path .. "titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_inactive =
+    themes_path .. "titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_active =
+    themes_path .. "titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_active =
+    themes_path .. "titlebar/floating_focus_active.png"
 
-theme.titlebar_maximized_button_normal_inactive = themes_path .. "titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive = themes_path .. "titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themes_path .. "titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active = themes_path .. "titlebar/maximized_focus_active.png"
+theme.titlebar_maximized_button_normal_inactive =
+    themes_path .. "titlebar/maximized_normal_inactive.png"
+theme.titlebar_maximized_button_focus_inactive =
+    themes_path .. "titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_active =
+    themes_path .. "titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_active =
+    themes_path .. "titlebar/maximized_focus_active.png"
 -- }}}
 
 -- Layout {{{
@@ -169,7 +186,8 @@ theme.set_wallpaper = function(s)
 end
 
 theme.icon = function(utf, color)
-    return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color, utf)
+    return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color,
+                         utf)
 end
 
 return theme

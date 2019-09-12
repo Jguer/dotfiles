@@ -1,10 +1,7 @@
 --- Separating Multiple Monitor functions as a separeted module (taken from awesome wiki)
-
 local awful = require("awful")
 local naughty = require("naughty")
-local capi = {
-    mouse = mouse
-}
+local capi = {mouse = mouse}
 -- A path to a fancy icon
 local icon_path = ""
 
@@ -74,9 +71,7 @@ local function menu()
             label = 'Only <span weight="bold">' .. choice[1] .. "</span>"
         else
             for i, o in pairs(choice) do
-                if i > 1 then
-                    label = label .. " + "
-                end
+                if i > 1 then label = label .. " + " end
                 label = label .. '<span weight="bold">' .. o .. "</span>"
             end
         end
@@ -91,7 +86,8 @@ end
 local state = {cid = nil}
 
 local function naughty_destroy_callback(reason)
-    if reason == naughty.notificationClosedReason.expired or reason == naughty.notificationClosedReason.dismissedByUser then
+    if reason == naughty.notificationClosedReason.expired or reason ==
+        naughty.notificationClosedReason.dismissedByUser then
         local action = state.index and state.menu[state.index - 1][2]
         if action then
             awful.util.spawn(action, false)
@@ -118,22 +114,14 @@ local function xrandr()
     else
         label = unpack(next)
     end
-    state.cid =
-        naughty.notify(
-        {
-            text = label,
-            icon = icon_path,
-            timeout = 4,
-            screen = capi.mouse.screen,
-            replaces_id = state.cid,
-            destroy = naughty_destroy_callback
-        }
-    ).id
+    state.cid = naughty.notify({
+        text = label,
+        icon = icon_path,
+        timeout = 4,
+        screen = capi.mouse.screen,
+        replaces_id = state.cid,
+        destroy = naughty_destroy_callback
+    }).id
 end
 
-return {
-    outputs = outputs,
-    arrange = arrange,
-    menu = menu,
-    xrandr = xrandr
-}
+return {outputs = outputs, arrange = arrange, menu = menu, xrandr = xrandr}
