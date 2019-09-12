@@ -1,34 +1,37 @@
 #{{{ Colours
 
-set default-bg                  "#282a36"
-set default-fg                  "#34353e"
+# Base16 purple-spice
+# Author: purple-spice
 
-set statusbar-fg                "#a5a5a9"
-set statusbar-bg                "#43454f"
+set default-bg                  "#2d2b55"
+set default-fg                  "#000000"
 
-set inputbar-bg                 "#282a36"
-set inputbar-fg                 "#f1f1f0"
+set statusbar-fg                "#413f69"
+set statusbar-bg                "#686868"
 
-set notification-bg             "#282a36"
-set notification-fg             "#f1f1f0"
+set inputbar-bg                 "#2d2b55"
+set inputbar-fg                 "#ffffff"
 
-set notification-error-bg       "#282a36"
-set notification-error-fg       "#ff5c57"
+set notification-bg             "#2d2b55"
+set notification-fg             "#ffffff"
 
-set notification-warning-bg     "#282a36"
-set notification-warning-fg     "#ff5c57"
+set notification-error-bg       "#2d2b55"
+set notification-error-fg       "#f92a1c"
 
-set highlight-color             "#f3f99d"
-set highlight-active-color      "#57c7ff"
+set notification-warning-bg     "#2d2b55"
+set notification-warning-fg     "#f92a1c"
 
-set completion-bg               "#34353e"
-set completion-fg               "#57c7ff"
+set highlight-color             "#f1d000"
+set highlight-active-color      "#6871ff"
 
-set completion-highlight-fg     "#f1f1f0"
-set completion-highlight-bg     "#57c7ff"
+set completion-bg               "#000000"
+set completion-fg               "#6871ff"
 
-set recolor-lightcolor          "#282a36"
-set recolor-darkcolor           "#eff0eb"
+set completion-highlight-fg     "#ffffff"
+set completion-highlight-bg     "#6871ff"
+
+set recolor-lightcolor          "#2d2b55"
+set recolor-darkcolor           "#c7c7c7"
 
 set recolor                     "false"
 set recolor-keephue             "false"

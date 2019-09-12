@@ -73,5 +73,11 @@
     "gitProjectManager.baseProjectsFolders": [
         "/home/jguer/projects"
     ],
-    "gitProjectManager.storeRepositoriesBetweenSessions": true
+    "gitProjectManager.storeRepositoriesBetweenSessions": true,
+    "latex-workshop.view.pdf.viewer": "browser",
+    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.docker.enabled": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "go.useLanguageServer": true
 }

@@ -5,6 +5,9 @@
       create: true
 
 - clean: ["~"]
+- clean:
+    ~/.config:
+      force: true
 
 - link:
     # Login Session
@@ -21,16 +24,19 @@
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/fontconfig/fonts.conf: fonts.conf
     ~/.config/user-dirs.dirs: user-dirs.dirs
-    ~/.icons/ayurt: gtk/icon
-    ~/.themes/ayurt: gtk/theme
+    ~/.icons/oomox-purple-spice: gtk/icons/oomox-purple-spice
+    ~/.themes/oomox-purple-spice: gtk/themes/oomox-purple-spice
     # Applications
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.gitconfig: gitconfig
-    ~/.config/mpv: mpv
+    # MPV
+    ~/.config/mpv/mpv.conf: mpv/mpv.conf
+    ~/.config/mpv/input.conf: mpv/input.conf
+    ~/.config/mpv/scripts: mpv/scripts
     ~/.config/nvim/init.vim: init.vim
     ~/.config/zathura/zathurarc: zathurarc
     ~/.config/Code\ -\ OSS/User/settings.json: code/settings.json
     ~/.config/Code/User/settings.json: code/settings.json
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - ./code/install_code.sh
+    - [./code/install_code.sh, Installing Code Extensions]
