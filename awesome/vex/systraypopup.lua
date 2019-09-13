@@ -34,9 +34,9 @@ function systraypopup.new(systray_widget)
         border_color = beautiful.border_color,
         border_width = beautiful.border_width,
         -- offset = {y = 32},
-        placement = awful.placement.bottom,
-        ontop = true
-        -- visible = false,
+        placement = awful.placement.top + awful.placement.top_right,
+        ontop = true,
+        visible = false,
         -- shape = gears.shape.rounded_rect
     }
 
