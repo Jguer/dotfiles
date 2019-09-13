@@ -5,9 +5,6 @@
       create: true
 
 - clean: ["~"]
-- clean:
-    ~/.config:
-      force: true
 
 - link:
     # Login Session

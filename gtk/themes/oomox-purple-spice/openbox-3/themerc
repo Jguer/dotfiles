@@ -34,23 +34,23 @@ window.inactive.title.separator.color: #1e1e3f
 window.active.client.color: #2d3036
 window.inactive.client.color: #2d3036
 
-window.active.label.text.color: #e0e0e0
+window.active.label.text.color: #e5e5e5
 window.inactive.label.text.color: #7F8388
 
-window.active.button.unpressed.image.color: #e0e0e0
+window.active.button.unpressed.image.color: #e5e5e5
 window.active.button.pressed.image.color: #6943ff
 window.active.button.disabled.image.color: #2d3036
-window.active.button.hover.image.color: #e0e0e0
-window.active.button.toggled.unpressed.image.color: #e0e0e0
+window.active.button.hover.image.color: #e5e5e5
+window.active.button.toggled.unpressed.image.color: #e5e5e5
 window.active.button.toggled.pressed.image.color: #6943ff
-window.active.button.toggled.hover.image.color: #e0e0e0
+window.active.button.toggled.hover.image.color: #e5e5e5
 window.inactive.button.unpressed.image.color: #1F2328
 window.inactive.button.pressed.image.color: #6943ff
 window.inactive.button.disabled.image.color: #2d3036
-window.inactive.button.hover.image.color: #e0e0e0
+window.inactive.button.hover.image.color: #e5e5e5
 window.inactive.button.toggled.unpressed.image.color: #1F2328
 window.inactive.button.toggled.pressed.image.color: #6943ff
-window.inactive.button.toggled.hover.image.color: #e0e0e0
+window.inactive.button.toggled.hover.image.color: #e5e5e5
 
 window.active.title.bg: flat solid
 window.active.title.bg.color: #1e1e3f
@@ -97,7 +97,7 @@ menu.overlap.y: 0
 menu.border.color: #aeb0b6
 menu.separator.color: #a8adb5
 
-menu.title.text.color: #e0e0e0
+menu.title.text.color: #e5e5e5
 menu.items.text.color: #2d3036
 menu.items.disabled.text.color: #76797F
 menu.items.active.text.color: #ffffff
@@ -120,7 +120,7 @@ osd.border.width: 1
 
 osd.border.color: #2d3036
 
-osd.label.text.color: #e0e0e0
+osd.label.text.color: #e5e5e5
 
 osd.bg: flat solid
 osd.bg.color: #1e1e3f
@@ -129,6 +129,6 @@ osd.label.bg.color: #1e1e3f
 osd.hilight.bg: flat solid
 osd.hilight.bg.color: #6943ff
 osd.unhilight.bg: flat solid
-osd.unhilight.bg.color: #e0e0e0
+osd.unhilight.bg.color: #e5e5e5
 
 #osd.label.text.font: text shadow

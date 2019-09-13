@@ -11,7 +11,7 @@ style "dark-sidebar" {
   base[NORMAL] = @dark_sidebar_bg
   base[INSENSITIVE] = @dark_sidebar_bg
 
-  text[NORMAL] = "#e0e0e0"
+  text[NORMAL] = "#e5e5e5"
   text[ACTIVE] = @selected_fg_color
   text[SELECTED] = @selected_fg_color
 }
