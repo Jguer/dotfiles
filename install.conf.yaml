@@ -32,7 +32,7 @@
     ~/.config/mpv/scripts: mpv/scripts
     ~/.config/nvim/init.vim: init.vim
     ~/.config/zathura/zathurarc: zathurarc
-    ~/.config/Code\ -\ OSS/User/settings.json: code/settings.json
+    "~/.config/Code - OSS/User/settings.json": code/settings.json
     ~/.config/Code/User/settings.json: code/settings.json
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
