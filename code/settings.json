@@ -80,5 +80,6 @@
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.synctex.afterBuild.enabled": true,
     "go.useLanguageServer": true,
-    "color-highlight.markerType": "dot-before"
+    "color-highlight.markerType": "dot-before",
+    "remote.SSH.allowLocalServerDownload": true
 }
