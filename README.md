@@ -1,6 +1,6 @@
 # Dotfiles
 
-### Ayur
+## Purple Spice
 
 Based on the [ayu](https://github.com/ayu-theme/ayu-vim) theme.
 
