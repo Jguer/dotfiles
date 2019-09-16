@@ -1,43 +1,47 @@
 #!/usr/bin/bash
 
-if [ $1 ]; then
+function get_color() {
+  echo "$(xrdb -query | grep -i "color${1}:" | cut -f2)""CC"
+}
+
+if [ "$1" ]; then
   lockbg="$1"
 else
   # lockbg=$(find $HOME/Pictures/wallpapers/*.png -type f | shuf -n 1)
-  lockbg="$HOME/.config/awesome/saturnalia/wallpaper.png"
+  lockbg="$HOME/.config/awesome/purple-spice/wallpaper.png"
 fi
 
-B='#282a36cc' # blank
-C='#34353eCC' # clear ish
-D='#f3f99dCC' # default
-T='#e2e4e5ee' # text
-W='#34353eCC' # wrong
-H='#57c7ffCC' # Highlight
-V='#ff5c57bb' # verifying
+B=$(get_color 8)  # Blank
+C=$(get_color 8)  # Clear ish
+D=$(get_color 15) # Default
+T=$(get_color 15) # Text
+W=$(get_color 9)  # Wrong
+H=$(get_color 12) # Highlight
+V=$(get_color 4)  # Verifying
 
 i3lock -n \
-  --insidevercolor=$C \
-  --ringvercolor=$V \
-  --insidewrongcolor=$C \
-  --ringwrongcolor=$W \
-  --insidecolor=$B \
-  --ringcolor=$D \
-  --linecolor=$B \
-  --separatorcolor=$D \
-  --verifcolor=$T \
-  --wrongcolor=$T \
-  --timecolor=$T \
-  --datecolor=$T \
-  --layoutcolor=$T \
-  --keyhlcolor=$H \
-  --bshlcolor=$W \
+  --insidevercolor="$C" \
+  --ringvercolor="$V" \
+  --insidewrongcolor="$C" \
+  --ringwrongcolor="$W" \
+  --insidecolor="$B" \
+  --ringcolor="$D" \
+  --linecolor="$B" \
+  --separatorcolor="$D" \
+  --verifcolor="$T" \
+  --wrongcolor="$T" \
+  --timecolor="$T" \
+  --datecolor="$T" \
+  --layoutcolor="$T" \
+  --keyhlcolor="$H" \
+  --bshlcolor="$W" \
   --image="$lockbg" \
   --tiling \
   --keylayout 0 \
   --pass-media-keys \
   --timestr='%H:%M' \
-  --time-font='Arimo Bold' \
-  --date-font='Arimo Bold' \
+  --time-font='sans Bold' \
+  --date-font='sans Bold' \
   --timesize=48 \
   --datesize=18 \
   --indicator \
