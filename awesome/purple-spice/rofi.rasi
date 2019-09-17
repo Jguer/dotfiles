@@ -19,7 +19,7 @@ configuration {
 
         accent-color:               #6943ff;
         accent2-color:              #6871ff;
-        hover-color:                #686868;
+        hover-color:                #68686895;
         urgent-color:               #ff2c70;
         window-color:               #ffffff;
 

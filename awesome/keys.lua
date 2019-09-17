@@ -228,7 +228,11 @@ function hotkeys:init(args)
                                       awful.key({modkey}, "x", function()
         awful.spawn("rofi -combi-modi window,drun,ssh -theme " ..
                         beautiful.themes_path .. "rofi.rasi" .. " -show combi")
-    end, {description = "show rofi", group = "applications"}),
+    end, {description = "show rofi combi", group = "applications"}),
+                                      awful.key({modkey}, "z", function()
+        awful.spawn("rofi -combi-modi window,drun,ssh -theme " ..
+                        beautiful.themes_path .. "rofi.rasi" .. " -show window")
+    end, {description = "show rofi window", group = "applications"}),
                                       awful.key({modkey}, "e", function()
         awful.spawn("lockscreen " .. beautiful.wallpaper)
     end, {description = "lock screen", group = "applications"}))
