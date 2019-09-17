@@ -12,10 +12,7 @@ local naughty = require("naughty")
 local battery = {mt = {}}
 local notification
 
-local style = {
-    width = 56,
-    icon = beautiful.themes_path .. "icons/battery-full.svg"
-}
+local style = {width = 56, icon = beautiful.wicons.battery}
 
 local function show_battery_warning()
     naughty.notify{

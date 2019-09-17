@@ -81,6 +81,17 @@ theme.widget = {
 }
 -- }}}
 
+theme.wicons = {
+    brightness = themes_path ..
+        "gtk-icons/status/symbolic/display-brightness-high-symbolic.svg",
+    battery = themes_path ..
+        "gtk-icons/status/symbolic/battery-full-symbolic.svg",
+    keyboard = themes_path ..
+        "gtk-icons/status/symbolic/capslock-enabled-symbolic.svg",
+    systray = themes_path ..
+        "gtk-icons/status/symbolic/notification-symbolic.svg"
+}
+
 -- Notification {{{
 theme.notification_shape = gears.shape.rounded_rect
 theme.notification_border_color = xrdb.color10
