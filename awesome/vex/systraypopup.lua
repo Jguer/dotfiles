@@ -11,32 +11,28 @@ local recolor_image = gears_color.recolor_image
 
 local systraypopup = {mt = {}}
 
-local style = {width = 48, icon = beautiful.themes_path .. "icons/cogs.svg"}
+local style = {width = 48, icon = beautiful.wicons.systray}
 
 -- @return A systraypopup widget.
 function systraypopup.new(systray_widget)
     local icon = wibox.widget{
         image = recolor_image(style.icon, beautiful.widget.fg),
         resize = true,
-        forced_width = 20,
-        -- forced_height = 20,
+        forced_width = 16,
+        forced_height = 16,
         widget = wibox.widget.imagebox
     }
 
     local systray = wibox.widget.systray()
 
     local p = awful.popup{
-        widget = wibox.container.constraint(systray, "max", nil, 28),
-        -- height = 28,
-        -- width = 50,
-        -- maxmimum_height = 28,
-        -- maxmimum_width = 100,
+        widget = wibox.container.constraint(systray, "exact", nil, 28),
         border_color = beautiful.border_color,
         border_width = beautiful.border_width,
-        -- offset = {y = 32},
-        placement = awful.placement.top + awful.placement.top_right,
+        offset = {y = 32},
+        placement = awful.placement.bottom_right,
         ontop = true,
-        visible = false,
+        visible = false
         -- shape = gears.shape.rounded_rect
     }
 
