@@ -14,7 +14,7 @@ configuration {
 }
 
 * {
-        background-color:           #222d32;
+        background-color:           #00000070;
         text-color:                 #ffffff;
 
         accent-color:               #6943ff;
@@ -28,9 +28,9 @@ configuration {
         selected-normal-background: @hover-color;
         normal-background:          @background-color;
 
-        selected-urgent-foreground: @background-color;
-        urgent-foreground:          @text-color;
-        selected-urgent-background: @urgent-color;
+        selected-urgent-foreground: @urgent-color;
+        urgent-foreground:          @urgent-color;
+        selected-urgent-background: @hover-color;
         urgent-background:          @background-color;
 
         selected-active-foreground: @window-color;
