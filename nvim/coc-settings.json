@@ -1,0 +1,89 @@
+{
+  "coc.preferences.colorSupport": true,
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.hintSign": "ღ",
+  "diagnostic.infoSign": "ʘ",
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.enable": true,
+  "diagnostic.signOffset": 9999999,
+  "diagnostic.highlightOffset": 9999999,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+
+  //CocList
+  "list.source.files.defaultOptions": ["--auto-preview"],
+  "list.source.outline.defaultOptions": ["--auto-preview"],
+  //prettier
+  "coc.preferences.formatOnSaveFiletypes": ["css","markdown"],
+  "prettier.statusItemText": "★ ",
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  //git
+  "git.enableGutters": true,
+  "git.branchCharacter":"\uf408",
+  "git.addGlameToBufferVar": true,
+  "git.addGlameToVirtualText": false,
+  "git.virtualTextPrefix": " ❯❯❯ ",
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+
+  "suggest.completionItemKindLabels": {
+    "function": "\uf794",
+    "method": "\uf6a6",
+    "variable": "\uf71b",
+    "constant": "\uf8ff",
+    "struct": "\ufb44",
+    "class": "\uf0e8",
+    "interface": "\ufa52",
+    "text": "\ue612",
+    "enum": "\uf435",
+    "enumMember": "\uf02b",
+    "module": "\uf668",
+    "color": "\ue22b",
+    "property": "\ufab6",
+    "field": "\uf93d",
+    "unit": "\uf475",
+    "file": "\uf471",
+    "value": "\uf8a3",
+    "event": "\ufacd",
+    "folder": "\uf115",
+    "keyword": "\uf893",
+    "snippet": "\uf64d",
+    "operator": "\uf915",
+    "reference": "\uf87a",
+    "typeParameter": "\uf278",
+    "default": "\uf29c"
+  },
+
+ "java.home": "/usr/lib/jvm/java-11-openjdk/",
+ "eslint.trace.server": "verbose",
+ "languageserver": {
+   "ccls": {
+     "command": "ccls",
+     "filetypes": [
+       "c",
+       "cpp",
+       "objc",
+       "objcpp"],
+     "rootPatterns": [
+       ".ccls",
+       "compile_commands.json",
+       ".vim/",
+       ".git/",
+       ".hg/"],
+     "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+     }
+    }
+  },
+  "java.errors.incompleteClasspath.severity": "ignore",
+
+
+}
