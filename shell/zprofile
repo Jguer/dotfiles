@@ -1,6 +1,7 @@
 #!/usr/bin/zsh
 
 export EDITOR='nvim'
+export DIFFPROG='nvim -d'
 export VISUAL='nvim'
 export PAGER='less'
 export GOPATH="$HOME/go"
