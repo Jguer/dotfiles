@@ -81,5 +81,6 @@
     "latex-workshop.synctex.afterBuild.enabled": true,
     "go.useLanguageServer": true,
     "color-highlight.markerType": "dot-before",
-    "remote.SSH.allowLocalServerDownload": true
+    "remote.SSH.allowLocalServerDownload": true,
+    "revealjs.browserPath": "/usr/bin/firefox"
 }
