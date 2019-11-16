@@ -39,4 +39,7 @@
     ~/.config/Code/User/settings.json: code/settings.json
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [mkdir -p $HOME/.config/nvim//storage/backups//]
+    - [mkdir -p $HOME/.config/nvim//storage/swaps//]
+    - [mkdir -p $HOME/.config/nvim//storage/undos//]
     - [./code/install_code.sh, Installing Code Extensions]
