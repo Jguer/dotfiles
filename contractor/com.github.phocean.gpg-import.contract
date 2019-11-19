@@ -1,0 +1,6 @@
+[Contractor Entry]
+Name=Import key (gpg)
+Name[fr]=Importer la clé (gpg)
+Description=GPG key import
+MimeType=application/pgp-keys;
+Exec=seahorse-tool --import %f

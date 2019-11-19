@@ -1,0 +1,6 @@
+[Contractor Entry]
+Name=Write onto removable device
+Icon=com.github.artemanufrij.imageburner
+Description=Burn images (.iso, .img) to removable devices like usb disk or sd card
+Exec=com.github.artemanufrij.imageburner %U
+MimeType=application/x-raw-disk-image;
