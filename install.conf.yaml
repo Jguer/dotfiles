@@ -23,6 +23,7 @@
     ~/.config/user-dirs.dirs: user-dirs.dirs
     ~/.icons/oomox-purple-spice: gtk/icons/oomox-purple-spice
     ~/.themes/oomox-purple-spice: gtk/themes/oomox-purple-spice
+    ~/.local/share/contractor: contractor
     # Applications
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.gitconfig: gitconfig

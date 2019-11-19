@@ -1,0 +1,8 @@
+[Contractor Entry]
+Name=Open in terminal
+Icon=terminal
+Description=Open in default terminal
+MimeType=!archive;inode/blockdevice;inode/chardevice;inode/fifo;inode/socket;
+Exec=kitty -d %u
+Gettext-Domain=terminal
+

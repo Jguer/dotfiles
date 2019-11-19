@@ -1,0 +1,6 @@
+[Contractor Entry]
+Name=Encrypt (gpg)
+Name[fr]=Chiffrer (gpg)
+Description=GPG Encryption
+MimeType=!inode;
+Exec=seahorse-tool --encrypt-sign %f

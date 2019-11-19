@@ -1,0 +1,6 @@
+[Contractor Entry]
+Name=Verify signature (gpg)
+Name[fr]=Vérifier la signature (gpg)
+Description=GPG signature verification
+MimeType=application/pgp-signature;
+Exec=seahorse-tool --verify %f
