@@ -6,8 +6,8 @@
 set default-bg                  "#2d2b55"
 set default-fg                  "#000000"
 
-set statusbar-fg                "#413f69"
-set statusbar-bg                "#686868"
+set statusbar-fg                "#ffffff"
+set statusbar-bg                "#6943ff"
 
 set inputbar-bg                 "#2d2b55"
 set inputbar-fg                 "#ffffff"
