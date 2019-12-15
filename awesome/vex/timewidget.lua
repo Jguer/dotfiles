@@ -13,7 +13,7 @@ local style = {icon = beautiful.themes_path .. "widgets/clock.svg"}
 -- @return A pulse widget.
 function timewidget.new()
     local text = wibox.widget.textclock("%R %Z", 60)
-    text.timezone = "Europe/Lisbon"
+    text.timezone = "Europe/Paris"
 
     local layout = wibox.layout.fixed.horizontal()
     layout:add(text)
@@ -28,7 +28,7 @@ function timewidget.new()
     -- Mouse bindings, for when you want to add GMT change
     self:buttons(gears.table.join(button({}, 1, function()
         if text.timezone == "Europe/Paris" then
-            text.timezone = "Europe/Lisbon"
+            text.timezone = "UTC"
         else
             text.timezone = "Europe/Paris"
         end
