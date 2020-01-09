@@ -12,7 +12,7 @@ local style = {icon = beautiful.themes_path .. "widgets/clock.svg"}
 
 -- @return A pulse widget.
 function timewidget.new()
-    local text = wibox.widget.textclock("%R %Z", 60)
+    local text = wibox.widget.textclock("%R %Z w:%w", 60)
     text.timezone = "Europe/Paris"
 
     local layout = wibox.layout.fixed.horizontal()
