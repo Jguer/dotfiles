@@ -233,7 +233,7 @@ function hotkeys:init(args)
         awful.spawn("rofi-power " .. beautiful.themes_path .. "rofi.rasi")
     end, {description = "end session", group = "applications"}),
                                       awful.key({modkey}, "x", function()
-        awful.spawn("rofi -combi-modi window,drun,ssh -theme " ..
+        awful.spawn("rofi -matching fuzzy -combi-modi window,drun,ssh -theme " ..
                         beautiful.themes_path .. "rofi.rasi" .. " -show combi")
     end, {description = "show rofi combi", group = "applications"}),
                                       awful.key({modkey}, "z", function()

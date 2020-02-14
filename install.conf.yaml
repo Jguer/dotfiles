@@ -20,7 +20,6 @@
     ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/fontconfig/fonts.conf: fonts.conf
-    ~/.config/user-dirs.dirs: user-dirs.dirs
     ~/.icons/oomox-purple-spice: gtk/icons/oomox-purple-spice
     ~/.themes/oomox-purple-spice: gtk/themes/oomox-purple-spice
     ~/.local/share/contractor: contractor

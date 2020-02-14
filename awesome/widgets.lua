@@ -2,13 +2,14 @@
 -- luacheck: globals client awesome screen
 local gears = require("gears")
 local wibox = require("wibox")
-local wpulse = require("vex.pulse")
+local wpulseaudio = require("vex.pulseaudio")
 local wtime = require("vex.timewidget")
 local wkeyboard = require("vex.keyboard")
 local beautiful = require("beautiful")
 local awful = require("awful")
 local vpn = require("vex.vpn")
 local wsystray = require("vex.systraypopup")
+local power = require("vex.power_widget")
 
 local widgets = {}
 
@@ -47,13 +48,13 @@ local function right_widgets(hostname, s)
         -- Right widgets
         layout = wibox.layout.fixed.horizontal,
         wkeyboard(),
-        wpulse(6)
+        wibox.container.margin(power, 0, 0, 4, 4),
+        wibox.container.margin(wpulseaudio, 0, 0, 4, 4)
     }
 
     if (not string.match(hostname, "atreides")) then
-        local wbattery = require("vex.battery")
         local wbrightness = require("vex.brightness")
-        right = gears.table.join(right, {wbattery(30), wbrightness(30)})
+        right = gears.table.join(right, {wbrightness(30)})
     end
 
     s.layoutbox = wibox.container.margin(awful.widget.layoutbox(s), 0, 2, 2, 4)
@@ -90,7 +91,7 @@ function widgets:init(hostname)
             awful.tag({"α", "β", "δ", "Θ", "Ω", "λ", "π"}, s,
                       awful.layout.layouts[1])
 
-            s.taglist = awful.widget.taglist{
+            s.taglist = awful.widget.taglist {
                 screen = s,
                 filter = awful.widget.taglist.filter.all,
                 buttons = taglist_buttons,
@@ -130,7 +131,7 @@ function widgets:init(hostname)
                 }
             }
 
-            s.tasklist = awful.widget.tasklist{
+            s.tasklist = awful.widget.tasklist {
                 screen = s,
                 filter = awful.widget.tasklist.filter.currenttags,
                 buttons = tasklist_buttons,

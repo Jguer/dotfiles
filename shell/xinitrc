@@ -12,17 +12,18 @@ fi
 # dbus-daemon --session &
 # dbus-update-activation-environment --systemd DISPLAY
 
-#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-#export SSH_AUTH_SOCK
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+export GNOME_KEYRING_CONTROL
+export GPG_TTY=$(tty)
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
 
 if [ "$(cat /etc/hostname)" = "atreides" ]; then
   xrandr --output DVI-D-1 --primary --auto --left-of HDMI-A-0
-elif [ "$(cat /etc/hostname)" = "arakis" ]; then
-  /usr/bin/lxpolkit &
-  xrandr --output HDMI-1 --primary --mode 1920x1080 --above eDP-1
+elif [ "$(cat /etc/hostname)" = "pisayo" ]; then
+  xrandr --output DP-1 --primary --left-of DP-2 --output eDP-1 --same-as DP-1
 fi
 
 xset s 1200 1300
