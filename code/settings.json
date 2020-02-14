@@ -82,5 +82,13 @@
     "go.useLanguageServer": true,
     "color-highlight.markerType": "dot-before",
     "remote.SSH.allowLocalServerDownload": true,
-    "revealjs.browserPath": "/usr/bin/firefox"
+    "revealjs.browserPath": "/usr/bin/firefox",
+    "todo-tree.highlights.enabled": true,
+    "python.autoComplete.addBrackets": true,
+    "python.formatting.provider": "black",
+    "python.insidersChannel": "weekly",
+    "python.linting.flake8Enabled": true,
+    "go.lintTool": "golangci-lint",
+    "go.lintOnSave": "workspace",
+    "go.vetOnSave": "workspace"
 }

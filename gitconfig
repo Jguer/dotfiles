@@ -2,36 +2,19 @@
 [branch]
   autosetuprebase = always
 [credential]
-  helper = /usr/lib/git-core/git-credential-libsecret
+  helper = /usr/lib/git-core/git-credential-gnome-keyring
 [commit]
-  gpgSign = true
-[diff]
-  renames = copy
-  indentHeuristic = true
-[mergetool]
-  prompt = true
-[merge]
-  conflictstyle = diff3
-  tool = nvimdiff
-[mergetool]
-  keepBackup = false
-  prompt = false
-[mergetool "nvimdiff"]
-  cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+	gpgsign = true
 [push]
-  default = simple
+	default = current
 [rebase]
   autostash = true
   autosquash = true
-[user]
-  email = me@jguer.space
-  name = Jguer
-	signingkey = A8556B35
-[url "git@github.com:"]
-  insteadOf = https://github.com/
-[url "git@github.com:"]
-  pushInsteadOf = "git://github.com/"
-[url "git@github.com:"]
-  pushInsteadOf = "https://github.com/"
+[include]
+  path=~/.gitconfig-user
 [status]
 	submoduleSummary = true
+[core]
+	excludesfile = ~/.gitignore
+[pull]
+	rebase = true
