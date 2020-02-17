@@ -153,7 +153,7 @@ end
 local autorun = {}
 autorun["all"] = {
     "xss-lock -- lockscreen " .. beautiful.wallpaper, "numlockx", "nm-applet",
-    "unclutter -noevents -idle 2 -jitter 1 -root", "compton",
+    "unclutter -noevents -idle 2 -jitter 1 -root", "picom",
     "redshift-gtk -l 38.72:-9.15 -t 6500:3400"
 }
 
