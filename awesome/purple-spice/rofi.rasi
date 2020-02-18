@@ -10,7 +10,7 @@
 configuration {
         show-icons:   true;
         sidebar-mode: true;
-        font: "Fira Sans 12";
+        font: "sans 12";
 }
 
 * {
