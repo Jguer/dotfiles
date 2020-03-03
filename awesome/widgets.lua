@@ -2,7 +2,7 @@
 -- luacheck: globals client awesome screen
 local gears = require("gears")
 local wibox = require("wibox")
-local wpulseaudio = require("vex.pulseaudio")
+local pulse = require("vex.pulseaudio")
 local wtime = require("vex.timewidget")
 local wkeyboard = require("vex.keyboard")
 local beautiful = require("beautiful")
@@ -49,7 +49,7 @@ local function right_widgets(hostname, s)
         layout = wibox.layout.fixed.horizontal,
         wkeyboard(),
         wibox.container.margin(power, 0, 0, 4, 4),
-        wibox.container.margin(wpulseaudio, 0, 0, 4, 4)
+        wibox.container.margin(pulse, 0, 0, 4, 4)
     }
 
     if (not string.match(hostname, "atreides")) then

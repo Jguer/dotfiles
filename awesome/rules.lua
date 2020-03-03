@@ -40,6 +40,8 @@ function rules:init(args)
             properties = {floating = true}
         },
         {rule_any = self.titlebar_any, properties = {titlebars_enabled = true}},
+        { rule = { name = "Picture-in-Picture" },
+          properties = { sticky = true } },
         {
             rule_any = {type = {"normal"}},
             properties = {
