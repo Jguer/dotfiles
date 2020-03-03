@@ -6,9 +6,8 @@
     "workbench.sideBar.location": "right",
     "workbench.iconTheme": "material-icon-theme",
     // Theme Setup.
-    "editor.fontFamily": "'Fira Code Retina', 'Fira Sans', monospace",
+    "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
     "terminal.integrated.fontFamily": "'Fira Code Retina', monospace",
-    "editor.fontSize": 15,
     "editor.lineHeight": 22.0,
     "editor.letterSpacing": 0.5,
     "editor.minimap.enabled": false,
@@ -90,5 +89,7 @@
     "python.linting.flake8Enabled": true,
     "go.lintTool": "golangci-lint",
     "go.lintOnSave": "workspace",
-    "go.vetOnSave": "workspace"
+    "go.vetOnSave": "workspace",
+    "window.zoomLevel": 0,
+    "todo-tree.tree.showScanModeButton": false
 }

@@ -6,7 +6,7 @@ local gears = require("gears")
 local hotkeys = {mouse = {}, keys = {}}
 local xrandr = require("vex.xrandr")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-local pulse = require("vex.pulse")
+local pulse = require("vex.pulseaudio")
 local light = require("vex.brightness")
 
 local altkey = "Mod1"
@@ -57,8 +57,8 @@ function hotkeys:init(args)
     -- {{{ Global Mouse
     self.mouse.root = awful.util.table
                           .join( -- awful.button({ }, 3, function () mainmenu:toggle() end),
-        awful.button({}, 4, awful.tag.viewnext),
-        awful.button({}, 5, awful.tag.viewprev))
+    awful.button({}, 4, awful.tag.viewnext),
+    awful.button({}, 5, awful.tag.viewprev))
     -- }}}
 
     -- {{{ Global Keys
@@ -162,29 +162,26 @@ function hotkeys:init(args)
         description = "restore minimized",
         group = "client"
     }), -- Volume and Music
-    awful.key({}, "XF86AudioRaiseVolume",
-              function() pulse().set_volume("+2%") end,
+    awful.key({}, "XF86AudioRaiseVolume", pulse.volume_up,
               {description = "increase volume", group = "audio"}),
-                                      awful.key({altkey}, "Up", function()
-        pulse().set_volume("+2%")
-    end, {description = "increase volume", group = "audio"}),
-                                      awful.key({}, "XF86AudioLowerVolume",
-                                                function()
-        pulse().set_volume("-2%")
-    end, {description = "decrease volume", group = "audio"}),
-                                      awful.key({altkey}, "Down", function()
-        pulse().set_volume("-2%")
-    end, {description = "decrease volume", group = "audio"}),
-                                      awful.key({}, "XF86AudioMute", function()
-        pulse().toggle_mute()
-    end, {description = "toggle volume", group = "audio"}),
-                                      awful.key({altkey}, "m", function()
-        pulse().toggle_mute()
-    end, {description = "toggle volume", group = "audio"}),
-                                      awful.key({}, "XF86AudioMicMute",
-                                                function()
-        pulse().toggle_mic()
-    end, {description = "toggle mic", group = "audio"}),
+                                      awful.key({altkey}, "Up", pulse.volume_up,
+                                                {
+        description = "increase volume",
+        group = "audio"
+    }), awful.key({}, "XF86AudioLowerVolume", pulse.volume_down,
+                  {description = "decrease volume", group = "audio"}),
+                                      awful.key({altkey}, "Down",
+                                                pulse.volume_down, {
+        description = "decrease volume",
+        group = "audio"
+    }), awful.key({}, "XF86AudioMute", pulse.toggle_muted,
+                  {description = "toggle volume", group = "audio"}),
+                                      awful.key({altkey}, "m",
+                                                pulse.toggle_muted, {
+        description = "toggle volume",
+        group = "audio"
+    }), awful.key({}, "XF86AudioMicMute", pulse.toggle_muted_mic,
+                  {description = "toggle mic", group = "audio"}),
                                       awful.key({}, "XF86AudioPlay", function()
         awful.spawn("playerctl play-pause", false)
     end, {description = "Play media", group = "audio"}),
@@ -215,11 +212,13 @@ function hotkeys:init(args)
                                                 function()
         awful.spawn("xkill")
     end, {description = "xkill", group = "applications"}),
-                                      awful.key({}, "XF86MonBrightnessUp", function()
-       light().set_brightness(5)
+                                      awful.key({}, "XF86MonBrightnessUp",
+                                                function()
+        light().set_brightness(5)
     end, {description = "Increase brightness by 5%", group = "screen"}),
-                                      awful.key({}, "XF86MonBrightnessDown", function()
-       light().set_brightness(-5)
+                                      awful.key({}, "XF86MonBrightnessDown",
+                                                function()
+        light().set_brightness(-5)
     end, {description = "Decrease brightness by 5%", group = "screen"}),
                                       awful.key({modkey}, "q", function()
         awful.spawn("firefox")
@@ -233,8 +232,9 @@ function hotkeys:init(args)
         awful.spawn("rofi-power " .. beautiful.themes_path .. "rofi.rasi")
     end, {description = "end session", group = "applications"}),
                                       awful.key({modkey}, "x", function()
-        awful.spawn("rofi -matching fuzzy -combi-modi window,drun,ssh -theme " ..
-                        beautiful.themes_path .. "rofi.rasi" .. " -show combi")
+        awful.spawn(
+            "rofi -matching fuzzy -combi-modi window,drun,ssh -theme " ..
+                beautiful.themes_path .. "rofi.rasi" .. " -show combi")
     end, {description = "show rofi combi", group = "applications"}),
                                       awful.key({modkey}, "z", function()
         awful.spawn("rofi -combi-modi window,drun,ssh -theme " ..
