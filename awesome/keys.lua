@@ -231,6 +231,9 @@ function hotkeys:init(args)
     }), awful.key({altkey}, "e", function()
         awful.spawn("rofi-power " .. beautiful.themes_path .. "rofi.rasi")
     end, {description = "end session", group = "applications"}),
+                                      awful.key({altkey}, "q", function()
+        awful.spawn("rofi-pass " .. beautiful.themes_path .. "rofi.rasi")
+    end, {description = "show rofi pass", group = "applications"}),
                                       awful.key({modkey}, "x", function()
         awful.spawn(
             "rofi -matching fuzzy -combi-modi window,drun,ssh -theme " ..
