@@ -2,9 +2,8 @@
     "keyboard.dispatch": "keyCode",
     "telemetry.enableTelemetry": false,
     "extensions.ignoreRecommendations": true,
-    "workbench.colorTheme": "Shades of Purple",
+    "workbench.colorTheme": "SynthWave '84",
     "workbench.sideBar.location": "right",
-    "workbench.iconTheme": "material-icon-theme",
     // Theme Setup.
     "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
     "terminal.integrated.fontFamily": "'Fira Code Retina', monospace",
@@ -91,5 +90,8 @@
     "go.lintOnSave": "workspace",
     "go.vetOnSave": "workspace",
     "window.zoomLevel": 0,
-    "todo-tree.tree.showScanModeButton": false
+    "todo-tree.tree.showScanModeButton": false,
+    "city-lights-icons-vsc.hidesExplorerArrows": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.folders.color": "#ff7043"
 }

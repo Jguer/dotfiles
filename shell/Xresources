@@ -1,34 +1,34 @@
 *foreground:  #ffffff
-*background:  #1e1d40
-*cursorColor: #fad000
+*background:  #262335
+*cursorColor: #03edf9
 !
 ! Black
 *color0:      #000000
 *color8:      #686868
 !
 ! Red
-*color1:      #d90429
-*color9:      #f92a1c
+*color1:      #fe4450
+*color9:      #fe4450
 !
 ! Green
-*color2:      #3ad900
-*color10:     #43d426
+*color2:      #72f1b8
+*color10:     #72f1b8
 !
 ! Yellow
-*color3:      #ffe700
-*color11:     #f1d000
+*color3:      #f97e72
+*color11:     #fede5d
 !
 ! Blue
-*color4:      #6943ff
-*color12:     #6871ff
+*color4:      #03edf9
+*color12:     #03edf9
 !
 ! Magenta
-*color5:      #ff2c70
-*color13:     #ff77ff
+*color5:      #ff7edb
+*color13:     #ff7edb
 !
 ! Cyan
-*color6:      #00c5c7
-*color14:     #79e8fb
+*color6:      #03edf9
+*color14:     #03edf9
 !
 ! White
 *color7:      #c7c7c7

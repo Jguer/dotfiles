@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gopass ls --flat | rofi -theme $1 -dmenu | xargs --no-run-if-empty gopass show -f | head -n 1 | xdotool type --clearmodifiers --file -
