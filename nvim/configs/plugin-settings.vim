@@ -244,8 +244,6 @@ let g:coc_snippet_prev = '<S-TAB>'
 let g:coc_global_extensions = [
       \'coc-html', 
       \'coc-xml', 
-      \'coc-java', 
-      \'coc-ccls', 
       \'coc-powershell', 
       \'coc-r-lsp', 
       \'coc-vimlsp', 
