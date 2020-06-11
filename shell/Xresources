@@ -36,3 +36,6 @@
 !
 ! Bold, Italic, Underline
 *colorBD:     #f9fdff
+
+Xcursor.size: 16
+Xcursor.theme: elementary
