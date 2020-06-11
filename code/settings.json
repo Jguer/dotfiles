@@ -4,8 +4,6 @@
     "extensions.ignoreRecommendations": true,
     "workbench.colorTheme": "SynthWave '84",
     "workbench.sideBar.location": "right",
-    // Theme Setup.
-    "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
     "terminal.integrated.fontFamily": "'Fira Code Retina', monospace",
     "editor.lineHeight": 22.0,
     "editor.letterSpacing": 0.5,
@@ -93,5 +91,34 @@
     "todo-tree.tree.showScanModeButton": false,
     "city-lights-icons-vsc.hidesExplorerArrows": false,
     "workbench.iconTheme": "material-icon-theme",
-    "material-icon-theme.folders.color": "#ff7043"
+    "material-icon-theme.folders.color": "#ff7043",
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.jediEnabled": false,
+    "autoDocstring.docstringFormat": "sphinx",
+    "autoDocstring.includeName": true,
+    "telemetry.enableCrashReporter": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "go.formatTool": "gofmt",
+    "autoDocstring.startOnNewLine": true,
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.userWords": [
+        "CIRCLECI",
+        "SHAs",
+        "chdir",
+        "getenv",
+        "pygitguardian",
+        "rtype"
+    ],
+    "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
 }
