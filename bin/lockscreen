@@ -19,6 +19,8 @@ W=$(get_color 9)  # Wrong
 H=$(get_color 12) # Highlight
 V=$(get_color 4)  # Verifying
 
+system_opts="--pass-media-keys --pass-screen-keys --pass-power-keys"
+
 i3lock -n \
   --insidevercolor="$C" \
   --ringvercolor="$V" \
@@ -38,7 +40,6 @@ i3lock -n \
   --image="$lockbg" \
   --tiling \
   --keylayout 0 \
-  --pass-media-keys \
   --timestr='%H:%M' \
   --time-font='sans Bold' \
   --date-font='sans Bold' \
@@ -56,4 +57,5 @@ i3lock -n \
   --locktext='' \
   --lockfailedtext='' \
   --show-failed-attempts \
-  --ignore-empty-password
+  --ignore-empty-password \
+  $system_opts
