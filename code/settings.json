@@ -121,4 +121,5 @@
         "rtype"
     ],
     "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
+    "python.linting.mypyEnabled": true,
 }
