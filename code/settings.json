@@ -122,4 +122,6 @@
     ],
     "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
     "python.linting.mypyEnabled": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
 }
