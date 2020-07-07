@@ -82,7 +82,7 @@
     "todo-tree.highlights.enabled": true,
     "python.autoComplete.addBrackets": true,
     "python.formatting.provider": "black",
-    "python.insidersChannel": "weekly",
+    "python.insidersChannel": "off",
     "python.linting.flake8Enabled": true,
     "go.lintTool": "golangci-lint",
     "go.lintOnSave": "workspace",
@@ -121,7 +121,9 @@
         "rtype"
     ],
     "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
-    "python.linting.mypyEnabled": true,
     "git.confirmSync": false,
     "git.autofetch": true,
+    "python.languageServer": "Microsoft",
+    "python.dataScience.enableGather": false,
+    "python.linting.mypyEnabled": true,
 }

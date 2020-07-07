@@ -7,6 +7,7 @@
 	gpgsign = true
 [push]
 	default = current
+	followTags = true
 [rebase]
   autostash = true
   autosquash = true

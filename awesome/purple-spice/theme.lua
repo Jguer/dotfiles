@@ -57,6 +57,7 @@ theme.taglist_bg_focus = theme.fg_focus
 theme.taglist_fg_focus = theme.fg_normal
 theme.taglist_bg_occupied = xrdb.color4
 theme.taglist_bg_urgent = theme.fg_urgent
+theme.taglist_bg_empty = xrdb.foreground
 theme.taglist_separator = xrdb.color8
 theme.taglist_spacing = dpi(4)
 -- theme.taglist_bg_empty = xrdb.foreground

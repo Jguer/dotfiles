@@ -7,7 +7,6 @@ local wtime = require("vex.timewidget")
 local wkeyboard = require("vex.keyboard")
 local beautiful = require("beautiful")
 local awful = require("awful")
-local vpn = require("vex.vpn")
 local wsystray = require("vex.systraypopup")
 local power = require("vex.power_widget")
 
@@ -47,6 +46,7 @@ local function right_widgets(hostname, s)
     local right = {
         -- Right widgets
         layout = wibox.layout.fixed.horizontal,
+        wsystray(),
         wkeyboard(),
         wibox.container.margin(power, 0, 0, 4, 4),
         wibox.container.margin(pulse, 0, 0, 4, 4)
@@ -69,7 +69,6 @@ local function right_widgets(hostname, s)
                                          function() awful.layout.inc(-1) end)))
 
     right = gears.table.join(right, {
-        wsystray(),
         wtime(),
         s.layoutbox,
         spacing = 10,
@@ -88,33 +87,19 @@ function widgets:init(hostname)
             beautiful.set_wallpaper(s)
 
             -- Each screen has its own tag table.
-            awful.tag({"α", "β", "δ", "Θ", "Ω", "λ", "π"}, s,
+            awful.tag({" ", " ", " ", " ", " ", " ", " "}, s,
                       awful.layout.layouts[1])
 
             s.taglist = awful.widget.taglist {
                 screen = s,
                 filter = awful.widget.taglist.filter.all,
                 buttons = taglist_buttons,
-                layout = {
-                    spacing_widget = {
-                        {
-                            forced_width = 5,
-                            forced_height = 24,
-                            thickness = 1,
-                            color = beautiful.taglist_separator,
-                            widget = wibox.widget.separator
-                        },
-                        valign = "center",
-                        halign = "center",
-                        widget = wibox.container.place
-                    },
-                    spacing = 1,
-                    layout = wibox.layout.fixed.horizontal
-                },
+                layout = {spacing = 4, layout = wibox.layout.fixed.horizontal},
                 widget_template = {
                     {
                         wibox.widget.base.make_widget(),
                         forced_height = 5,
+                        forced_width = 40,
                         id = "background_role",
                         widget = wibox.container.background
                     },
@@ -139,7 +124,7 @@ function widgets:init(hostname)
                     spacing_widget = {
                         {
                             forced_width = 5,
-                            forced_height = 4,
+                            forced_height = 5,
                             thickness = 0,
                             color = beautiful.tasklist_separator,
                             widget = wibox.widget.separator
