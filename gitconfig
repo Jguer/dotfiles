@@ -19,3 +19,5 @@
 	excludesfile = ~/.gitignore
 [pull]
 	rebase = true
+[protocol]
+	version = 2

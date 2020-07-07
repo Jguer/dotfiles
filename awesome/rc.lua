@@ -14,35 +14,6 @@ local modkey = "Mod4"
 -- local hostname = readAll("/etc/hostname"):gsub("%s+", "")
 local hostname = io.lines("/proc/sys/kernel/hostname")()
 
--- Icon size
-naughty.config.defaults["icon_size"] = beautiful.notification_icon_size
-
--- Timeouts
-naughty.config.defaults.timeout = 5
-naughty.config.presets.low.timeout = 2
-naughty.config.presets.critical.timeout = 12
-
--- Apply theme variables
-naughty.config.padding = 6
-naughty.config.spacing = beautiful.notification_spacing
-naughty.config.defaults.margin = beautiful.notification_margin
-naughty.config.defaults.border_width = beautiful.notification_border_width
-
-naughty.config.presets.normal = {
-    fg = beautiful.notification_fg,
-    bg = beautiful.notification_bg
-}
-
-naughty.config.presets.low = {
-    fg = beautiful.notification_fg,
-    bg = beautiful.notification_bg
-}
-
-naughty.config.presets.critical = {
-    fg = beautiful.notification_crit_fg,
-    bg = beautiful.notification_crit_bg
-}
-
 awful.layout.layouts = {
     awful.layout.suit.tile, awful.layout.suit.tile.left, awful.layout.suit.fair,
     awful.layout.suit.tile.bottom, awful.layout.suit.tile.top,
@@ -81,6 +52,8 @@ end
 
 beautiful.init(gears.filesystem.get_configuration_dir() ..
                    "purple-spice/theme.lua")
+
+require('notifications')
 
 -- Wibar
 local widgets = require("widgets") -- load file with hotkeys configuration
@@ -138,15 +111,13 @@ signals:init()
 
 -- Autostart Applications {{{
 local function run_once(cmd_arr)
-    local user = os.getenv("USER")
     for _, cmd in ipairs(cmd_arr) do
         local findme = cmd
-        local firstspace = cmd:find(" ")
+        local firstspace = cmd:find(' ')
         if firstspace then findme = cmd:sub(0, firstspace - 1) end
-        awful.spawn.easy_async(string.format("pgrep -u %s -x %s", user, findme),
-                               function(_, _, _, exit_code)
-            if exit_code ~= 0 then awful.spawn(cmd, false) end
-        end)
+        awful.spawn.with_shell(string.format(
+                                   'pgrep -u $USER -x %s > /dev/null || (%s)',
+                                   findme, cmd), false)
     end
 end
 
