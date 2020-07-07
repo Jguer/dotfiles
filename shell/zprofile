@@ -2,6 +2,7 @@
 
 export GST_VAAPI_ALL_DRIVERS=1
 export LIBVA_DRIVER_NAME=iHD
+export VDPAU_DRIVER=va_gl
 export EDITOR='nvim'
 export DIFFPROG='nvim -d'
 export VISUAL='nvim'

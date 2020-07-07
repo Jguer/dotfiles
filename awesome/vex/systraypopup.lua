@@ -14,8 +14,8 @@ local systraypopup = {mt = {}}
 local style = {width = 48, icon = beautiful.wicons.systray}
 
 -- @return A systraypopup widget.
-function systraypopup.new(systray_widget)
-    local icon = wibox.widget{
+function systraypopup.new()
+    local icon = wibox.widget {
         image = recolor_image(style.icon, beautiful.widget.fg),
         resize = true,
         forced_width = 16,
@@ -25,28 +25,26 @@ function systraypopup.new(systray_widget)
 
     local systray = wibox.widget.systray()
 
-    local p = awful.popup{
-        widget = wibox.container.constraint(systray, "exact", nil, 28),
-        border_color = beautiful.border_color,
-        border_width = beautiful.border_width,
-        offset = {y = 32},
-        placement = awful.placement.bottom_right,
-        ontop = true,
-        visible = false
-        -- shape = gears.shape.rounded_rect
-    }
-
-    local layout = wibox.layout.align.horizontal(wibox.container.place(icon, p))
-    -- layout.expand = 'outside'
+    local container = wibox.container.place(systray)
+    local fixed_layout = wibox.layout.fixed.horizontal()
+    local layout = wibox.layout.fixed.horizontal(fixed_layout,
+                                                 wibox.container.place(icon))
 
     local self = widget_base.make_widget(layout)
 
-    self.icon = icon
-    self.popup = p
     self.systray = systray
+    self.visible = false
 
     self:buttons(gears.table.join(button({}, 1, function()
-        self.popup.visible = not self.popup.visible
+        if self.visible == false then
+            fixed_layout:add(container)
+            self.visible = true
+        else
+            fixed_layout:remove_widgets(container)
+            self.visible = false
+        end
+        self.systray:set_screen(awful.screen.focused())
+
     end)))
 
     return self

@@ -26,7 +26,7 @@ local function update_status(self)
 end
 
 function brightness.new(timeout)
-    local icon = wibox.widget{
+    local icon = wibox.widget {
         image = recolor_image(style.icon, beautiful.widget.fg),
         resize = true,
         forced_width = 16,
@@ -34,11 +34,11 @@ function brightness.new(timeout)
         widget = wibox.widget.imagebox
     }
 
-    local text = wibox.widget{
+    local text = wibox.widget {
         text = "0%",
         align = "center",
         valign = "center",
-        forced_width = 40,
+        forced_width = 38,
         widget = wibox.widget.textbox
     }
 
@@ -66,7 +66,7 @@ function brightness.new(timeout)
                                          function() self.set_brightness(-2) end)))
 
     update_status(self)
-    gears.timer{
+    gears.timer {
         timeout = timeout,
         call_now = true,
         autostart = true,
