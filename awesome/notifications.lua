@@ -164,7 +164,7 @@ naughty.connect_signal("request::display", function(n)
                                                         markup = app_icon,
                                                         resize_strategy = 'center',
                                                         font = is_icon and
-                                                            'ionicons 18' or
+                                                            'ionicons 24' or
                                                             'sans bold 14',
                                                         align = 'center',
                                                         valign = 'center',
