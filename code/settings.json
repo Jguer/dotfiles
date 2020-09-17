@@ -82,7 +82,6 @@
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "autoDocstring.docstringFormat": "sphinx",
   "autoDocstring.includeName": true,
   "telemetry.enableCrashReporter": false,
@@ -98,5 +97,14 @@
   "git.confirmSync": false,
   "git.autofetch": true,
   "python.linting.mypyEnabled": true,
-  "python.languageServer": "Pylance"
+  "python.languageServer": "Pylance",
+  "python.sortImports.args": ["-rc", "-sp isort.cfg"],
+  "[python]": {
+    "editor.semanticHighlighting.enabled": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "python.analysis.completeFunctionParens": true,
+  "Lua.completion.callSnippet": "Both"
 }

@@ -83,7 +83,11 @@ function widget:notify(v)
 
     self.notification = naughty.notify({
         text = msg,
-        timeout = self.notification_timeout_seconds
+        icon = icon.high.get_filename(icon.high),
+        title = "Audio",
+        timeout = self.notification_timeout_seconds,
+        preset = naughty.config.presets.low,
+        icon_size = 100
     })
 
 end
