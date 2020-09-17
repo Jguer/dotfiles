@@ -15,9 +15,9 @@ local notification
 local style = {width = 56, icon = beautiful.wicons.battery}
 
 local function show_battery_warning()
-    naughty.notify{
+    naughty.notify {
         icon = recolor_image(style.icon, beautiful.widget.off),
-        icon_size = 100,
+        icon_size = 128,
         text = "I keep hearing about battery innovation, but it never makes it to my phone.",
         title = "Battery is dying",
         timeout = 5,
@@ -28,7 +28,7 @@ end
 
 local function show_battery_status()
     awful.spawn.easy_async([[bash -c 'acpi']], function(stdout, _, _, _)
-        notification = naughty.notify{
+        notification = naughty.notify {
             text = stdout,
             title = "Battery status",
             timeout = 5,
@@ -75,7 +75,7 @@ end
 
 -- @return A battery widget.
 function battery.new(timeout)
-    local icon = wibox.widget{
+    local icon = wibox.widget {
         image = recolor_image(style.icon, beautiful.widget.bg),
         resize = true,
         forced_width = 16,
@@ -83,7 +83,7 @@ function battery.new(timeout)
         widget = wibox.widget.imagebox
     }
 
-    local text = wibox.widget{
+    local text = wibox.widget {
         text = "0%",
         align = "center",
         valign = "center",
@@ -111,7 +111,7 @@ function battery.new(timeout)
                         function() naughty.destroy(notification) end)
 
     update_status(self)
-    gears.timer{
+    gears.timer {
         timeout = timeout,
         call_now = true,
         autostart = true,

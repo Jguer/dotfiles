@@ -9,7 +9,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 -- Defaults
 naughty.config.defaults.ontop = true
-naughty.config.defaults.icon_size = dpi(32)
+naughty.config.defaults.icon_size = 128
 naughty.config.defaults.timeout = 6
 naughty.config.defaults.title = ''
 naughty.config.defaults.margin = dpi(20)
@@ -124,10 +124,11 @@ naughty.connect_signal("request::display", function(n)
         ["Screenshot"] = "",
         ["Disconnected - you are now offline"] = "睊",
         ["Connection Established"] = "",
-        ["YouTube"] = ""
+        ["YouTube"] = "",
+        ["Audio"] = ""
     }
 
-    local app_icon = n.app_name ~= '' and n.app_name:sub(1, 1):upper() or ''
+    local app_icon = n.app_name ~= '' and n.app_name:sub(1, 1):upper() or ''
     local title = n.title or ''
     local is_icon = n.app_name ~= ''
 
