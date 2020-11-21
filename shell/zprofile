@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 export GST_VAAPI_ALL_DRIVERS=1
-#export MOZ_X11_EGL=1
+export MOZ_X11_EGL=1
 export LIBVA_DRIVER_NAME=iHD
 export VDPAU_DRIVER=va_gl
 export EDITOR='nvim'
