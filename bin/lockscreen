@@ -7,7 +7,7 @@ function get_color() {
 if [ "$1" ]; then
   lockbg="$1"
 else
-  lockbg="$HOME/.config/awesome/purple-spice/wallpaper.png"
+  lockbg="$HOME/.config/awesome/mellow-owl/wallpaper.png"
 fi
 
 red=$(get_color 1)

@@ -51,7 +51,7 @@ end
 -- }}}
 
 beautiful.init(gears.filesystem.get_configuration_dir() ..
-                   "purple-spice/theme.lua")
+                   "mellow-owl/theme.lua")
 
 require('notifications')
 

@@ -9,9 +9,6 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-# dbus-daemon --session &
-# dbus-update-activation-environment --systemd DISPLAY
-
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 export GNOME_KEYRING_CONTROL
@@ -30,7 +27,7 @@ xset s 1200 1300
 xset dpms 1200 1300 1400
 xset r rate 350 60
 
-start-pulseaudio-x11 &
+start-pulseaudio-x11
 
 # setxkbmap -model "evdev" -rules "evdev" \
 #   -layout "us,pt" \

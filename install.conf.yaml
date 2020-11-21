@@ -20,8 +20,8 @@
     ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/fontconfig/fonts.conf: fonts.conf
-    ~/.icons/oomox-purple-spice: gtk/icons/oomox-purple-spice
-    ~/.themes/oomox-purple-spice: gtk/themes/oomox-purple-spice
+    ~/.icons/oomox-mellow-owl: gtk/icons/oomox-mellow-owl
+    ~/.themes/oomox-mellow-owl: gtk/themes/oomox-mellow-owl
     ~/.local/share/contractor: contractor
     # Applications
     ~/.config/kitty/kitty.conf: kitty.conf
