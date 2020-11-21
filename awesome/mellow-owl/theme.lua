@@ -84,13 +84,13 @@ theme.widget = {
 
 theme.wicons = {
     brightness = themes_path ..
-        "gtk-icons/status/symbolic/display-brightness-high-symbolic.svg",
+        "gtk-icons/symbolic/status/display-brightness-high-symbolic.svg",
     battery = themes_path ..
-        "gtk-icons/status/symbolic/battery-full-symbolic.svg",
+        "gtk-icons/symbolic/status/battery-full-symbolic.svg",
     keyboard = themes_path ..
-        "gtk-icons/status/symbolic/capslock-enabled-symbolic.svg",
+        "gtk-icons/symbolic/status/capslock-enabled-symbolic.svg",
     systray = themes_path ..
-        "gtk-icons/status/symbolic/notification-symbolic.svg"
+        "gtk-icons/symbolic/status/notification-symbolic.svg"
 }
 
 -- Notification {{{
