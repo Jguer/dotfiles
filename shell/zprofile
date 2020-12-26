@@ -16,16 +16,6 @@ export SYSTEMD_LESS='FRXMK'
 typeset -gU cdpath fpath mailpath path
 path+=("$HOME/dotfiles/bin" "$GOPATH/bin" "$HOME/.local/bin")
 
-# Change default zim location
-export ZIM_HOME=${HOME}/dotfiles/shell/zimfw
-
-# Initialize zim
-[[ -s ${ZIM_HOME}/login_init.zsh ]] && source ${ZIM_HOME}/login_init.zsh
-
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
 
 # if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   # exec startx > ${HOME}/.xoutput 2>&1
