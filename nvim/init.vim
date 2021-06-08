@@ -1,11 +1,8 @@
-
 " Enable syntax highlighting.
-"
 syntax on
 
 
 " General vim settings.
-"
 set autoindent        " Indented text
 set autoread          " Pick up external changes to files
 set autowrite         " Write files when navigating with :next/:previous
@@ -114,12 +111,11 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'ghifarit53/tokyonight-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'gcmt/taboo.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'gregsexton/MatchTag'
-
 Plug 'tpope/vim-surround'
 Plug '907th/vim-auto-save'
 Plug 'natebosch/vim-lsc'
@@ -141,14 +137,15 @@ else
     let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
 endif
 
-colorscheme nightfly
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+colorscheme tokyonight
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
-let g:nightflyCursorColor = 1
-let g:nightflyUnderlineMatchParen = 1
-
 let g:airline_powerline_fonts = 1
+let g:airline_theme = "tokyonight"
 
 map <F7> :NERDTreeToggle<CR>
 

@@ -23,7 +23,7 @@ end
 
 naughty.config.padding = 8
 naughty.config.spacing = 8
-naughty.config.icon_dirs = {"/home/jguer/.icons/oomox-mellow-owl"}
+naughty.config.icon_dirs = {"/home/jguer/.icons/oomox-tokyo-night"}
 naughty.config.icon_formats = {"png", "svg", "jpg"}
 
 -- Presets / rules

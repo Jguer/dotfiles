@@ -40,35 +40,35 @@ system_opts="--pass-media-keys --pass-screen-keys --pass-power-keys --ignore-emp
 background="--tiling --image=$lockbg"
 
 i3lock -e -i ~/.config/lock.png \
-  --timepos='x+100:y+h-70' \
-  --datepos='x+100:y+h-45' \
-  --layoutpos='x+w-150:y+30' --layoutsize=$datesize \
-  --indpos='x+55:y+h-69' \
-  --modifpos='x+100:y+h-25' \
+  --time-pos='x+100:y+h-70' \
+  --date-pos='x+100:y+h-45' \
+  --layout-pos='x+w-150:y+30' --layout-size=$datesize \
+  --ind-pos='x+55:y+h-69' \
+  --modif-pos='x+100:y+h-25' \
   --clock --force-clock \
   --time-align 1 --modif-align 1 --layout-align 1 \
-  --datestr "$locktext" --datesize=$datesize --date-align 1 \
-  --insidecolor="$insidecolor" \
-  --ringcolor="$ringcolor" \
+  --date-str "$locktext" --date-size=$datesize --date-align 1 \
+  --inside-color="$insidecolor" \
+  --ring-color="$ringcolor" \
   --line-uses-inside \
-  --wrongcolor="$wrongcolor" \
-  --keyhlcolor="$keyhlcolor" \
-  --bshlcolor="$bshlcolor" \
-  --separatorcolor="$separatorcolor" \
-  --insidevercolor="$insidevercolor" \
-  --insidewrongcolor="$insidewrongcolor" \
-  --ringvercolor="$ringvercolor" \
-  --ringwrongcolor="$ringwrongcolor" \
-  --verifcolor="$verifcolor" \
-  --wrongcolor="$wrongcolor" \
-  --timecolor="$timecolor" \
-  --datecolor="$datecolor" \
-  --layoutcolor="$layoutcolor" \
+  --wrong-color="$wrongcolor" \
+  --keyhl-color="$keyhlcolor" \
+  --bshl-color="$bshlcolor" \
+  --separator-color="$separatorcolor" \
+  --insidever-color="$insidevercolor" \
+  --insidewrong-color="$insidewrongcolor" \
+  --ringver-color="$ringvercolor" \
+  --ringwrong-color="$ringwrongcolor" \
+  --verif-color="$verifcolor" \
+  --wrong-color="$wrongcolor" \
+  --time-color="$timecolor" \
+  --date-color="$datecolor" \
+  --layout-color="$layoutcolor" \
   --radius=20 --ring-width=8 \
-  --veriftext='' --wrongtext='' --noinputtext='' \
+  --verif-text='' --wrong-text='' --noinput-text='' \
   --time-font="$font" --date-font="$font" \
   --layout-font="$font" --verif-font="$font" --wrong-font="$font" \
-  --wrongsize=$wrongsize \
+  --wrong-size=$wrongsize \
   $background \
   $system_opts \
   --redraw-thread "$@"

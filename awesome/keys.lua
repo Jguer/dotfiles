@@ -6,7 +6,7 @@ local gears = require("gears")
 local hotkeys = {mouse = {}, keys = {}}
 local xrandr = require("vex.xrandr")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
-local pulse = require("vex.pulseaudio")
+local pulse = require("vex.pipewire")
 local light = require("vex.brightness")
 
 local altkey = "Mod1"
@@ -221,8 +221,8 @@ function hotkeys:init(args)
         light().set_brightness(-5)
     end, {description = "Decrease brightness by 5%", group = "screen"}),
                                       awful.key({modkey}, "q", function()
-        awful.spawn("firefox")
-    end, {description = "firefox", group = "applications"}),
+        awful.spawn("brave")
+    end, {description = "brave", group = "applications"}),
                                       awful.key({modkey}, "p",
                                                 function() xrandr.xrandr() end,
                                                 {

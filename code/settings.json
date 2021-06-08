@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Night Owl",
+  "workbench.colorTheme": "Tokyo Night",
   "files.encoding": "utf8",
   "files.autoGuessEncoding": false,
   "terminal.integrated.fontFamily": "'Fira Code Retina', monospace",
@@ -33,7 +33,6 @@
   "files.trimTrailingWhitespace": true,
   "git.enableSmartCommit": true,
   "window.newWindowDimensions": "inherit",
-  "window.zoomLevel": 0,
   "editor.glyphMargin": true,
   "git.autofetch": true,
   "keyboard.dispatch": "keyCode",
@@ -68,7 +67,8 @@
     "**/*.coverage": true,
     "**/celerybeat-schedule": true,
     "**/node_modules": true,
-    "**/bower_components": true
+    "**/bower_components": true,
+    "**/.mypy_cache": true
   },
   "files.autoSave": "onFocusChange",
   "files.eol": "\n",
@@ -92,7 +92,7 @@
   "todo-tree.tree.showScanModeButton": false,
   "material-icon-theme.folders.color": "#82aaff",
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "editor.suggestSelection": "first",
   "autoDocstring.docstringFormat": "sphinx",
@@ -118,7 +118,26 @@
   "python.analysis.completeFunctionParens": true,
   "Lua.completion.callSnippet": "Both",
   "terminal.integrated.shell.linux": "/usr/bin/fish",
-  "gitlab.enableExperimentalFeatures": true,
-  "gitlens.advanced.telemetry.enabled": false,
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.wrapTabs": true,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "editor.semanticHighlighting.enabled": true,
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "Lua.telemetry.enable": false,
+  "workbench.editor.untitled.hint": "hidden",
+  "redhat.telemetry.enabled": false,
 }

@@ -51,7 +51,7 @@ end
 -- }}}
 
 beautiful.init(gears.filesystem.get_configuration_dir() ..
-                   "mellow-owl/theme.lua")
+                   "tokyo-night/theme.lua")
 
 require('notifications')
 
@@ -124,7 +124,7 @@ end
 local autorun = {}
 autorun["all"] = {
     "xss-lock -- lockscreen " .. beautiful.wallpaper, "numlockx", "nm-applet",
-    "unclutter -noevents -idle 2 -jitter 1 -root", "picom",
+    "unclutter -noevents -idle 2 -jitter 1 -root", "picom --experimental-backends",
     "redshift-gtk -l 38.72:-9.15 -t 6500:3400"
 }
 

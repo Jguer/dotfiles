@@ -2,7 +2,7 @@
 -- luacheck: globals client awesome screen
 local gears = require("gears")
 local wibox = require("wibox")
-local pulse = require("vex.pulseaudio")
+local pulse = require("vex.pipewire")
 local wtime = require("vex.timewidget")
 local wkeyboard = require("vex.keyboard")
 local beautiful = require("beautiful")
@@ -160,7 +160,6 @@ function widgets:init(hostname)
             s.wibox = awful.wibar({
                 position = "top",
                 screen = s,
-                bg = '#00000000',
                 height = beautiful.panel_height
             })
 
