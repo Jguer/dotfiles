@@ -1,27 +1,34 @@
 # Dotfiles
 
-## Purple Spice
+## Tokyo Night based
 
-Based on the [ayu](https://github.com/ayu-theme/ayu-vim) theme.
+Based on the **tokyo-night** [vim](https://github.com/ghifarit53/tokyonight-vim) and
+[vscode](https://github.com/enkia/tokyo-night-vscode-theme) theme.
 
-<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/ayurt-busy.png" width="650">
+<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/dirty-tokyo-night.png" width="650">
 
-<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/ayurt-clean.png" width="650">
-
-Background from [here](https://www.deviantart.com/niivu/art/Wash-Away-The-Rain-801760414)
+<img src="https://cdn.jsdelivr.net/gh/Jguer/jguer.github.io@master/awmdotfiles/clean-tokyo-night.png" width="650">
 
 ### Applications
 
-**OS**: Arch/Fedora
+**OS**: Arch  
 **WM**: AwesomeWM  
-**LockScreen**: i3-color  
-**Compositor**: Compton  
-**Launcher**: Rofi
+**LockScreen**: i3lock (color fork)  
+**Compositor**: picom  
+**Launcher**: rofi
 
-**Browser**: Firefox  
 **Development Environment**: VSCode  
+**Text Editor**: Neovim
+
 **Document Viewer**: Zathura  
-**File Manager**: Nemo  
-**Music**: cmus  
-**Text Editor**: Neovim  
-**Video**: MPV
+**Video**: mpv
+
+### Required utils
+
+- unclutter
+- xss-lock
+- numlockx
+- redshift
+- light
+- wireplumber
+- upower
