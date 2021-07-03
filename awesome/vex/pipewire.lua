@@ -39,15 +39,16 @@ local icon = {
     high = lookup_icon("audio-volume-high-symbolic"),
     med = lookup_icon("audio-volume-medium-symbolic"),
     low = lookup_icon("audio-volume-low-symbolic"),
-    muted = lookup_icon("audio-volume-muted-symbolic")
+    muted = lookup_icon("audio-volume-muted-symbolic"),
+    muted_blocking = lookup_icon("audio-volume-muted-blocking-symbolic")
 }
 
 local preloaded_icons = {
     high = load_icon(icon.high),
     med = load_icon(icon.med),
     low = load_icon(icon.low),
-    muted = load_icon(icon.muted)
-
+    muted = load_icon(icon.muted),
+    muted_blocking = load_icon(icon.muted_blocking)
 }
 
 local widget = wibox.widget {resize = true, widget = wibox.widget.imagebox}
@@ -57,7 +58,10 @@ widget.tooltip = awful.tooltip({objects = {widget}})
 function widget:update_appearance(v, muted)
     local i, msg
 
-    if muted == "MUTED" then
+    if v == nil then
+        msg = "??%"
+        i = preloaded_icons.muted_blocking
+    elseif muted == "MUTED" then
         msg = v
         i = preloaded_icons.muted
     else
@@ -116,7 +120,9 @@ end
 function widget:get_volume()
     awful.spawn.easy_async_with_shell([[wpctl status | grep -Eom 1 "\*.+"]], function(stdout, _, _, _)
         local vol_n = string.match(stdout, "%d%d?%.%d%d")
-        vol_n = tonumber(vol_n) *100
+        if vol_n ~= nil then
+            vol_n = tonumber(vol_n) *100
+        end
         local muted = string.match(stdout, "MUTED")
         self:update_appearance(vol_n, muted)
     end)
