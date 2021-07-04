@@ -8,9 +8,6 @@
 
 - link:
     # Login Session
-    ~/.zshrc: shell/zshrc
-    ~/.zimrc: shell/zimrc
-    ~/.zprofile: shell/zprofile
     ~/.Xresources: shell/Xresources
     ~/.xinitrc: shell/xinitrc
     # DE
@@ -22,7 +19,6 @@
     ~/.config/fontconfig/fonts.conf: fonts.conf
     ~/.icons/oomox-tokyo-night: gtk/icons/oomox-tokyo-night
     ~/.themes/oomox-tokyo-night: gtk/themes/oomox-tokyo-night
-    ~/.local/share/contractor: contractor
     # Applications
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.gitconfig: gitconfig
@@ -32,14 +28,8 @@
     ~/.config/mpv/scripts: mpv/scripts
     # VIM
     ~/.config/nvim/init.vim: nvim/init.vim
-    ~/.config/nvim/configs: nvim/configs
-    ~/.config/nvim/coc-settings.json: nvim/coc-settings.json
     ~/.config/zathura/zathurarc: zathurarc
     "~/.config/Code - OSS/User/settings.json": code/settings.json
     ~/.config/Code/User/settings.json: code/settings.json
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [mkdir -p $HOME/.config/nvim//storage/backups//]
-    - [mkdir -p $HOME/.config/nvim//storage/swaps//]
-    - [mkdir -p $HOME/.config/nvim//storage/undos//]
-    - [./code/install_code.sh, Installing Code Extensions]

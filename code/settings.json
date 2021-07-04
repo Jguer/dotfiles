@@ -114,5 +114,6 @@
   "editor.semanticHighlighting.enabled": true,
   "Lua.telemetry.enable": false,
   "workbench.editor.untitled.hint": "hidden",
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "terminal.integrated.defaultProfile.linux": "fish"
 }
