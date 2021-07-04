@@ -55,17 +55,17 @@ local widget = wibox.widget {resize = true, widget = wibox.widget.imagebox}
 
 widget.tooltip = awful.tooltip({objects = {widget}})
 
-function widget:update_appearance(v, muted)
+function widget:update_appearance(name, v, muted)
     local i, msg
 
     if v == nil then
         msg = "??%"
         i = preloaded_icons.muted_blocking
     elseif muted == "MUTED" then
-        msg = v
+        msg = string.format("%s\n%.0f%%", name,v)
         i = preloaded_icons.muted
     else
-        msg = string.format("%.0f%%", v)
+        msg = string.format("%s\n%.0f%%", name,v)
         if v <= 33 then
             i = preloaded_icons.low
         elseif v <= 66 then
@@ -77,7 +77,6 @@ function widget:update_appearance(v, muted)
 
     self.image = i
     self.tooltip:set_text(msg)
-
 end
 
 function widget:notify(v)
@@ -117,23 +116,30 @@ function widget.toggle_muted_mic()
     awful.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
 end
 
+local function parse_output(stdout)
+    local name_n, vol_n, muted = string.match(stdout, "%. (.*)  .*(%d%d?%.%d%d)%s?(.*)%]")
+
+    if vol_n ~= nil then
+        vol_n = tonumber(vol_n) *100
+    end
+
+    if muted == "" then
+        muted = nil
+    end
+
+    return name_n, vol_n, muted
+end
+
 function widget:get_volume()
     awful.spawn.easy_async_with_shell([[wpctl status | grep -Eom 1 "\*.+"]], function(stdout, _, _, _)
-        local vol_n = string.match(stdout, "%d%d?%.%d%d")
-        if vol_n ~= nil then
-            vol_n = tonumber(vol_n) *100
-        end
-        local muted = string.match(stdout, "MUTED")
-        self:update_appearance(vol_n, muted)
+        self:update_appearance(parse_output(stdout))
     end)
 end
 
 function widget:get_volume_and_notify()
     awful.spawn.easy_async_with_shell([[wpctl status | grep -Eom 1 "\*.+"]], function(stdout, _, _, _)
-        local vol_n = string.match(stdout, "%d%d?%.%d%d")
-        vol_n = tonumber(vol_n) *100
-        local muted = string.match(stdout, "MUTED")
-        self:update_appearance(vol_n, muted)
+        local name,vol_n,muted =  parse_output(stdout)
+        self:update_appearance(name,vol_n, muted)
         self:notify(vol_n)
     end)
 end
