@@ -1,38 +1,38 @@
 # ~/.gitconfig
 [branch]
-  autosetuprebase = always
+autosetuprebase = always
 [credential]
-  helper = /usr/lib/git-core/git-credential-gnome-keyring
+helper = /usr/lib/git-core/git-credential-gnome-keyring
 [commit]
-	gpgsign = true
+gpgsign = true
 [push]
-	default = current
-	followTags = true
+default = current
+followTags = true
 [rebase]
-  autostash = true
-  autosquash = true
+autostash = true
+autosquash = true
 [include]
-  path=~/.gitconfig-user
+path=~/.gitconfig-user
 [status]
-	submoduleSummary = true
+submoduleSummary = true
 [core]
-	excludesfile = ~/.gitignore
-	pager = diff-so-fancy | less --tabs=4 -RFX
+excludesfile = ~/.gitignore
+pager = diff-so-fancy | less --tabs=4 -RFX
 [pull]
-	rebase = true
+rebase = true
 [protocol]
-	version = 2
+version = 2
 [color]
-	ui = true
+ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+oldNormal = red bold
+oldHighlight = red bold 52
+newNormal = green bold
+newHighlight = green bold 22
 [color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+meta = 11
+frag = magenta bold
+commit = yellow bold
+old = red bold
+new = green bold
+whitespace = red reverse

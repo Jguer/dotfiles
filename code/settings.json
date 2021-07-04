@@ -2,15 +2,18 @@
   "workbench.colorTheme": "Tokyo Night",
   "files.encoding": "utf8",
   "files.autoGuessEncoding": false,
-  "terminal.integrated.fontFamily": "'Fira Code Retina', monospace",
   "terminal.integrated.letterSpacing": 1,
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.cursorStyle": "block",
-  "editor.fontFamily": "'Fira Code Retina', 'sans', monospace",
+  "editor.fontFamily": "FiraCode Nerd Font Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.suggestFontSize": 16,
-  "editor.rulers": [80, 120, 121],
+  "editor.rulers": [
+    80,
+    120,
+    121
+  ],
   "editor.wordWrapColumn": 80,
   "html.format.wrapLineLength": 120,
   "editor.showFoldingControls": "mouseover",
@@ -91,24 +94,14 @@
   "go.vetOnSave": "workspace",
   "todo-tree.tree.showScanModeButton": false,
   "material-icon-theme.folders.color": "#82aaff",
-  "[dockerfile]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
   "editor.suggestSelection": "first",
   "autoDocstring.docstringFormat": "sphinx",
   "autoDocstring.includeName": true,
   "telemetry.enableCrashReporter": false,
   "go.formatTool": "gofmt",
   "autoDocstring.startOnNewLine": true,
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "python.linting.mypyEnabled": true,
   "python.languageServer": "Pylance",
-  "python.sortImports.args": ["-rc", "-sp isort.cfg"],
   "[python]": {
     "editor.semanticHighlighting.enabled": true,
     "editor.codeActionsOnSave": {
@@ -117,27 +110,9 @@
   },
   "python.analysis.completeFunctionParens": true,
   "Lua.completion.callSnippet": "Both",
-  "terminal.integrated.shell.linux": "/usr/bin/fish",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.editor.wrapTabs": true,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
   "editor.semanticHighlighting.enabled": true,
-  "todo-tree.general.tags": [
-    "BUG",
-    "HACK",
-    "FIXME",
-    "TODO",
-    "XXX",
-    "[ ]",
-    "[x]"
-  ],
-  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "Lua.telemetry.enable": false,
   "workbench.editor.untitled.hint": "hidden",
-  "redhat.telemetry.enabled": false,
+  "redhat.telemetry.enabled": false
 }
