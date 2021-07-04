@@ -1,0 +1,7 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+eval "$(starship init bash)"
+
+alias ls="exa --icons --git"
+alias cat="bat"

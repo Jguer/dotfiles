@@ -10,6 +10,10 @@
     # Login Session
     ~/.Xresources: shell/Xresources
     ~/.xinitrc: shell/xinitrc
+    ~/.bashrc: shell/bashrc
+    ~/.bash_profile: shell/bash_profile
+    # Shell
+    ~/.config/fish/config.fish: shell/config.fish
     # DE
     ~/.config/picom.conf: picom.conf
     ~/.config/awesome: awesome

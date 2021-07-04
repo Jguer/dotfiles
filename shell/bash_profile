@@ -1,0 +1,21 @@
+export EDITOR='nvim'
+export DIFFPROG='nvim -d'
+export VISUAL='nvim'
+export PAGER='less'
+export GOPATH="$HOME/go"
+export GPG_TTY=$(tty)
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+export SYSTEMD_LESS='FRXMK'
+
+pathappend() {
+  for ARG in "$@"
+  do
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$ARG"
+    fi
+  done
+}
+
+pathappend "$HOME/dotfiles/bin" "$GOPATH/bin" "$HOME/.local/bin"
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
