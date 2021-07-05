@@ -4,8 +4,11 @@ export VISUAL='nvim'
 export PAGER='less'
 export GOPATH="$HOME/go"
 export GPG_TTY=$(tty)
-export LESS='-F -g -i -M -R -S -w -X -z-4'
+export LESS='-iMRS -x2'
 export SYSTEMD_LESS='FRXMK'
+
+export BAT_PAGER="less -R"
+export BAT_THEME="OneHalfDark"
 
 pathappend() {
   for ARG in "$@"

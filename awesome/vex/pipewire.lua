@@ -138,7 +138,7 @@ end
 
 function widget:get_volume_and_notify()
     awful.spawn.easy_async_with_shell([[wpctl status | grep -Eom 1 "\*.+"]], function(stdout, _, _, _)
-        local name,vol_n,muted =  parse_output(stdout)
+        local name,vol_n,muted = parse_output(stdout)
         self:update_appearance(name,vol_n, muted)
         self:notify(vol_n)
     end)
