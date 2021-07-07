@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "Tokyo Night Storm",
   "files.encoding": "utf8",
   "files.autoGuessEncoding": false,
   "terminal.integrated.letterSpacing": 1,
@@ -115,5 +115,11 @@
   "Lua.telemetry.enable": false,
   "workbench.editor.untitled.hint": "hidden",
   "redhat.telemetry.enabled": false,
-  "terminal.integrated.defaultProfile.linux": "fish"
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
