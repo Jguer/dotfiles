@@ -79,8 +79,8 @@ function widget:update_appearance(name, v, muted)
     self.tooltip:set_text(msg)
 end
 
-function widget:notify(v)
-    local vol = string.format("%.0f%%", v) or nil
+function widget:notify(name, v)
+    local vol = string.format("%.0f%%\n%s", v, name) or nil
     if vol == nil then
         return
     end
@@ -140,7 +140,7 @@ function widget:get_volume_and_notify()
     awful.spawn.easy_async_with_shell([[wpctl status | grep -Eom 1 "\*.+"]], function(stdout, _, _, _)
         local name,vol_n,muted = parse_output(stdout)
         self:update_appearance(name,vol_n, muted)
-        self:notify(vol_n)
+        self:notify(name,vol_n)
     end)
 end
 
