@@ -7,8 +7,23 @@ export GPG_TTY=$(tty)
 export LESS='-iMRS -x2'
 export SYSTEMD_LESS='FRXMK'
 
+# bat
 export BAT_PAGER="less -R"
 export BAT_THEME="OneHalfDark"
+
+# NNN
+export NNN_OPTS="ErxH"
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_COLORS='1234' 
+export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export NO_AT_BRIDGE=1
+
+BLK="04" CHR="04" DIR="04" EXE="00" REG="00" HARDLINK="00" SYMLINK="06" MISSING="00" ORPHAN="01" FIFO="0F" SOCK="0F" OTHER="02"
+export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
 
 pathappend() {
   for ARG in "$@"

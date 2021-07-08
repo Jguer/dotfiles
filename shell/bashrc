@@ -3,5 +3,9 @@
 
 eval "$(starship init bash)"
 
-alias ls="exa --icons --git"
+alias ls="exa"
+alias ll="exa --icons --git -la"
+alias tree="exa --icons --tree"
+
 alias cat="bat"
+alias find="fd"
