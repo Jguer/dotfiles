@@ -31,7 +31,7 @@
     ~/.config/mpv/input.conf: mpv/input.conf
     ~/.config/mpv/scripts: mpv/scripts
     # VIM
-    ~/.config/nvim/init.vim: nvim/init.vim
+    ~/.config/nvim: nvim
     ~/.config/zathura/zathurarc: zathurarc
     "~/.config/Code - OSS/User/settings.json": code/settings.json
     ~/.config/Code/User/settings.json: code/settings.json

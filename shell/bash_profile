@@ -14,9 +14,10 @@ export BAT_THEME="OneHalfDark"
 # NNN
 export NNN_OPTS="ErxH"
 export NNN_FIFO='/tmp/nnn.fifo'
-export NNN_COLORS='1234' 
+export NNN_COLORS='2136' 
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
+export NNN_TRASH=1
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
