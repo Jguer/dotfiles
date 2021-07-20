@@ -1,38 +1,52 @@
 # ~/.gitconfig
 [branch]
 autosetuprebase = always
+
 [credential]
 helper = /usr/lib/git-core/git-credential-gnome-keyring
+
 [commit]
 gpgsign = true
+
 [push]
 default = current
 followTags = true
+
 [rebase]
 autostash = true
 autosquash = true
+
 [include]
 path=~/.gitconfig-user
+
 [status]
 submoduleSummary = true
+
 [core]
 excludesfile = ~/.gitignore
-pager = diff-so-fancy | less --tabs=4 -RFX
+
+[pager]
+diff = delta
+log = delta
+reflog = delta
+show = delta
+
+[diff]
+colorMoved = default
+
+[delta]
+plus-style = syntax "#003800"
+minus-style = syntax "#3f0001"
+syntax-theme = Dracula
+features = side-by-side line-numbers decorations
+hyperlinks = True
+navigate = True
+
+[interactive]
+diffFilter = delta --color-only
+
 [pull]
 rebase = true
+
 [protocol]
 version = 2
-[color]
-ui = true
-[color "diff-highlight"]
-oldNormal = red bold
-oldHighlight = red bold 52
-newNormal = green bold
-newHighlight = green bold 22
-[color "diff"]
-meta = 11
-frag = magenta bold
-commit = yellow bold
-old = red bold
-new = green bold
-whitespace = red reverse
