@@ -13,22 +13,20 @@ fc-cache
 
 # Code extensions
 # code --list-extensions | xargs -L 1 echo code --install-extension
+code --install-extension PKief.material-icon-theme
 code --install-extension christian-kohler.path-intellisense
 code --install-extension eamodio.gitlens
 code --install-extension enkia.tokyo-night
 code --install-extension esbenp.prettier-vscode
-code --install-extension evilz.vscode-reveal
 code --install-extension foxundermoon.shell-format
 code --install-extension golang.go
 code --install-extension mhutchie.git-graph
 code --install-extension mikestead.dotenv
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance
-code --install-extension ms-toolsai.jupyter
 code --install-extension naumovs.color-highlight
 code --install-extension oderwat.indent-rainbow
-code --install-extension PKief.material-icon-theme
-code --install-extension redhat.vscode-yaml
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension sumneko.lua
+code --install-extension tamasfe.even-better-toml
 code --install-extension vscodevim.vim
