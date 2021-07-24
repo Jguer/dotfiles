@@ -9,3 +9,4 @@ alias tree="exa --icons --tree"
 
 alias cat="bat"
 alias find="fd"
+
