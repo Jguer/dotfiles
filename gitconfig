@@ -38,7 +38,7 @@ colorMoved = default
 plus-style = syntax "#003800"
 minus-style = syntax "#3f0001"
 syntax-theme = Dracula
-features = side-by-side line-numbers decorations
+features = line-numbers decorations
 hyperlinks = True
 navigate = True
 

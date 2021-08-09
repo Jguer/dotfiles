@@ -84,22 +84,16 @@
   "vim.useSystemClipboard": true,
   "go.useLanguageServer": true,
   "color-highlight.markerType": "dot-before",
-  "revealjs.browserPath": "/usr/bin/firefox",
-  "todo-tree.highlights.enabled": true,
   "python.autoComplete.addBrackets": true,
   "python.formatting.provider": "black",
   "python.linting.flake8Enabled": true,
   "go.lintTool": "golangci-lint",
   "go.lintOnSave": "workspace",
   "go.vetOnSave": "workspace",
-  "todo-tree.tree.showScanModeButton": false,
   "material-icon-theme.folders.color": "#82aaff",
   "editor.suggestSelection": "first",
-  "autoDocstring.docstringFormat": "sphinx",
-  "autoDocstring.includeName": true,
   "telemetry.enableCrashReporter": false,
-  "go.formatTool": "gofmt",
-  "autoDocstring.startOnNewLine": true,
+  "go.formatTool": "gofumpt",
   "python.linting.mypyEnabled": true,
   "python.languageServer": "Pylance",
   "[python]": {
@@ -114,12 +108,16 @@
   "editor.semanticHighlighting.enabled": true,
   "Lua.telemetry.enable": false,
   "workbench.editor.untitled.hint": "hidden",
-  "redhat.telemetry.enabled": false,
   "terminal.integrated.defaultProfile.linux": "fish",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "gopls": {
+    "formatting.gofumpt": true,
+    "ui.completion.usePlaceholders": true,
+  },
+  "go.toolsManagement.autoUpdate": true,
 }
