@@ -14,13 +14,14 @@ local modkey = "Mod4"
 -- local hostname = readAll("/etc/hostname"):gsub("%s+", "")
 local hostname = io.lines("/proc/sys/kernel/hostname")()
 
-awful.layout.layouts = {
-    awful.layout.suit.tile, awful.layout.suit.tile.left, awful.layout.suit.fair,
-    awful.layout.suit.tile.bottom, awful.layout.suit.tile.top,
-    awful.layout.suit.floating
-}
--- }}}
 
+tag.connect_signal("request::default_layouts", function()
+    awful.layout.append_default_layouts({
+        awful.layout.suit.tile, awful.layout.suit.tile.left, awful.layout.suit.fair,
+        awful.layout.suit.tile.bottom, awful.layout.suit.tile.top,
+        awful.layout.suit.floating,
+    })
+end)
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
