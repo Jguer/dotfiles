@@ -88,7 +88,6 @@
   "python.formatting.provider": "black",
   "python.linting.flake8Enabled": true,
   "go.lintTool": "golangci-lint",
-  "go.lintOnSave": "workspace",
   "go.vetOnSave": "workspace",
   "material-icon-theme.folders.color": "#82aaff",
   "editor.suggestSelection": "first",
@@ -120,4 +119,7 @@
     "ui.completion.usePlaceholders": true,
   },
   "go.toolsManagement.autoUpdate": true,
+  "go.buildOnSave": "workspace",
+  "go.coverMode": "atomic",
+  "go.lintOnSave": "workspace",
 }
