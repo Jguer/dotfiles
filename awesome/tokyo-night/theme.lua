@@ -94,20 +94,13 @@ theme.wicons = {
 }
 
 -- Notification {{{
-theme.notification_shape = gears.shape.rounded_rect
-theme.notification_border_color = xrdb.color10
-theme.notification_bg = xrdb.background
-theme.notification_fg = xrdb.foreground
-theme.notification_font = theme.font
-theme.notification_crit_bg = xrdb.color2
-theme.notification_crit_fg = xrdb.color0
+theme.notification_border_color = xrdb.color12
 theme.notification_border_width = dpi(0)
 theme.notification_border_radius = dpi(3)
-theme.notification_icon_size = 128
 theme.notification_margin = dpi(15)
-theme.notification_opacity = 1
+theme.notification_opacity = 0.90
 theme.notification_padding = dpi(20)
-theme.notification_spacing = dpi(10)
+theme.notification_spacing = dpi(16)
 
 --- }}}
 
