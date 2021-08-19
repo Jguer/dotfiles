@@ -14,7 +14,6 @@ local style = { width = 48, icon = beautiful.lookup_icon_and_load("capslock-enab
 function keyboard.new()
 	local icon = wibox.widget({
 		image = style.icon,
-		resize = true,
 		forced_width = 16,
 		forced_height = 16,
 		widget = wibox.widget.imagebox,
@@ -22,9 +21,8 @@ function keyboard.new()
 
 	local text = awful.widget.keyboardlayout()
 
-	local layout = wibox.layout.align.horizontal(wibox.container.place(icon), text)
+	local self = wibox.layout.align.horizontal(wibox.container.place(icon), text)
 
-	local self = widget_base.make_widget(layout)
 	self.icon = icon
 	self.text = text
 

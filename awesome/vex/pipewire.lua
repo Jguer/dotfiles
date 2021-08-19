@@ -19,16 +19,7 @@ local gears = require("gears")
 
 local wibox = require("wibox")
 local naughty = require("naughty")
-local gears_color = require("gears.color")
-local recolor_image = gears_color.recolor_image
 local beautiful = require("beautiful")
-
-local function load_icon(icon)
-	if icon ~= nil then
-		return recolor_image(icon:load_surface(), beautiful.widget.fg)
-	end
-end
-
 local icon_size = 64
 
 local preloaded_icons = {
@@ -41,7 +32,7 @@ local preloaded_icons = {
 
 local widget = wibox.widget({ resize = true, widget = wibox.widget.imagebox, forced_width = 20, forced_height = 20 })
 
-widget.tooltip = awful.tooltip({ objects = { widget }})
+widget.tooltip = awful.tooltip({ objects = { widget } })
 
 function widget:update_appearance(name, v, muted)
 	local i, msg

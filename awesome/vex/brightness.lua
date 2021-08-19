@@ -5,8 +5,6 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local widget_base = require("wibox.widget.base")
 local wibox = require("wibox")
-local gears_color = require("gears.color")
-local recolor_image = gears_color.recolor_image
 
 local brightness = { mt = {} }
 
@@ -44,8 +42,7 @@ function brightness.new(timeout)
 
 	local layout = wibox.layout.fixed.horizontal(wibox.container.place(icon), text)
 
-	local widget = wibox.container.constraint(layout, "exact", style.width)
-	local self = widget_base.make_widget(widget)
+	local self = wibox.container.constraint(layout, "exact", style.width)
 	self.icon = icon
 	self.text = text
 

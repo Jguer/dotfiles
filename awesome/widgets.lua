@@ -9,6 +9,7 @@ local beautiful = require("beautiful")
 local awful = require("awful")
 local wsystray = require("vex.systraypopup")
 local power = require("vex.power_widget")
+local dnd = require("vex.dnd")
 
 local widgets = {}
 
@@ -63,6 +64,7 @@ local function right_widgets(hostname, s)
 		-- Right widgets
 		layout = wibox.layout.fixed.horizontal,
 		wsystray(),
+		dnd(),
 		wkeyboard(),
 		wibox.container.margin(power, 0, 0, 4, 4),
 		wibox.container.margin(pulse, 0, 0, 4, 4),

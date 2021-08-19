@@ -1,13 +1,14 @@
 -- Heavily inspired by javacafe's dotfiles (https://github.com/JavaCafe01/dotfiles/blob/master/.config/awesome/ui/notifs/init.lua)
-local naughty = require("naughty")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
-local wibox = require("wibox")
-local beautiful = require("beautiful")
-local gears = require("gears")
-local gears_debug = require("gears.debug")
-local ruled = require("ruled")
 local awful = require("awful")
+local beautiful = require("beautiful")
+local dnd = require("vex.dnd")
+local gears = require("gears")
+local naughty = require("naughty")
+local ruled = require("ruled")
+local wibox = require("wibox")
+local xresources = require("beautiful.xresources")
+
+local dpi = xresources.apply_dpi
 
 local icon_size = dpi(48)
 
@@ -51,6 +52,10 @@ end)
 
 naughty.connect_signal("request::display", function(n)
 	local icon = n.icon or beautiful.lookup_icon_and_load("dialog-information-symbolic", icon_size)
+
+	if not dnd().notifications then
+		return
+	end
 
 	naughty.layout.box({
 		notification = n,

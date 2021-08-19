@@ -92,7 +92,7 @@
   "material-icon-theme.folders.color": "#82aaff",
   "editor.suggestSelection": "first",
   "telemetry.enableCrashReporter": false,
-  "go.formatTool": "gofumpt",
+  "go.formatTool": "gofumports",
   "python.linting.mypyEnabled": true,
   "python.languageServer": "Pylance",
   "[python]": {
