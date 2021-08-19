@@ -5,6 +5,7 @@ local dpi = xresources.apply_dpi
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local gears = require("gears")
+local gears_debug = require("gears.debug")
 
 local lgi = require("lgi")
 local icon_theme = lgi.Gtk.IconTheme.get_default()
@@ -22,8 +23,6 @@ naughty.config.defaults.title = "Notification"
 naughty.config.defaults.position = "bottom_right"
 naughty.config.defaults.icon_size = icon_size
 
-naughty.config.icon_formats = { "png", "svg" }
-
 naughty.connect_signal("request::icon", function(n, context, hints)
 	if context ~= "app_icon" then
 		return
@@ -37,7 +36,7 @@ naughty.connect_signal("request::icon", function(n, context, hints)
 end)
 
 naughty.connect_signal("request::display", function(n)
-	n.timeout = 5
+	gears_debug.print_error(gears_debug.dump_return(n))
 
 	naughty.layout.box({
 		notification = n,
@@ -52,46 +51,50 @@ naughty.connect_signal("request::display", function(n)
 			{
 				{
 					{
-						widget = wibox.widget.imagebox,
-						image = n.icon,
-						resize = true,
-						valign = "center",
-						halign = "center",
-						clip_shape = function(cr, w, h)
-							gears.shape.rounded_rect(cr, w, h, 8)
-						end,
+						{
+							widget = wibox.widget.imagebox,
+							image = n.icon,
+							resize = true,
+							valign = "center",
+							halign = "center",
+							clip_shape = function(cr, w, h)
+								gears.shape.rounded_rect(cr, w, h, 8)
+							end,
+						},
+						widget = wibox.container.constraint,
+						height = dpi(48),
+						width = dpi(48),
 					},
-					widget = wibox.container.constraint,
-					height = dpi(48),
-					width = dpi(48),
-				},
-				{
 					{
 						{
-							widget = wibox.widget.textbox,
-							markup = n.title or n.app_name,
-							align = "left",
-							ellipsize = "none",
+							{
+								widget = wibox.widget.textbox,
+								markup = n.title or n.app_name,
+								align = "left",
+								valign = "center",
+								ellipsize = "end",
+							},
+							{
+								widget = wibox.widget.textbox,
+								text = n.message,
+								ellipsize = "end",
+							},
+							layout = wibox.layout.fixed.vertical,
 						},
-						{
-							widget = wibox.widget.textbox,
-							text = n.message,
-							ellipsize = "none",
-						},
-						layout = wibox.layout.fixed.vertical,
+						layout = wibox.container.margin,
+						left = dpi(8),
 					},
-					layout = wibox.container.margin,
-					left = dpi(8),
+					layout = wibox.layout.fixed.horizontal,
 				},
-				layout = wibox.layout.fixed.horizontal,
+				widget = wibox.container.margin,
+				left = dpi(15),
+				right = dpi(15),
+				top = dpi(8),
+				bottom = dpi(8),
 			},
-			widget = wibox.container.margin,
-			forced_width = dpi(320),
-			forced_height = dpi(80),
-			left = dpi(15),
-			right = dpi(15),
-			top = dpi(8),
-			bottom = dpi(8),
+			widget = wibox.container.constraint,
+			width = dpi(480),
+			height = dpi(120),
 		},
 	})
 end)

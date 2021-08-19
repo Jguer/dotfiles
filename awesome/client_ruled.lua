@@ -30,8 +30,8 @@ function ClientKeybindings()
 			c:kill()
 		end, { description = "close", group = "client" }),
 		awful.key({ modkey, "Shift" }, "Left", function(c)
-			local i = awful.tag.selected(client.focus.screen).index
-			local tag = awful.tag.gettags(client.focus.screen)[i - 1]
+			local i = client.focus.screen.selected_tag.index
+			local tag = client.focus.screen.tags[i - 1]
 			if tag then
 				c:tags({ tag })
 				awful.tag.viewprev()
@@ -41,8 +41,8 @@ function ClientKeybindings()
 			group = "client",
 		}),
 		awful.key({ modkey, "Shift" }, "Right", function(c)
-			local i = awful.tag.selected(client.focus.screen).index
-			local tag = awful.tag.gettags(client.focus.screen)[i + 1]
+			local i = client.focus.screen.selected_tag.index
+			local tag = client.focus.screen.tags[i + 1]
 			if tag then
 				c:tags({ tag })
 				awful.tag.viewnext()
