@@ -73,24 +73,20 @@ theme.tasklist_separator = xrdb.color8
 
 -- Widgets {{{
 theme.widget = {
-    bg = xrdb.foreground,
-    fg = xrdb.foreground,
-    focus = xrdb.color2,
-    charging = xrdb.color2,
-    on = xrdb.color2,
-    off = xrdb.color1
+	bg = xrdb.foreground,
+	fg = xrdb.foreground,
+	focus = xrdb.color2,
+	charging = xrdb.color2,
+	on = xrdb.color2,
+	off = xrdb.color1,
 }
 -- }}}
 
 theme.wicons = {
-    brightness = themes_path ..
-        "gtk-icons/symbolic/status/display-brightness-high-symbolic.svg",
-    battery = themes_path ..
-        "gtk-icons/symbolic/status/battery-full-symbolic.svg",
-    keyboard = themes_path ..
-        "gtk-icons/symbolic/status/capslock-enabled-symbolic.svg",
-    systray = themes_path ..
-        "gtk-icons/symbolic/status/notification-symbolic.svg"
+	brightness = themes_path .. "gtk-icons/symbolic/status/display-brightness-high-symbolic.svg",
+	battery = themes_path .. "gtk-icons/symbolic/status/battery-full-symbolic.svg",
+	keyboard = themes_path .. "gtk-icons/symbolic/status/capslock-enabled-symbolic.svg",
+	systray = themes_path .. "gtk-icons/symbolic/status/notification-symbolic.svg",
 }
 
 -- Notification {{{
@@ -105,7 +101,7 @@ theme.notification_spacing = dpi(16)
 --- }}}
 
 theme.hotkeys_shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 2)
+	gears.shape.rounded_rect(cr, width, height, 2)
 end
 theme.tooltip_align = "bottom"
 theme.tooltip_border_width = dpi(0)
@@ -114,46 +110,28 @@ theme.tooltip_border_width = dpi(0)
 theme.titlebar_close_button_normal = themes_path .. "titlebar/close_normal.png"
 theme.titlebar_close_button_focus = themes_path .. "titlebar/close_focus.png"
 
-theme.titlebar_minimize_button_normal = themes_path ..
-                                            "titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus = themes_path ..
-                                           "titlebar/minimize_focus.png"
+theme.titlebar_minimize_button_normal = themes_path .. "titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus = themes_path .. "titlebar/minimize_focus.png"
 
-theme.titlebar_ontop_button_normal_inactive =
-    themes_path .. "titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive =
-    themes_path .. "titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active =
-    themes_path .. "titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active =
-    themes_path .. "titlebar/ontop_focus_active.png"
+theme.titlebar_ontop_button_normal_inactive = themes_path .. "titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_inactive = themes_path .. "titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_active = themes_path .. "titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_active = themes_path .. "titlebar/ontop_focus_active.png"
 
-theme.titlebar_sticky_button_normal_inactive =
-    themes_path .. "titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive =
-    themes_path .. "titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active =
-    themes_path .. "titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active =
-    themes_path .. "titlebar/sticky_focus_active.png"
+theme.titlebar_sticky_button_normal_inactive = themes_path .. "titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_inactive = themes_path .. "titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_active = themes_path .. "titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_active = themes_path .. "titlebar/sticky_focus_active.png"
 
-theme.titlebar_floating_button_normal_inactive =
-    themes_path .. "titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive =
-    themes_path .. "titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active =
-    themes_path .. "titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active =
-    themes_path .. "titlebar/floating_focus_active.png"
+theme.titlebar_floating_button_normal_inactive = themes_path .. "titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_inactive = themes_path .. "titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_active = themes_path .. "titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_active = themes_path .. "titlebar/floating_focus_active.png"
 
-theme.titlebar_maximized_button_normal_inactive =
-    themes_path .. "titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive =
-    themes_path .. "titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active =
-    themes_path .. "titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active =
-    themes_path .. "titlebar/maximized_focus_active.png"
+theme.titlebar_maximized_button_normal_inactive = themes_path .. "titlebar/maximized_normal_inactive.png"
+theme.titlebar_maximized_button_focus_inactive = themes_path .. "titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_active = themes_path .. "titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_active = themes_path .. "titlebar/maximized_focus_active.png"
 -- }}}
 
 -- Layout {{{
@@ -178,16 +156,15 @@ theme_assets.recolor_layout(theme, xrdb.foreground)
 
 theme.wallpaper = themes_path .. "wallpaper.png"
 theme.set_wallpaper = function(s)
-    if util.file_readable(theme.wallpaper) then
-        gears.wallpaper.maximized(theme.wallpaper, s, true)
-    else
-        gears.wallpaper.set(theme.bg_normal)
-    end
+	if util.file_readable(theme.wallpaper) then
+		gears.wallpaper.maximized(theme.wallpaper, s, true)
+	else
+		gears.wallpaper.set(theme.bg_normal)
+	end
 end
 
 theme.icon = function(utf, color)
-    return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color,
-                         utf)
+	return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color, utf)
 end
 
 return theme
