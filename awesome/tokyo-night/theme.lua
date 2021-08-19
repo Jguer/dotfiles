@@ -23,9 +23,9 @@ theme.theme_path = theme_path
 
 theme.panel_height = dpi(28)
 
-theme.font = "sans bold " .. dpi(11)
+theme.font = "Inter bold " .. dpi(11)
 theme.hotkeys_font = "monospace " .. dpi(11)
-theme.hotkeys_description_font = "sans " .. dpi(11)
+theme.hotkeys_description_font = "Inter " .. dpi(11)
 
 theme.bg_normal = xrdb.background
 theme.wibar_bg = xrdb.background
@@ -36,6 +36,7 @@ theme.border_color_active = xrdb.color2
 theme.border_color_marked = xrdb.color10
 
 theme.fg_normal = xrdb.foreground
+theme.fg_darker = xrdb.color8
 theme.hotkeys_modifiers_fg = xrdb.color2
 theme.snap_fg = theme.bg_focus
 
@@ -57,9 +58,6 @@ theme.border_marked = xrdb.color5
 theme.hotkeys_border_color = xrdb.color2
 
 -- Spacings
-theme.calendar_normal_border_width = dpi(1)
-theme.calendar_weekday_border_width = dpi(1)
-theme.calendar_weekday_border_color = xrdb.color2
 theme.border_width = dpi(3)
 theme.useless_gap = dpi(3)
 theme.systray_icon_spacing = dpi(2)
@@ -97,8 +95,10 @@ theme.notification_spacing = dpi(16)
 theme.hotkeys_shape = function(cr, width, height)
 	gears.shape.rounded_rect(cr, width, height, 2)
 end
+
 theme.tooltip_align = "bottom"
-theme.tooltip_border_width = dpi(0)
+theme.tooltip_shape = theme.hotkeys_shape
+theme.tooltip_border_width = dpi(1)
 
 theme = theme_assets.recolor_layout(theme, xrdb.foreground)
 -- }}}

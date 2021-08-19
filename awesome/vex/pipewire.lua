@@ -41,7 +41,7 @@ local preloaded_icons = {
 
 local widget = wibox.widget({ resize = true, widget = wibox.widget.imagebox, forced_width = 20, forced_height = 20 })
 
-widget.tooltip = awful.tooltip({ objects = { widget } })
+widget.tooltip = awful.tooltip({ objects = { widget }})
 
 function widget:update_appearance(name, v, muted)
 	local i, msg
