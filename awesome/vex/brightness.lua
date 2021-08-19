@@ -10,7 +10,7 @@ local recolor_image = gears_color.recolor_image
 
 local brightness = { mt = {} }
 
-local style = { width = 56, icon = beautiful.wicons.brightness }
+local style = { width = 56, icon = beautiful.lookup_icon_and_load("display-brightness-high-symbolic", 16) }
 
 -- local GET_BRIGHTNESS_CMD = "xbacklight -get"
 local brightness_cmd = "light -G"
@@ -27,7 +27,7 @@ end
 
 function brightness.new(timeout)
 	local icon = wibox.widget({
-		image = recolor_image(style.icon, beautiful.widget.fg),
+		image = style.icon,
 		resize = true,
 		forced_width = 16,
 		forced_height = 16,

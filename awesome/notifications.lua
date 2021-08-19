@@ -6,29 +6,43 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local gears_debug = require("gears.debug")
-
-local lgi = require("lgi")
-local icon_theme = lgi.Gtk.IconTheme.get_default()
-local IconLookupFlags = lgi.Gtk.IconLookupFlags
+local ruled = require("ruled")
+local awful = require("awful")
 
 local icon_size = dpi(48)
-local icon_flags = { IconLookupFlags.GENERIC_FALLBACK }
 
-local function lookup_icon(name)
-	return icon_theme:lookup_icon(name, icon_size, icon_flags)
-end
-
-naughty.config.defaults.timeout = 5
 naughty.config.defaults.title = "Notification"
 naughty.config.defaults.position = "bottom_right"
-naughty.config.defaults.icon_size = icon_size
+
+ruled.notification.connect_signal("request::rules", function()
+	-- All notifications will match this rule.
+	ruled.notification.append_rule({
+		rule = {},
+		properties = {
+			screen = awful.screen.focused,
+			implicit_timeout = 5,
+			icon_size = icon_size,
+		},
+	})
+
+	ruled.notification.append_rule({
+		rule = { urgency = "critical" },
+		properties = { border_color = beautiful.fg_urgent },
+	})
+
+	ruled.notification.append_rule({
+		rule = { urgency = "critical", app_name = "Brave" },
+		properties = { ignore = true },
+	})
+end)
 
 naughty.connect_signal("request::icon", function(n, context, hints)
 	if context ~= "app_icon" then
 		return
 	end
 
-	local path = lookup_icon(hints.app_icon) or lookup_icon(hints.app_icon:lower())
+	local path = beautiful.lookup_icon(hints.app_icon, icon_size)
+		or beautiful.lookup_icon(hints.app_icon:lower(), icon_size)
 
 	if path then
 		n.icon = path
@@ -36,7 +50,7 @@ naughty.connect_signal("request::icon", function(n, context, hints)
 end)
 
 naughty.connect_signal("request::display", function(n)
-	gears_debug.print_error(gears_debug.dump_return(n))
+	local icon = n.icon or beautiful.lookup_icon_and_load("dialog-information-symbolic", icon_size)
 
 	naughty.layout.box({
 		notification = n,
@@ -46,14 +60,14 @@ naughty.connect_signal("request::display", function(n)
 		type = "notification",
 		minimum_width = 100,
 		border_width = dpi(1),
-		border_color = beautiful.bg_lighter,
+		border_color = n.border_color,
 		widget_template = {
 			{
 				{
 					{
 						{
 							widget = wibox.widget.imagebox,
-							image = n.icon,
+							image = icon,
 							resize = true,
 							valign = "center",
 							halign = "center",

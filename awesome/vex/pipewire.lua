@@ -19,41 +19,27 @@ local gears = require("gears")
 
 local wibox = require("wibox")
 local naughty = require("naughty")
-
-local lgi = require("lgi")
-local icon_theme = lgi.Gtk.IconTheme.get_default()
-local IconLookupFlags = lgi.Gtk.IconLookupFlags
-
-local icon_size = 64
-local icon_flags = { IconLookupFlags.GENERIC_FALLBACK }
-
-local function lookup_icon(name)
-	return icon_theme:lookup_icon(name, icon_size, icon_flags)
-end
+local gears_color = require("gears.color")
+local recolor_image = gears_color.recolor_image
+local beautiful = require("beautiful")
 
 local function load_icon(icon)
 	if icon ~= nil then
-		return icon:load_surface()
+		return recolor_image(icon:load_surface(), beautiful.widget.fg)
 	end
 end
 
-local icon = {
-	high = lookup_icon("audio-volume-high-symbolic"),
-	med = lookup_icon("audio-volume-medium-symbolic"),
-	low = lookup_icon("audio-volume-low-symbolic"),
-	muted = lookup_icon("audio-volume-muted-symbolic"),
-	muted_blocking = lookup_icon("audio-volume-muted-blocking-symbolic"),
-}
+local icon_size = 64
 
 local preloaded_icons = {
-	high = load_icon(icon.high),
-	med = load_icon(icon.med),
-	low = load_icon(icon.low),
-	muted = load_icon(icon.muted),
-	muted_blocking = load_icon(icon.muted_blocking),
+	high = beautiful.lookup_icon_and_load("audio-volume-high-symbolic", icon_size),
+	med = beautiful.lookup_icon_and_load("audio-volume-medium-symbolic", icon_size),
+	low = beautiful.lookup_icon_and_load("audio-volume-low-symbolic", icon_size),
+	muted = beautiful.lookup_icon_and_load("audio-volume-muted-symbolic", icon_size),
+	muted_blocking = beautiful.lookup_icon_and_load("audio-volume-muted-blocking-symbolic", icon_size),
 }
 
-local widget = wibox.widget({ resize = true, widget = wibox.widget.imagebox })
+local widget = wibox.widget({ resize = true, widget = wibox.widget.imagebox, forced_width = 20, forced_height = 20 })
 
 widget.tooltip = awful.tooltip({ objects = { widget } })
 

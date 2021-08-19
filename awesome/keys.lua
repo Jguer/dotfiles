@@ -4,7 +4,6 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local hotkeys = { mouse = {}, keys = {} }
-local xrandr = require("vex.xrandr")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local pulse = require("vex.pipewire")
 local light = require("vex.brightness")
@@ -188,16 +187,10 @@ function hotkeys:init()
 			description = "Next media",
 			group = "audio",
 		}),
-		awful.key({}, "Print", function()
-			awful.spawn("screenshot")
-		end, {
-			description = "screenshot screen",
-			group = "applications",
-		}),
 		awful.key({ modkey }, "Print", function()
-			awful.spawn("screenshot -s")
+			awful.spawn("flameshot gui")
 		end, {
-			description = "screenshot window",
+			description = "screenshot",
 			group = "applications",
 		}),
 		awful.key({ modkey, "Shift" }, "c", function()
@@ -224,20 +217,14 @@ function hotkeys:init()
 			description = "brave",
 			group = "applications",
 		}),
-		awful.key({ modkey }, "p", function()
-			xrandr.xrandr()
-		end, {
-			description = "xrandr",
-			group = "applications",
-		}),
 		awful.key({ altkey }, "e", function()
-			awful.spawn("rofi-power " .. beautiful.themes_path .. "rofi.rasi")
+			awful.spawn("rofi-power " .. beautiful.theme_path .. "rofi.rasi")
 		end, {
 			description = "end session",
 			group = "launcher",
 		}),
 		awful.key({ altkey }, "q", function()
-			awful.spawn("rofi-pass " .. beautiful.themes_path .. "rofi.rasi")
+			awful.spawn("rofi-pass " .. beautiful.theme_path .. "rofi.rasi")
 		end, {
 			description = "show rofi pass",
 			group = "applications",
@@ -245,7 +232,7 @@ function hotkeys:init()
 		awful.key({ modkey }, "x", function()
 			awful.spawn(
 				"rofi -matching fuzzy -combi-modi window,drun,ssh -theme "
-					.. beautiful.themes_path
+					.. beautiful.theme_path
 					.. "rofi.rasi"
 					.. " -show combi"
 			)
@@ -255,7 +242,7 @@ function hotkeys:init()
 		}),
 		awful.key({ modkey }, "z", function()
 			awful.spawn(
-				"rofi -combi-modi window,drun,ssh -theme " .. beautiful.themes_path .. "rofi.rasi" .. " -show window"
+				"rofi -combi-modi window,drun,ssh -theme " .. beautiful.theme_path .. "rofi.rasi" .. " -show window"
 			)
 		end, {
 			description = "show rofi window",

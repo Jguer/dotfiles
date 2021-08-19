@@ -9,7 +9,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 local timewidget = { mt = {} }
 
-local style = { icon = beautiful.themes_path .. "widgets/clock.svg" }
+local style = { width = 140 }
 
 -- @return A pulse widget.
 function timewidget.new()

@@ -8,12 +8,12 @@ local recolor_image = gears_color.recolor_image
 
 local keyboard = { mt = {} }
 
-local style = { width = 48, icon = beautiful.wicons.keyboard }
+local style = { width = 48, icon = beautiful.lookup_icon_and_load("capslock-enabled-symbolic", 16) }
 
 -- @return A pulse widget.
 function keyboard.new()
 	local icon = wibox.widget({
-		image = recolor_image(style.icon, beautiful.widget.fg),
+		image = style.icon,
 		resize = true,
 		forced_width = 16,
 		forced_height = 16,

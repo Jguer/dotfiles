@@ -18,9 +18,9 @@ local wibox = require("wibox")
 local awful = require("awful")
 local naughty = require("naughty")
 
-local lgi = require("lgi")
-local icon_theme = lgi.Gtk.IconTheme.get_default()
-local IconLookupFlags = lgi.Gtk.IconLookupFlags
+local gears_color = require("gears.color")
+local recolor_image = gears_color.recolor_image
+local beautiful = require("beautiful")
 
 local power = require("upower_dbus")
 local WarningLevel = power.enums.BatteryWarningLevel
@@ -37,12 +37,13 @@ local function to_hour_min_str(seconds)
 end
 
 local icon_size = 64
-local icon_flags = { IconLookupFlags.GENERIC_FALLBACK }
 local notification = nil
 local device = nil
 
 local power_widget = wibox.widget({
 	resize = true,
+	forced_width = 20,
+	forced_height = 20,
 	widget = wibox.widget.imagebox,
 })
 
@@ -57,11 +58,7 @@ local function get_percentage()
 end
 
 local function update_icon(widget)
-	local icon = icon_theme:lookup_icon(device.IconName, icon_size, icon_flags)
-
-	if icon then
-		widget.image = icon:load_surface()
-	end
+	widget.image = beautiful.lookup_icon_and_load(device.IconName, icon_size)
 end
 
 local function maybe_warn(widget, warning_condition, notification_preset, message)

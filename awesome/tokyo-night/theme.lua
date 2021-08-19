@@ -1,16 +1,25 @@
 -- vim:fdm=marker foldlevel=0 tabstop=2 shiftwidth=2
 local theme_assets = require("beautiful.theme_assets")
+
 local xresources = require("beautiful.xresources")
 local util = require("awful.util")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
+local gears_color = require("gears.color")
+local lgi = require("lgi")
 
+local recolor_image = gears_color.recolor_image
+local icon_theme = lgi.Gtk.IconTheme.get_default()
+local IconLookupFlags = lgi.Gtk.IconLookupFlags
 local dpi = xresources.apply_dpi
-local xrdb = xresources.get_current_theme()
-local theme = {}
-local themes_path = gfs.get_configuration_dir() .. "tokyo-night/"
 
-theme.themes_path = themes_path
+local xrdb = xresources.get_current_theme()
+local themes_path = gfs.get_themes_dir()
+local theme = dofile(themes_path .. "xresources/theme.lua")
+
+local theme_path = gfs.get_configuration_dir() .. "tokyo-night/"
+
+theme.theme_path = theme_path
 
 theme.panel_height = dpi(28)
 
@@ -22,7 +31,10 @@ theme.bg_normal = xrdb.background
 theme.wibar_bg = xrdb.background
 
 -- Normal
-theme.border_normal = xrdb.color4
+theme.border_color_normal = xrdb.color4
+theme.border_color_active = xrdb.color2
+theme.border_color_marked = xrdb.color10
+
 theme.fg_normal = xrdb.foreground
 theme.hotkeys_modifiers_fg = xrdb.color2
 theme.snap_fg = theme.bg_focus
@@ -50,7 +62,7 @@ theme.calendar_weekday_border_width = dpi(1)
 theme.calendar_weekday_border_color = xrdb.color2
 theme.border_width = dpi(3)
 theme.useless_gap = dpi(3)
-theme.systray_icon_spacing = dpi(3)
+theme.systray_icon_spacing = dpi(2)
 
 -- taglist {{{
 theme.taglist_bg_focus = theme.fg_focus
@@ -71,24 +83,6 @@ theme.tasklist_separator = xrdb.color8
 
 -- }}}
 
--- Widgets {{{
-theme.widget = {
-	bg = xrdb.foreground,
-	fg = xrdb.foreground,
-	focus = xrdb.color2,
-	charging = xrdb.color2,
-	on = xrdb.color2,
-	off = xrdb.color1,
-}
--- }}}
-
-theme.wicons = {
-	brightness = themes_path .. "gtk-icons/symbolic/status/display-brightness-high-symbolic.svg",
-	battery = themes_path .. "gtk-icons/symbolic/status/battery-full-symbolic.svg",
-	keyboard = themes_path .. "gtk-icons/symbolic/status/capslock-enabled-symbolic.svg",
-	systray = themes_path .. "gtk-icons/symbolic/status/notification-symbolic.svg",
-}
-
 -- Notification {{{
 theme.notification_border_color = xrdb.color12
 theme.notification_border_width = dpi(0)
@@ -106,55 +100,10 @@ end
 theme.tooltip_align = "bottom"
 theme.tooltip_border_width = dpi(0)
 
--- Title Bar {{{
-theme.titlebar_close_button_normal = themes_path .. "titlebar/close_normal.png"
-theme.titlebar_close_button_focus = themes_path .. "titlebar/close_focus.png"
-
-theme.titlebar_minimize_button_normal = themes_path .. "titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus = themes_path .. "titlebar/minimize_focus.png"
-
-theme.titlebar_ontop_button_normal_inactive = themes_path .. "titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive = themes_path .. "titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path .. "titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active = themes_path .. "titlebar/ontop_focus_active.png"
-
-theme.titlebar_sticky_button_normal_inactive = themes_path .. "titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive = themes_path .. "titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path .. "titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active = themes_path .. "titlebar/sticky_focus_active.png"
-
-theme.titlebar_floating_button_normal_inactive = themes_path .. "titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive = themes_path .. "titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themes_path .. "titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active = themes_path .. "titlebar/floating_focus_active.png"
-
-theme.titlebar_maximized_button_normal_inactive = themes_path .. "titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive = themes_path .. "titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themes_path .. "titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active = themes_path .. "titlebar/maximized_focus_active.png"
+theme = theme_assets.recolor_layout(theme, xrdb.foreground)
 -- }}}
 
--- Layout {{{
-theme.layout_fairh = themes_path .. "layouts/fair.svg"
-theme.layout_fairv = themes_path .. "layouts/fair.svg"
-theme.layout_floating = themes_path .. "layouts/floating.svg"
-theme.layout_magnifier = themes_path .. "layouts/magnifier.svg"
-theme.layout_max = themes_path .. "layouts/max.svg"
-theme.layout_fullscreen = themes_path .. "layouts/fullscreen.svg"
-theme.layout_tilebottom = themes_path .. "layouts/tilebottom.svg"
-theme.layout_tileleft = themes_path .. "layouts/tileleft.svg"
-theme.layout_tile = themes_path .. "layouts/tile.svg"
-theme.layout_tiletop = themes_path .. "layouts/tiletop.svg"
-theme.layout_spiral = themes_path .. "layouts/spiral.svg"
-theme.layout_dwindle = themes_path .. "layouts/spiral.svg"
-theme.layout_cornernw = themes_path .. "layouts/cornernw.svg"
-theme.layout_cornerne = themes_path .. "layouts/cornerne.svg"
-theme.layout_cornersw = themes_path .. "layouts/cornersw.svg"
-theme.layout_cornerse = themes_path .. "layouts/cornerse.svg"
-theme_assets.recolor_layout(theme, xrdb.foreground)
--- }}}
-
-theme.wallpaper = themes_path .. "wallpaper.png"
+theme.wallpaper = theme_path .. "wallpaper.png"
 theme.set_wallpaper = function(s)
 	if util.file_readable(theme.wallpaper) then
 		gears.wallpaper.maximized(theme.wallpaper, s, true)
@@ -165,6 +114,20 @@ end
 
 theme.icon = function(utf, color)
 	return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color, utf)
+end
+
+theme.lookup_icon = function(name, icon_size)
+	return icon_theme:lookup_icon(name, dpi(icon_size), { IconLookupFlags.GENERIC_FALLBACK })
+end
+
+theme.lookup_icon_and_load = function(name, icon_size)
+	local icon = icon_theme:lookup_icon(name, dpi(icon_size), { IconLookupFlags.GENERIC_FALLBACK })
+
+	if icon then
+		return recolor_image(icon:load_surface(), xrdb.foreground)
+	end
+
+	return nil
 end
 
 return theme
