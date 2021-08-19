@@ -111,7 +111,7 @@ function ClientRules()
 		properties = {
 			focus = awful.client.focus.filter,
 			raise = true,
-			screen = awful.screen.focused,
+			screen = awful.screen.preferred,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
 		},
 	})

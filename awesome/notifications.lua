@@ -6,15 +6,15 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local gears = require("gears")
 
-local lgi = require('lgi')
+local lgi = require("lgi")
 local icon_theme = lgi.Gtk.IconTheme.get_default()
 local IconLookupFlags = lgi.Gtk.IconLookupFlags
 
 local icon_size = dpi(48)
-local icon_flags = {IconLookupFlags.GENERIC_FALLBACK}
+local icon_flags = { IconLookupFlags.GENERIC_FALLBACK }
 
 local function lookup_icon(name)
-    return icon_theme:lookup_icon(name, icon_size, icon_flags)
+	return icon_theme:lookup_icon(name, icon_size, icon_flags)
 end
 
 naughty.config.defaults.timeout = 5
@@ -29,8 +29,7 @@ naughty.connect_signal("request::icon", function(n, context, hints)
 		return
 	end
 
-	local path = lookup_icon(hints.app_icon)
-		or lookup_icon(hints.app_icon:lower())
+	local path = lookup_icon(hints.app_icon) or lookup_icon(hints.app_icon:lower())
 
 	if path then
 		n.icon = path
@@ -87,6 +86,8 @@ naughty.connect_signal("request::display", function(n)
 				layout = wibox.layout.fixed.horizontal,
 			},
 			widget = wibox.container.margin,
+			forced_width = dpi(320),
+			forced_height = dpi(80),
 			left = dpi(15),
 			right = dpi(15),
 			top = dpi(8),
