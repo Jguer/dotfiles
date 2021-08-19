@@ -40,30 +40,30 @@ function hotkeys:init()
 
 	-- Focus related keybindings
 	awful.keyboard.append_global_keybindings({
-		awful.key(
-			{ modkey },
-			"l",
-			awful.client.focus.global_bydirection("right"),
-			{ description = "focus right", group = "client" }
-		),
-		awful.key(
-			{ modkey },
-			"h",
-			awful.client.focus.global_bydirection("left"),
-			{ description = "focus left", group = "client" }
-		),
-		awful.key(
-			{ modkey },
-			"k",
-			awful.client.focus.global_bydirection("up"),
-			{ description = "focus up", group = "client" }
-		),
-		awful.key(
-			{ modkey },
-			"j",
-			awful.client.focus.global_bydirection("down"),
-			{ description = "focus down", group = "client" }
-		),
+		awful.key({ modkey }, "l", function()
+			awful.client.focus.global_bydirection("right")
+		end, {
+			description = "focus right",
+			group = "client",
+		}),
+		awful.key({ modkey }, "h", function()
+			awful.client.focus.global_bydirection("left")
+		end, {
+			description = "focus left",
+			group = "client",
+		}),
+		awful.key({ modkey }, "k", function()
+			awful.client.focus.global_bydirection("up")
+		end, {
+			description = "focus up",
+			group = "client",
+		}),
+		awful.key({ modkey }, "j", function()
+			awful.client.focus.global_bydirection("down")
+		end, {
+			description = "focus down",
+			group = "client",
+		}),
 		awful.key({ modkey, "Control" }, "h", function()
 			awful.screen.focus_bydirection("left")
 		end, {
@@ -108,40 +108,16 @@ function hotkeys:init()
 			awful.client.urgent.jumpto,
 			{ description = "jump to urgent client", group = "client" }
 		),
-		awful.key({ modkey }, "l", function()
+		awful.key({ modkey, "Shift" }, "l", function()
 			awful.tag.incmwfact(0.05)
 		end, {
 			description = "increase master width factor",
 			group = "layout",
 		}),
-		awful.key({ modkey }, "h", function()
+		awful.key({ modkey, "Shift" }, "h", function()
 			awful.tag.incmwfact(-0.05)
 		end, {
 			description = "decrease master width factor",
-			group = "layout",
-		}),
-		awful.key({ modkey, "Shift" }, "h", function()
-			awful.tag.incnmaster(1, nil, true)
-		end, {
-			description = "increase the number of master clients",
-			group = "layout",
-		}),
-		awful.key({ modkey, "Shift" }, "l", function()
-			awful.tag.incnmaster(-1, nil, true)
-		end, {
-			description = "decrease the number of master clients",
-			group = "layout",
-		}),
-		awful.key({ modkey, "Control" }, "h", function()
-			awful.tag.incncol(1, nil, true)
-		end, {
-			description = "increase the number of columns",
-			group = "layout",
-		}),
-		awful.key({ modkey, "Control" }, "l", function()
-			awful.tag.incncol(-1, nil, true)
-		end, {
-			description = "decrease the number of columns",
 			group = "layout",
 		}),
 		awful.key({ modkey }, "space", function()
