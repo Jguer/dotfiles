@@ -8,9 +8,10 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
+local ruled = require("ruled")
+
 require("awful.autofocus")
 
-local modkey = "Mod4"
 -- local hostname = readAll("/etc/hostname"):gsub("%s+", "")
 local hostname = io.lines("/proc/sys/kernel/hostname")()
 
@@ -62,11 +63,16 @@ widgets:init(hostname)
 
 -- HotKeys
 local hotkeys = require("keys") -- load file with hotkeys configuration
-hotkeys:init({modkey = modkey})
+hotkeys:init()
 
 -- Rules
-local rules = require("rules") -- load file with rules configuration
-rules:init({hotkeys = hotkeys})
+require("client_ruled")
+
+client.connect_signal("request::default_mousebindings", ClientMouseBindings)
+
+client.connect_signal("request::default_keybindings", ClientKeybindings)
+
+ruled.client.connect_signal("request::rules", ClientRules)
 
 -- {{{ TitleBar
 -- Signal function to execute when a new client appears.
