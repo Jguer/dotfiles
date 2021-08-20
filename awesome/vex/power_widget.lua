@@ -14,17 +14,13 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
-local wibox = require("wibox")
 local awful = require("awful")
-local naughty = require("naughty")
-
-local gears_color = require("gears.color")
-local recolor_image = gears_color.recolor_image
 local beautiful = require("beautiful")
-
+local naughty = require("naughty")
 local power = require("upower_dbus")
-local WarningLevel = power.enums.BatteryWarningLevel
+local wibox = require("wibox")
 
+local WarningLevel = power.enums.BatteryWarningLevel
 local spawn_with_shell = awful.spawn.with_shell or awful.util.spawn_with_shell
 
 local math = math
@@ -36,14 +32,13 @@ local function to_hour_min_str(seconds)
 	return string.format("%02dh:%02dm", hours, minutes)
 end
 
-local icon_size = 64
+local icon_size = 20
 local notification = nil
 local device = nil
 
 local power_widget = wibox.widget({
-	resize = true,
-	forced_width = 20,
-	forced_height = 20,
+	forced_width = icon_size,
+	forced_height = icon_size,
 	widget = wibox.widget.imagebox,
 })
 
@@ -157,7 +152,7 @@ local function init(widget)
 	widget.critical_percentage = 5
 
 	widget.warning_config = {
-		percentage = -1, -- disabled by default
+		percentage = 30, -- disabled by default
 		-- https://awesomewm.org/doc/api/libraries/naughty.html#config.presets
 		preset = naughty.config.presets.normal,
 	}

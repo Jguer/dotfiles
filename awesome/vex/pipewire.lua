@@ -30,7 +30,12 @@ local preloaded_icons = {
 	muted_blocking = beautiful.lookup_icon_and_load("audio-volume-muted-blocking-symbolic", icon_size),
 }
 
-local widget = wibox.widget({ resize = true, widget = wibox.widget.imagebox, forced_width = 20, forced_height = 20 })
+local widget = wibox.widget({
+	widget = wibox.widget.imagebox,
+	resize = true,
+	forced_width = 20,
+	forced_height = 20,
+})
 
 widget.tooltip = awful.tooltip({ objects = { widget } })
 
@@ -63,8 +68,9 @@ function widget:notify(name, v)
 	if vol == nil then
 		return
 	end
+
 	if self.notification then
-		naughty.destroy(self.notification, naughty.notificationClosedReason.dismissedByCommand)
+		self.notification:destroy(naughty.notificationClosedReason.dismissedByCommand)
 	end
 
 	self.notification = naughty.notification({
