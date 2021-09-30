@@ -77,7 +77,10 @@ function ClientKeybindings()
 		}),
 		awful.key({ modkey }, "n", function(c)
 			c.minimized = true
-		end, { description = "minimize", group = "client" }),
+		end, {
+			description = "minimize",
+			group = "client",
+		}),
 		awful.key({ modkey }, "m", function(c)
 			c.maximized = not c.maximized
 			c:raise()
@@ -150,11 +153,15 @@ function ClientRules()
 	ruled.client.append_rule({
 		id = "pip",
 		rule_any = {
+			class = { "mpv" },
 			name = {
 				"Picture in picture",
 				"Picture-in-Picture",
 			},
+			role = {
+				"pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
+			},
 		},
-		properties = { sticky = true, floating = true },
+		properties = { sticky = true, floating = true, ontop = true },
 	})
 end
