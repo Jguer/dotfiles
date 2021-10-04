@@ -102,11 +102,15 @@
     }
   },
   "python.analysis.completeFunctionParens": true,
-  "Lua.completion.callSnippet": "Both",
   "workbench.iconTheme": "material-icon-theme",
   "editor.semanticHighlighting.enabled": true,
-  "Lua.telemetry.enable": false,
   "workbench.editor.untitled.hint": "hidden",
+  "terminal.integrated.profiles.linux": {
+    "fish": {
+      "path": "fish",
+      "args": []
+    }
+  },
   "terminal.integrated.defaultProfile.linux": "fish",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
@@ -122,4 +126,9 @@
   "go.buildOnSave": "workspace",
   "go.coverMode": "atomic",
   "go.lintOnSave": "workspace",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "terminal.external.linuxExec": "kitty",
+  "autoHide.autoHidePanel": false
 }
