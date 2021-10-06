@@ -17,10 +17,10 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local power = require("upower_dbus")
+local ok_power, power = pcall(require, "upower_dbus")
+
 local wibox = require("wibox")
 
-local WarningLevel = power.enums.BatteryWarningLevel
 local spawn_with_shell = awful.spawn.with_shell or awful.util.spawn_with_shell
 
 local math = math
@@ -110,8 +110,8 @@ local function should_warn_critical(widget)
 			device.state == power.enums.BatteryState.Discharging
 			and (
 				percentage <= widget.critical_percentage
-				or device.warninglevel == WarningLevel.Low
-				or device.warninglevel == WarningLevel.Critical
+				or device.warninglevel == power.enums.BatteryWarningLevel.Low
+				or device.warninglevel == power.enums.BatteryWarningLevel.Critical
 			)
 		)
 end
@@ -140,6 +140,15 @@ local function update(widget)
 end
 
 local function init(widget)
+	if not ok_power then
+		naughty.notification({
+			urgency = "warning",
+			title = "Missing dependency",
+			message = "upower_dbus is missing",
+		})
+		return nil
+	end
+
 	-- https://upower.freedesktop.org/docs/UPower.html#UPower.GetDisplayDevice
 	device = power.create_device("/org/freedesktop/UPower/devices/DisplayDevice")
 
