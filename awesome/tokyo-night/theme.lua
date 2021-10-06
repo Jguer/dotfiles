@@ -6,11 +6,9 @@ local util = require("awful.util")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
 local gears_color = require("gears.color")
-local lgi = require("lgi")
 
 local recolor_image = gears_color.recolor_image
-local icon_theme = lgi.Gtk.IconTheme.get_default()
-local IconLookupFlags = lgi.Gtk.IconLookupFlags
+local gears_debug = require("gears.debug")
 local dpi = xresources.apply_dpi
 
 local xrdb = xresources.get_current_theme()
@@ -116,12 +114,52 @@ theme.icon = function(utf, color)
 	return string.format("<span font='Ionicons 12' color='%s'>%s</span>", color, utf)
 end
 
+local gtk = {
+	icon_args = nil,
+}
+
+function gtk.get_icon_args()
+	if gtk.icon_args then
+		return gtk.icon_args
+	end
+
+	local _gtk_status, Gtk = pcall(function()
+		local lgi = require("lgi")
+		return lgi.require("Gtk", "3.0")
+	end)
+
+	if not _gtk_status or not Gtk then
+		gears_debug.print_warning(
+			"Can't load GTK+3 introspection. "
+				.. "Seems like GTK+3 is not installed or `lua-lgi` was built with an incompatible GTK+3 version."
+		)
+		return nil
+	end
+
+	local result = {}
+	result.theme = Gtk.IconTheme.get_default()
+	result.flags = Gtk.IconLookupFlags
+
+	gtk.icon_args = result
+	return result
+end
+
 theme.lookup_icon = function(name, icon_size)
-	return icon_theme:lookup_icon(name, dpi(icon_size), { IconLookupFlags.GENERIC_FALLBACK })
+	local icon_args = gtk.get_icon_args()
+	if not icon_args then
+		return nil
+	end
+
+	return icon_args.theme:lookup_icon(name, dpi(icon_size), { icon_args.flags.GENERIC_FALLBACK })
 end
 
 theme.lookup_icon_and_load = function(name, icon_size)
-	local icon = icon_theme:lookup_icon(name, dpi(icon_size), { IconLookupFlags.GENERIC_FALLBACK })
+	local icon_args = gtk.get_icon_args()
+	if not icon_args then
+		return nil
+	end
+
+	local icon = icon_args.theme:lookup_icon(name, dpi(icon_size), { icon_args.flags.GENERIC_FALLBACK })
 
 	if icon then
 		return recolor_image(icon:load_surface(), xrdb.foreground)
