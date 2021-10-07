@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Jguer 2021 github.com/jguer/dotfiles
+"""
+
+import argparse
+import json
+import sys
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Sort JSON keys of a file.")
+    parser.add_argument(
+        "-w",
+        "--write",
+        dest="write",
+        help="overwrite file",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--indent",
+        help="default indentation",
+        dest="indent",
+        type=int,
+        default=2,
+    )
+    parser.add_argument("file", help="JSON file to format")
+    parser.set_defaults(feature=True)
+    args = parser.parse_args()
+
+    with open(args.file, "r+") as f:
+        parsed = json.load(f)
+        f.seek(0)
+        output = f if args.write else sys.stdout
+        json.dump(parsed, output, sort_keys=True, indent=args.indent)
+        f.truncate()
+
+
+main()
