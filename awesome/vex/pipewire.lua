@@ -64,10 +64,11 @@ function widget:update_appearance(name, v, muted)
 end
 
 function widget:notify(name, v)
-	local vol = string.format("%.0f%%\n%s", v, name) or nil
-	if vol == nil then
+	if v == nil or name == nil then
 		return
 	end
+
+	local vol = string.format("%.0f%%\n%s", v, name)
 
 	if self.notification then
 		self.notification:destroy(naughty.notificationClosedReason.dismissedByCommand)

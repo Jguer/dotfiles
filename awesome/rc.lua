@@ -120,6 +120,7 @@ autorun["all"] = {
 	"unclutter -noevents -idle 2 -jitter 1 -root",
 	"picom --experimental-backends",
 	"redshift-gtk -l 38.72:-9.15 -t 6500:3400",
+	"aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log",
 }
 
 autorun["laptop"] = { "blueman-applet" }
