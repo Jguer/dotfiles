@@ -30,3 +30,6 @@ code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension sumneko.lua
 code --install-extension tamasfe.even-better-toml
 code --install-extension vscodevim.vim
+
+gsettings set org.gnome.desktop.interface icon-theme 'oomox-tokyo-night'
+gsettings set org.gnome.desktop.interface gtk-theme 'oomox-tokyo-night'

@@ -21,6 +21,11 @@ export NNN_TRASH=1
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_DBUS_REMOTE=1
+
+export QT_QPA_PLATFORM=wayland
+
 export NO_AT_BRIDGE=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
@@ -38,5 +43,14 @@ pathappend() {
 }
 
 pathappend "$HOME/dotfiles/bin" "$GOPATH/bin" "$HOME/.local/bin"
+
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
+
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+  exec sway
+fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
