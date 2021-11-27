@@ -217,7 +217,9 @@ bindsym $mod+q exec wlogout
 bindsym $mod+x exec swaylock
 
 # Window settings
-for_window [title="\ -\ Sharing\ Indicator$"] floating enable, sticky enable
+for_window [title="\ -\ Sharing\ Indicator$"] floating enable, sticky enable, nofocus
+for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+    floating enable, move position 877 450, sticky enable, border none
 
 #
 # Status Bar:

@@ -13,6 +13,7 @@
     # Shell
     ~/.config/fish/config.fish: shell/config.fish
     # Wayland :rocket:
+    ~/.config/mako/config: mako/config
     ~/.config/sway/config: sway/config
     ~/.config/swaylock/config: swaylock/config
     ~/.config/waybar/config: waybar/config
