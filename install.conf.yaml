@@ -8,19 +8,20 @@
 
 - link:
     # Login Session
-    ~/.Xresources: shell/Xresources
-    ~/.xinitrc: shell/xinitrc
     ~/.bashrc: shell/bashrc
     ~/.bash_profile: shell/bash_profile
     # Shell
     ~/.config/fish/config.fish: shell/config.fish
-    # DE
-    ~/.config/picom.conf: picom.conf
-    ~/.config/awesome: awesome
-    ~/.gtkrc-2.0: gtk/gtkrc-2.0
+    # Wayland :rocket:
+    ~/.config/sway/config: sway/config
+    ~/.config/swaylock/config: swaylock/config
+    ~/.config/waybar/config: waybar/config
+    # GTK
     ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
+    # Fonts
     ~/.config/fontconfig/fonts.conf: fonts.conf
+    # Iconography
     ~/.icons/oomox-tokyo-night: gtk/icons/oomox-tokyo-night
     ~/.themes/oomox-tokyo-night: gtk/themes/oomox-tokyo-night
     # Applications
@@ -30,10 +31,9 @@
     ~/.config/mpv/mpv.conf: mpv/mpv.conf
     ~/.config/mpv/input.conf: mpv/input.conf
     ~/.config/mpv/scripts: mpv/scripts
-    # VIM
+    # Text
     ~/.config/nvim: nvim
     ~/.config/zathura/zathurarc: zathurarc
-    "~/.config/Code - OSS/User/settings.json": code/settings.json
     ~/.config/Code/User/settings.json: code/settings.json
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
