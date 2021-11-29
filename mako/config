@@ -1,15 +1,14 @@
 font=Sans 11
-# anchor=bottom-right
 width=350
 padding=10
 margin=10
 border-size=2
 default-timeout=5000
 
-background-color=#231f20
-border-color=#009ddc
-text-color=#d9d8d8
+background-color=#24283b
+border-color=#bb9af7
+text-color=#a9b1d6
 
 [urgency=high]
-border-color=#ee2e24
+border-color=#f7768e
 ignore-timeout=1
