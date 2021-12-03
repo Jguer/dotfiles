@@ -43,10 +43,8 @@ pathappend() {
 
 pathappend "$HOME/dotfiles/bin" "$GOPATH/bin" "$HOME/.local/bin"
 
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
 
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec sway > /var/log/sway.log 2>&1

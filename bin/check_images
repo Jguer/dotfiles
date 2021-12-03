@@ -1,8 +1,0 @@
-#!/bin/bash
-
-readonly WORK_DIR=$(dirname $(readlink -f $0))
-
-for f in $(find "$WORK_DIR" -name '*'); do
-  identify "$f" >/dev/null || echo "$f" >>/tmp/fail
-done
-cat /tmp/fail

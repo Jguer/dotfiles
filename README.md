@@ -12,23 +12,22 @@ Based on the **tokyo-night** [vim](https://github.com/ghifarit53/tokyonight-vim)
 ### Applications
 
 **OS**: Arch  
-**WM**: AwesomeWM  
-**LockScreen**: i3lock (color fork)  
-**Compositor**: picom  
-**Launcher**: rofi
+**WM**: Sway  
+**LockScreen**: swaylock-effects  
+**Launcher**: wofi
+**File Manager**: nautilus
 
 **Development Environment**: VSCode  
 **Text Editor**: Neovim
 
-**Document Viewer**: Zathura  
+**Document Viewer**: zathura  
 **Video**: mpv
 
 ### Required utils
 
-- unclutter
-- xss-lock
-- numlockx
-- redshift
-- light
-- wireplumber
-- upower
+```
+yay -S swaylock-effects-git waybar \
+  mako network-manager-applet polkit-gnome \
+  gammastep blueman swayidle slurp grim swappy \
+  playerctl light wofi
+```

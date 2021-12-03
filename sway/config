@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 set $term kitty
-set $menu wofi --show drun,run | xargs swaymsg exec --
+set $menu wofi --insensitive --show drun | xargs swaymsg exec --
 set $gnome-schema org.gnome.desktop.interface
 # }}}
 
@@ -139,8 +139,9 @@ bindsym XF86MonBrightnessUp exec light -A 5
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 bindsym --locked XF86AudioNext exec playerctl next
 bindsym --locked XF86AudioPrev exec playerctl previous
-bindsym Print exec flameshot
-bindsym $mod+q exec wlogout
+bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+bindsym $mod+q exec wofi-power
+bindsym $mod+Tab exec wofi-windows
 bindsym $mod+x exec swaylock
 # }}}
 

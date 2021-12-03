@@ -3,7 +3,6 @@ alias ll="exa --icons --git -la"
 alias tree="exa --icons --tree"
 
 alias cat="bat"
-alias find="fd"
 
 set -l foreground c0caf5
 set -l selection 364A82
