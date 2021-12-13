@@ -170,6 +170,6 @@ exec swayidle -w \
 exec mako
 exec nm-applet --indicator  
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec gammastep-indicator -l 48.8:2.29
+exec gammastep-indicator -m wayland -P -r -l 48.857:2.295
 exec blueman-applet
 # }}}
