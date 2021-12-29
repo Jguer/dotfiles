@@ -18,6 +18,9 @@
     ~/.config/swaylock/config: swaylock/config
     ~/.config/waybar/config: waybar/config
     ~/.config/waybar/style.css: waybar/style.css
+    # wofi
+    ~/.config/wofi/config: wofi/config
+    ~/.config/wofi/style.css: wofi/style.css
     # GTK
     ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
