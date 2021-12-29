@@ -1,4 +1,4 @@
-# vim:fdm=marker foldlevel=0
+# vim:fileencoding=utf-8:ft=config:fdm=marker foldlevel=0
 
 ## Variables {{{
 set $mod Mod4
@@ -12,10 +12,10 @@ set $gnome-schema org.gnome.desktop.interface
 # }}}
 
 # Settings {{{
-smart_gaps on
 smart_borders on
 output * bg ~/dotfiles/sway/bg.jpg fill
 font pango:Inter:style=Regular 10
+default_border pixel 2
 
 exec_always {
   gsettings set $gnome-schema gtk-theme 'oomox-tokyo-night'
