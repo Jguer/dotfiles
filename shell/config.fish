@@ -15,6 +15,8 @@ set -l purple 9d7cd8
 set -l cyan 7dcfff
 set -l pink bb9af7
 
+set fish_greeting
+
 # Syntax Highlighting Colors
 set -g fish_color_normal $foreground
 set -g fish_color_command $cyan
