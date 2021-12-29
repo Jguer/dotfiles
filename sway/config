@@ -20,7 +20,7 @@ font pango:Inter:style=Regular 10
 exec_always {
   gsettings set $gnome-schema gtk-theme 'oomox-tokyo-night'
   gsettings set $gnome-schema icon-theme 'oomox-tokyo-night'
-  gsettings set $gnome-schema font-name 'Sans 10'
+  gsettings set $gnome-schema font-name 'Inter 11'
 }
 # }}}
 

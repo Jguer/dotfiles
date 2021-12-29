@@ -1,20 +1,7 @@
 {
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[markdown]": {
     "files.trimTrailingWhitespace": false
   },
-  "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
-    "editor.semanticHighlighting.enabled": true
-  },
-  "autoHide.autoHidePanel": false,
   "breadcrumbs.enabled": true,
   "color-highlight.markerType": "dot-before",
   "editor.autoIndent": "full",
@@ -26,9 +13,6 @@
   "editor.fontLigatures": true,
   "editor.fontSize": 14,
   "editor.fontWeight": "400",
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": false,
   "editor.glyphMargin": true,
   "editor.letterSpacing": 0.3,
   "editor.lineHeight": 24.65,
@@ -82,29 +66,9 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
-  "go.buildOnSave": "workspace",
-  "go.coverMode": "atomic",
-  "go.formatTool": "gofumports",
-  "go.lintOnSave": "workspace",
-  "go.lintTool": "golangci-lint",
-  "go.toolsManagement.autoUpdate": true,
-  "go.useLanguageServer": true,
-  "go.vetOnSave": "workspace",
-  "gopls": {
-    "formatting.gofumpt": true,
-    "ui.completion.usePlaceholders": true
-  },
-  "html.format.wrapLineLength": 120,
   "keyboard.dispatch": "keyCode",
   "material-icon-theme.folders.color": "#82aaff",
-  "python.analysis.completeFunctionParens": true,
-  "python.autoComplete.addBrackets": true,
-  "python.formatting.provider": "black",
-  "python.languageServer": "Pylance",
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "terminal.external.linuxExec": "kitty",
   "terminal.integrated.cursorStyle": "block",
   "terminal.integrated.defaultProfile.linux": "fish",
@@ -123,7 +87,6 @@
   "window.newWindowDimensions": "inherit",
   "workbench.activityBar.visible": true,
   "workbench.colorTheme": "Tokyo Night Storm",
-  "workbench.editor.enablePreview": false,
   "workbench.editor.showTabs": true,
   "workbench.editor.untitled.hint": "hidden",
   "workbench.editorAssociations": {
@@ -134,5 +97,14 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,
   "editor.inlineSuggest.enabled": true,
-  "terminal.integrated.scrollback": 10000
+  "terminal.integrated.scrollback": 10000,
+  "explorer.confirmDelete": false,
+  "search.followSymlinks": true,
+  "go.lintTool": "golangci-lint",
+  "go.toolsManagement.autoUpdate": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs":"active",
+  "github.copilot.enable": {
+    "*": true,
+  }
 }

@@ -1,8 +1,8 @@
 {
     "layer": "top",
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["tray", "idle_inhibitor", "backlight", "pulseaudio", "battery", "sway/language", "clock"],
+    "modules-left": ["sway/mode"],
+    "modules-center": [],
+    "modules-right": ["sway/workspaces", "tray", "idle_inhibitor", "backlight", "pulseaudio", "battery", "sway/language", "clock"],
     "sway/window": {
         "max-length": 50
     },

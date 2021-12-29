@@ -1,0 +1,82 @@
+* {
+    border-radius: 0;
+    font-family: Inter Medium;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: white;
+}
+
+tooltip {
+	background: #1a1b26;
+	border-radius: 15px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #1a1b26;
+	}
+
+#workspaces button {
+    padding: 0px 10px;
+    color: #cfc9c2;
+}
+
+#workspaces button.focused {
+    box-shadow: 2px 2px 2px black;
+    color: #1a1b26;
+    background-color: #7aa2f7;
+    border-radius: 15px;
+}
+
+#workspaces button.urgent {
+    color: #1a1b26;
+    background-color: #7bc275;
+    border-radius: 15px;
+}
+
+#workspaces button:hover {
+	background-color: #5cEfFF;
+	color: #1a1b26;
+	border-radius: 15px;
+}
+
+#clock, #battery, #pulseaudio, #workspaces, #language, #tray, #idle_inhibitor, #backlight {
+	background-color: #16161e;
+	padding: 0px 5px;
+	margin: 5px 0px;
+}
+
+#workspaces {
+	margin-left: 10px;
+	background-color: #16161e;
+	border-radius: 15px 0px 0px 15px;
+}
+
+#clock {
+    color: #e0af68;
+    border-radius: 0px 15px 15px 0px;
+    margin-right: 10px;
+    padding-right: 10px;
+  }
+
+
+#battery {
+    color: #9ece6a;
+}
+
+#battery.charging {
+    color: #7bc275;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #FCCE7B;
+    color: #2a2e38;
+}
+
+#pulseaudio {
+	color: #C57BDB;
+}
+
+

@@ -17,6 +17,7 @@
     ~/.config/sway/config: sway/config
     ~/.config/swaylock/config: swaylock/config
     ~/.config/waybar/config: waybar/config
+    ~/.config/waybar/style.css: waybar/style.css
     # GTK
     ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
