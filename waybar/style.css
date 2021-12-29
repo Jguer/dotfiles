@@ -11,11 +11,11 @@ window#waybar {
 }
 
 tooltip {
-	background: #1a1b26;
-	border-radius: 15px;
-	border-width: 2px;
-	border-style: solid;
-	border-color: #1a1b26;
+  background: #1a1b26;
+  border-radius: 15px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #1a1b26;
 }
 
 #workspaces button {
@@ -37,21 +37,28 @@ tooltip {
 }
 
 #workspaces button:hover {
-	background-color: #5cEfFF;
-	color: #1a1b26;
-	border-radius: 15px;
+  background-color: #5cefff;
+  color: #1a1b26;
+  border-radius: 15px;
 }
 
-#clock, #battery, #pulseaudio, #workspaces, #language, #tray, #idle_inhibitor, #backlight {
-	background-color: #16161e;
-	padding: 0px 8px;
-	margin: 8px 0px;
+#clock,
+#battery,
+#pulseaudio,
+#workspaces,
+#language,
+#tray,
+#idle_inhibitor,
+#backlight {
+  background-color: #16161e;
+  padding: 0px 8px;
+  margin: 8px 0px;
 }
 
 #workspaces {
-	margin-left: 10px;
-	background-color: #16161e;
-	border-radius: 15px 0px 0px 15px;
+  margin-left: 10px;
+  background-color: #16161e;
+  border-radius: 15px 0px 0px 15px;
 }
 
 #clock {
@@ -70,7 +77,7 @@ tooltip {
 }
 
 #battery.warning:not(.charging) {
-  background-color: #FCCE7B;
+  background-color: #fcce7b;
   color: #2a2e38;
 }
 
@@ -79,5 +86,5 @@ tooltip {
 }
 
 #pulseaudio {
-	color: #C57BDB;
+  color: #c57bdb;
 }
