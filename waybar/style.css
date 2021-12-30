@@ -11,11 +11,11 @@ window#waybar {
 }
 
 tooltip {
-  background: #1a1b26;
+  background: #24283b;
   border-radius: 15px;
   border-width: 2px;
   border-style: solid;
-  border-color: #1a1b26;
+  border-color: #24283b;
 }
 
 #workspaces button {
@@ -25,20 +25,20 @@ tooltip {
 
 #workspaces button.focused {
   box-shadow: 2px 2px 2px black;
-  color: #1a1b26;
+  color: #24283b;
   background-color: #7aa2f7;
   border-radius: 15px;
 }
 
 #workspaces button.urgent {
-  color: #1a1b26;
+  color: #24283b;
   background-color: #7bc275;
   border-radius: 15px;
 }
 
 #workspaces button:hover {
   background-color: #5cefff;
-  color: #1a1b26;
+  color: #24283b;
   border-radius: 15px;
 }
 
@@ -50,14 +50,13 @@ tooltip {
 #tray,
 #idle_inhibitor,
 #backlight {
-  background-color: #16161e;
+  background-color: #24283b;
   padding: 0px 8px;
   margin: 8px 0px;
 }
 
 #workspaces {
   margin-left: 10px;
-  background-color: #16161e;
   border-radius: 15px 0px 0px 15px;
 }
 

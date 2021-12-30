@@ -16,6 +16,7 @@ smart_borders on
 output * bg ~/dotfiles/sway/bg.jpg fill
 font pango:Inter:style=Regular 10
 default_border pixel 2
+default_floating_border pixel 2
 
 exec_always {
   gsettings set $gnome-schema gtk-theme 'oomox-tokyo-night'
