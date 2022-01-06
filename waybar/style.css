@@ -71,6 +71,14 @@ tooltip {
   color: #9ece6a;
 }
 
+#backlight {
+  color: #ff9e64;
+}
+
+#idle_inhibitor {
+  color: #7dcfff;
+}
+
 #battery.charging {
   color: #7bc275;
 }
