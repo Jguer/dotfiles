@@ -18,8 +18,8 @@ Based on the **tokyo-night** [vim](https://github.com/ghifarit53/tokyonight-vim)
 **OS**: Arch  
 **WM**: Sway  
 **LockScreen**: swaylock-effects  
-**Launcher**: wofi
-**File Manager**: nautilus
+**Launcher**: wofi  
+**File Manager**: nautilus  
 
 **Development Environment**: VSCode  
 **Text Editor**: Neovim
