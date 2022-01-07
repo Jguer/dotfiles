@@ -1,5 +1,7 @@
 # Dotfiles
 
+Check https://github.com/Jguer/dotfiles/tree/awesomewm for my old awesomewm branch
+
 ## Tokyo Night based
 
 Based on the **tokyo-night** [vim](https://github.com/ghifarit53/tokyonight-vim) and
