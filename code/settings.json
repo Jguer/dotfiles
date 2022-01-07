@@ -106,5 +106,6 @@
   "editor.guides.bracketPairs":"active",
   "github.copilot.enable": {
     "*": true,
-  }
+  },
+  "search.useIgnoreFiles": false
 }
