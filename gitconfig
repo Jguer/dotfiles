@@ -31,6 +31,9 @@ show = delta
 [diff]
 colorMoved = default
 
+[merge]
+conflictStyle = zdiff3
+
 [delta]
 plus-style = syntax "#003800"
 minus-style = syntax "#3f0001"

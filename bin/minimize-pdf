@@ -30,7 +30,6 @@ for f in *.{PDF,pdf}; do
     -r144 \
     -sOutputFile="${buildroot}/${f}" \
     -sPDFPassword=instrmed \
-    -c .setpdfwrite \
     -f "${f}"
 done
 
