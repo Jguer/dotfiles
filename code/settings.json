@@ -3,7 +3,6 @@
     "files.trimTrailingWhitespace": false
   },
   "breadcrumbs.enabled": true,
-  "color-highlight.markerType": "dot-before",
   "editor.autoIndent": "full",
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": true,
@@ -89,9 +88,6 @@
   "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.editor.showTabs": true,
   "workbench.editor.untitled.hint": "hidden",
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
-  },
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
@@ -116,4 +112,9 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "gopls" : {
+    "build.directoryFilters": ["-node_modules"],
+    //"ui.semanticTokens": true
+  },
+  "editor.largeFileOptimizations": false
 }

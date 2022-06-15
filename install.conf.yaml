@@ -39,6 +39,6 @@
     # Text
     ~/.config/nvim: nvim
     ~/.config/zathura/zathurarc: zathurarc
-    ~/.config/Code/User/settings.json: code/settings.json
+    "~/.config/Code - OSS/User/settings.json": code/settings.json
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
