@@ -102,9 +102,6 @@
   "editor.guides.bracketPairs":"active",
   "github.copilot.enable": {
     "*": true,
-    "yaml": true,
-    "plaintext": false,
-    "markdown": true
   },
   "search.useIgnoreFiles": false,
   "liveshare.presence": false,
@@ -114,7 +111,10 @@
   },
   "gopls" : {
     "build.directoryFilters": ["-node_modules"],
-    //"ui.semanticTokens": true
+    "ui.semanticTokens": true,
+  },
+  "go.delveConfig": {
+      "debugAdapter": "dlv-dap",
   },
   "editor.largeFileOptimizations": false
 }

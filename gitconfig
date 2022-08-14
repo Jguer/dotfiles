@@ -52,4 +52,7 @@ rebase = true
 version = 2
 
 [credential]
-	helper = /usr/lib/git-core/git-credential-libsecret
+helper = /usr/lib/git-core/git-credential-libsecret
+
+[init]
+defaultBranch = main
