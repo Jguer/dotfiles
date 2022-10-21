@@ -30,7 +30,7 @@ require("packer").startup(function()
 
   use({
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     config = function()
       require("nvim-treesitter.configs").setup({
         highlight = {
@@ -55,7 +55,7 @@ require("packer").startup(function()
   })
 
   use({
-    "blackCauldron7/surround.nvim",
+    "ur4ltz/surround.nvim",
     config = function()
       require("surround").setup({ mappings_style = "surround" })
     end,
