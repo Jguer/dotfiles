@@ -102,6 +102,9 @@
   "editor.guides.bracketPairs":"active",
   "github.copilot.enable": {
     "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true
   },
   "search.useIgnoreFiles": false,
   "liveshare.presence": false,
@@ -115,6 +118,5 @@
   },
   "go.delveConfig": {
       "debugAdapter": "dlv-dap",
-  },
-  "editor.largeFileOptimizations": false
+  }
 }
