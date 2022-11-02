@@ -2,8 +2,13 @@
   "[markdown]": {
     "files.trimTrailingWhitespace": false
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
   "breadcrumbs.enabled": true,
   "editor.autoIndent": "full",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.copyWithSyntaxHighlighting": true,
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorStyle": "line",
@@ -13,6 +18,8 @@
   "editor.fontSize": 14,
   "editor.fontWeight": "400",
   "editor.glyphMargin": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.inlineSuggest.enabled": true,
   "editor.letterSpacing": 0.3,
   "editor.lineHeight": 24.65,
   "editor.minimap.enabled": false,
@@ -31,6 +38,7 @@
   "editor.suggestFontSize": 16,
   "editor.suggestSelection": "first",
   "editor.wordWrapColumn": 80,
+  "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 5,
   "explorer.sortOrder": "type",
@@ -40,6 +48,14 @@
   "files.encoding": "utf8",
   "files.eol": "\n",
   "files.exclude": {
+    "**/__pycache__": true,
+    "**/_site": true,
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.svn": true,
     "**/*.asset-cache": true,
     "**/*.cache": true,
     "**/*.coverage": true,
@@ -47,17 +63,9 @@
     "**/*.jekyll-cache": true,
     "**/*.pyc": true,
     "**/*.tweet-cache": true,
-    "**/.DS_Store": true,
-    "**/.git": true,
-    "**/.hg": true,
-    "**/.mypy_cache": true,
-    "**/.pytest_cache": true,
-    "**/.svn": true,
-    "**/CVS": true,
-    "**/__pycache__": true,
-    "**/_site": true,
     "**/bower_components": true,
     "**/celerybeat-schedule": true,
+    "**/CVS": true,
     "**/node_modules": true,
     "**/tmp": true
   },
@@ -65,8 +73,26 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": false,
+    "yaml": false
+  },
+  "go.lintTool": "golangci-lint",
+  "gopls": {
+    "build.directoryFilters": [
+      "-node_modules",
+      "-vendor",
+      "-.git"
+    ],
+    "ui.semanticTokens": true
+  },
   "keyboard.dispatch": "keyCode",
+  "liveshare.presence": false,
   "material-icon-theme.folders.color": "#82aaff",
+  "search.followSymlinks": true,
+  "search.useIgnoreFiles": false,
   "telemetry.telemetryLevel": "off",
   "terminal.external.linuxExec": "kitty",
   "terminal.integrated.cursorStyle": "block",
@@ -79,6 +105,7 @@
       "path": "fish"
     }
   },
+  "terminal.integrated.scrollback": 10000,
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.leader": ",",
@@ -91,32 +118,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.visible": true,
-  "editor.inlineSuggest.enabled": true,
-  "terminal.integrated.scrollback": 10000,
-  "explorer.confirmDelete": false,
-  "search.followSymlinks": true,
-  "go.lintTool": "golangci-lint",
-  "go.toolsManagement.autoUpdate": true,
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs":"active",
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": false,
-    "plaintext": false,
-    "markdown": true
-  },
-  "search.useIgnoreFiles": false,
-  "liveshare.presence": false,
-  "editor.copyWithSyntaxHighlighting": true,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "gopls" : {
-    "build.directoryFilters": ["-node_modules"],
-    "ui.semanticTokens": true,
-  },
-  "go.delveConfig": {
-      "debugAdapter": "dlv-dap",
-  }
+  "workbench.statusBar.visible": true
 }
