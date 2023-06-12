@@ -2,12 +2,6 @@
   path = dotbot
   url = https://github.com/anishathalye/dotbot
   branch = master
-[submodule "gtk/themes/dracula"]
-	path = gtk/themes/dracula
-	url = https://github.com/dracula/gtk.git
-[submodule "gtk/icons/dracula"]
-	path = gtk/icons/dracula
-	url = https://github.com/m4thewz/dracula-icons.git
 [submodule "gtk/themes/fausto-tokyo-night"]
 	path = gtk/themes/fausto-tokyo-night
 	url = https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git
