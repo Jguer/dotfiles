@@ -1,0 +1,41 @@
+# vim:fdm=marker foldlevel=0
+#{{{ Colours
+
+include "tokyonight_storm.zathurarc"
+
+set recolor true
+
+#}}}
+
+#{{{ Layout
+set adjust-open           width
+set incremental-search    false
+set statusbar-home-tilde  true
+set selection-clipboard clipboard
+#}}}
+
+#{{{ Other Options
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-step 50
+#}}}
+
+#{{{ Key bindings
+map <PageUp> scroll full_up
+map <PageDown> scroll full_down
+map <BackSpace> scroll full_up all
+map <M-v> scroll full_up
+map <C-v> scroll full_down
+
+map + zoom in
+map - zoom out
+map q quit
+map w adjust_window width
+map z adjust_window bestfit
+
+map <Space> navigate next
+map <S-Space> navigate previous
+map b toggle_statusbar
+
+map <C-g> abort
+#}}}

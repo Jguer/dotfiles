@@ -8,3 +8,6 @@
 [submodule "gtk/icons/dracula"]
 	path = gtk/icons/dracula
 	url = https://github.com/m4thewz/dracula-icons.git
+[submodule "gtk/themes/fausto-tokyo-night"]
+	path = gtk/themes/fausto-tokyo-night
+	url = https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git
