@@ -19,8 +19,8 @@ default_border pixel 2
 default_floating_border pixel 2
 
 exec_always {
-  gsettings set $gnome-schema gtk-theme 'dracula'
-  gsettings set $gnome-schema icon-theme 'dracula'
+  gsettings set $gnome-schema gtk-theme 'Tokyonight-Storm'
+  gsettings set $gnome-schema icon-theme 'Tokyonight-Dark'
   gsettings set $gnome-schema font-name 'Inter 11'
 }
 # }}}
