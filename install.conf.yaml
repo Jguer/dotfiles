@@ -12,6 +12,8 @@
     ~/.bash_profile: shell/bash_profile
     # Shell
     ~/.config/fish/config.fish: shell/config.fish
+    "~/.config/fish/themes/TokyoNight Day.theme": "shell/TokyoNight Day.theme"
+    "~/.config/fish/themes/TokyoNight Storm.theme": "shell/TokyoNight Storm.theme"
     # Wayland :rocket:
     ~/.config/mako/config: mako/config
     ~/.config/sway/config: sway/config
@@ -22,17 +24,17 @@
     ~/.config/wofi/config: wofi/config
     ~/.config/wofi/style.css: wofi/style.css
     # GTK
-    ~/.config/gtk-3.0/gtk.css: gtk/gtk.css
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     # Fonts
     ~/.config/fontconfig/fonts.conf: fonts.conf
     # Iconography
-    ~/.icons/dracula: gtk/icons/dracula
-    ~/.themes/dracula: gtk/themes/dracula
+    "~/.icons/Tokyonight-Dark": "gtk/themes/fausto-tokyo-night/icons/Tokyonight-Dark"
+    "~/.themes/Tokyonight-Storm": "gtk/themes/fausto-tokyo-night/themes/Tokyonight-Storm-BL"
+    "~/.config/gtk-4.0": "gtk/themes/fausto-tokyo-night/themes/Tokyonight-Storm-BL/gtk-4.0"
     # Applications
-    ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
-    ~/.config/kitty/colors.conf: kitty/colors.conf
+    ~/.config/kitty/tokyonight_storm.conf: kitty/tokyonight_storm.conf
+    ~/.config/kitty/tokyonight_day.conf: kitty/tokyonight_day.conf
     ~/.gitconfig: gitconfig
     # MPV
     ~/.config/mpv/mpv.conf: mpv/mpv.conf
@@ -40,7 +42,9 @@
     ~/.config/mpv/scripts: mpv/scripts
     # Text
     ~/.config/nvim: nvim
-    ~/.config/zathura/zathurarc: zathurarc
-    "~/.config/Code - OSS/User/settings.json": code/settings.json
+    ~/.config/zathura/zathurarc: "zathura/zathurarc"
+    ~/.config/zathura/tokyonight_day.zathurarc: "zathura/tokyonight_day.zathurarc"
+    ~/.config/zathura/tokyonight_storm.zathurarc: "zathura/tokyonight_storm.zathurarc"
+    "~/.config/Code - Insiders/User/settings.json": code/settings.json
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
