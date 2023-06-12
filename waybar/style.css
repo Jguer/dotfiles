@@ -7,38 +7,38 @@
 
 window#waybar {
   background: transparent;
-  color: white;
+  color: #c0caf5;
 }
 
 tooltip {
-  background: #282a36;
+  background: #1d202f;
   border-radius: 15px;
   border-width: 2px;
   border-style: solid;
-  border-color: #BD93F9;
+  border-color: #f7768e;
 }
 
 #workspaces button {
   padding: 0px 10px;
-  color: #cfc9c2;
+  color: #a9b1d6;
 }
 
 #workspaces button.focused {
-  box-shadow: 2px 2px 2px black;
-  color: #282a36;
-  background-color: #BD93F9;
+  box-shadow: 2px 2px 2px #1d202f;
+  color: #c0caf5;
+  background-color: #f7768e;
   border-radius: 15px;
 }
 
 #workspaces button.urgent {
-  color: #282a36;
-  background-color: #FF5555;
+  color: #c0caf5;
+  background-color: #e0af68;
   border-radius: 15px;
 }
 
 #workspaces button:hover {
-  background-color: #FF79C6;
-  color: #282a36;
+  background-color: #bb9af7;
+  color: #c0caf5;
   border-radius: 15px;
 }
 
@@ -50,7 +50,7 @@ tooltip {
 #tray,
 #idle_inhibitor,
 #backlight {
-  background-color: #282a36;
+  background-color: #24283b;
   padding: 0px 8px;
   margin: 8px 0px;
 }
@@ -61,7 +61,7 @@ tooltip {
 }
 
 #clock {
-  color: #ff9e64;
+  color: #f7768e;
   border-radius: 0px 15px 15px 0px;
   margin-right: 10px;
   padding-right: 10px;
@@ -72,7 +72,7 @@ tooltip {
 }
 
 #backlight {
-  color: #FFB86C;
+  color: #e0af68;
 }
 
 #idle_inhibitor {
@@ -80,18 +80,18 @@ tooltip {
 }
 
 #battery.charging {
-  color: #50FA7B;
+  color: #7aa2f7;
 }
 
 #battery.warning:not(.charging) {
-  background-color: #fcce7b;
-  color: #2a2e38;
+  background-color: #414868;
+  color: #c0caf5;
 }
 
 #language {
-  color: #8BE9FD;
+  color: #bb9af7;
 }
 
 #pulseaudio {
-  color: #BD93F9;
+  color: #7aa2f7;
 }
