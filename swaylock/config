@@ -1,7 +1,6 @@
 ignore-empty-password
 font=Inter 14
 
-clock
 timestr=%R
 datestr=%a, %e of %B
 

@@ -9,22 +9,14 @@
   "editor.autoIndent": "full",
   "editor.bracketPairColorization.enabled": true,
   "editor.copyWithSyntaxHighlighting": true,
-  "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.cursorStyle": "line",
-  "editor.cursorWidth": 3,
   "editor.fontFamily": "FiraCode Nerd Font Mono",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
-  "editor.fontWeight": "400",
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
-  "editor.letterSpacing": 0.3,
-  "editor.lineHeight": 24.65,
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
-  "editor.renderWhitespace": "boundary",
   "editor.rulers": [
     80,
     120,
@@ -75,9 +67,9 @@
   "git.enableSmartCommit": true,
   "github.copilot.enable": {
     "*": true,
-    "markdown": true,
-    "plaintext": false,
-    "yaml": false
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true
   },
   "go.lintTool": "golangci-lint",
   "gopls": {
@@ -112,11 +104,23 @@
   "vim.useSystemClipboard": true,
   "window.newWindowDimensions": "inherit",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.colorTheme": "Dracula",
   "workbench.editor.showTabs": true,
   "workbench.editor.untitled.hint": "hidden",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.visible": true
+  "workbench.statusBar.visible": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 2,
+  "editor.fontSize": 14.0,
+  "editor.fontWeight": "450",
+  "editor.letterSpacing": 0.6,
+  "editor.lineHeight": 22,
+  "editor.renderWhitespace": "trailing",
+  "explorer.compactFolders": false,
 }

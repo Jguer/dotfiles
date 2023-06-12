@@ -21,5 +21,5 @@ code --install-extension ms-vsliveshare.vsliveshare
 code --install-extension PKief.material-icon-theme
 code --install-extension vscodevim.vim
 
-gsettings set org.gnome.desktop.interface icon-theme 'oomox-tokyo-night'
-gsettings set org.gnome.desktop.interface gtk-theme 'oomox-tokyo-night'
+gsettings set org.gnome.desktop.interface icon-theme 'dracula'
+gsettings set org.gnome.desktop.interface gtk-theme 'dracula'

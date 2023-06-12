@@ -54,5 +54,8 @@ version = 2
 [credential]
 helper = /usr/lib/git-core/git-credential-libsecret
 
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
 [init]
 defaultBranch = main

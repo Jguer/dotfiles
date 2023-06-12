@@ -1,4 +1,4 @@
-gtk-icon-theme-name   = "oomox-tokyo-night"
-gtk-theme-name        = "oomox-tokyo-night"
+gtk-icon-theme-name   = "dracula"
+gtk-theme-name        = "dracula"
 gtk-cursor-theme-name = "elementary"
 gtk-font-name         = "Inter 11"

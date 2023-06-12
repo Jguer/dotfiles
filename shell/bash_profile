@@ -30,9 +30,8 @@ export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 
 export NO_AT_BRIDGE=1
-export COMPOSE_DOCKER_CLI_BUILD=1
-export DOCKER_BUILDKIT=1
-
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+alias docker-compose='podman-compose'
 
 
 pathappend() {

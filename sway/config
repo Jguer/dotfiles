@@ -19,8 +19,8 @@ default_border pixel 2
 default_floating_border pixel 2
 
 exec_always {
-  gsettings set $gnome-schema gtk-theme 'oomox-tokyo-night'
-  gsettings set $gnome-schema icon-theme 'oomox-tokyo-night'
+  gsettings set $gnome-schema gtk-theme 'dracula'
+  gsettings set $gnome-schema icon-theme 'dracula'
   gsettings set $gnome-schema font-name 'Inter 11'
 }
 # }}}
@@ -29,6 +29,7 @@ exec_always {
 input type:keyboard {
     xkb_layout "us,pt"
     xkb_variant ","
+    #xkb_options "grp:alt_shift_toggle,terminate:ctrl_alt_bksp"
     xkb_options "grp:alt_shift_toggle,caps:swapescape,terminate:ctrl_alt_bksp"
     repeat_delay 300
     repeat_rate 30
@@ -148,6 +149,7 @@ bindsym $mod+x exec swaylock
 
 # Window Rules {{{
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] border none, floating enable, nofocus
+for_window [app_id="firefoxdeveloperedition" title="Firefox Developer Edition — Sharing Indicator"] border none, floating enable, nofocus
 for_window [window_role="pop-up"] floating enable
 for_window [app_id="mpv"] border none, floating enable, resize set width 531 height 300, move position 1345 125, sticky enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
@@ -169,8 +171,9 @@ exec swayidle -w \
   before-sleep 'swaylock -f'
 
 exec mako
-exec nm-applet --indicator  
+exec nm-applet --indicator
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gammastep-indicator -m wayland -P -r -l 48.857:2.295
+exec aa-notify -p -s 1 -w 60 -f /var/log/audit/audit.log
 exec blueman-applet
 # }}}

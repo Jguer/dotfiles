@@ -1,41 +1,53 @@
 # vim:fdm=marker foldlevel=0
 #{{{ Colours
 
-# Base16 purple-spice
-# Author: purple-spice
+#
+# Dracula color theme
+#
 
-set default-bg                  "#24283b"
-set default-fg                  "#a9b1d6"
+set notification-error-bg       "#ff5555" # Red
+set notification-error-fg       "#f8f8f2" # Foreground
+set notification-warning-bg     "#ffb86c" # Orange
+set notification-warning-fg     "#44475a" # Selection
+set notification-bg             "#282a36" # Background
+set notification-fg             "#f8f8f2" # Foreground
 
-set statusbar-fg                "#a9b1d6"
-set statusbar-bg                "#24283b"
+set completion-bg               "#282a36" # Background
+set completion-fg               "#6272a4" # Comment
+set completion-group-bg         "#282a36" # Background
+set completion-group-fg         "#6272a4" # Comment
+set completion-highlight-bg     "#44475a" # Selection
+set completion-highlight-fg     "#f8f8f2" # Foreground
 
-set inputbar-bg                 "#1a1b26"
-set inputbar-fg                 "#73daca"
+set index-bg                    "#282a36" # Background
+set index-fg                    "#f8f8f2" # Foreground
+set index-active-bg             "#44475a" # Current Line
+set index-active-fg             "#f8f8f2" # Foreground
 
-set notification-bg             "#1a1b26"
-set notification-fg             "#73daca"
+set inputbar-bg                 "#282a36" # Background
+set inputbar-fg                 "#f8f8f2" # Foreground
+set statusbar-bg                "#282a36" # Background
+set statusbar-fg                "#f8f8f2" # Foreground
 
-set notification-error-bg       "#1a1b26"
-set notification-error-fg       "#f7768e"
+set highlight-color             "#ffb86c" # Orange
+set highlight-active-color      "#ff79c6" # Pink
 
-set notification-warning-bg     "#1a1b26"
-set notification-warning-fg     "#f7768e"
+set default-bg                  "#282a36" # Background
+set default-fg                  "#f8f8f2" # Foreground
 
-set highlight-color             "#e0af68"
-set highlight-active-color      "#9aa5ce"
+set render-loading              true
+set render-loading-fg           "#282a36" # Background
+set render-loading-bg           "#f8f8f2" # Foreground
 
-set completion-bg               "#24283b"
-set completion-fg               "#a9b1d6"
+#
+# Recolor mode settings
+#
 
-set completion-highlight-fg     "#9aa5ce"
-set completion-highlight-bg     "24283b"
+set recolor-lightcolor          "#282a36" # Background
+set recolor-darkcolor           "#f8f8f2" # Foreground
 
-set recolor-lightcolor          "#1a1b26"
-set recolor-darkcolor           "#a9b1d6"
+set recolor true
 
-set recolor                     "true"
-set recolor-keephue             "false"
 #}}}
 
 #{{{ Layout

@@ -11,11 +11,11 @@ window#waybar {
 }
 
 tooltip {
-  background: #24283b;
+  background: #282a36;
   border-radius: 15px;
   border-width: 2px;
   border-style: solid;
-  border-color: #24283b;
+  border-color: #BD93F9;
 }
 
 #workspaces button {
@@ -25,20 +25,20 @@ tooltip {
 
 #workspaces button.focused {
   box-shadow: 2px 2px 2px black;
-  color: #24283b;
-  background-color: #7aa2f7;
+  color: #282a36;
+  background-color: #BD93F9;
   border-radius: 15px;
 }
 
 #workspaces button.urgent {
-  color: #24283b;
-  background-color: #7bc275;
+  color: #282a36;
+  background-color: #FF5555;
   border-radius: 15px;
 }
 
 #workspaces button:hover {
-  background-color: #5cefff;
-  color: #24283b;
+  background-color: #FF79C6;
+  color: #282a36;
   border-radius: 15px;
 }
 
@@ -50,7 +50,7 @@ tooltip {
 #tray,
 #idle_inhibitor,
 #backlight {
-  background-color: #24283b;
+  background-color: #282a36;
   padding: 0px 8px;
   margin: 8px 0px;
 }
@@ -61,7 +61,7 @@ tooltip {
 }
 
 #clock {
-  color: #e0af68;
+  color: #ff9e64;
   border-radius: 0px 15px 15px 0px;
   margin-right: 10px;
   padding-right: 10px;
@@ -72,7 +72,7 @@ tooltip {
 }
 
 #backlight {
-  color: #ff9e64;
+  color: #FFB86C;
 }
 
 #idle_inhibitor {
@@ -80,7 +80,7 @@ tooltip {
 }
 
 #battery.charging {
-  color: #7bc275;
+  color: #50FA7B;
 }
 
 #battery.warning:not(.charging) {
@@ -89,9 +89,9 @@ tooltip {
 }
 
 #language {
-  color: #7dcfff;
+  color: #8BE9FD;
 }
 
 #pulseaudio {
-  color: #c57bdb;
+  color: #BD93F9;
 }
