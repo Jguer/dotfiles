@@ -1,6 +1,12 @@
 {
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "[markdown]": {
     "files.trimTrailingWhitespace": false
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
@@ -9,19 +15,23 @@
   "editor.autoIndent": "full",
   "editor.bracketPairColorization.enabled": true,
   "editor.copyWithSyntaxHighlighting": true,
-  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 2,
   "editor.fontFamily": "FiraCode Nerd Font Mono",
   "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "450",
   "editor.glyphMargin": true,
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
+  "editor.letterSpacing": 0.6,
+  "editor.lineHeight": 22,
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": true,
-  "editor.rulers": [
-    80,
-    120,
-    121
-  ],
+  "editor.renderWhitespace": "trailing",
+  "editor.rulers": [80, 120, 121],
   "editor.scrollBeyondLastColumn": 2,
   "editor.semanticHighlighting.enabled": true,
   "editor.showFoldingControls": "mouseover",
@@ -30,6 +40,7 @@
   "editor.suggestFontSize": 16,
   "editor.suggestSelection": "first",
   "editor.wordWrapColumn": 80,
+  "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.visible": 5,
@@ -65,19 +76,22 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
   "github.copilot.enable": {
     "*": true,
     "yaml": true,
     "plaintext": true,
     "markdown": true
   },
+  "go.editorContextMenuCommands": {
+    "fillStruct": true,
+    "generateTestForFile": true
+  },
+  "go.formatTool": "gofmt",
+  "go.lintOnSave": "file",
   "go.lintTool": "golangci-lint",
   "gopls": {
-    "build.directoryFilters": [
-      "-node_modules",
-      "-vendor",
-      "-.git"
-    ],
+    "build.directoryFilters": ["-node_modules", "-vendor", "-.git"],
     "ui.semanticTokens": true
   },
   "keyboard.dispatch": "keyCode",
@@ -98,29 +112,18 @@
     }
   },
   "terminal.integrated.scrollback": 10000,
+  "update.showReleaseNotes": false,
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.leader": ",",
   "vim.useSystemClipboard": true,
-  "window.newWindowDimensions": "inherit",
+  "window.restoreWindows": "native",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Dracula",
+  "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.editor.showTabs": true,
   "workbench.editor.untitled.hint": "hidden",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.visible": true,
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "editor.cursorBlinking": "smooth",
-  "editor.cursorStyle": "line",
-  "editor.cursorWidth": 2,
-  "editor.fontSize": 14.0,
-  "editor.fontWeight": "450",
-  "editor.letterSpacing": 0.6,
-  "editor.lineHeight": 22,
-  "editor.renderWhitespace": "trailing",
-  "explorer.compactFolders": false,
+  "workbench.statusBar.visible": true
 }
