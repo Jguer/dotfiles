@@ -30,7 +30,7 @@ Based on the **tokyo-night** [vim](https://github.com/ghifarit53/tokyonight-vim)
 ### Required utils
 
 ```
-yay -S swaylock-effects-git waybar \
+yay -S swaylock waybar \
   mako network-manager-applet polkit-gnome \
   gammastep blueman swayidle slurp grim swappy \
   playerctl light wofi
