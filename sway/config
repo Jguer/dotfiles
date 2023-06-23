@@ -152,6 +152,8 @@ for_window [app_id="firefox" title="Firefox — Sharing Indicator"] border none,
 for_window [app_id="firefoxdeveloperedition" title="Firefox Developer Edition — Sharing Indicator"] border none, floating enable, nofocus
 for_window [window_role="pop-up"] floating enable
 for_window [app_id="mpv"] border none, floating enable, resize set width 531 height 300, move position 1345 125, sticky enable
+for_window [title="^Picture in picture$"] \
+    floating enable, move position 877 450, sticky enable, border none
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
     floating enable, move position 877 450, sticky enable, border none
 # }}}
