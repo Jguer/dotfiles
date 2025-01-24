@@ -6,6 +6,8 @@ if status is-interactive
   set fish_greeting ""
 end
 
+set -gx VISUAL nvim
+set -gx EDITOR nvim
 set -gx PAGER bat
 set -gx BAT_PAGER "less -RSF"
 set -gx BAT_THEME "base16"
