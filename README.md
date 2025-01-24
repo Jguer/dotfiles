@@ -30,8 +30,14 @@ Based on the **tokyo-night** [vim](https://github.com/ghifarit53/tokyonight-vim)
 ### Required utils
 
 ```
-yay -S swaylock waybar \
-  mako network-manager-applet polkit-gnome \
-  gammastep blueman swayidle slurp grim swappy \
-  playerctl light wofi
+chezmoi
+bat
+eza
+fish
+gh
+git-delta
+httpie
+neovim
+starship
+zoxide
 ```

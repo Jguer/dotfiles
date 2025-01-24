@@ -6,6 +6,11 @@ if status is-interactive
   set fish_greeting ""
 end
 
+set -gx PAGER bat
+set -gx BAT_PAGER "less -RSF"
+set -gx BAT_THEME "base16"
+
+fish_config theme choose "Everforest"
 alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
 
 alias ls="eza"

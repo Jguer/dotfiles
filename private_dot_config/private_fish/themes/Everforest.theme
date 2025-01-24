@@ -1,0 +1,35 @@
+# name: 'Everforest'
+# url: 'https://github.com/Arpitpandey992/fish-everforest'
+# preferred_background: 303446
+
+fish_color_normal FDF6D3
+fish_color_command --bold C3E5A5
+fish_color_param eebebe
+fish_color_keyword F2A9A8
+fish_color_quote FEFCBC
+fish_color_redirection --bold F6CDF6
+fish_color_end F3AF8A
+fish_color_comment 5D6B66
+fish_color_error --bold F2A9A8
+fish_color_gray 5D6B66
+fish_color_selection --background=637E73
+fish_color_search_match --background=637E73
+fish_color_option F6CDF6
+fish_color_param C3D3FB
+fish_color_operator F6CDF6
+fish_color_escape F2A9A8
+fish_color_autosuggestion 6e6e6e
+fish_color_cancel F2A9A8
+fish_color_cwd C3E5A5
+fish_color_user BAFCF2
+fish_color_host C3D3FB
+fish_color_host_remote F3AF8A
+fish_color_status F2A9A8
+fish_pager_color_completion C3E5A5
+fish_pager_color_description 6e6e6e
+fish_pager_color_prefix F2EFDF
+fish_pager_color_progress 6e6e6e
+fish_pager_color_selected_completion --bold C3E5A5
+fish_pager_color_selected_description --bold 6e6e6e
+fish_pager_color_selected_prefix --bold F2EFDF
+fish_pager_color_selected_progress --bold 6e6e6e
