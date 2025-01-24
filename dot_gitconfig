@@ -1,0 +1,17 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+name = Jo Garnier
+email = git@jguer.space
+
+[core]
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+navigate = true  # use n and N to move between diff sections
+
+[merge]
+conflictstyle = zdiff3

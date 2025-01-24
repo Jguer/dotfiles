@@ -1,0 +1,5 @@
+font-family = Cascadia Code NF
+theme = Everforest Dark - Hard
+command = /opt/homebrew/bin/fish
+cursor-style = block
+cursor-style-blink = true
