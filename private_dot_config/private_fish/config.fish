@@ -1,8 +1,12 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+fish_add_path --append /opt/homebrew/opt/node@22/bin
+fish_add_path --append {HOME}/go/bin
+
 if status is-interactive
   starship init fish | source
   zoxide init fish | source
+  podman completion fish | source
   set fish_greeting ""
 end
 
@@ -14,6 +18,7 @@ set -gx BAT_THEME "base16"
 
 fish_config theme choose "Everforest"
 alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
+alias gpgssh='set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)'
 
 alias ls="eza"
 alias ll="eza --icons --git -la"
