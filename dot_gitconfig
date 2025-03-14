@@ -1,4 +1,3 @@
-# This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
 name = Jo Garnier
@@ -6,12 +5,31 @@ email = git@jguer.space
 
 [core]
 pager = delta
+editor = nvim  # using Neovim as your editor
+autocrlf = input  # handles line endings consistently
 
 [interactive]
 diffFilter = delta --color-only
 
 [delta]
 navigate = true  # use n and N to move between diff sections
+line-numbers = true
+side-by-side = true
+syntax-theme = Dracula
 
 [merge]
 conflictstyle = zdiff3
+tool = nvim -d  # using Neovim for diff view
+
+[pull]
+rebase = true  # avoid merge commits when pulling
+
+[push]
+default = simple
+autoSetupRemote = true  
+
+[color]
+ui = auto
+
+[alias]
+lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
