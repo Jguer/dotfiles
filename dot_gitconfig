@@ -1,3 +1,4 @@
+# ~/.gitconfig
 [user]
 # Please adapt and uncomment the following lines:
 name = Jo Garnier
@@ -13,9 +14,20 @@ diffFilter = delta --color-only
 
 [delta]
 navigate = true  # use n and N to move between diff sections
+hyperlinks = True
 line-numbers = true
 side-by-side = true
-syntax-theme = Dracula
+minus-style                   = syntax "#3f2d3d"
+minus-non-emph-style          = syntax "#3f2d3d"
+minus-emph-style              = syntax "#763842"
+minus-empty-line-marker-style = syntax "#3f2d3d"
+line-numbers-minus-style      = "#b2555b"
+plus-style                    = syntax "#283b4d"
+plus-non-emph-style           = syntax "#283b4d"
+plus-emph-style               = syntax "#316172"
+plus-empty-line-marker-style  = syntax "#283b4d"
+line-numbers-plus-style       = "#266d6a"
+line-numbers-zero-style       = "#3b4261"
 
 [merge]
 conflictstyle = zdiff3

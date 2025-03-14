@@ -1,4 +1,6 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if test -f /opt/homebrew/bin/brew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+end
 
 fish_add_path --append /opt/homebrew/opt/node@22/bin
 fish_add_path --append {HOME}/go/bin
