@@ -8,8 +8,10 @@ fish_add_path --append /home/jguer/go/bin
 if status is-interactive
   starship init fish | source
   zoxide init fish | source
-  podman completion fish | source
-  set fish_greeting ""
+  set -e SSH_AGENT_PID
+  if not set -q gnupg_SSH_AUTH_SOCK_by; or test "$gnupg_SSH_AUTH_SOCK_by" -ne "$fish_pid"
+    set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+  end
 end
 
 set -gx VISUAL nvim

@@ -51,3 +51,8 @@ lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
+[url "https://"]
+    insteadOf = git://
+[url "https://github.com/"]
+    insteadOf = git@github.com:
