@@ -3,7 +3,7 @@ if test -f /opt/homebrew/bin/brew
 end
 
 fish_add_path --append /opt/homebrew/opt/node@22/bin
-fish_add_path --append {HOME}/go/bin
+fish_add_path --append /home/jguer/go/bin
 
 if status is-interactive
   starship init fish | source
