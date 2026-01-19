@@ -25,25 +25,19 @@ vim.opt.clipboard = "unnamedplus"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-	{
-	  "neanias/everforest-nvim",
-	  version = false,
-	  lazy = false,
-	  priority = 1000, -- make sure to load this before all the other start plugins
-	  -- Optional; default configuration will be used if setup isn't called.
-	  config = function()
-	    require("everforest").setup({
-	      -- Your config here
-	    })
-	  end,
-	}
+    {
+      "rose-pine/neovim",
+      name = "rose-pine",
+      lazy = false,
+      priority = 1000,
+      config = function()
+        require("rose-pine").setup({
+          variant = "main",
+        })
+        vim.cmd("colorscheme rose-pine")
+      end,
+    },
   },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
+  install = { colorscheme = { "rose-pine" } },
   checker = { enabled = true },
 })
-
-
-require("everforest").load()

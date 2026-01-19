@@ -31,8 +31,8 @@ line-numbers-plus-style       = "#266d6a"
 line-numbers-zero-style       = "#3b4261"
 
 [merge]
-conflictstyle = zdiff3
-tool = nvim -d  # using Neovim for diff view
+conflictstyle = diff3
+tool = nvim -d 
 
 [pull]
 rebase = true  # avoid merge commits when pulling
@@ -48,12 +48,9 @@ ui = auto
 lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [credential "https://github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
-
-[url "https://"]
-    insteadOf = git://
-[url "https://github.com/"]
-    insteadOf = git@github.com:
+	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
+[rerere]
+	enabled = true

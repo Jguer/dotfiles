@@ -3,7 +3,9 @@ if test -f /opt/homebrew/bin/brew
 end
 
 fish_add_path --append /opt/homebrew/opt/node@22/bin
+fish_add_path --append /home/linuxbrew/.linuxbrew/opt/node@22/bin
 fish_add_path --append /home/jguer/go/bin
+fish_config theme choose "Rosé Pine"
 
 if status is-interactive
     [ "$(command -v starship)" ] && eval "$(starship init fish)"
