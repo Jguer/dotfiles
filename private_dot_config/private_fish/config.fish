@@ -21,7 +21,7 @@ end
 set -gx VISUAL nvim
 set -gx EDITOR nvim
 set -gx PAGER bat
-set -gx BAT_THEME "base16"
+set -gx BAT_THEME "rose-pine"
 
 fish_config theme choose "Everforest"
 alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
