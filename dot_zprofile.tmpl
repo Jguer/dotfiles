@@ -1,0 +1,38 @@
+# Homebrew
+{{ if eq .chezmoi.os "darwin" -}}
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+{{ else if eq .chezmoi.os "linux" -}}
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+{{ end -}}
+
+# Locale
+export LANG=en
+export LC_ALL=en_US.UTF-8
+export GPG_TTY=$(tty)
+
+# PATH
+{{ if eq .chezmoi.os "darwin" -}}
+[ -d "/Users/jguer/go/bin" ] && export PATH="$PATH:/Users/jguer/go/bin"
+{{ else if eq .chezmoi.os "linux" -}}
+[ -d "/home/linuxbrew/.linuxbrew/opt/node@22/bin" ] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/opt/node@22/bin"
+[ -d "/home/jguer/go/bin" ] && export PATH="$PATH:/home/jguer/go/bin"
+{{ end -}}
+
+# uv
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# Environment
+export VISUAL=nvim
+export EDITOR=nvim
+export PAGER=bat
+export BAT_THEME="base16"
+
+# GPG SSH agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+fi

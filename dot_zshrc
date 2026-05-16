@@ -1,0 +1,33 @@
+# GPG aliases
+alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
+alias gpgssh='export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)'
+
+# eza
+if command -v eza &>/dev/null; then
+    alias ll='eza -l --icons=auto --group-directories-first'
+    alias l.='eza -d .*'
+    alias ls='eza'
+    alias l1='eza -1'
+fi
+
+# bat for cat
+command -v bat &>/dev/null && alias cat='bat --style=plain --pager=never'
+
+# Git aliases
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gdf='git diff'
+alias gps='git push'
+alias gpl='git pull'
+alias grbi='git rebase -i'
+alias gct='git commit -v'
+alias gcta='git commit -v -a'
+alias gst='git status'
+alias gad='git add'
+
+# Interactive tools (starship, atuin, zoxide)
+if [[ $- == *i* ]]; then
+    command -v starship &>/dev/null && eval "$(starship init zsh)"
+    command -v atuin &>/dev/null && eval "$(atuin init zsh $ATUIN_INIT_FLAGS)"
+    command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+fi
