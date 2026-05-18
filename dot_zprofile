@@ -1,0 +1,21 @@
+# ~/.zprofile is sourced by login zsh shells.
+
+typeset -U path PATH
+
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+path=(
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    $path
+    "$HOME/go/bin"
+)
+export PATH
+export VISUAL=nvim
+export EDITOR=nvim
+export PAGER=bat
+export BAT_THEME="rose-pine"
+export OPENSPEC_TELEMETRY=0
+export DO_NOT_TRACK=1

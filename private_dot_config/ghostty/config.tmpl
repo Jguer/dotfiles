@@ -1,9 +1,9 @@
 font-family = IntoneMono Nerd Font
 theme = Rose Pine
 {{ if eq .chezmoi.os "darwin" -}}
-command = /opt/homebrew/bin/fish
+command = /bin/zsh
 {{- else -}}
-command = /usr/bin/fish
+command = /usr/bin/zsh
 {{- end }}
 cursor-style = block
 cursor-style-blink = true

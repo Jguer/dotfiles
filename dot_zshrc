@@ -1,19 +1,87 @@
-# GPG aliases
-alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
-alias gpgssh='export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)'
+# ~/.zshrc is sourced by interactive zsh shells.
 
-# eza
-if command -v eza &>/dev/null; then
-    alias ll='eza -l --icons=auto --group-directories-first'
-    alias l.='eza -d .*'
-    alias ls='eza'
-    alias l1='eza -1'
+typeset -U path PATH
+
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# bat for cat
-command -v bat &>/dev/null && alias cat='bat --style=plain --pager=never'
+path=(
+    /home/linuxbrew/.linuxbrew/opt/node@22/bin
+    /home/linuxbrew/.linuxbrew/opt/rustup/bin
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    $path
+    /opt/homebrew/opt/node@22/bin
+    "$HOME/go/bin"
+)
+export PATH
 
-# Git aliases
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+
+export VISUAL=nvim
+export EDITOR=nvim
+export PAGER=bat
+export BAT_THEME="rose-pine"
+export OPENSPEC_TELEMETRY=0
+export DO_NOT_TRACK=1
+
+autoload -Uz compinit
+compinit
+
+setopt COMPLETE_IN_WORD
+setopt NO_BEEP
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+unset SSH_AGENT_PID
+if command -v gpgconf >/dev/null 2>&1; then
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+
+if [[ -f /usr/share/ublue-os/bling/bling.sh ]]; then
+    . /usr/share/ublue-os/bling/bling.sh
+else
+    if command -v eza >/dev/null 2>&1; then
+        alias ll='eza -l --icons=auto --group-directories-first'
+        alias l.='eza -d .*'
+        alias ls='eza'
+        alias l1='eza -1'
+    fi
+
+    if command -v ug >/dev/null 2>&1; then
+        alias grep='ug'
+        alias egrep='ug -E'
+        alias fgrep='ug -F'
+        alias xzgrep='ug -z'
+        alias xzegrep='ug -zE'
+        alias xzfgrep='ug -zF'
+    fi
+
+    if command -v bat >/dev/null 2>&1; then
+        alias cat='bat --style=plain --pager=never'
+    fi
+
+    command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+    command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+fi
+
+if command -v atuin >/dev/null 2>&1; then
+    if [[ -n "${ATUIN_INIT_FLAGS:-}" ]]; then
+        eval "$(atuin init zsh ${=ATUIN_INIT_FLAGS})"
+    else
+        eval "$(atuin init zsh)"
+    fi
+fi
+
+alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
+alias gpgssh='export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"'
+
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gdf='git diff'
@@ -24,10 +92,3 @@ alias gct='git commit -v'
 alias gcta='git commit -v -a'
 alias gst='git status'
 alias gad='git add'
-
-# Interactive tools (starship, atuin, zoxide)
-if [[ $- == *i* ]]; then
-    command -v starship &>/dev/null && eval "$(starship init zsh)"
-    command -v atuin &>/dev/null && eval "$(atuin init zsh $ATUIN_INIT_FLAGS)"
-    command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
-fi
