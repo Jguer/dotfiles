@@ -1,10 +1,10 @@
 # Homebrew
 {{ if eq .chezmoi.os "darwin" -}}
-if [ -f /opt/homebrew/bin/brew ]; then
+if [[ -x /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 {{ else if eq .chezmoi.os "linux" -}}
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 {{ end -}}
@@ -15,24 +15,45 @@ export LC_ALL=en_US.UTF-8
 export GPG_TTY=$(tty)
 
 # PATH
+ typeset -U path PATH
+
+path=(
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    $path
+)
+
 {{ if eq .chezmoi.os "darwin" -}}
-[ -d "/Users/jguer/go/bin" ] && export PATH="$PATH:/Users/jguer/go/bin"
+[[ -d /opt/homebrew/opt/node@22/bin ]] && path+=(/opt/homebrew/opt/node@22/bin)
+[[ -d "$HOME/go/bin" ]] && path+=("$HOME/go/bin")
 {{ else if eq .chezmoi.os "linux" -}}
-[ -d "/home/linuxbrew/.linuxbrew/opt/node@22/bin" ] && export PATH="$PATH:/home/linuxbrew/.linuxbrew/opt/node@22/bin"
-[ -d "/home/jguer/go/bin" ] && export PATH="$PATH:/home/jguer/go/bin"
+[[ -d /home/linuxbrew/.linuxbrew/opt/node@22/bin ]] && path+=(/home/linuxbrew/.linuxbrew/opt/node@22/bin)
+[[ -d /home/linuxbrew/.linuxbrew/opt/rustup/bin ]] && path+=(/home/linuxbrew/.linuxbrew/opt/rustup/bin)
+[[ -d "$HOME/go/bin" ]] && path+=("$HOME/go/bin")
 {{ end -}}
 
+export PATH
+
 # uv
-[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# Cargo
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 # Environment
 export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=bat
-export BAT_THEME="rose-pine"
+export BAT_THEME="Dracula"
+export OPENSPEC_TELEMETRY=0
+export DO_NOT_TRACK=1
 
 # GPG SSH agent
 unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+if command -v gpgconf >/dev/null 2>&1; then
+    _gpg_sock="$(gpgconf --list-dirs agent-ssh-socket 2>/dev/null)"
+    if [[ -S "$_gpg_sock" ]]; then
+        export SSH_AUTH_SOCK="$_gpg_sock"
+    fi
+    unset _gpg_sock
 fi

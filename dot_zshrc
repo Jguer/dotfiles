@@ -1,94 +1,56 @@
 # ~/.zshrc is sourced by interactive zsh shells.
 
-typeset -U path PATH
-
-if [[ -x /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-path=(
-    /home/linuxbrew/.linuxbrew/opt/node@22/bin
-    /home/linuxbrew/.linuxbrew/opt/rustup/bin
-    "$HOME/.local/bin"
-    "$HOME/bin"
-    $path
-    /opt/homebrew/opt/node@22/bin
-    "$HOME/go/bin"
-)
-export PATH
-
-[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
-
-export VISUAL=nvim
-export EDITOR=nvim
-export PAGER=bat
-export BAT_THEME="rose-pine"
-export OPENSPEC_TELEMETRY=0
-export DO_NOT_TRACK=1
-
-autoload -Uz compinit
-compinit
-
 setopt COMPLETE_IN_WORD
 setopt NO_BEEP
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt AUTOCD
 
 HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
-unset SSH_AGENT_PID
-if command -v gpgconf >/dev/null 2>&1; then
-    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
-
-if [[ -f /usr/share/ublue-os/bling/bling.sh ]]; then
-    . /usr/share/ublue-os/bling/bling.sh
+# Completion dump in cache dir, skip stale check for fast startup
+autoload -Uz compinit
+_comp_path="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+mkdir -p "${_comp_path:h}"
+if [[ -f "$_comp_path" && "$_comp_path" -nt "${ZDOTDIR:-$HOME}/.zshrc" && ! -n "$_comp_path"(#qN.mh+24) ]]; then
+    compinit -C -d "$_comp_path"
 else
-    if command -v eza >/dev/null 2>&1; then
-        alias ll='eza -l --icons=auto --group-directories-first'
-        alias l.='eza -d .*'
-        alias ls='eza'
-        alias l1='eza -1'
-    fi
-
-    if command -v ug >/dev/null 2>&1; then
-        alias grep='ug'
-        alias egrep='ug -E'
-        alias fgrep='ug -F'
-        alias xzgrep='ug -z'
-        alias xzegrep='ug -zE'
-        alias xzfgrep='ug -zF'
-    fi
-
-    if command -v bat >/dev/null 2>&1; then
-        alias cat='bat --style=plain --pager=never'
-    fi
-
-    command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
-    command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+    compinit -d "$_comp_path"
 fi
+unset _comp_path
 
-if command -v atuin >/dev/null 2>&1; then
-    if [[ -n "${ATUIN_INIT_FLAGS:-}" ]]; then
-        eval "$(atuin init zsh ${=ATUIN_INIT_FLAGS})"
-    else
-        eval "$(atuin init zsh)"
-    fi
-fi
+# Completion behaviour
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+WORDCHARS=''
+
+(( $+commands[eza] )) && {
+    alias ll='eza -l --icons=auto --group-directories-first'
+    alias l.='eza -d .*'
+    alias ls='eza'
+    alias l1='eza -1'
+}
+
+(( $+commands[ug] )) && {
+    alias grep='ug'
+    alias egrep='ug -E'
+    alias fgrep='ug -F'
+    alias xzgrep='ug -z'
+    alias xzegrep='ug -zE'
+    alias xzfgrep='ug -zF'
+}
+
+(( $+commands[bat] )) && alias cat='bat --style=plain --pager=never'
+
+(( $+commands[starship] )) && eval "$(starship init zsh)"
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
 alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
 alias gpgssh='export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"'
-
-alias gco='git checkout'
-alias gcb='git checkout -b'
-alias gdf='git diff'
-alias gps='git push'
-alias gpl='git pull'
-alias grbi='git rebase -i'
-alias gct='git commit -v'
-alias gcta='git commit -v -a'
-alias gst='git status'
-alias gad='git add'

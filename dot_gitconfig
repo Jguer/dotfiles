@@ -9,6 +9,8 @@ email = git@jguer.space
 pager = delta
 editor = nvim  # using Neovim as your editor
 autocrlf = input  # handles line endings consistently
+fsmonitor = true
+untrackedCache = true
 
 [interactive]
 diffFilter = delta --color-only
@@ -31,28 +33,70 @@ line-numbers-plus-style       = "#266d6a"
 line-numbers-zero-style       = "#3b4261"
 
 [merge]
-conflictstyle = diff3
-tool = nvim -d 
+conflictstyle = zdiff3
+tool = nvim -d
 
 [pull]
 rebase = true  # avoid merge commits when pulling
 
 [push]
 default = simple
-autoSetupRemote = true  
+autoSetupRemote = true
+followTags = true
+
+[fetch]
+prune = true
+pruneTags = true
+all = true
+
+[diff]
+algorithm = histogram
+colorMoved = plain
+mnemonicPrefix = true
+renames = true
+
+[rerere]
+enabled = true
+autoupdate = true
+
+[rebase]
+autoSquash = true
+autoStash = true
+updateRefs = true
+
+[column]
+ui = auto
+
+[branch]
+sort = -committerdate
+
+[tag]
+sort = version:refname
+
+[init]
+defaultBranch = main
+
+[help]
+autocorrect = prompt
+
+[commit]
+verbose = true
+sign = true
 
 [color]
 ui = auto
 
 [alias]
 lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+st = status -s
+co = checkout
+sw = switch
+undo = reset --soft HEAD~1
+amend = commit --amend --no-edit
+
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !gh auth git-credential
-[rerere]
-	enabled = true
-[init]
-	defaultBranch = main
