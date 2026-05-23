@@ -81,7 +81,7 @@ autocorrect = prompt
 
 [commit]
 verbose = true
-sign = true
+gpgsign = true
 
 [color]
 ui = auto
