@@ -38,13 +38,8 @@ WORDCHARS=''
     alias l1='eza -1'
 }
 
-(( $+commands[ug] )) && {
-    alias grep='ug'
-    alias egrep='ug -E'
-    alias fgrep='ug -F'
-    alias xzgrep='ug -z'
-    alias xzegrep='ug -zE'
-    alias xzfgrep='ug -zF'
+(( $+commands[rg] )) && {
+    alias grep='rg'
 }
 
 (( $+commands[bat] )) && alias cat='bat --style=plain --pager=never'

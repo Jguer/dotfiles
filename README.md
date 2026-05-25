@@ -4,7 +4,7 @@ Personal shell and dev environment managed with [chezmoi](https://www.chezmoi.io
 
 ## What's inside
 
-- **Shell**: zsh with completion, shared history, and aliases for `eza`, `bat`, and `ug`
+- **Shell**: zsh with completion, shared history, and aliases for `eza`, `bat`, and `rg`
 - **Editor**: Neovim with lazy.nvim and the rose-pine theme
 - **Prompt**: starship
 
@@ -15,7 +15,7 @@ These are used across the configs. Install what you need.
 ### macOS (Homebrew)
 
 ```bash
-brew install chezmoi git git-delta gh neovim starship zoxide eza bat ugrep zsh go node@22 uv pnpm
+brew install chezmoi git git-delta gh neovim starship zoxide eza bat ripgrep zsh go node@22 uv pnpm
 brew install --cask ghostty font-intone-mono-nerd-font
 ```
 
@@ -24,7 +24,7 @@ brew install --cask ghostty font-intone-mono-nerd-font
 With Homebrew:
 
 ```bash
-brew install chezmoi git git-delta gh neovim starship zoxide eza bat ugrep zsh go node@22 uv pnpm
+brew install chezmoi git git-delta gh neovim starship zoxide eza bat ripgrep zsh go node@22 uv pnpm
 ```
 
 ## Install
