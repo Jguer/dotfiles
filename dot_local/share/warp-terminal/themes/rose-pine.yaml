@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.os "darwin" -}}
 accent: '#31748f'
 background: '#191724'
 details: darker
@@ -22,4 +21,3 @@ terminal_colors:
     red: '#eb6f92'
     white: '#e0def4'
     yellow: '#f6c177'
-{{- end -}}

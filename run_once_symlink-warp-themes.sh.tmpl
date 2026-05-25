@@ -1,0 +1,37 @@
+#!/bin/bash
+# Symlink Warp themes on macOS so they appear in both the Linux and macOS Warp paths.
+# The canonical source is ~/.local/share/warp-terminal/themes/ (managed by chezmoi).
+
+{{- if ne .chezmoi.os "darwin" }}
+echo "not darwin, skipping warp theme symlinks"
+exit 0
+{{- end }}
+
+set -eu
+
+src_dir="${HOME}/.local/share/warp-terminal/themes"
+dst_dir="${HOME}/Library/Application Support/warp-terminal/themes"
+
+mkdir -p "${dst_dir}"
+
+for theme in rose-pine rose-pine-dawn rose-pine-moon; do
+    src="${src_dir}/${theme}.yaml"
+    dst="${dst_dir}/${theme}.yaml"
+
+    if [[ ! -e "${src}" ]]; then
+        echo "source ${src} missing, skipping" >&2
+        continue
+    fi
+
+    # If the destination already exists and is not a symlink, back it up.
+    if [[ -e "${dst}" && ! -L "${dst}" ]]; then
+        mv "${dst}" "${dst}.bak.$$"
+        echo "backed up existing ${dst} → ${dst}.bak.$$" >&2
+    fi
+
+    # Re-create if missing or broken or changed.
+    if [[ ! -L "${dst}" ]] || [[ "$(readlink "${dst}")" != "${src}" ]]; then
+        ln -sf "${src}" "${dst}"
+        echo "symlinked ${dst} → ${src}"
+    fi
+done
