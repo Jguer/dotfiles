@@ -1,0 +1,18 @@
+{
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontSize": 16,
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.fontSize": 15,
+    "vim.useSystemClipboard": true,
+    "terminal.integrated.inheritEnv": true,
+    "update.showReleaseNotes": false,
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Rosé Pine",
+    "workbench.preferredLightColorTheme": "Rosé Pine Dawn",
+    "workbench.iconTheme": "rose-pine-icons",
+    "workbench.startupEditor": "none",
+    "explorer.confirmDelete": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.osx": "zsh"
+}
