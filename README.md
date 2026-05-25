@@ -15,7 +15,7 @@ These are used across the configs. Install what you need.
 ### macOS (Homebrew)
 
 ```bash
-brew install chezmoi git git-delta gh neovim starship zoxide eza bat ripgrep zsh go node@22 uv pnpm
+brew install chezmoi git git-delta gh neovim starship zoxide eza bat fd ripgrep zsh go node@22 uv pnpm
 brew install --cask ghostty font-intone-mono-nerd-font
 ```
 
@@ -24,7 +24,7 @@ brew install --cask ghostty font-intone-mono-nerd-font
 With Homebrew:
 
 ```bash
-brew install chezmoi git git-delta gh neovim starship zoxide eza bat ripgrep zsh go node@22 uv pnpm
+brew install chezmoi git git-delta gh neovim starship zoxide eza bat fd ripgrep zsh go node@22 uv pnpm
 ```
 
 ## Install

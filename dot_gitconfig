@@ -2,7 +2,7 @@
 [user]
 # Please adapt and uncomment the following lines:
 name = Jo Garnier
-email = git@jguer.space
+	email = me@jguer.space
 	signingkey = 8E43FBD745BCAC49
 
 [core]
