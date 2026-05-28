@@ -14,5 +14,6 @@
     "explorer.confirmDelete": false,
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.defaultProfile.osx": "zsh"
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "extensions.autoCheckUpdates": false
 }
