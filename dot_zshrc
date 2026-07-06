@@ -10,6 +10,21 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
 setopt AUTOCD
 
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+setopt EXTENDED_GLOB
+setopt INTERACTIVE_COMMENTS
+setopt NO_FLOW_CONTROL
+setopt AUTO_MENU
+setopt ALWAYS_TO_END
+
 HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
@@ -31,6 +46,9 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 WORDCHARS=''
 
+autoload -Uz select-word-style
+select-word-style bash
+
 (( $+commands[eza] )) && {
     alias ll='eza -l --icons=auto --group-directories-first'
     alias l.='eza -d .*'
@@ -43,9 +61,20 @@ WORDCHARS=''
 }
 
 (( $+commands[bat] )) && alias cat='bat --style=plain --pager=never'
-
-(( $+commands[starship] )) && eval "$(starship init zsh)"
+(( $+commands[fzf] )) && source <(fzf --zsh)
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
 alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
 alias gpgssh='export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"'
+
+_zsh_plugins="$HOME/.zsh"
+[[ -f "$_zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] && \
+    source "$_zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+[[ -f "$_zsh_plugins/zsh-history-substring-search/zsh-history-substring-search.zsh" ]] && {
+    source "$_zsh_plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+    [[ -n "$terminfo[kcuu1]" ]] && bindkey "$terminfo[kcuu1]" history-substring-search-up
+    [[ -n "$terminfo[kcud1]" ]] && bindkey "$terminfo[kcud1]" history-substring-search-down
+}
+[[ -f "$_zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] && \
+    source "$_zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+unset _zsh_plugins

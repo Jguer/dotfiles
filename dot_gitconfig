@@ -11,6 +11,7 @@ editor = nvim  # using Neovim as your editor
 autocrlf = input  # handles line endings consistently
 fsmonitor = true
 untrackedCache = true
+excludesFile = ~/.gitignore
 
 [interactive]
 diffFilter = delta --color-only
@@ -19,7 +20,7 @@ diffFilter = delta --color-only
 navigate = true  # use n and N to move between diff sections
 hyperlinks = True
 line-numbers = true
-side-by-side = true
+side-by-side = false
 minus-style                   = syntax "#3f2d3d"
 minus-non-emph-style          = syntax "#3f2d3d"
 minus-emph-style              = syntax "#763842"
