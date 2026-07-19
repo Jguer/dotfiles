@@ -1,5 +1,7 @@
 #!/bin/bash
-# Symlink Warp themes on macOS so they appear in both the Linux and macOS Warp paths.
+# Symlink Warp themes into the directory Warp actually scans on each OS.
+#   - Linux: ~/.local/share/warp-terminal/themes/  (chezmoi writes files here directly)
+#   - macOS: ~/.warp/themes/                        (Warp's custom-theme dir on macOS)
 # The canonical source is ~/.local/share/warp-terminal/themes/ (managed by chezmoi).
 
 {{- if ne .chezmoi.os "darwin" }}
@@ -10,7 +12,7 @@ exit 0
 set -eu
 
 src_dir="${HOME}/.local/share/warp-terminal/themes"
-dst_dir="${HOME}/Library/Application Support/warp-terminal/themes"
+dst_dir="${HOME}/.warp/themes"
 
 mkdir -p "${dst_dir}"
 
@@ -42,5 +44,15 @@ for stale in rose-pine rose-pine-dawn rose-pine-moon; do
     if [[ -L "${stale_dst}" ]]; then
         rm -f "${stale_dst}"
         echo "removed stale symlink ${stale_dst}"
+    fi
+done
+
+# Clean up orphaned symlinks from the old (incorrect) macOS destination.
+old_dst_dir="${HOME}/Library/Application Support/warp-terminal/themes"
+for orphan in kanagawa kanagawa-dragon kanagawa-lotus rose-pine rose-pine-dawn rose-pine-moon; do
+    orphan_dst="${old_dst_dir}/${orphan}.yaml"
+    if [[ -L "${orphan_dst}" ]]; then
+        rm -f "${orphan_dst}"
+        echo "removed orphaned symlink ${orphan_dst}"
     fi
 done

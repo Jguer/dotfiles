@@ -1,0 +1,17 @@
+#!/bin/bash
+# Build bat's theme/syntax cache so custom .tmTheme files under
+# ~/.config/bat/themes/ are recognised. bat does not auto-discover themes;
+# `bat cache --build` compiles them into ~/.cache/bat.
+#
+# run_after_ runs on every `chezmoi apply`, after all files have been
+# deployed, so the cache always reflects the current theme files.
+# Idempotent and fast; stdout is suppressed so a successful apply stays quiet.
+
+set -eu
+
+if ! command -v bat >/dev/null 2>&1; then
+    echo "bat not installed, skipping cache build"
+    exit 0
+fi
+
+bat cache --build >/dev/null

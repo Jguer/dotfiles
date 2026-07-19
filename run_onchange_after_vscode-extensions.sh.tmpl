@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Install the desired VS Code extensions, remove anything else, and rely on
+# settings.json for extensions.autoUpdate / extensions.autoCheckUpdates = false.
+# Re-runs when this script or the extensions list changes.
+# Compatible with macOS bash 3.2 (no associative arrays).
+# extensions: {{ include "private_dot_config/private_Code/extensions.txt" | sha256sum }}
+
+set -euo pipefail
+
+die() {
+  echo "Error: ${1}" >&2
+  exit 1
+}
+
+in_list() {
+  local needle="${1}"
+  shift
+  local item
+  for item in "${@}"; do
+    if [[ "${item}" == "${needle}" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+if ! command -v code >/dev/null 2>&1; then
+  echo "code CLI not found, skipping extension sync" >&2
+  exit 0
+fi
+
+list_file="${HOME}/.config/Code/extensions.txt"
+[[ -f "${list_file}" ]] || die "extensions list missing: ${list_file}"
+
+desired=()
+while IFS= read -r line || [[ -n "${line}" ]]; do
+  line="${line%%#*}"
+  line="${line#"${line%%[![:space:]]*}"}"
+  line="${line%"${line##*[![:space:]]}"}"
+  [[ -z "${line}" ]] && continue
+  desired+=("${line}")
+done <"${list_file}"
+
+if [[ ${#desired[@]} -eq 0 ]]; then
+  die "no extensions listed in ${list_file}"
+fi
+
+installed=()
+while IFS= read -r ext || [[ -n "${ext}" ]]; do
+  [[ -z "${ext}" ]] && continue
+  installed+=("${ext}")
+done < <(code --list-extensions 2>/dev/null || true)
+
+for ext in "${desired[@]}"; do
+  if [[ ${#installed[@]} -gt 0 ]] && in_list "${ext}" "${installed[@]}"; then
+    echo "keep ${ext}"
+    continue
+  fi
+  echo "install ${ext}"
+  code --install-extension "${ext}" --force
+done
+
+if [[ ${#installed[@]} -gt 0 ]]; then
+  for ext in "${installed[@]}"; do
+    if in_list "${ext}" "${desired[@]}"; then
+      continue
+    fi
+    echo "uninstall ${ext}"
+    code --uninstall-extension "${ext}"
+  done
+fi
+
+echo "vscode extensions synced (${#desired[@]} desired)"

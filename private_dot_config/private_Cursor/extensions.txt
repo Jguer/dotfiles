@@ -1,0 +1,4 @@
+anysphere.remote-containers
+anysphere.remote-ssh
+asvetliakov.vscode-neovim
+metaphore.kanagawa-vscode-color-theme

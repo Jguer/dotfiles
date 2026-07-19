@@ -9,7 +9,6 @@
     "terminal.integrated.enableMultiLinePasteWarning": "never",
     "update.showReleaseNotes": false,
     "window.autoDetectColorScheme": true,
-    "window.systemColorTheme": "auto",
     "workbench.colorTheme": "Kanagawa Dragon",
     "workbench.preferredDarkColorTheme": "Kanagawa Dragon",
     "workbench.preferredLightColorTheme": "Kanagawa Lotus",

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# On macOS, VS Code reads ~/Library/Application Support/Code.
+# Chezmoi manages ~/.config/Code (Linux path). Symlink settings.json so the
+# managed copy is what VS Code actually loads.
+# Re-runs when managed VS Code User settings change.
+# settings: {{ include "private_dot_config/private_Code/User/settings.json" | sha256sum }}
+
+{{- if ne .chezmoi.os "darwin" }}
+echo "not darwin, skipping vscode config symlink"
+exit 0
+{{- end }}
+
+set -euo pipefail
+
+src="${HOME}/.config/Code/User/settings.json"
+dst_dir="${HOME}/Library/Application Support/Code/User"
+dst="${dst_dir}/settings.json"
+
+mkdir -p "${dst_dir}"
+
+if [[ ! -e "${src}" ]]; then
+  echo "source ${src} missing, skipping" >&2
+  exit 0
+fi
+
+if [[ -L "${dst}" ]] && [[ "$(readlink "${dst}")" == "${src}" ]]; then
+  echo "ok ${dst} → ${src}"
+  exit 0
+fi
+
+if [[ -e "${dst}" && ! -L "${dst}" ]]; then
+  mv "${dst}" "${dst}.bak.$$"
+  echo "backed up existing ${dst} → ${dst}.bak.$$" >&2
+fi
+
+ln -sfn "${src}" "${dst}"
+echo "symlinked ${dst} → ${src}"
