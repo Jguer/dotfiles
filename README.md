@@ -5,7 +5,7 @@ Personal shell and dev environment managed with [chezmoi](https://www.chezmoi.io
 ## What's inside
 
 - **Shell**: zsh with completion, shared history, and aliases for `eza`, `bat`, and `rg`
-- **Editor**: Neovim with lazy.nvim and the rose-pine theme
+- **Editor**: Neovim with lazy.nvim and the [kanagawa](https://github.com/rebelot/kanagawa.nvim) theme
 - **Prompt**: starship
 
 ## Required utils
@@ -47,4 +47,4 @@ The install script bootstraps chezmoi if it is not already installed.
 
 ## Theme
 
-Terminal and editor use [rose-pine](https://rosepinetheme.com/).
+Neovim, bat, and Warp use [kanagawa](https://github.com/rebelot/kanagawa.nvim) (lotus by day, dragon by night in Neovim; Warp ships wave, dragon, and lotus).

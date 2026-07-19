@@ -14,7 +14,7 @@ dst_dir="${HOME}/Library/Application Support/warp-terminal/themes"
 
 mkdir -p "${dst_dir}"
 
-for theme in rose-pine rose-pine-dawn rose-pine-moon; do
+for theme in kanagawa kanagawa-dragon kanagawa-lotus; do
     src="${src_dir}/${theme}.yaml"
     dst="${dst_dir}/${theme}.yaml"
 
@@ -33,5 +33,14 @@ for theme in rose-pine rose-pine-dawn rose-pine-moon; do
     if [[ ! -L "${dst}" ]] || [[ "$(readlink "${dst}")" != "${src}" ]]; then
         ln -sf "${src}" "${dst}"
         echo "symlinked ${dst} → ${src}"
+    fi
+done
+
+# Remove stale rose-pine symlinks from the macOS Warp themes dir.
+for stale in rose-pine rose-pine-dawn rose-pine-moon; do
+    stale_dst="${dst_dir}/${stale}.yaml"
+    if [[ -L "${stale_dst}" ]]; then
+        rm -f "${stale_dst}"
+        echo "removed stale symlink ${stale_dst}"
     fi
 done

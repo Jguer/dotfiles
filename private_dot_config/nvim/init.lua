@@ -38,18 +38,23 @@ vim.g.clipboard = {
 require("lazy").setup({
   spec = {
     {
-      "rose-pine/neovim",
-      name = "rose-pine",
+      "rebelot/kanagawa.nvim",
       lazy = false,
       priority = 1000,
       config = function()
-        require("rose-pine").setup({
-          variant = "main",
+        require("kanagawa").setup({
+          background = {
+            dark = "dragon",
+            light = "lotus",
+          },
         })
-        vim.cmd("colorscheme rose-pine")
+        -- lotus 07:00–19:00, dragon otherwise
+        local hour = tonumber(os.date("%H"))
+        vim.o.background = (hour >= 7 and hour < 19) and "light" or "dark"
+        vim.cmd("colorscheme kanagawa")
       end,
     },
   },
-  install = { colorscheme = { "rose-pine" } },
+  install = { colorscheme = { "kanagawa" } },
   checker = { enabled = true },
 })
