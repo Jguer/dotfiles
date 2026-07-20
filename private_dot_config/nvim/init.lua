@@ -44,9 +44,9 @@ require("lazy").setup({
       config = function()
         require("night-owl").setup()
 
-        -- Light Owl 07:00–19:00, Night Owl otherwise.
+        -- Light Owl 07:00–21:00, Night Owl otherwise.
         local hour = tonumber(os.date("%H"))
-        local colorscheme = (hour >= 7 and hour < 19) and "light-owl" or "night-owl"
+        local colorscheme = (hour >= 7 and hour < 21) and "light-owl" or "night-owl"
         vim.cmd.colorscheme(colorscheme)
       end,
     },
