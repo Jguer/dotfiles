@@ -5,6 +5,11 @@
 # Compatible with macOS bash 3.2 (no associative arrays).
 # extensions: {{ include "private_dot_config/private_Cursor/extensions.txt" | sha256sum }}
 
+{{ if eq .chezmoi.os "linux" -}}
+echo "skipping cursor extensions sync on linux" >&2
+exit 0
+{{- end }}
+
 set -euo pipefail
 
 die() {

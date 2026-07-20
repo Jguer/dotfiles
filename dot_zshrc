@@ -56,10 +56,6 @@ select-word-style bash
     alias l1='eza -1'
 }
 
-(( $+commands[rg] )) && {
-    alias grep='rg'
-}
-
 (( $+commands[bat] )) && alias cat='bat --style=plain --pager=never'
 (( $+commands[fzf] )) && source <(fzf --zsh)
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
