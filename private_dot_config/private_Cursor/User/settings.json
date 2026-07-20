@@ -10,12 +10,12 @@
     "update.showReleaseNotes": false,
     "window.autoDetectColorScheme": true,
     "window.systemColorTheme": "auto",
-    "workbench.colorTheme": "Kanagawa Dragon",
-    "workbench.preferredDarkColorTheme": "Kanagawa Dragon",
-    "workbench.preferredLightColorTheme": "Kanagawa Lotus",
+    "workbench.colorTheme": "Night Owl",
+    "workbench.preferredDarkColorTheme": "Night Owl",
+    "workbench.preferredLightColorTheme": "Night Owl Light",
     "workbench.startupEditor": "none",
     "explorer.confirmDelete": false,
-    "extensions.autoUpdate": false,
+    "extensions.autoUpdate": "off",
     "extensions.autoCheckUpdates": false,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1

@@ -1,0 +1,24 @@
+name: Light Owl
+accent: "#288ed7"
+background: "#FBFBFB"
+details: lighter
+foreground: "#403f53"
+terminal_colors:
+  normal:
+    black: "#403f53"
+    red: "#de3d3b"
+    green: "#08916a"
+    yellow: "#E0AF02"
+    blue: "#288ed7"
+    magenta: "#d6438a"
+    cyan: "#2AA298"
+    white: "#93A1A1"
+  bright:
+    black: "#403f53"
+    red: "#de3d3b"
+    green: "#08916a"
+    yellow: "#daaa01"
+    blue: "#288ed7"
+    magenta: "#d6438a"
+    cyan: "#2AA298"
+    white: "#93A1A1"

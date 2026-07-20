@@ -38,23 +38,19 @@ vim.g.clipboard = {
 require("lazy").setup({
   spec = {
     {
-      "rebelot/kanagawa.nvim",
+      "oxfist/night-owl.nvim",
       lazy = false,
       priority = 1000,
       config = function()
-        require("kanagawa").setup({
-          background = {
-            dark = "dragon",
-            light = "lotus",
-          },
-        })
-        -- lotus 07:00–19:00, dragon otherwise
+        require("night-owl").setup()
+
+        -- Light Owl 07:00–19:00, Night Owl otherwise.
         local hour = tonumber(os.date("%H"))
-        vim.o.background = (hour >= 7 and hour < 19) and "light" or "dark"
-        vim.cmd("colorscheme kanagawa")
+        local colorscheme = (hour >= 7 and hour < 19) and "light-owl" or "night-owl"
+        vim.cmd.colorscheme(colorscheme)
       end,
     },
   },
-  install = { colorscheme = { "kanagawa" } },
+  install = { colorscheme = { "night-owl", "light-owl" } },
   checker = { enabled = true },
 })

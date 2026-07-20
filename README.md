@@ -5,7 +5,7 @@ Personal shell and dev environment managed with [chezmoi](https://www.chezmoi.io
 ## What's inside
 
 - **Shell**: zsh with completion, shared history, and aliases for `eza`, `bat`, and `rg`
-- **Editor**: Neovim with lazy.nvim and the [kanagawa](https://github.com/rebelot/kanagawa.nvim) theme
+- **Editor**: Neovim with lazy.nvim and the [Night Owl](https://github.com/oxfist/night-owl.nvim) theme
 - **Prompt**: starship
 
 ## Required utils
@@ -47,4 +47,7 @@ The install script bootstraps chezmoi if it is not already installed.
 
 ## Theme
 
-Neovim, bat, and Warp use [kanagawa](https://github.com/rebelot/kanagawa.nvim) (lotus by day, dragon by night in Neovim; Warp ships wave, dragon, and lotus).
+Neovim and bat use Light Owl from 07:00–19:00 and Night Owl otherwise.
+VS Code and Cursor follow the system appearance, while Warp includes both custom
+variants. Neovim uses [night-owl.nvim](https://github.com/oxfist/night-owl.nvim)
+plus a local Light Owl colorscheme based on the official palette.

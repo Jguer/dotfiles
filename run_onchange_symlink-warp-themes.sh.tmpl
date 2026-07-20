@@ -16,7 +16,7 @@ dst_dir="${HOME}/.warp/themes"
 
 mkdir -p "${dst_dir}"
 
-for theme in kanagawa kanagawa-dragon kanagawa-lotus; do
+for theme in night-owl light-owl; do
     src="${src_dir}/${theme}.yaml"
     dst="${dst_dir}/${theme}.yaml"
 
@@ -31,28 +31,33 @@ for theme in kanagawa kanagawa-dragon kanagawa-lotus; do
         echo "backed up existing ${dst} → ${dst}.bak.$$" >&2
     fi
 
-    # Re-create if missing or broken or changed.
+    # Re-create if missing, broken, or changed.
     if [[ ! -L "${dst}" ]] || [[ "$(readlink "${dst}")" != "${src}" ]]; then
         ln -sf "${src}" "${dst}"
         echo "symlinked ${dst} → ${src}"
     fi
 done
 
-# Remove stale rose-pine symlinks from the macOS Warp themes dir.
-for stale in rose-pine rose-pine-dawn rose-pine-moon; do
-    stale_dst="${dst_dir}/${stale}.yaml"
-    if [[ -L "${stale_dst}" ]]; then
-        rm -f "${stale_dst}"
-        echo "removed stale symlink ${stale_dst}"
-    fi
+# Remove symlinks to canonical themes that are no longer managed.
+for stale_dst in "${dst_dir}"/*.yaml; do
+    [[ -L "${stale_dst}" ]] || continue
+    case "$(readlink "${stale_dst}")" in
+        "${src_dir}/night-owl.yaml"|"${src_dir}/light-owl.yaml") ;;
+        "${src_dir}/"*)
+            rm -f "${stale_dst}"
+            echo "removed stale symlink ${stale_dst}"
+            ;;
+    esac
 done
 
-# Clean up orphaned symlinks from the old (incorrect) macOS destination.
+# Clean up symlinks from the old (incorrect) macOS destination.
 old_dst_dir="${HOME}/Library/Application Support/warp-terminal/themes"
-for orphan in kanagawa kanagawa-dragon kanagawa-lotus rose-pine rose-pine-dawn rose-pine-moon; do
-    orphan_dst="${old_dst_dir}/${orphan}.yaml"
-    if [[ -L "${orphan_dst}" ]]; then
-        rm -f "${orphan_dst}"
-        echo "removed orphaned symlink ${orphan_dst}"
-    fi
+for orphan_dst in "${old_dst_dir}"/*.yaml; do
+    [[ -L "${orphan_dst}" ]] || continue
+    case "$(readlink "${orphan_dst}")" in
+        "${src_dir}/"*)
+            rm -f "${orphan_dst}"
+            echo "removed orphaned symlink ${orphan_dst}"
+            ;;
+    esac
 done
