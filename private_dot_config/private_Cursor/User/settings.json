@@ -15,9 +15,10 @@
     "workbench.preferredLightColorTheme": "Night Owl Light",
     "workbench.startupEditor": "none",
     "explorer.confirmDelete": false,
-    "extensions.autoUpdate": "off",
+    "extensions.autoUpdate": false,
     "extensions.autoCheckUpdates": false,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
-    }
+    },
+    "vim.useSystemClipboard": true
 }
