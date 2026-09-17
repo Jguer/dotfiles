@@ -54,9 +54,6 @@ export DO_NOT_TRACK=1
 # GPG SSH agent
 unset SSH_AGENT_PID
 if command -v gpgconf >/dev/null 2>&1; then
-    _gpg_sock="$(gpgconf --list-dirs agent-ssh-socket 2>/dev/null)"
-    if [[ -S "$_gpg_sock" ]]; then
-        export SSH_AUTH_SOCK="$_gpg_sock"
-    fi
-    unset _gpg_sock
+    gpgconf --launch gpg-agent 2>/dev/null
+    export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket 2>/dev/null)"
 fi

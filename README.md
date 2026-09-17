@@ -7,6 +7,7 @@ Personal shell and dev environment managed with [chezmoi](https://www.chezmoi.io
 - **Shell**: zsh with completion, shared history, and aliases for `eza`, `bat`, and `rg`
 - **Editor**: Neovim with lazy.nvim and the [Night Owl](https://github.com/oxfist/night-owl.nvim) theme
 - **Prompt**: starship
+- **Terminal**: Rio with JetBrainsMono Nerd Font Mono and adaptive Light Owl/Night Owl themes
 
 ## Required utils
 
@@ -16,7 +17,7 @@ These are used across the configs. Install what you need.
 
 ```bash
 brew install chezmoi git git-delta gh neovim starship zoxide eza bat fd ripgrep zsh go node@22 uv pnpm
-brew install --cask ghostty font-intone-mono-nerd-font
+brew install --cask rio font-jetbrains-mono-nerd-font
 ```
 
 ### Linux
@@ -26,6 +27,10 @@ With Homebrew:
 ```bash
 brew install chezmoi git git-delta gh neovim starship zoxide eza bat fd ripgrep zsh go node@22 uv pnpm
 ```
+
+Install the JetBrainsMono Nerd Font with your distribution's package manager,
+then install Rio. The AppImage build is dropped in `~/Applications` and made
+executable; it reads its config straight from `~/.config/rio`.
 
 ## Install
 
@@ -47,7 +52,8 @@ The install script bootstraps chezmoi if it is not already installed.
 
 ## Theme
 
-Neovim and bat use Light Owl from 07:00–19:00 and Night Owl otherwise.
-VS Code and Cursor follow the system appearance, while Warp includes both custom
-variants. Neovim uses [night-owl.nvim](https://github.com/oxfist/night-owl.nvim)
-plus a local Light Owl colorscheme based on the official palette.
+Neovim and bat use Light Owl from 07:00–21:00 and Night Owl otherwise.
+VS Code and Rio follow the system appearance. Rio uses JetBrainsMono Nerd Font
+Mono at 15 pt and reads its config from `~/.config/rio`.
+Neovim uses [night-owl.nvim](https://github.com/oxfist/night-owl.nvim) plus a
+local Light Owl colorscheme based on the official palette.

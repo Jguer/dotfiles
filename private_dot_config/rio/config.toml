@@ -1,0 +1,19 @@
+# Rio configuration reference: https://rioterm.com/docs/config
+
+use-fork = false
+
+[navigation]
+current-working-directory = true
+
+[title]
+content = "{{ RELATIVE_PATH }}"
+
+[fonts]
+family = "JetBrainsMono Nerd Font Mono"
+size = 15
+features = ["liga", "calt"]
+
+# Follow the operating system appearance on macOS and Linux.
+[adaptive-theme]
+light = "Light Owl"
+dark = "Night Owl"

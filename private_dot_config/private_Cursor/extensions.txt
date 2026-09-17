@@ -1,4 +1,0 @@
-anysphere.remote-containers
-anysphere.remote-ssh
-asvetliakov.vscode-neovim
-sdras.night-owl

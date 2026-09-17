@@ -59,6 +59,7 @@ select-word-style bash
 (( $+commands[bat] )) && alias cat='bat --style=plain --pager=never'
 (( $+commands[fzf] )) && source <(fzf --zsh)
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
 alias gpgreset='gpg-connect-agent killagent /bye; gpg-connect-agent updatestartuptty /bye; gpg-connect-agent /bye'
 alias gpgssh='export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"'
