@@ -1,0 +1,3 @@
+# pnpm global configuration (pnpm v11+).
+# Settings live here or in pnpm-workspace.yaml; `pnpm/rc` is auth only.
+minimumReleaseAge: 10080 # minutes == 7 days

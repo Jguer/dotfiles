@@ -29,11 +29,15 @@ HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
-# Completion dump in cache dir, skip stale check for fast startup
-autoload -Uz compinit
+# Never persist obviously sensitive commands in history.
+HISTORY_IGNORE='(*secret*|*token*|*password*|*api*key*|*apikey*|*PRIVATE*KEY*)'
+
+# Completion dump in cache dir. `-C` skips the security audit, so only use it
+# when compaudit reports that $fpath contains no insecure directories.
+autoload -Uz compinit compaudit
 _comp_path="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
 mkdir -p "${_comp_path:h}"
-if [[ -f "$_comp_path" && "$_comp_path" -nt "${ZDOTDIR:-$HOME}/.zshrc" && ! -n "$_comp_path"(#qN.mh+24) ]]; then
+if compaudit >/dev/null 2>&1 && [[ -f "$_comp_path" && "$_comp_path" -nt "${ZDOTDIR:-$HOME}/.zshrc" && ! -n "$_comp_path"(#qN.mh+24) ]]; then
     compinit -C -d "$_comp_path"
 else
     compinit -d "$_comp_path"

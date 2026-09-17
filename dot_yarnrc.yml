@@ -1,1 +1,2 @@
-enableScripts: false
+enableScripts: false # Yarn 4 default; kept explicit
+npmMinimalAgeGate: "7d" # supply-chain cooldown, matches npm/uv/pnpm

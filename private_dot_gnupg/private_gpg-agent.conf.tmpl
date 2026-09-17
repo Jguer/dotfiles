@@ -1,5 +1,11 @@
 enable-ssh-support
-ttyname $GPG_TTY
+# NOTE: `ttyname` is ineffective here (gpg-agent does no shell expansion);
+# GPG_TTY is exported by the shell instead.
+ignore-cache-for-signing
+no-allow-external-cache
+no-allow-loopback-pinentry
+default-cache-ttl 300
+max-cache-ttl 900
 {{ if eq .chezmoi.os "darwin" -}}
 pinentry-program /opt/homebrew/bin/pinentry-mac
 {{ else -}}

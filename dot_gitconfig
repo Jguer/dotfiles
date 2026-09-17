@@ -33,6 +33,7 @@ rebase = true  # avoid merge commits when pulling
 default = simple
 autoSetupRemote = true
 followTags = true
+gpgSign = true
 
 [fetch]
 prune = true
@@ -44,6 +45,16 @@ algorithm = histogram
 colorMoved = plain
 mnemonicPrefix = true
 renames = true
+
+[transfer]
+fsckObjects = true
+
+[protocol "file"]
+# Block repo-driven local clones (submodule CVE-2022-39253 class).
+allow = never
+
+[feature]
+manyFiles = true
 
 [rerere]
 enabled = true

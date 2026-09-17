@@ -22,17 +22,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.clipboard = "unnamedplus"
 
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-  },
-}
+-- Neovim 0.12 accepts a built-in clipboard provider name directly.
+vim.g.clipboard = "osc52"
 
 -- Setup lazy.nvim
 require("lazy").setup({

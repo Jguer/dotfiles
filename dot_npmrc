@@ -1,2 +1,8 @@
 ignore-scripts=true
-min-release-age=7 # days
+min-release-age=7 # days (GA in npm 11; unit is days)
+# Supply-chain hardening:
+allow-git=root            # block transitive git dependencies
+strict-allow-scripts=true # hard error (not warning) on unapproved lifecycle scripts
+omit=optional
+save-exact=true
+audit-level=high

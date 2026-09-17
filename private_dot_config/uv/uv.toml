@@ -1,1 +1,5 @@
+# 7-day supply-chain cooldown (compares artifact upload time).
 exclude-newer = "P7D"
+
+# Per-package overrides when a project genuinely needs an exception:
+# exclude-newer-package = { tqdm = "P30D", somepkg = false }
