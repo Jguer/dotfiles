@@ -33,7 +33,6 @@ rebase = true  # avoid merge commits when pulling
 default = simple
 autoSetupRemote = true
 followTags = true
-gpgSign = true
 
 [fetch]
 prune = true
